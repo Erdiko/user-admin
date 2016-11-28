@@ -6,6 +6,17 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'erdiko\\users\\' => array($vendorDir . '/erdiko/users/src'),
+    'erdiko\\doctrine\\' => array($vendorDir . '/erdiko/doctrine/src'),
     'erdiko\\core\\' => array($vendorDir . '/erdiko/core/src'),
+    'erdiko\\authorize\\' => array($vendorDir . '/erdiko/authorize/src'),
+    'erdiko\\authenticate\\' => array($vendorDir . '/erdiko/authenticate/src'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
+    'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
+    'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
+    'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations'),
+    'Doctrine\\Common\\' => array($vendorDir . '/doctrine/common/lib/Doctrine/Common'),
+    'AC\\Kalinka\\' => array($vendorDir . '/ac/kalinka/src'),
 );

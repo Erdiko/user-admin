@@ -1,0 +1,22 @@
+{
+    "name": "erdiko/doctrine",
+    "description": "Doctrine database ORM",
+    "license": "MIT",
+    "homepage": "http://erdiko.org",
+    "keywords": ["erdiko", "doctrine", "database", "sql", "orm"],
+    "authors": [
+        {
+            "name": "John Arroyo",
+            "email": "john@arroyolabs.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "doctrine/orm": "2.4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "erdiko\\doctrine\\": "src/"
+        }
+    }
+}

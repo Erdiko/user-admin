@@ -13,7 +13,10 @@
     "require": {
         "php": ">=5.4.0",
         "erdiko/core": "^0.10.0",
-        "erdiko/users": "@dev"
+        "erdiko/users": "@dev",
+        "erdiko/authenticate": "@dev",
+        "erdiko/authorize": "@dev",
+        "ac/kalinka": "dev-master"
     },
     "config": {
         "vendor-dir": "vendor",
@@ -23,6 +26,20 @@
         {
             "type": "path",
             "url": "../users",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../authenticate",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../authorize",
             "options": {
                 "symlink": true
             }

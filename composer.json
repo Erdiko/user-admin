@@ -1,0 +1,47 @@
+{
+    "name": "erdiko/erdiko",
+    "description": "Erdiko micro MVC framework",
+    "keywords": ["framework", "erdiko", "mvc"],
+    "homepage": "http://erdiko.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arroyo Labs",
+            "email": "info@arroyolabs.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "erdiko/core": "^0.10.0",
+        "erdiko/authenticate": "@dev",
+        "erdiko/authorize": "@dev",
+        "erdiko/users": "@dev"
+    },
+    "config": {
+        "vendor-dir": "vendor",
+        "minimum-stability": "dev"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../authenticate",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../authorize",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../users",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+}

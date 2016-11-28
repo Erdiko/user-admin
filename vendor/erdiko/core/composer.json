@@ -1,0 +1,27 @@
+{
+	"name":"erdiko/core",
+    "description": "Erdiko micro MVC core libraries",
+    "keywords": ["framework", "erdiko", "erdiko-core"],
+    "homepage": "http://erdiko.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arroyo Labs",
+            "email": "info@arroyolabs.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "mustache/mustache": "2.*",
+        "erusev/parsedown": ">=1.6",
+        "Psr/Log": "^1.0"
+    },
+    "config": {
+        "minimum-stability": "dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "erdiko\\core\\": "src/"
+        }
+    }
+}

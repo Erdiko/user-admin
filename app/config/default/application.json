@@ -26,6 +26,12 @@
       "href": "/examples/examples",
       "title": "Examples"
     }, {
+      "href": "/users/login",
+      "title": "Login"
+    }, {
+      "href": "/dashboard",
+      "title": "Dashboard"
+    }, {
       "href": "/examples/markup",
       "title": "Mark-Up"
     }, {
@@ -37,6 +43,18 @@
     }, {
       "href": "/threecolumn",
       "title": "3 Column Layout"
+    }, {
+      "href": "/users/logout",
+      "title": "Logout"
+    }, {
+      "href": "/users",
+      "title": "Users"
+    }, {
+      "href": "/plans",
+      "title": "Plans"
+    }, {
+      "href": "/subscriptions",
+      "title": "Subscriptions"
     }],
     "footer": [{
       "href": "/",

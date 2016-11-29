@@ -9,6 +9,9 @@ define('ERDIKO_VENDOR', ERDIKO_ROOT.'/vendor');
 define('ERDIKO_SRC', ERDIKO_VENDOR.'/erdiko/core/src');
 require_once ERDIKO_SRC.'/bootstrap.php';
 
+// Used by legacy modules (i.e. erdiko/doctrine)
+define('APPROOT', ERDIKO_ROOT.'/app');
+
 /**
  * Appstrap
  * Here you can modify safely based on your needs.

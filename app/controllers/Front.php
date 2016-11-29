@@ -75,38 +75,38 @@ class Front extends \erdiko\core\Controller
 	{
 		// Add page data
 		$this->setTitle('Welcome to Erdiko');
-		$this->addView('Auth/home');
+		$this->addView('examples/home');
 	}
 
 	public function getPlans()
 	{
 		$this->setTitle('Welcome to Erdiko');
-		$this->addView('Auth/plans');
+		$this->addView('admin/plans');
 	}
 
 	public function getSubscriptions()
 	{
 		$this->setTitle('Welcome to Erdiko');
-		$this->addView('Auth/subscriptions');
+		$this->addView('admin/subscriptions');
 	}
 
 	public function getUsers()
 	{
 		$this->setTitle('Welcome to Erdiko');
-		$this->addView('Auth/users');
+		$this->addView('admin/users/users');
 	}
 
 	public function getDashboard()
 	{
 		$auth = new BasicAuth(new User());
 		$this->setTitle('Welcome to Erdiko Auth Module');
-		$this->addView('Auth/dashboard',array('user'=>$auth->current_user()));
+		$this->addView('admin/dashboard',array('user'=>$auth->current_user()));
 	}
 
 	public function getNoAuth()
 	{
 		// Add page data
 		$this->setTitle('Welcome to Erdiko');
-		$this->addView('Auth/no_auth');
+		$this->addView('admin/no_auth');
 	}
 }

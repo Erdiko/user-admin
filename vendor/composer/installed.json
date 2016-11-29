@@ -1062,13 +1062,54 @@
         ]
     },
     {
+        "name": "erdiko/users",
+        "version": "dev-ER-78",
+        "version_normalized": "dev-ER-78",
+        "dist": {
+            "type": "path",
+            "url": "../users",
+            "reference": "22588e62088d43275365b31860f26fba363d2393",
+            "shasum": null
+        },
+        "require": {
+            "erdiko/doctrine": "^0.2.1",
+            "php": ">=5.4.0"
+        },
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "erdiko\\users\\": "src/"
+            }
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Arroyo Labs",
+                "email": "info@arroyolabs.com"
+            }
+        ],
+        "description": "User model standard",
+        "homepage": "http://erdiko.org",
+        "keywords": [
+            "erdiko",
+            "erdiko-user",
+            "user"
+        ],
+        "transport-options": {
+            "symlink": true
+        }
+    },
+    {
         "name": "erdiko/authenticate",
-        "version": "dev-develop",
-        "version_normalized": "dev-develop",
+        "version": "dev-ER-78",
+        "version_normalized": "dev-ER-78",
         "dist": {
             "type": "path",
             "url": "../authenticate",
-            "reference": "90ad9bc83508c6e0b8afb4c9191d6275d42b96dd",
+            "reference": "170e1d0fe02dc1eda2d1f9a5c7861711d24d9c74",
             "shasum": null
         },
         "require": {
@@ -1104,12 +1145,12 @@
     },
     {
         "name": "erdiko/authorize",
-        "version": "dev-develop",
-        "version_normalized": "dev-develop",
+        "version": "dev-ER-78",
+        "version_normalized": "dev-ER-78",
         "dist": {
             "type": "path",
             "url": "../authorize",
-            "reference": "3ea2b165b029f12b46b98c6248f79e9fc5eb4564",
+            "reference": "d9a9986981bfc4e7e0413deb3840e172b2a90c66",
             "shasum": null
         },
         "require": {
@@ -1138,47 +1179,6 @@
             "authorize",
             "erdiko",
             "erdiko-authorize"
-        ],
-        "transport-options": {
-            "symlink": true
-        }
-    },
-    {
-        "name": "erdiko/users",
-        "version": "dev-develop",
-        "version_normalized": "dev-develop",
-        "dist": {
-            "type": "path",
-            "url": "../users",
-            "reference": "5cd434f345457172e675823e6860738283cd9003",
-            "shasum": null
-        },
-        "require": {
-            "erdiko/doctrine": "^0.2.0",
-            "php": ">=5.4.0"
-        },
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "erdiko\\users\\": "src/"
-            }
-        },
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Arroyo Labs",
-                "email": "info@arroyolabs.com"
-            }
-        ],
-        "description": "User model standard",
-        "homepage": "http://erdiko.org",
-        "keywords": [
-            "erdiko",
-            "erdiko-user",
-            "user"
         ],
         "transport-options": {
             "symlink": true

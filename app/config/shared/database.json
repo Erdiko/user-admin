@@ -5,10 +5,10 @@
     "connections": {
         "master": {
             "driver": "pdo_mysql",
-            "host": "localhost",
-            "database": "orms",
-            "username": "webuser",
-            "password": "webuserpass",
+            "host": "docker.local:3301",
+            "database": "user-admin",
+            "username": "root",
+            "password": "psItPs16",
             "charset": "utf8",
             "collation": "utf8_unicode_ci",
             "prefix": ""

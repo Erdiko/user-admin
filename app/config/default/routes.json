@@ -1,9 +1,11 @@
 {
     "routes": {
-        "/": "\app\controllers\Example",
+        "/": "\app\controllers\Front",
+        "/:alpha": "\app\controllers\Front",
         "examples/:alpha": "\app\controllers\Example",
         "mustache/:alpha": "\app\controllers\Mustache",
         "ajax/:alpha": "\app\controllers\AjaxExample",
-        "/:alpha": "\app\controllers\Example"
+        "/api/user/:action": "\erdiko\user\controllers\Api",
+        "/users/:action": "\erdiko\users\controllers\Login"
     }
 }

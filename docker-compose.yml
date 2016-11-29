@@ -7,12 +7,16 @@ services:
       service: webserver
     container_name: erdiko_users_web
     ports:
-      - "80:80"
+      - "8088:80"
   php:
     extends:
       file: ./docker/php/7.0/docker-compose.yml
       service: php
     container_name: erdiko_users_php
+    volumes:
+        - ../authenticate/:/code/vendor/erdiko/authenticate
+        - ../authorize/:/code/vendor/erdiko/authorize
+        - ../users/:/code/vendor/erdiko/users
   db:
     container_name: erdiko_users_db
     env_file: ./docker/mysql/environment.env
@@ -20,4 +24,4 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "3301:3306"

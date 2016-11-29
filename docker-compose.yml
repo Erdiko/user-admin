@@ -19,12 +19,8 @@ services:
     extends:
       file: ./docker/php/7.0/docker-compose.yml
       service: php
-    volumes_from: [data]
     container_name: erdiko_users_php
-    volumes:
-        - ../authenticate/:/code/vendor/erdiko/authenticate
-        - ../authorize/:/code/vendor/erdiko/authorize
-        - ../users/:/code/vendor/erdiko/users
+    volumes_from: [data]
   db:
     container_name: erdiko_users_db
     env_file: ./docker/mysql/environment.env

@@ -12,10 +12,10 @@ cd ../../authenticate
 git checkout $BRANCH
 git pull origin $BRANCH
 
-cd ../../authorize
+cd ../authorize
 git checkout $BRANCH
 git pull origin $BRANCH
 
-cd ../../users
+cd ../users
 git checkout $BRANCH
 git pull origin $BRANCH

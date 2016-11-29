@@ -1,17 +1,25 @@
 version: '2'
 
 services:
+  data:
+    image: busybox
+    volumes:
+      - ../authenticate:/authenticate
+      - ../authorize:/authorize
+      - ../users:/users
   webserver:
     extends:
       file: ./docker/nginx/docker-compose.yml
       service: webserver
     container_name: erdiko_users_web
+    volumes_from: [data]
     ports:
       - "80:80"
   php:
     extends:
       file: ./docker/php/7.0/docker-compose.yml
       service: php
+    volumes_from: [data]
     container_name: erdiko_users_php
   db:
     container_name: erdiko_users_db

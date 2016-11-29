@@ -929,94 +929,6 @@
         ]
     },
     {
-        "name": "erdiko/doctrine",
-        "version": "0.1.1",
-        "version_normalized": "0.1.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Erdiko/doctrine.git",
-            "reference": "3fc16cd01dbbf80595e7144937d84b1860ba7e7b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Erdiko/doctrine/zipball/3fc16cd01dbbf80595e7144937d84b1860ba7e7b",
-            "reference": "3fc16cd01dbbf80595e7144937d84b1860ba7e7b",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/orm": "2.4.*",
-            "php": ">=5.4.0"
-        },
-        "time": "2016-03-08 00:27:42",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "erdiko\\doctrine\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "John Arroyo",
-                "email": "john@arroyolabs.com"
-            }
-        ],
-        "description": "Doctrine database ORM",
-        "homepage": "http://erdiko.org",
-        "keywords": [
-            "database",
-            "doctrine",
-            "erdiko",
-            "orm",
-            "sql"
-        ]
-    },
-    {
-        "name": "erdiko/users",
-        "version": "dev-develop",
-        "version_normalized": "dev-develop",
-        "dist": {
-            "type": "path",
-            "url": "../users",
-            "reference": null,
-            "shasum": null
-        },
-        "require": {
-            "erdiko/doctrine": "^0.1.1",
-            "php": ">=5.4.0"
-        },
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "erdiko\\users\\": "src/"
-            }
-        },
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Arroyo Labs",
-                "email": "info@arroyolabs.com"
-            }
-        ],
-        "description": "User model standard",
-        "homepage": "http://erdiko.org",
-        "keywords": [
-            "erdiko",
-            "erdiko-user",
-            "user"
-        ],
-        "transport-options": {
-            "symlink": true
-        }
-    },
-    {
         "name": "pimple/pimple",
         "version": "v3.0.2",
         "version_normalized": "3.0.2.0",
@@ -1065,47 +977,6 @@
         ]
     },
     {
-        "name": "erdiko/authenticate",
-        "version": "dev-develop",
-        "version_normalized": "dev-develop",
-        "dist": {
-            "type": "path",
-            "url": "../authenticate",
-            "reference": null,
-            "shasum": null
-        },
-        "require": {
-            "php": ">=5.4.0",
-            "pimple/pimple": "~3.0"
-        },
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "erdiko\\authenticate\\": "src/"
-            }
-        },
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Arroyo Labs",
-                "email": "info@arroyolabs.com"
-            }
-        ],
-        "description": "Authentication module",
-        "homepage": "http://erdiko.org",
-        "keywords": [
-            "authentication",
-            "erdiko",
-            "erdiko-authenticate"
-        ],
-        "transport-options": {
-            "symlink": true
-        }
-    },
-    {
         "name": "ac/kalinka",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1143,13 +1014,54 @@
         ]
     },
     {
+        "name": "erdiko/authenticate",
+        "version": "dev-develop",
+        "version_normalized": "dev-develop",
+        "dist": {
+            "type": "path",
+            "url": "../authenticate",
+            "reference": "5cded70e8cb5fe1b3507e7776a983f12aedd843e",
+            "shasum": null
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "pimple/pimple": "~3.0"
+        },
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "erdiko\\authenticate\\": "src/"
+            }
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Arroyo Labs",
+                "email": "info@arroyolabs.com"
+            }
+        ],
+        "description": "Authentication module",
+        "homepage": "http://erdiko.org",
+        "keywords": [
+            "authentication",
+            "erdiko",
+            "erdiko-authenticate"
+        ],
+        "transport-options": {
+            "symlink": true
+        }
+    },
+    {
         "name": "erdiko/authorize",
         "version": "dev-develop",
         "version_normalized": "dev-develop",
         "dist": {
             "type": "path",
             "url": "../authorize",
-            "reference": null,
+            "reference": "08924f8ec6afb8a8f2cd6e398f583cb5ffbbea5a",
             "shasum": null
         },
         "require": {
@@ -1178,6 +1090,95 @@
             "authorize",
             "erdiko",
             "erdiko-authorize"
+        ],
+        "transport-options": {
+            "symlink": true
+        }
+    },
+    {
+        "name": "erdiko/doctrine",
+        "version": "0.2.0",
+        "version_normalized": "0.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Erdiko/doctrine.git",
+            "reference": "34c91bd163155cc0e198f98f0164a8a3c7286594"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Erdiko/doctrine/zipball/34c91bd163155cc0e198f98f0164a8a3c7286594",
+            "reference": "34c91bd163155cc0e198f98f0164a8a3c7286594",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/orm": "2.4.*",
+            "erdiko/core": "^0.10.2",
+            "php": ">=5.4.0"
+        },
+        "time": "2016-11-29 08:51:06",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "erdiko\\doctrine\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "John Arroyo",
+                "email": "john@arroyolabs.com"
+            }
+        ],
+        "description": "Doctrine database ORM",
+        "homepage": "http://erdiko.org",
+        "keywords": [
+            "database",
+            "doctrine",
+            "erdiko",
+            "orm",
+            "sql"
+        ]
+    },
+    {
+        "name": "erdiko/users",
+        "version": "dev-develop",
+        "version_normalized": "dev-develop",
+        "dist": {
+            "type": "path",
+            "url": "../users",
+            "reference": "0d26ccf1a639659b72de99ff84ee1d4e13b8f82f",
+            "shasum": null
+        },
+        "require": {
+            "erdiko/doctrine": "^0.2.0",
+            "php": ">=5.4.0"
+        },
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "erdiko\\users\\": "src/"
+            }
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Arroyo Labs",
+                "email": "info@arroyolabs.com"
+            }
+        ],
+        "description": "User model standard",
+        "homepage": "http://erdiko.org",
+        "keywords": [
+            "erdiko",
+            "erdiko-user",
+            "user"
         ],
         "transport-options": {
             "symlink": true

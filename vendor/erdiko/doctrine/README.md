@@ -9,11 +9,11 @@ To use doctrine in your Erdiko project simply run
 
     composer require erdiko/doctrine
 
-Next update /app/config/local/database.json with the specifics of your database
+Then update /app/config/shared/database.json with the specifics of your database
 
 You're all set!  Create some entities/models and you'll be working with Doctrine
 
-If you don't have a config file called /app/config/local/database.json then copy the one in this package into that location (located at /vendor/erdiko/doctrine/app/config/local/database.json)
+If you don't have a config file called /app/config/shared/database.json then copy the one in this package into that location (located at /vendor/erdiko/doctrine/app/config/shared/database.json)
 
 Extras
 ------

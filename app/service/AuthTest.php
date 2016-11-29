@@ -23,7 +23,9 @@ class AuthTest implements iAuth
 
 	public function login( $credentials ) {
 		$user = new User();
-		$result = $user->authenticate($credentials['username'], $credentials['password']);
+		$username = (array_key_exists('username', $credentials)) ? $credentials['username'] : '';
+		$password = (array_key_exists('password',$credentials)) ? $credentials['password'] : '';
+		$result = $user->authenticate($username, $password);
 		return $result;
 	}
 }

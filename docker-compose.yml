@@ -21,6 +21,8 @@ services:
       service: php
     container_name: erdiko_users_php
     volumes_from: [data]
+    extra_hosts:
+     - "docker.local:172.17.0.1"
   db:
     container_name: erdiko_users_db
     env_file: ./docker/mysql/environment.env

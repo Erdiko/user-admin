@@ -1,0 +1,44 @@
+{
+  "authentication": {
+    "available_types": [{
+      "name": "mock",
+      "namespace": "erdiko_authenticate_Services",
+      "classname": "Mock",
+      "enabled": true
+    }, {
+      "name": "oauth",
+      "namespace": "erdiko_authenticate_Services",
+      "classname": "OAuth",
+      "enabled": false
+    }, {
+      "name": "database",
+      "namespace": "erdiko_authenticate_Services",
+      "classname": "Database",
+      "enabled": false
+    }]
+  },
+  "storage": {
+    "selected": "session",
+    "storage_types": [{
+      "name": "session",
+      "namespace": "erdiko_authenticate_Services",
+      "classname": "SessionStorage",
+      "enabled": true
+    }, {
+      "name": "database",
+      "namespace": "erdiko_authenticate_Services",
+      "classname": "DatabaseStorage",
+      "enabled": false
+    }, {
+      "name": "filesystem",
+      "namespace": "erdiko_authenticate_Services",
+      "classname": "FilesystemStorage",
+      "enabled": false
+    }, {
+      "name": "memcache",
+      "namespace": "erdiko_authenticate_Services",
+      "classname": "MemcacheStorage",
+      "enabled": false
+    }]
+  }
+}

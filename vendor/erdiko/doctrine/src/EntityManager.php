@@ -12,10 +12,15 @@ namespace erdiko\doctrine;
 
 class EntityManager
 {
+    /**
+    * Get Doctrine entity manager
+    * @param string $db, default to the 'default' database in the config
+    * @param string 
+    */
     public static function getEntityManager($db = null, $context = 'shared')
     {
         // Get db config info from file
-        $dbConfig = \erdiko\core\Helper::getConfig('database',$context);
+        $dbConfig = \erdiko\core\Helper::getConfig("database", $context);
         if($db == null)
             $db = $dbConfig['default'];
         $dbParams = $dbConfig['connections'][$db];

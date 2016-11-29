@@ -590,7 +590,7 @@
             "dist": {
                 "type": "path",
                 "url": "../authenticate",
-                "reference": "5cded70e8cb5fe1b3507e7776a983f12aedd843e",
+                "reference": "90ad9bc83508c6e0b8afb4c9191d6275d42b96dd",
                 "shasum": null
             },
             "require": {
@@ -629,7 +629,7 @@
             "dist": {
                 "type": "path",
                 "url": "../authorize",
-                "reference": "08924f8ec6afb8a8f2cd6e398f583cb5ffbbea5a",
+                "reference": "3ea2b165b029f12b46b98c6248f79e9fc5eb4564",
                 "shasum": null
             },
             "require": {
@@ -709,16 +709,16 @@
         },
         {
             "name": "erdiko/doctrine",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Erdiko/doctrine.git",
-                "reference": "34c91bd163155cc0e198f98f0164a8a3c7286594"
+                "reference": "227ba664685102a79a27aa973c8b71a58bf767c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Erdiko/doctrine/zipball/34c91bd163155cc0e198f98f0164a8a3c7286594",
-                "reference": "34c91bd163155cc0e198f98f0164a8a3c7286594",
+                "url": "https://api.github.com/repos/Erdiko/doctrine/zipball/227ba664685102a79a27aa973c8b71a58bf767c8",
+                "reference": "227ba664685102a79a27aa973c8b71a58bf767c8",
                 "shasum": ""
             },
             "require": {
@@ -751,7 +751,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2016-11-29 08:51:06"
+            "time": "2016-11-29 19:16:18"
         },
         {
             "name": "erdiko/users",
@@ -759,7 +759,7 @@
             "dist": {
                 "type": "path",
                 "url": "../users",
-                "reference": "0d26ccf1a639659b72de99ff84ee1d4e13b8f82f",
+                "reference": "5cd434f345457172e675823e6860738283cd9003",
                 "shasum": null
             },
             "require": {

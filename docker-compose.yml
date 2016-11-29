@@ -5,13 +5,14 @@ services:
     extends:
       file: ./docker/nginx/docker-compose.yml
       service: webserver
+    container_name: erdiko_users_web
     ports:
-      - "8088:80"
+      - "80:80"
   php:
     extends:
       file: ./docker/php/7.0/docker-compose.yml
       service: php
-    container_name: erdiko_php
+    container_name: erdiko_users_php
   db:
     container_name: erdiko_users_db
     env_file: ./docker/mysql/environment.env

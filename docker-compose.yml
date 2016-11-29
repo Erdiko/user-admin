@@ -2,7 +2,7 @@ version: '2'
 
 services:
   webserver:
-    container_name: erdiko_nginx
+    container_name: erdiko_users_nginx
     image: nginx:latest
     env_file: environment.env
     volumes:
@@ -12,7 +12,7 @@ services:
     ports:
       - "8088:80"
   php:
-    container_name: erdiko_php7
+    container_name: erdiko_users_php
     env_file: environment.env
     image: erdiko_php7fpm
     build:
@@ -20,3 +20,11 @@ services:
     volumes:
       - .:/code
       - ./docker/php7/conf.d:/usr/local/etc/php/conf.d
+  db:
+    container_name: erdiko_users_db
+    env_file: ./docker/mysql/environment.env
+    image: mysql:latest
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"

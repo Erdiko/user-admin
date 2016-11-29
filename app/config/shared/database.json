@@ -5,7 +5,8 @@
     "connections": {
         "master": {
             "driver": "pdo_mysql",
-            "host": "docker.local:3301",
+            "host": "172.17.0.1",
+            "port": "3301",
             "database": "user-admin",
             "username": "root",
             "password": "psItPs16",

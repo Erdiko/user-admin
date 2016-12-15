@@ -6,6 +6,7 @@
         "mustache/:alpha": "\app\controllers\Mustache",
         "ajax/:alpha": "\app\controllers\AjaxExample",
         "/ajax/users/:action": "\erdiko\users\controllers\UserAjax",
+        "/ajax/users/roles/:action": "\erdiko\users\controllers\RoleAjax",
         "/users/:action": "\erdiko\users\controllers\Login"
     }
 }

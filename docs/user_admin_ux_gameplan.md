@@ -57,7 +57,7 @@ Route will require a 'default' user list resolved following a successful request
 * Estimate: 13h 
 
 
-![Users List Wireframe](/Users/andy/Work/Erdiko/users_list.png =450x)
+![Users List Wireframe](./users_list.png =450x)
 
         
 ##### User Create / Edit / Delete - `/user/:id`
@@ -70,7 +70,7 @@ Editable form interface to edit an existing user for a provided ID or create a n
   * Must provide validation of user input and handle error messages on failure
 * Estimate: 8h 
       
-![Users List Wireframe](/Users/andy/Work/Erdiko/user_crud.png =450x)      
+![Users List Wireframe](./user_crud.png =450x)      
  
 #### Angular Service - User Service
   
@@ -156,7 +156,13 @@ Return a list of active users found in the DB
   * /ajax/eridko/useradmin/list/ 
 * Params
     * `sort` (String)
-    * `page` (String)
+      * id
+      * name
+      * created
+    * `direction` (String)
+      * 'desc'
+      * 'asc'
+    * `page` (Int)
     * `size` (String)
 * Example Response
 
@@ -179,6 +185,10 @@ Return a list of active users found in the DB
     "page": 1
 }
 ```
+
+### Search
+
+TODO - Add this definition
 
 ### Get User 
 

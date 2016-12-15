@@ -57,7 +57,7 @@ Route will require a 'default' user list resolved following a successful request
 * Estimate: 13h 
 
 
-![Users List Wireframe](./users_list.png =450x)
+![Users List Wireframe](https://raw.githubusercontent.com/Erdiko/user-admin/master/docs/users_list.png =450x)
 
         
 ##### User Create / Edit / Delete - `/user/:id`
@@ -70,7 +70,7 @@ Editable form interface to edit an existing user for a provided ID or create a n
   * Must provide validation of user input and handle error messages on failure
 * Estimate: 8h 
       
-![Users List Wireframe](./user_crud.png =450x)      
+![Users List Wireframe](https://raw.githubusercontent.com/Erdiko/user-admin/master/docs/user_crud.png =450x)      
  
 #### Angular Service - User Service
   

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 clear;
 #we need grab this value from docker container
-baseURL="http://docker.local:8088/ajax/users/"
+baseURL="http://docker.local:8088/ajax"
 
 
 entry="node node_modules/jasmine-node/bin/jasmine-node --noStack --config baseURL $baseURL "

@@ -1,6 +1,6 @@
 var frisby = require('../node_modules/frisby/lib/frisby');
 
-var baseURL = process.env.baseURL;
+var baseURL = process.env.baseURL + '/_users/roles/';
 
 describe('Role api test suite', function() {
 

@@ -205,6 +205,92 @@ describe('User api test suite', function() {
                       expect(response.body.user.id).toBe(USER_ID);
                   })
                   .toss()      
+        })
+        .toss()
+
+
+/**----------------------------------------------------------------*/
+/**--------Get All Users using pagination passing:
+ *         'page=0',
+ *         'sort=id' and
+ *         'pagesize=1' -------------------------------------------*/
+/**----------------------------------------------------------------*/
+
+frisby.create('Create user data to get something to paginate.')
+    .post(baseURL + 'register',
+        newUser,
+        { json: true },
+        post_header)
+    .expectStatus(200)
+    .afterJSON(function (response) {
+        expect(response.body.method).toBe('register');
+        expect(response.body.success).toBe(true);
+        /**--keep user.id created --*/
+        var USER_ID = response.body.user.id.toString();
+
+        /**--then, get first page with the only one user --*/
+        frisby.create('Get all users')
+            .get(baseURL + 'getusers?page=0&pagesize=1&sort=id')
+            .expectStatus(200)
+            .expectHeader('Content-Type', 'text/html; charset=utf-8')
+            .afterJSON(function (response) {
+                expect(response.body.method).toBe('getusers');
+                expect(response.body.success).toBe(true);
+                expect(response.errors).toBe(false);
+                expect(response.body.users).toBeDefined();
             })
-        .toss() 
+        .toss();
+        /**--delete user created --*/
+        frisby.create('removing user created.')
+            .get(baseURL + 'cancel?id=' + USER_ID)
+            .expectStatus(200)
+            .afterJSON(function (response) {
+                expect(response.body.method).toBe('cancel');
+                expect(response.body.success).toBe(true);
+                expect(response.body.user.id).toBe(USER_ID);
+            })
+        .toss()
+    })
+    .toss()
+
+/**-----------------------------------------------------------------------------*/
+/**---Get All Users using pagination passing 'sort' not allowed-----------------*/
+/**---'sort' allowed are attributes: id, email, name, created_at and updated_at-*/
+/**------------------------------------------------------------------------------*/
+frisby.create('Create user data to get something to paginate.')
+    .post(baseURL + 'register',
+        newUser,
+        { json: true },
+        post_header)
+    .expectStatus(200)
+    .afterJSON(function (response) {
+        expect(response.body.method).toBe('register');
+        expect(response.body.success).toBe(true);
+        /**--keep user.id created --*/
+        var USER_ID = response.body.user.id.toString();
+
+        /**--then, get first page passing erroneus sort attribute --*/
+        frisby.create('Get all users')
+            .get(baseURL + 'getusers?page=0&pagesize=1&sort=method_sort')
+            .expectStatus(200)
+            .expectHeader('Content-Type', 'text/html; charset=utf-8')
+            .afterJSON(function (response) {
+                expect(response.body.method).toBe('getusers');
+                expect(response.body.success).toBe(false);
+                expect(response.body.users).toBe('');
+                expect(response.body.error_message).toBe('The attribute used to sort is invalid.');
+            })
+            .toss();
+        /**--delete user created --*/
+        frisby.create('removing user created.')
+            .get(baseURL + 'cancel?id=' + USER_ID)
+            .expectStatus(200)
+            .afterJSON(function (response) {
+                expect(response.body.method).toBe('cancel');
+                expect(response.body.success).toBe(true);
+                expect(response.body.user.id).toBe(USER_ID);
+            })
+            .toss()
+    })
+    .toss()
 });

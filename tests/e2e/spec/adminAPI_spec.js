@@ -1,6 +1,6 @@
 var frisby = require('../node_modules/frisby/lib/frisby');
 
-var baseURL = process.env.baseURL + '/users/admin/';
+var baseURL = "http://docker.local:8088/ajax" + '/users/admin/';
 var post_header = { headers: { 'Content-Type': 'application/json' }};
 var newUser = {"email":"test_email@email.com",
                "password":"asdf1234",
@@ -271,7 +271,7 @@ frisby.create('Create admin data to get something to paginate.')
 
         /**--then, get first page passing erroneus sort attribute --*/
         frisby.create('Get all admin')
-            .get(baseURL + 'getusers?page=0&pagesize=1&sort=method_sort')
+            .get(baseURL + 'list?page=0&pagesize=1&sort=method_sort')
             .expectStatus(200)
             .expectHeader('Content-Type', 'text/html; charset=utf-8')
             .afterJSON(function (response) {

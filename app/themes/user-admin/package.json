@@ -49,6 +49,7 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
+    "ng2-bootstrap": "^1.1.16-9",
     "node-sass": "^4.1.1",
     "protractor": "~4.0.13",
     "ts-node": "1.2.1",

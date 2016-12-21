@@ -1,6 +1,6 @@
 var frisby = require('../node_modules/frisby/lib/frisby');
 
-var baseURL = "http://docker.local:8088/ajax" + '/users/admin/';
+var baseURL = process.env.baseURL + '/users/admin/';
 var post_header = { headers: { 'Content-Type': 'application/json' }};
 var newUser = {"email":"test_email@email.com",
                "password":"asdf1234",

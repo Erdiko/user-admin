@@ -11,9 +11,9 @@
     "debug": 1
   },
   "theme": {
-    "name": "bootstrap",
-    "namespace": "/app/themes/bootstrap",
-    "public": "/public/themes/bootstrap",
+    "name": "user-admin",
+    "namespace": "/app/themes/user-admin",
+    "public": "/public/themes/user-admin",
     "defaults": {
       "layout": {
         "columns": 1

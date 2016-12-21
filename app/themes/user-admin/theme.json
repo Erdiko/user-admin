@@ -12,9 +12,24 @@
         }
     },
     "js": {
-        "default": {
-            "file": "/themes/bootstrap/js/scripts.min.js",
+        "inline": {
+            "file": "/themes/user-admin/js/inline.bundle.js",
             "order": 1,
+            "active": 1
+        },
+        "vendor": {
+            "file": "/themes/user-admin/js/vendor.bundle.js",
+            "active": 1,
+            "order": 2
+        },
+        "main": {
+            "file": "/themes/user-admin/js/main.bundle.js",
+            "order": 3,
+            "active": 1
+        },
+        "scripts": {
+            "file": "/themes/bootstrap/js/scripts.min.js",
+            "order": 4,
             "active": 1
         }
     },

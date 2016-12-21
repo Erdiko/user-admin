@@ -19,6 +19,7 @@ foreach ($this->getCss() as $css) {
     }
 }
 ?>
+<base href="/dashboard/">
 </head>
 <body>
 
@@ -34,13 +35,5 @@ foreach ($this->getJs() as $js) {
     echo "<script src='".$js['file']."'></script>\n";
 }
 ?>
-<script type="text/javascript">/* <![CDATA[ */
-$(document).ready(function() {
-
-});
-/* ]]> */</script>
-
-<?php echo $this->getTemplateHtml('analytics') ?>
-
 </body>
 </html>

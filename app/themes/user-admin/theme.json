@@ -6,8 +6,13 @@
     "public": "/public/themes/bootstrap",
     "css": {
         "default": {
-            "file": "/themes/bootstrap/css/styles.min.css",
+            "file": "/themes/user-admin/css/app.bundle.css",
             "order": 1,
+            "active": 1
+        },
+        "style": {
+            "file": "/themes/user-admin/css/styles.min.css",
+            "order": 2,
             "active": 1
         }
     },

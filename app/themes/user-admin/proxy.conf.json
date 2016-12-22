@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "http://docker.local:8088/api/users/",
+    "secure": false
+  }
+}

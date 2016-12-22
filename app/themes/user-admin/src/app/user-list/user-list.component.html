@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-xs-4">
+        <button class="btn btn-default" routerLink="/user/">Create a New User</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <br />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-bordered table-hover"> 
+            <thead> 
+                <tr> 
+                    <th (click)="sort('id')">ID <i class="fa fa-sort-asc" aria-hidden="true"></i></th> 
+                    <th (click)="sort('name')">User Name</th> 
+                    <th (click)="sort('role')">Role</th> 
+                    <th (click)="sort('last_login')">Last Login</th> 
+                    <th (click)="sort('join')">Joined</th> 
+                    <th>Edit</th> 
+                    <th>Delete</th> 
+                </tr> 
+            </thead> 
+            <tbody> 
+
+                <tr *ngFor="let user of users; let index = index"> 
+                    <th scope="row">{{ user.id }}</th> 
+                    <td>{{ user.name }}</td> 
+                    <td>{{ user.role }}</td> 
+                    <td>{{ user.last_login }}</td> 
+                    <td>{{ user.joined }}</td> 
+                    <td><a routerLink="/user/{{ user.id }}">Edit</a></td> 
+                    <td><a href="#">Delete</a></td> 
+                </tr> 
+
+            </tbody> 
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+    </div>
+</div>

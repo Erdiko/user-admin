@@ -1,0 +1,16 @@
+{
+  "name": "erdito_rest_tester",
+  "author": "Julian Diaz",
+  "main": "userAPI_spec.js",
+  "version": "0.0.1",
+  "dependencies": {
+    "frisby": "latest",
+    "jasmine-node": "latest",
+    "fs": "latest",
+    "path": "latest",
+    "form-data": "latest"
+  },
+  "devDependencies": {
+    "frisby": "^0.8.5"
+  }
+}

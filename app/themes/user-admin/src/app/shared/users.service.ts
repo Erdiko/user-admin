@@ -11,10 +11,10 @@ export class UsersService {
     private _userData$: BehaviorSubject<User>;
     private dataStore: {userData: User};
 
-    private listUrl     = "http://docker.local/api/users/getusers";
-    private userUrl     = "http://docker.local/api/users/getuser";
-    private updateUrl   = "http://docker.local/api/users/update";
-    private createUrl   = "http://docker.local/api/users/create";
+    private listUrl     = "http://docker.local/ajax/users/admin/list";
+    private userUrl     = "http://docker.local/ajax/users/admin/retrieve";
+    private updateUrl   = "http://docker.local/ajax/users/admin/update";
+    private createUrl   = "http://docker.local/ajax/users/admin/create";
 
     constructor(private http: Http) {
         this._userData$ = new BehaviorSubject(null);

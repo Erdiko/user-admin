@@ -1,7 +1,7 @@
 var frisby = require('../node_modules/frisby/lib/frisby');
 
-//var baseURL = process.env.baseURL + '/users/roles/';
-var baseURL = 'http://docker.local:8088/ajax/users/roles/';
+var baseURL = process.env.baseURL + '/users/roles/';
+
 
 describe('Role api test suite', function() {
 

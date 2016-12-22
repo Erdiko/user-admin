@@ -99,7 +99,8 @@ class Front extends \erdiko\core\Controller
 	public function getDashboard()
 	{
 		$auth = new BasicAuth(new User());
-		$this->setTitle('Welcome to Erdiko Auth Module');
+        $this->setTitle('Welcome to Erdiko Auth Module');
+        $this->setThemeTemplate("fullpage");
 		$this->addView('admin/dashboard',array('user'=>$auth->current_user()));
 	}
 

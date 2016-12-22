@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 import { UsersService }   from '../shared/users.service';
 import { User }           from "../shared/models/user.model";
 
+import {AlertComponent } from 'ng2-bootstrap';
+
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
@@ -15,6 +17,9 @@ export class UserEditComponent implements OnInit {
     private title: string;
 
     private userForm: FormGroup;
+
+    private error: string;
+    private msg: string;
 
     private user: User;
 
@@ -44,7 +49,7 @@ export class UserEditComponent implements OnInit {
 
     private _initForm() {
         this.userForm = this.fb.group({
-            name:  ['', [Validators.required, Validators.minLength(2)]],
+            name:  ['', [Validators.required, Validators.minLength(3)]],
             email: ['', Validators.required],
             role:  ['', Validators.required]
         });
@@ -52,9 +57,31 @@ export class UserEditComponent implements OnInit {
 
     onSubmit({ value, valid }: { value: User, valid: boolean }) {
         if(valid) {
-            value.id = this.user.id;
-            this.usersService.updateUser(value);
+            if(this.user) {
+                value.id = this.user.id;
+                this.usersService.updateUser(value)
+                    .then(res => this._handleResponse(res))
+                    .catch(error => this.error = error);
+            } else {
+                this.usersService.createUser(value)
+                    .then(res => this._handleResponse(res))
+                    .catch(error => this.error = error);
+            }
         }
+    }
+
+
+    private _handleResponse(res) {
+        console.log("handle response: " + res);
+        if(true == res.success) {
+            this.msg = "User record was successfully updated."
+        } else {
+            this._handleError(res.error_message);
+        }
+    }
+
+    private _handleError(error) {
+        this.error = error;
     }
 
 }

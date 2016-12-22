@@ -7,6 +7,9 @@
             </div>
             <div class="panel-body">
 
+                <alert *ngIf="msg" type="success" dismissOnTimeout="5000" dismissible="true">{{ msg }}</alert>
+                <alert *ngIf="error" type="warning" dismissOnTimeout="5000" dismissible="true">{{ error }}</alert>
+
                 <form 
                         id="user-edit" 
                         class="form-horizontal"
@@ -31,6 +34,12 @@
                         <label for="name" class="col-xs-2 control-label">Name</label>
                         <div class="col-xs-10">
                             <input type="text" class="form-control" name="name" formControlName="name" placeholder="Name">
+                            <div class="text-danger" *ngIf="userForm.get('name').hasError('required') && userForm.get('name').touched">
+                              Name is required
+                            </div>
+                            <div class="text-danger" *ngIf="userForm.get('name').hasError('minlength') && userForm.get('name').touched">
+                              Minimum of 2 characters
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -39,6 +48,12 @@
                             <input type="email" class="form-control" name="email" 
                                     formControlName="email" placeholder="Email"
                                     pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                            <div class="text-danger" *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched">
+                              Email is required
+                            </div>
+                            <div class="text-danger" *ngIf="userForm.get('email').hasError('pattern') && userForm.get('email').touched">
+                              A Valid email is required
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -48,6 +63,9 @@
                                 <option value="admin">Admin</option>
                                 <option value="user">User</option>
                             </select>
+                            <div class="text-danger" *ngIf="userForm.get('role').hasError('required') && userForm.get('role').touched">
+                              Role is required
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">

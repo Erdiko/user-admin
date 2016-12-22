@@ -11,9 +11,10 @@ export class UsersService {
     private _userData$: BehaviorSubject<User>;
     private dataStore: {userData: User};
 
-    private listUrl = "http://docker.local/api/users/getusers";
-    private userUrl = "http://docker.local/api/users/getuser";
-    private updateUrl = "http://docker.local/api/users/update";
+    private listUrl     = "http://docker.local/api/users/getusers";
+    private userUrl     = "http://docker.local/api/users/getuser";
+    private updateUrl   = "http://docker.local/api/users/update";
+    private createUrl   = "http://docker.local/api/users/create";
 
     constructor(private http: Http) {
         this._userData$ = new BehaviorSubject(null);
@@ -61,6 +62,19 @@ export class UsersService {
         let options = new RequestOptions({ headers: headers });
 
         let url = this.updateUrl;
+        return this.http.post(url, body, options)
+                   .toPromise()
+                   .then(response => response.json().body)
+                   .catch(this.handleError);
+    }
+
+    createUser(user) {
+        let body = JSON.stringify(user);
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        let url = this.createUrl;
         return this.http.post(url, body, options)
                    .toPromise()
                    .then(response => response.json().body)

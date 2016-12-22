@@ -13,7 +13,9 @@ import { UserResolve }          from './shared/user-resolve.service';
 import { HomeComponent }        from './home/home.component';
 import { UserListComponent }    from './user-list/user-list.component';
 import { UserEditComponent }    from './user-edit/user-edit.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent }      from './header/header.component';
+
+import { AlertModule }          from 'ng2-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    AlertModule.forRoot()
   ],
   providers: [
     UsersService,

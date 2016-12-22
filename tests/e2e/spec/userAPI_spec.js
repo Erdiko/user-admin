@@ -1,6 +1,7 @@
 var frisby = require('../node_modules/frisby/lib/frisby');
 
-var baseURL = process.env.baseURL + '/users/';
+//var baseURL = process.env.baseURL + '/users/';
+var baseURL =  'http://docker.local:8088/ajax/users/';
 var post_header = { headers: { 'Content-Type': 'application/json' }};
 var newUser = {"email":"test_email@email.com",
                "password":"asdf1234",
@@ -33,13 +34,13 @@ describe('User api test suite', function() {
   frisby.create('Get all users')
         .get(baseURL + 'getusers')
         .expectStatus(200)
-        .expectHeader('Content-Type', 'text/html; charset=utf-8')          
-        .afterJSON(function (response) {          
+        .expectHeader('Content-Type', 'application/json')
+        .afterJSON(function (response) {
             expect(response.body.method).toBe('getusers');
-            expect(response.body.success).toBe(true);          
+            expect(response.body.success).toBe(true);
             expect(response.errors).toBe(false);
             expect(response.body.users).toBeDefined();
-        })     
+        })
         .toss()
 
 
@@ -51,12 +52,12 @@ describe('User api test suite', function() {
          { json: true },
          post_header)
         .expectStatus(200)
-        .afterJSON(function (response) {          
+        .afterJSON(function (response) {
             expect(response.body.method).toBe('register');
             expect(response.body.success).toBe(false);
-            expect(response.body.error_message).toBe('Email is required.');           
+            expect(response.body.error_message).toBe('Email is required.');
         })
-        .toss()      
+        .toss()
 
 
 
@@ -80,42 +81,42 @@ describe('User api test suite', function() {
                   "password":String,
                   "name":String,
                   "last_login":null,
-                  "gateway_customer_id":null              
+                  "gateway_customer_id":null
                 },
                 "error_message": String,
                 "error_code": Number
             },
             "errors": Boolean
-          })      
-        .afterJSON(function (response) {          
+          })
+        .afterJSON(function (response) {
             expect(response.body.method).toBe('register');
-            expect(response.body.success).toBe(true); 
+            expect(response.body.success).toBe(true);
             var USER_ID = response.body.user.id.toString();
             /**--checking creation --*/
             frisby.create('Checking user created exist.')
                 .get(baseURL + 'getuser?id=' + USER_ID)
-                .expectStatus(200)      
-                .afterJSON(function (response) {          
+                .expectStatus(200)
+                .afterJSON(function (response) {
                     expect(response.body.method).toBe('getuser');
-                    expect(response.body.success).toBe(true); 
+                    expect(response.body.success).toBe(true);
                     expect(response.body.user.id).toBe(response.body.user.id);
-                    expect(response.body.user.email).toBe(newUser.email);                    
-                    expect(response.body.user.name).toBe(newUser.name);                                     
-                    expect(response.body.user.role).toBe(newUser.role);
+                    expect(response.body.user.email).toBe(newUser.email);
+                    expect(response.body.user.name).toBe(newUser.name);
+                    expect(response.body.user.role).toBe(newUser.role.toString());
                 })
-                .toss()                 
+                .toss()
             /**--delete user created --*/
             frisby.create('removing user created.')
                   .get(baseURL + 'cancel?id=' + USER_ID)
-                  .expectStatus(200)      
-                  .afterJSON(function (response) {          
+                  .expectStatus(200)
+                  .afterJSON(function (response) {
                       expect(response.body.method).toBe('cancel');
-                      expect(response.body.success).toBe(true);                    
+                      expect(response.body.success).toBe(true);
                       expect(response.body.user.id).toBe(USER_ID);
         })
-        .toss()      
+        .toss()
       })
-      .toss() 
+      .toss()
 
 
   /**----------------------------------------------------------------*/
@@ -137,11 +138,11 @@ describe('User api test suite', function() {
             },
             "errors": Boolean
         })
-        .afterJSON(function (response) {        
+        .afterJSON(function (response) {
           expect(response.body.method).toBe('update');
           expect(response.body.success).toBe(false);
           expect(response.body.error_message).toBe('Id is required.');
-          expect(response.body.user).toBe('');          
+          expect(response.body.user).toBe('');
         })
         .toss()
 
@@ -153,11 +154,11 @@ describe('User api test suite', function() {
             newUser,
             { json: true },
             post_header)
-        .expectStatus(200)      
+        .expectStatus(200)
         .afterJSON(function (response) {
             expect(response.body.method).toBe('register');
-            expect(response.body.success).toBe(true); 
-            /**--keep user.id created --*/                  
+            expect(response.body.success).toBe(true);
+            /**--keep user.id created --*/
             var USER_ID = response.body.user.id.toString();
             updatedUser.id = USER_ID;
             /**--update created user --*/
@@ -165,8 +166,8 @@ describe('User api test suite', function() {
                   .post(baseURL + 'update',
                       updatedUser,
                       { json: true },
-                      { headers: { 'Content-Type': 'application/json' }})       
-                  .expectStatus(200)                
+                      { headers: { 'Content-Type': 'application/json' }})
+                  .expectStatus(200)
                   .expectJSONTypes(
                       {
                         "status": Number,
@@ -179,32 +180,32 @@ describe('User api test suite', function() {
                             "password":String,
                             "name":String,
                             "last_login":null,
-                            "gateway_customer_id":null              
+                            "gateway_customer_id":null
                         },
                         "error_message": String,
                         "error_code": Number
                       },
                       "errors": Boolean
-                  })            
-                  .afterJSON(function (response) {          
-                      expect(response.body.method).toBe('update');
-                      expect(response.body.success).toBe(true); 
-                      expect(response.body.user.id).toBe(response.body.user.id);
-                      expect(response.body.user.email).toBe(updatedUser.email);                    
-                      expect(response.body.user.name).toBe(updatedUser.name);                                     
-                      expect(response.body.user.role).toBe(updatedUser.role);
                   })
-                  .toss()                 
+                  .afterJSON(function (response) {
+                      expect(response.body.method).toBe('update');
+                      expect(response.body.success).toBe(true);
+                      expect(response.body.user.id).toBe(response.body.user.id);
+                      expect(response.body.user.email).toBe(updatedUser.email);
+                      expect(response.body.user.name).toBe(updatedUser.name);
+                      expect(response.body.user.role).toBe(updatedUser.role.toString());
+                  })
+                  .toss()
             /**--delete user created --*/
             frisby.create('removing user created.')
                   .get(baseURL + 'cancel?id=' + USER_ID)
-                  .expectStatus(200)      
-                  .afterJSON(function (response) {          
+                  .expectStatus(200)
+                  .afterJSON(function (response) {
                       expect(response.body.method).toBe('cancel');
-                      expect(response.body.success).toBe(true);                    
+                      expect(response.body.success).toBe(true);
                       expect(response.body.user.id).toBe(USER_ID);
                   })
-                  .toss()      
+                  .toss()
         })
         .toss()
 
@@ -232,7 +233,7 @@ frisby.create('Create user data to get something to paginate.')
         frisby.create('Get all users')
             .get(baseURL + 'getusers?page=0&pagesize=1&sort=id')
             .expectStatus(200)
-            .expectHeader('Content-Type', 'text/html; charset=utf-8')
+            .expectHeader('Content-Type', 'application/json')
             .afterJSON(function (response) {
                 expect(response.body.method).toBe('getusers');
                 expect(response.body.success).toBe(true);
@@ -273,7 +274,7 @@ frisby.create('Create user data to get something to paginate.')
         frisby.create('Get all users')
             .get(baseURL + 'getusers?page=0&pagesize=1&sort=method_sort')
             .expectStatus(200)
-            .expectHeader('Content-Type', 'text/html; charset=utf-8')
+            .expectHeader('Content-Type', 'application/json')
             .afterJSON(function (response) {
                 expect(response.body.method).toBe('getusers');
                 expect(response.body.success).toBe(false);

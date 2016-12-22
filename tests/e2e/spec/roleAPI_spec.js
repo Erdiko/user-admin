@@ -1,6 +1,7 @@
 var frisby = require('../node_modules/frisby/lib/frisby');
 
-var baseURL = process.env.baseURL + '/users/roles/';
+//var baseURL = process.env.baseURL + '/users/roles/';
+var baseURL = 'http://docker.local:8088/ajax/users/roles/';
 
 describe('Role api test suite', function() {
 
@@ -25,7 +26,7 @@ describe('Role api test suite', function() {
   frisby.create('Get all roles')
         .get(baseURL + 'roles')
         .expectStatus(200)
-        .expectHeader('Content-Type', 'text/html; charset=utf-8')      
+        .expectHeader('Content-Type', 'application/json')
         .afterJSON(function (response) {          
             expect(response.body.method).toBe('roles');
             expect(response.body.success).toBe(true);          

@@ -25,7 +25,7 @@ describe('Role api test suite', function() {
   frisby.create('Get all roles')
         .get(baseURL + 'roles')
         .expectStatus(200)
-        .expectHeader('Content-Type', 'text/html; charset=utf-8')      
+        .expectHeader('Content-Type', 'application/json')      
         .afterJSON(function (response) {          
             expect(response.body.method).toBe('roles');
             expect(response.body.success).toBe(true);          

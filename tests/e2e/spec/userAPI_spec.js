@@ -33,7 +33,7 @@ describe('User api test suite', function() {
   frisby.create('Get all users')
         .get(baseURL + 'getusers')
         .expectStatus(200)
-        .expectHeader('Content-Type', 'text/html; charset=utf-8')          
+        .expectHeader('Content-Type', 'application/json')          
         .afterJSON(function (response) {          
             expect(response.body.method).toBe('getusers');
             expect(response.body.success).toBe(true);          
@@ -232,7 +232,7 @@ frisby.create('Create user data to get something to paginate.')
         frisby.create('Get all users')
             .get(baseURL + 'getusers?page=0&pagesize=1&sort=id')
             .expectStatus(200)
-            .expectHeader('Content-Type', 'text/html; charset=utf-8')
+            .expectHeader('Content-Type', 'application/json')
             .afterJSON(function (response) {
                 expect(response.body.method).toBe('getusers');
                 expect(response.body.success).toBe(true);
@@ -273,7 +273,7 @@ frisby.create('Create user data to get something to paginate.')
         frisby.create('Get all users')
             .get(baseURL + 'getusers?page=0&pagesize=1&sort=method_sort')
             .expectStatus(200)
-            .expectHeader('Content-Type', 'text/html; charset=utf-8')
+            .expectHeader('Content-Type', 'application/json')
             .afterJSON(function (response) {
                 expect(response.body.method).toBe('getusers');
                 expect(response.body.success).toBe(false);

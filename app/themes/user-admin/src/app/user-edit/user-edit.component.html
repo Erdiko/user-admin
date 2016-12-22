@@ -1,3 +1,66 @@
-<p>
-  user-edit works!
-</p>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span *ngIf="!user">Create User</span>
+                <span *ngIf="user">Edit User - User {{ user.id }}</span>
+            </div>
+            <div class="panel-body">
+
+                <form 
+                        id="user-edit" 
+                        class="form-horizontal"
+                        novalidate 
+                        (ngSubmit)="onSubmit(userForm)" 
+                        [formGroup]="userForm"
+                    >
+
+                    <div class="form-group" *ngIf="user && user.id">
+                        <label for="name" class="col-xs-2 control-label">ID</label>
+                        <div class="col-xs-10">
+                            <p>{{ user.id }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" *ngIf="user && user.last_login">
+                        <label for="name" class="col-xs-2 control-label">Last Login</label>
+                        <div class="col-xs-10">
+                            <p>{{ user.last_login }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-xs-2 control-label">Name</label>
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control" name="name" formControlName="name" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-xs-2 control-label">Email</label>
+                        <div class="col-xs-10">
+                            <input type="email" class="form-control" name="email" 
+                                    formControlName="email" placeholder="Email"
+                                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="role" class="col-xs-2 control-label">Role</label>
+                        <div class="col-xs-10">
+                            <select class="form-control" name="role" formControlName="role">
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-2 col-xs-4">
+                            <button type="submit" class="btn btn-default" [disabled]="userForm.invalid">Save</button>
+                        </div>
+                        <div class="col-xs-offset-2 col-xs-4">
+                            <button type="cancel" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

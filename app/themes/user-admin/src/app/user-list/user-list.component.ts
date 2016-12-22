@@ -7,9 +7,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  constructor() { }
+    private users = [
 
-  ngOnInit() {
-  }
+        {
+            id: 1,
+            name: "Foo Bar",
+            role: "Admin",
+            last_login: "2016/08/10",
+            joined: "2016/08/09"
+        },
+        {
+            id: 2,
+            name: "Bar Baz",
+            role: "Customer",
+            last_login: "2016/08/10",
+            joined: "2016/08/09"
+        },
+        {
+            id: 3,
+            name: "Dude McDude",
+            role: "Customer",
+            last_login: "2016/08/10",
+            joined: "2016/08/09"
+        }
+
+    ];
+
+    constructor() { 
+
+    }
+
+    ngOnInit() {
+
+    }
+
+    create() {
+        console.log("create clicked");
+    }
+
+    sort(col) {
+        console.log("sort: " + col);
+    }
 
 }

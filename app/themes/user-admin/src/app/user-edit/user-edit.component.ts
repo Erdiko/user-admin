@@ -56,6 +56,9 @@ export class UserEditComponent implements OnInit {
     }
 
     onSubmit({ value, valid }: { value: User, valid: boolean }) {
+
+        this.msg = this.error = '';
+
         if(valid) {
             if(this.user) {
                 value.id = this.user.id;
@@ -72,9 +75,15 @@ export class UserEditComponent implements OnInit {
 
 
     private _handleResponse(res) {
-        console.log("handle response: " + res);
         if(true == res.success) {
+
             this.msg = "User record was successfully updated."
+
+            if("create" === res.method) {
+                // navigate to Edit User for the new user
+                this.router.navigate(['/user/' + res.user.id]);
+            }
+
         } else {
             this._handleError(res.error_message);
         }

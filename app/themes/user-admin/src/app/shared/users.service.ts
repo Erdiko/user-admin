@@ -1,15 +1,17 @@
 import { Injectable }                                                   from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams }     from '@angular/http';
-import 'rxjs/add/operator/map';
 import { BehaviorSubject }                                              from "rxjs";
+
+import 'rxjs';
 
 import { User } from "./models/user.model";
 
 @Injectable()
 export class UsersService {
 
-    private _userData$: BehaviorSubject<User>;
-    private dataStore: {userData: User};
+    private _users$: BehaviorSubject<any>;
+    private _total$: BehaviorSubject<any>;
+    private dataStore: {users?: any, total?: number};
 
     private listUrl     = "http://docker.local/ajax/users/admin/list";
     private userUrl     = "http://docker.local/ajax/users/admin/retrieve";
@@ -17,25 +19,49 @@ export class UsersService {
     private createUrl   = "http://docker.local/ajax/users/admin/create";
 
     constructor(private http: Http) {
-        this._userData$ = new BehaviorSubject(null);
-        this.dataStore = {userData: null};
+        this.dataStore = {};
+        this._users$ = new BehaviorSubject(null);
+        this._total$ = new BehaviorSubject(null);
     }
 
-    get userData$() {
-        return this._userData$.asObservable();
+    get users$() {
+        return this._users$.asObservable();
+    }
+
+    get total$() {
+        return this._total$.asObservable();
     }
 
     /**
      * Get list of users based on sort, returns an observable
      *
      */
-    getUsers() {
+    getUsers(pagesize?: number, page?: number, sortCol?: string, sortDir?: string) {
         let url = this.listUrl;
+
+        if(pagesize) {
+            url += "?pagesize=" + pagesize;
+        }
+
+        if(page) {
+            url += "&page=" + page;
+        }
+
+        if(sortCol) {
+            url += "&sort=" + sortCol;
+        }
+
+        if(sortDir) {
+            url += "&direction=" + sortDir;
+        }
+
         return this.http.get(url)
                    .map(response => response.json())
                    .subscribe(data => {
-                       this.dataStore.userData = data.body.result;
-                       this._userData$.next(this.dataStore.userData);
+                       this.dataStore.users = data.body.result.users;
+                       this.dataStore.total = data.body.result.total;
+                       this._users$.next(this.dataStore.users);
+                       this._total$.next(this.dataStore.total);
                    });
     }
 

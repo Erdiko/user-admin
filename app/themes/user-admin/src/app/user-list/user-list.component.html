@@ -33,6 +33,7 @@
                     <th>Edit</th> 
                 </tr> 
             </thead> 
+
             <tbody *ngIf="wait"> 
                 <tr>
                     <td colspan="6" align="center">
@@ -40,7 +41,16 @@
                     </td>
                 </tr>
             </tbody> 
-            <tbody *ngIf="!wait"> 
+
+            <tbody *ngIf="!wait && !error && users.length < 1"> 
+                <tr>
+                    <td colspan="6" align="center">
+                        <alert type="warning">Sorry, no users were found. Please try again.</alert>
+                    </td>
+                </tr>
+            </tbody> 
+
+            <tbody *ngIf="!wait && !error && users.length > 0"> 
                 <tr *ngFor="let user of users; let index = index"> 
                     <th scope="row">{{ user.id }}</th> 
                     <td>{{ user.name }}</td> 

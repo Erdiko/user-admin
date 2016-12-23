@@ -58,10 +58,21 @@ export class UsersService {
         return this.http.get(url)
                    .map(response => response.json())
                    .subscribe(data => {
-                       this.dataStore.users = data.body.result.users;
-                       this.dataStore.total = data.body.result.total;
+                       this.dataStore.users = [];
+                       this.dataStore.total = 0;
+                       if(true == data.body.success) {
+                           this.dataStore.users = data.body.result.users;
+                           this.dataStore.total = data.body.result.total;
+                       }
                        this._users$.next(this.dataStore.users);
                        this._total$.next(this.dataStore.total);
+                   },
+                   error => {
+                       // log the error!
+                       console.error("Error retrieving users!", url, error);
+                       
+                       this._users$.next([]);
+                       this._total$.next(0);
                    });
     }
 

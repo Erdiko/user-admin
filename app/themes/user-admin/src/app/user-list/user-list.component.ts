@@ -5,6 +5,8 @@ import { Subscription } from "rxjs";
 import { UsersService }             from '../shared/users.service';
 import { User }                     from "../shared/models/user.model";
 
+import {AlertComponent } from 'ng2-bootstrap';
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',

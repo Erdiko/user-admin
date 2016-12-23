@@ -14,6 +14,8 @@ import {AlertComponent } from 'ng2-bootstrap';
 })
 export class UserEditComponent implements OnInit {
 
+    private wait: any;
+
     private title: string;
 
     private userForm: FormGroup;
@@ -29,6 +31,9 @@ export class UserEditComponent implements OnInit {
            private router: Router,
            private fb: FormBuilder
         ) { 
+
+        // init the wait state (and indication animation) to 'off'
+        this.wait = false;
 
         this.user = new User();
     }
@@ -57,6 +62,8 @@ export class UserEditComponent implements OnInit {
 
     onSubmit({ value, valid }: { value: User, valid: boolean }) {
 
+        this.wait = true;
+
         this.msg = this.error = '';
 
         if(valid) {
@@ -75,6 +82,7 @@ export class UserEditComponent implements OnInit {
 
 
     private _handleResponse(res) {
+        this.wait = false;
         if(true == res.success) {
 
             this.msg = "User record was successfully updated."

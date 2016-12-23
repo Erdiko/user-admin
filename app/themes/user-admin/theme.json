@@ -14,6 +14,11 @@
             "file": "/themes/user-admin/css/styles.min.css",
             "order": 2,
             "active": 1
+        },
+        "fa": {
+            "file": "//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css",
+            "order": 3,
+            "active": 1
         }
     },
     "js": {

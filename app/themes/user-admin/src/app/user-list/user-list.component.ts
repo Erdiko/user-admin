@@ -110,7 +110,17 @@ export class UserListComponent implements OnInit {
 
     // sort click listeners
     sort(col) {
-        console.log("sort: " + col);
+
+        // toggle sort dir if the user clicks on currently sorted column
+        if(this.sortCol == col) {
+            this.sortDir = (this.sortDir == "desc") ? "asc" : "desc";
+        } else {
+            // else default the sort to asc
+            this.sortDir = "asc";
+        }
+        this.sortCol = col;
+
+        this._getUsers();
     }
 
 }

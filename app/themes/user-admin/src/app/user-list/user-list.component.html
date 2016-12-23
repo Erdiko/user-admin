@@ -13,11 +13,23 @@
         <table class="table table-bordered table-hover"> 
             <thead> 
                 <tr> 
-                    <th (click)="sort('id')">ID <i class="fa fa-sort-asc" aria-hidden="true"></i></th> 
-                    <th (click)="sort('name')">User Name</th> 
-                    <th (click)="sort('role')">Role</th> 
-                    <th (click)="sort('last_login')">Last Login</th> 
-                    <th (click)="sort('join')">Joined</th> 
+                    <th (click)="sort('id')">
+                        ID 
+                        <i *ngIf="sortCol == 'id'" class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
+                    </th> 
+                    <th (click)="sort('name')">
+                        User Name
+                        <i *ngIf="sortCol == 'name'" class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
+                    </th> 
+                    <th>
+                        Role
+                    </th> 
+                    <th>
+                        Last Login
+                    </th> 
+                    <th>
+                        Joined
+                    </th> 
                     <th>Edit</th> 
                 </tr> 
             </thead> 

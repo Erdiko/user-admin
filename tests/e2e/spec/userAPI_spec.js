@@ -1,6 +1,6 @@
 var frisby = require('../node_modules/frisby/lib/frisby');
 
-var baseURL = process.env.baseURL + '/users/';
+var baseURL = process.env.baseURL + '/ajax/erdiko/users/';
 
 var post_header = { headers: { 'Content-Type': 'application/json' }};
 var newUser = {"email":"test_email@email.com",
@@ -19,10 +19,10 @@ describe('User api test suite', function() {
   /**----------------------------------------------------------------*/
   /**-----------------User not found---------------------------------*/
   frisby.create('User with ID 999999999 not found')
-        .get(baseURL + 'getuser?id=999999999')
+        .get(baseURL + 'retrieve?id=999999999')
         .expectStatus(200)
         .afterJSON(function (response) {
-       	  	expect(response.body.method).toBe('getuser');
+       	  	expect(response.body.method).toBe('retrieve');
        	  	expect(response.body.success).toBe(false);
        	  	expect(response.body.error_message).toBe('User not found.');       		
   	    })
@@ -32,11 +32,11 @@ describe('User api test suite', function() {
   /**----------------------------------------------------------------*/
   /**-----------------Get All Users----------------------------------*/
   frisby.create('Get all users')
-        .get(baseURL + 'getusers')
+        .get(baseURL + 'list')
         .expectStatus(200)
         .expectHeader('Content-Type', 'application/json')
         .afterJSON(function (response) {
-            expect(response.body.method).toBe('getusers');
+            expect(response.body.method).toBe('list');
             expect(response.body.success).toBe(true);
             expect(response.errors).toBe(false);
             expect(response.body.users).toBeDefined();
@@ -78,7 +78,6 @@ describe('User api test suite', function() {
                 "user":{
                 "id":Number,
                   "email":String,
-                  "password":String,
                   "name":String,
                   "last_login":null,
                   "gateway_customer_id":null
@@ -94,10 +93,10 @@ describe('User api test suite', function() {
             var USER_ID = response.body.user.id.toString();
             /**--checking creation --*/
             frisby.create('Checking user created exist.')
-                .get(baseURL + 'getuser?id=' + USER_ID)
+                .get(baseURL + 'retrieve?id=' + USER_ID)
                 .expectStatus(200)
                 .afterJSON(function (response) {
-                    expect(response.body.method).toBe('getuser');
+                    expect(response.body.method).toBe('retrieve');
                     expect(response.body.success).toBe(true);
                     expect(response.body.user.id).toBe(response.body.user.id);
                     expect(response.body.user.email).toBe(newUser.email);
@@ -177,7 +176,6 @@ describe('User api test suite', function() {
                         "user":{
                             "id":Number,
                             "email":String,
-                            "password":String,
                             "name":String,
                             "last_login":null,
                             "gateway_customer_id":null
@@ -231,11 +229,11 @@ frisby.create('Create user data to get something to paginate.')
 
         /**--then, get first page with the only one user --*/
         frisby.create('Get all users')
-            .get(baseURL + 'getusers?page=0&pagesize=1&sort=id')
+            .get(baseURL + 'list?page=0&pagesize=1&sort=id')
             .expectStatus(200)
             .expectHeader('Content-Type', 'application/json')
             .afterJSON(function (response) {
-                expect(response.body.method).toBe('getusers');
+                expect(response.body.method).toBe('list');
                 expect(response.body.success).toBe(true);
                 expect(response.errors).toBe(false);
                 expect(response.body.users).toBeDefined();
@@ -272,11 +270,11 @@ frisby.create('Create user data to get something to paginate.')
 
         /**--then, get first page passing erroneus sort attribute --*/
         frisby.create('Get all users')
-            .get(baseURL + 'getusers?page=0&pagesize=1&sort=method_sort')
+            .get(baseURL + 'list?page=0&pagesize=1&sort=method_sort')
             .expectStatus(200)
             .expectHeader('Content-Type', 'application/json')
             .afterJSON(function (response) {
-                expect(response.body.method).toBe('getusers');
+                expect(response.body.method).toBe('list');
                 expect(response.body.success).toBe(false);
                 expect(response.body.users).toBe('');
                 expect(response.body.error_message).toBe('The attribute used to sort is invalid.');

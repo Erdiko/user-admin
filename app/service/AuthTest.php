@@ -15,7 +15,7 @@
 namespace app\service;
 
 
-use erdiko\authenticate\Services\iAuth;
+use erdiko\authenticate\services\iAuth;
 use erdiko\users\models\User;
 
 class AuthTest implements iAuth

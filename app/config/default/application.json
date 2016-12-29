@@ -91,5 +91,22 @@
       "tracking_id": ""
     },
     "tag_manager": []
+  },
+  "mailgun": {
+    "environment": "development",
+    "development": {
+      "key": "key-46d844367a0c261b039bafc7136edc92",
+      "domain": "mg.arroyolabs.com",
+      "endpoint": "api.mailgun.net",
+      "version": "v2",
+      "ssl": "true"
+    },
+    "production": {
+      "key": "key-46d844367a0c261b039bafc7136edc92",
+      "domain": "mg.arroyolabs.com",
+      "endpoint": "api.mailgun.net",
+      "version": "v2",
+      "ssl": "true"
+    }
   }
 }

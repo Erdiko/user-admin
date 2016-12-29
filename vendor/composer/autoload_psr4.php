@@ -12,7 +12,6 @@ return array(
     'erdiko\\authorize\\' => array($vendorDir . '/erdiko/authorize/src'),
     'erdiko\\authenticate\\' => array($vendorDir . '/erdiko/authenticate/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
-    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),

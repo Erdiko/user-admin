@@ -16,8 +16,7 @@
         "erdiko/users": "@dev",
         "erdiko/authenticate": "@dev",
         "erdiko/authorize": "@dev",
-        "ac/kalinka": "dev-master",
-        "mailgun/mailgun-php": "~1.7.2"
+        "ac/kalinka": "dev-master"
     },
     "config": {
         "vendor-dir": "vendor",

@@ -1,6 +1,7 @@
 var frisby = require('../node_modules/frisby/lib/frisby');
 
-var baseURL = process.env.baseURL + '/users/admin/';
+var baseURL = process.env.baseURL + '/ajax/erdiko/users/admin/';
+var authURL = process.env.baseURL + '/ajax/users/authentication/';
 
 var post_header = { headers: { 'Content-Type': 'application/json' }};
 var newUser = {"email":"test_email@email.com",
@@ -14,19 +15,52 @@ var updatedUser = {"email":"update_email@email.com",
                    "role":1};               
 
 describe('Admin api test suite', function() {
+    beforeEach(function() {
+        frisby.create('Login  user')
+            .post(authURL + 'login',
+                {"email":"leo@testlabs.com", "password":"asdf1234"},
+                { json: true },
+                post_header)
+            .expectStatus(200)
+            .toss()
+    });
 
- 
-  /**----------------------------------------------------------------*/
-  /**-----------------Admin not found---------------------------------*/
-  frisby.create('User with ID 999999999 not found')
-        .get(baseURL + 'retrieve?id=999999999')
-        .expectStatus(200)
-        .afterJSON(function (response) {
-       	  	expect(response.body.method).toBe('retrieve');
-       	  	expect(response.body.success).toBe(false);
-       	  	expect(response.body.error_message).toBe('Admin not found.');
-  	    })
-        .toss()
+    afterEach(function() {
+        frisby.create('Logout  user')
+            .get(authURL + 'logout')
+            .expectStatus(200)
+            .toss()
+    });
+
+
+
+
+
+
+    /**----------------------------------------------------------------*/
+  /**-----------------User not found---------------------------------*/
+  frisby.create('First, login  user')
+      .post(authURL + 'login',
+          {"email":"leo@testlabs.com", "password":"asdf1234"},
+          { json: true },
+          post_header)
+      .expectStatus(200)
+      .afterJSON(function (response) {
+          expect(response.body.method).toBe('login');
+          expect(response.body.success).toBe(true);
+
+          frisby.create('User with ID 999999999 not found')
+              .get(baseURL + 'retrieve?id=999999999')
+              .expectStatus(200)
+              .afterJSON(function (response) {
+                  expect(response.body.method).toBe('retrieve');
+                  expect(response.body.success).toBe(false);
+                  expect(response.body.error_message).toBe('User not found.');
+              })
+              .toss()
+      })
+      .toss()
+
   /**----------------------------------------------------------------*/
   /**-----------------Get All Admins----------------------------------*/
   frisby.create('Get all admins')
@@ -42,7 +76,7 @@ describe('Admin api test suite', function() {
       .toss()
 
   /**----------------------------------------------------------------*/
-  /**-----------------Create Admin fail -------------------------------*/
+  /**-----------------Create User fail -------------------------------*/
   frisby.create('Creation will fail.')
       .post(baseURL + 'create',
           { },
@@ -74,7 +108,6 @@ describe('Admin api test suite', function() {
                   "user":{
                       "id":Number,
                       "email":String,
-                      "password":String,
                       "name":String,
                       "last_login":null,
                       "gateway_customer_id":null
@@ -89,7 +122,7 @@ describe('Admin api test suite', function() {
           expect(response.body.success).toBe(true);
           var USER_ID = response.body.user.id.toString();
           /**--checking creation --*/
-          frisby.create('Checking admin created exist.')
+          frisby.create('Checking user created exist.')
               .get(baseURL + 'retrieve?id=' + USER_ID)
               .expectStatus(200)
               .afterJSON(function (response) {
@@ -102,7 +135,7 @@ describe('Admin api test suite', function() {
               })
               .toss()
           /**--delete user created --*/
-          frisby.create('removing admin created.')
+          frisby.create('removing user created.')
               .get(baseURL + 'delete?id=' + USER_ID)
               .expectStatus(200)
               .afterJSON(function (response) {
@@ -115,8 +148,8 @@ describe('Admin api test suite', function() {
       .toss()
 
     /**----------------------------------------------------------------*/
-    /**-----------------Update admin fail, ID required-------------------------------*/
-    frisby.create('Update admin without required id.')
+    /**-----------------Update user fail, ID required-------------------------------*/
+    frisby.create('Update user without required id.')
         .post(baseURL + 'update',
             { },
             { json: true },
@@ -142,8 +175,8 @@ describe('Admin api test suite', function() {
         .toss()
 
     /**----------------------------------------------------------------*/
-    /**-----------------Create Admin success -------------------------------*/
-    frisby.create('Update admin data will success.')
+    /**-----------------Create user success -------------------------------*/
+    frisby.create('Update user data will success.')
         .post(baseURL + 'create',
             newUser,
             { json: true },
@@ -155,8 +188,8 @@ describe('Admin api test suite', function() {
             /**--keep user.id created --*/
             var USER_ID = response.body.user.id.toString();
             updatedUser.id = USER_ID;
-            /**--update created admin --*/
-            frisby.create('Updating admin created.')
+            /**--update created user --*/
+            frisby.create('Updating user created.')
                 .post(baseURL + 'update',
                     updatedUser,
                     { json: true },
@@ -171,7 +204,6 @@ describe('Admin api test suite', function() {
                             "user":{
                                 "id":Number,
                                 "email":String,
-                                "password":String,
                                 "name":String,
                                 "last_login":null,
                                 "gateway_customer_id":null
@@ -190,8 +222,8 @@ describe('Admin api test suite', function() {
                     expect(response.body.user.role).toBe(updatedUser.role.toString());
                 })
                 .toss()
-            /**--delete admin created --*/
-            frisby.create('removing admin created.')
+            /**--delete user created --*/
+            frisby.create('removing user created.')
                 .get(baseURL + 'delete?id=' + USER_ID)
                 .expectStatus(200)
                 .afterJSON(function (response) {
@@ -210,7 +242,7 @@ describe('Admin api test suite', function() {
      *         'pagesize=1' -------------------------------------------*/
     /**----------------------------------------------------------------*/
 
-    frisby.create('Create admin data to get something to paginate.')
+    frisby.create('Create user data to get something to paginate.')
         .post(baseURL + 'create',
             newUser,
             { json: true },
@@ -222,8 +254,8 @@ describe('Admin api test suite', function() {
             /**--keep user.id created --*/
             var USER_ID = response.body.user.id.toString();
 
-            /**--then, get first page with the only one admin --*/
-            frisby.create('Get all admins')
+            /**--then, get first page with the only one user --*/
+            frisby.create('Get all users')
                 .get(baseURL + 'list?page=0&pagesize=1&sort=id')
                 .expectStatus(200)
                 .expectHeader('Content-Type', 'text/html; charset=utf-8')
@@ -234,8 +266,8 @@ describe('Admin api test suite', function() {
                     expect(response.body.users).toBeDefined();
                 })
                 .toss();
-            /**--delete admin created --*/
-            frisby.create('removing admin created.')
+            /**--delete user created --*/
+            frisby.create('removing user created.')
                 .get(baseURL + 'delete?id=' + USER_ID)
                 .expectStatus(200)
                 .afterJSON(function (response) {
@@ -248,7 +280,7 @@ describe('Admin api test suite', function() {
         .toss()
 
     /**-----------------------------------------------------------------------------*/
-    /**---Get All Admins using pagination passing 'sort' not allowed-----------------*/
+    /**---Get All users using pagination passing 'sort' not allowed-----------------*/
     /**---'sort' allowed are attributes: id, email, name, created_at and updated_at-*/
     /**------------------------------------------------------------------------------*/
     frisby.create('Create admin data to get something to paginate.')
@@ -264,7 +296,7 @@ describe('Admin api test suite', function() {
             var USER_ID = response.body.user.id.toString();
 
             /**--then, get first page passing erroneus sort attribute --*/
-            frisby.create('Get all admin')
+            frisby.create('Get all users')
                 .get(baseURL + 'list?page=0&pagesize=1&sort=method_sort')
                 .expectStatus(200)
                 .expectHeader('Content-Type', 'text/html; charset=utf-8')
@@ -276,7 +308,7 @@ describe('Admin api test suite', function() {
                 })
                 .toss();
             /**--delete user created --*/
-            frisby.create('removing admin created.')
+            frisby.create('removing users created.')
                 .get(baseURL + 'delete?id=' + USER_ID)
                 .expectStatus(200)
                 .afterJSON(function (response) {

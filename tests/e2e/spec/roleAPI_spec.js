@@ -1,12 +1,12 @@
 var frisby = require('../node_modules/frisby/lib/frisby');
 
-var baseURL = process.env.baseURL + '/users/roles/';
+var baseURL = process.env.baseURL + '/ajax/users/roles/';
 
 
 describe('Role api test suite', function() {
 
-  beforeEach(function() {                
-  });
+    beforeEach(function() {
+    });
 
   /**----------------------------------------------------------------*/
   /**-----------------Role not found---------------------------------*/

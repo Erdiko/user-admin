@@ -248,16 +248,16 @@
         },
         {
             "name": "doctrine/common",
-            "version": "v2.6.1",
+            "version": "v2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "a579557bc689580c19fee4e27487a67fe60defc0"
+                "reference": "7bce00698899aa2c06fe7365c76e4d78ddb15fa3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/a579557bc689580c19fee4e27487a67fe60defc0",
-                "reference": "a579557bc689580c19fee4e27487a67fe60defc0",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/7bce00698899aa2c06fe7365c76e4d78ddb15fa3",
+                "reference": "7bce00698899aa2c06fe7365c76e4d78ddb15fa3",
                 "shasum": ""
             },
             "require": {
@@ -317,7 +317,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2015-12-25 13:18:31"
+            "time": "2016-11-30 16:50:46"
         },
         {
             "name": "doctrine/dbal",
@@ -586,11 +586,11 @@
         },
         {
             "name": "erdiko/authenticate",
-            "version": "dev-develop",
+            "version": "dev-ER-78",
             "dist": {
                 "type": "path",
                 "url": "../authenticate",
-                "reference": "90ad9bc83508c6e0b8afb4c9191d6275d42b96dd",
+                "reference": "170e1d0fe02dc1eda2d1f9a5c7861711d24d9c74",
                 "shasum": null
             },
             "require": {
@@ -629,7 +629,7 @@
             "dist": {
                 "type": "path",
                 "url": "../authorize",
-                "reference": "3ea2b165b029f12b46b98c6248f79e9fc5eb4564",
+                "reference": "9c7720b62c53d26f28232d4db845d8751a96ac6e",
                 "shasum": null
             },
             "require": {
@@ -755,15 +755,15 @@
         },
         {
             "name": "erdiko/users",
-            "version": "dev-develop",
+            "version": "dev-ER-78",
             "dist": {
                 "type": "path",
                 "url": "../users",
-                "reference": "5cd434f345457172e675823e6860738283cd9003",
+                "reference": "22588e62088d43275365b31860f26fba363d2393",
                 "shasum": null
             },
             "require": {
-                "erdiko/doctrine": "^0.2.0",
+                "erdiko/doctrine": "^0.2.1",
                 "php": ">=5.4.0"
             },
             "type": "library",
@@ -975,16 +975,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.14",
+            "version": "v2.8.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "a871ba00e0f604dceac64c56c27f99fbeaf4854e"
+                "reference": "d5643cd095e5e37d31e004bb2606b5dd7e96602f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/a871ba00e0f604dceac64c56c27f99fbeaf4854e",
-                "reference": "a871ba00e0f604dceac64c56c27f99fbeaf4854e",
+                "url": "https://api.github.com/repos/symfony/console/zipball/d5643cd095e5e37d31e004bb2606b5dd7e96602f",
+                "reference": "d5643cd095e5e37d31e004bb2606b5dd7e96602f",
                 "shasum": ""
             },
             "require": {
@@ -1032,7 +1032,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-15 23:02:12"
+            "time": "2016-12-06 11:59:35"
         },
         {
             "name": "symfony/debug",

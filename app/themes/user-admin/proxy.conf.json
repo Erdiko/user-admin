@@ -1,6 +1,6 @@
 {
-  "/api": {
-    "target": "http://docker.local:8088/api/users/",
+  "/ajax/*": {
+    "target": "http://docker.local/ajax/",
     "secure": false
   }
 }

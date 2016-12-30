@@ -13,10 +13,10 @@ export class UsersService {
     private _total$: BehaviorSubject<any>;
     private dataStore: {users?: any, total?: number};
 
-    private listUrl     = "http://docker.local/ajax/users/admin/list";
-    private userUrl     = "http://docker.local/ajax/users/admin/retrieve";
-    private updateUrl   = "http://docker.local/ajax/users/admin/update";
-    private createUrl   = "http://docker.local/ajax/users/admin/create";
+    private listUrl     = "/ajax/erdiko/users/admin/list";
+    private userUrl     = "/ajax/erdiko/users/admin/retrieve";
+    private updateUrl   = "/ajax/erdiko/users/admin/update";
+    private createUrl   = "/ajax/erdiko/users/admin/create";
 
     constructor(private http: Http) {
         this.dataStore = {};
@@ -61,8 +61,8 @@ export class UsersService {
                        this.dataStore.users = [];
                        this.dataStore.total = 0;
                        if(true == data.body.success) {
-                           this.dataStore.users = data.body.result.users;
-                           this.dataStore.total = data.body.result.total;
+                           this.dataStore.users = data.body.users.users;
+                           this.dataStore.total = data.body.users.total;
                        }
                        this._users$.next(this.dataStore.users);
                        this._total$.next(this.dataStore.total);

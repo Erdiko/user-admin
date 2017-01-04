@@ -5,7 +5,10 @@
         "examples/:alpha": "\app\controllers\Example",
         "mustache/:alpha": "\app\controllers\Mustache",
         "ajax/:alpha": "\app\controllers\AjaxExample",
-        "/api/users/:action": "\erdiko\users\controllers\Api",
+        "/ajax/erdiko/users/admin/:action": "\erdiko\users\controllers\admin\UserAjax",
+        "/ajax/erdiko/users/:action": "\erdiko\users\controllers\UserAjax",
+        "/ajax/users/roles/:action": "\erdiko\users\controllers\RoleAjax",
+        "/ajax/users/authentication/:action": "\erdiko\users\controllers\UserAuthenticationAjax",
         "/users/:action": "\erdiko\users\controllers\Login"
     }
 }

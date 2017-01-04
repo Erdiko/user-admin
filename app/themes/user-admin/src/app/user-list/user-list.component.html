@@ -1,0 +1,95 @@
+<div class="row">
+    <div class="col-xs-4">
+        <button class="btn btn-default btn-sm" routerLink="/user/">Create a New User</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <br />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-bordered table-hover"> 
+            <thead> 
+                <tr> 
+                    <th (click)="sort('id')">
+                        ID 
+                        <i *ngIf="sortCol == 'id'" class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
+                    </th> 
+                    <th (click)="sort('name')">
+                        User Name
+                        <i *ngIf="sortCol == 'name'" class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
+                    </th> 
+                    <th>
+                        Role
+                    </th> 
+                    <th>
+                        Last Login
+                    </th> 
+                    <th>
+                        Joined
+                    </th> 
+                    <th>Edit</th> 
+                </tr> 
+            </thead> 
+
+            <tbody *ngIf="wait"> 
+                <tr>
+                    <td colspan="6" align="center">
+                        <i class="fa fa-refresh fa-spin fa-2x fa-fw"></i> 
+                    </td>
+                </tr>
+            </tbody> 
+
+            <tbody *ngIf="!wait && !error && users.length < 1"> 
+                <tr>
+                    <td colspan="6" align="center">
+                        <alert type="warning">Sorry, no users were found. Please try again.</alert>
+                    </td>
+                </tr>
+            </tbody> 
+
+            <tbody *ngIf="!wait && !error && users.length > 0"> 
+                <tr *ngFor="let user of users; let index = index"> 
+                    <th scope="row">{{ user.id }}</th> 
+                    <td>{{ user.name }}</td> 
+                    <td>{{ user.role }}</td> 
+                    <td>{{ user.last_login }}</td> 
+                    <td>{{ user.joined }}</td> 
+                    <td><a routerLink="/user/{{ user.id }}">Edit</a></td> 
+                </tr> 
+            </tbody> 
+        </table>
+    </div>
+</div>
+<div class="row paging" *ngIf="total">
+    <div class="col-xs-4">
+
+        <nav aria-label="Page navigation">
+          <ul class="pagination pagination-sm">
+
+            <li *ngIf="(currentPage > 1)">
+              <a (click)="clickPrev()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+
+            <li 
+                *ngFor="let page of pages; let index = index"
+                 [ngClass]="{'active': (page == currentPage)}"
+                >
+                <a (click)="clickPage(page)">{{ page }}</a>
+            </li>
+
+            <li *ngIf="(currentPage < getPageCount())">
+              <a (click)="clickNext()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+
+    </div>
+</div>

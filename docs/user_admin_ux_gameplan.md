@@ -78,12 +78,12 @@ Editable form interface to edit an existing user for a provided ID or create a n
 
   * Get ALL existing users based on a provided sorting param
     * `sort`
-      * id
-      * created
-      * name
+      * 'id'
+      * 'created'
+      * 'name'
     * `direction`
-      * desc
-      * asc
+      * 'desc'
+      * 'asc'
     * `page`
       * starting page for list
     * `size`
@@ -156,9 +156,9 @@ Return a list of active users found in the DB
   * /ajax/eridko/useradmin/list/ 
 * Params
     * `sort` (String)
-      * id
-      * name
-      * created
+      * 'id'
+      * 'name'
+      * 'created'
     * `direction` (String)
       * 'desc'
       * 'asc'

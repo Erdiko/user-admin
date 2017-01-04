@@ -1,7 +1,7 @@
 {
-    "name": "erdiko/erdiko",
-    "description": "Erdiko micro MVC framework",
-    "keywords": ["framework", "erdiko", "mvc"],
+    "name": "erdiko/user-admin",
+    "description": "User auth and management system for PHP",
+    "keywords": ["users", "user management", "auth", "erdiko"],
     "homepage": "http://erdiko.org",
     "license": "MIT",
     "authors": [

@@ -19,7 +19,7 @@ foreach ($this->getCss() as $css) {
     }
 }
 ?>
-<base href="/dashboard/">
+<base href="/">
 </head>
 <body>
 

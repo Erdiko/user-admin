@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <?php
     /** Spit out meta tags **/
     foreach ($this->getMeta() as $name => $content)
@@ -19,7 +19,7 @@ foreach ($this->getCss() as $css) {
     }
 }
 ?>
-<base href="/dashboard/">
+<base href="/">
 </head>
 <body>
 

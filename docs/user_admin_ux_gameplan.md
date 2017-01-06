@@ -57,7 +57,7 @@ Route will require a 'default' user list resolved following a successful request
 * Estimate: 13h 
 
 
-![Users List Wireframe](https://raw.githubusercontent.com/Erdiko/user-admin/master/docs/user_list.png)
+![Users List Wireframe](https://raw.githubusercontent.com/Erdiko/user-admin/master/docs/users_list.png)
 
         
 ##### User Create / Edit / Delete - `/user/:id`

@@ -60,7 +60,10 @@ export class LoginComponent implements OnInit {
                         this.error = 'Username or Password is invalid';
                         this.wait = false;
                     }
-                });
+                    }, err => {
+                        this.error = 'An error occurred. Please try again.';
+                        this.wait = false;
+                    });
 
         }
     }

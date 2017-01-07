@@ -8,7 +8,8 @@
     "meta": {
       "description": "Erdiko MVC micro framework (enterprise glue)"
     },
-    "debug": 1
+    "debug": 1,
+    "secret_key": "1a3d43693312d1840a9948b1f539faa9"
   },
   "theme": {
     "name": "user-admin",

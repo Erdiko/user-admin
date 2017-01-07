@@ -67,7 +67,10 @@ export class AuthService {
                            // return false to indicate failed login
                            return false;
                        }
-                   });
+                   })
+                   .catch(
+                       (error:any) => Observable.throw(error.json().error || 'Server error')
+                   );
     }
 
     /**
@@ -78,14 +81,6 @@ export class AuthService {
         // clear token remove user from local storage to log user out
         this.token = null;
         localStorage.removeItem('currentUser');
-    }
-
-    /**
-     * handle response errors
-     *
-     */
-    private handleError(error: any) {
-        return Promise.reject(error.message || error);
     }
 
 }

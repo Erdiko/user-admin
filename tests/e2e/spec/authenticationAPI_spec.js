@@ -18,7 +18,7 @@ describe('Authentication api test suite', function() {
 
 
 
-  /**----------------------------------------------------------------*/
+  /**-----------------------------------------------------------*/
   /**-----------------Login test -------------------------------*/
   frisby.create('Login.')
       .post(userURL + 'register',
@@ -78,7 +78,7 @@ describe('Authentication api test suite', function() {
 
 
 
-    /**----------------------------------------------------------------*/
+    /**------------------------------------------------------------*/
     /**-----------------Logout test -------------------------------*/
     frisby.create('Logout.')
         .get(baseURL + 'logout')
@@ -90,8 +90,8 @@ describe('Authentication api test suite', function() {
         .toss()
 
 
-    /**----------------------------------------------------------------*/
-    /**-----------------Change password test -------------------------------*/
+    /**------------------------------------------------------------*/
+    /**-----------------Change password test ----------------------*/
     frisby.create('Login.')
         .post(userURL + 'register',
             newUser,
@@ -149,8 +149,8 @@ describe('Authentication api test suite', function() {
         .toss()
 
 
-    /**----------------------------------------------------------------*/
-    /**-----------------Forgot password test -------------------------------*/
+    /**---------------------------------------------------------*/
+    /**-----------------Forgot password test -------------------*/
     frisby.create('Login.')
         .post(userURL + 'register',
             newUser,

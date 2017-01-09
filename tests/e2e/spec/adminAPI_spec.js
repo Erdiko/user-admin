@@ -16,40 +16,16 @@ var updatedUser = {"email":"update_email@email.com",
 
 describe('Admin api test suite', function() {
     beforeEach(function() {
-        frisby.create('Login  user')
-            .post(authURL + 'login',
-                {"email":"leo@testlabs.com", "password":"asdf1234"},
-                { json: true },
-                post_header)
-            .expectStatus(200)
-            .toss()
+
     });
 
     afterEach(function() {
-        frisby.create('Logout  user')
-            .get(authURL + 'logout')
-            .expectStatus(200)
-            .toss()
+
     });
 
-
-
-
-
-
-    /**----------------------------------------------------------------*/
+   /**----------------------------------------------------------------*/
   /**-----------------User not found---------------------------------*/
-  frisby.create('First, login  user')
-      .post(authURL + 'login',
-          {"email":"leo@testlabs.com", "password":"asdf1234"},
-          { json: true },
-          post_header)
-      .expectStatus(200)
-      .afterJSON(function (response) {
-          expect(response.body.method).toBe('login');
-          expect(response.body.success).toBe(true);
-
-          frisby.create('User with ID 999999999 not found')
+  frisby.create('User with ID 999999999 not found')
               .get(baseURL + 'retrieve?id=999999999')
               .expectStatus(200)
               .afterJSON(function (response) {
@@ -58,15 +34,13 @@ describe('Admin api test suite', function() {
                   expect(response.body.error_message).toBe('User not found.');
               })
               .toss()
-      })
-      .toss()
 
   /**----------------------------------------------------------------*/
   /**-----------------Get All Admins----------------------------------*/
   frisby.create('Get all admins')
       .get(baseURL + 'list')
       .expectStatus(200)
-      .expectHeader('Content-Type', 'text/html; charset=utf-8')
+      .expectHeader('Content-Type', 'application/json')
       .afterJSON(function (response) {
          expect(response.body.method).toBe('list');
          expect(response.body.success).toBe(true);
@@ -92,7 +66,7 @@ describe('Admin api test suite', function() {
 
 
   /**----------------------------------------------------------------*/
-  /**-----------------Create Admin success -------------------------------*/
+  /**-----------------Create Admin success --------------------------*/
   frisby.create('Creation will success.')
       .post(baseURL + 'create',
           newUser,
@@ -131,7 +105,7 @@ describe('Admin api test suite', function() {
                  expect(response.body.user.id).toBe(response.body.user.id);
                  expect(response.body.user.email).toBe(newUser.email);
                  expect(response.body.user.name).toBe(newUser.name);
-                 expect(response.body.user.role).toBe(newUser.role.toString());
+                 expect(response.body.user.role.id).toBe(newUser.role);
               })
               .toss()
           /**--delete user created --*/
@@ -148,7 +122,7 @@ describe('Admin api test suite', function() {
       .toss()
 
     /**----------------------------------------------------------------*/
-    /**-----------------Update user fail, ID required-------------------------------*/
+    /**-----------------Update user fail, ID required------------------*/
     frisby.create('Update user without required id.')
         .post(baseURL + 'update',
             { },
@@ -175,7 +149,7 @@ describe('Admin api test suite', function() {
         .toss()
 
     /**----------------------------------------------------------------*/
-    /**-----------------Create user success -------------------------------*/
+    /**-----------------Create user success ---------------------------*/
     frisby.create('Update user data will success.')
         .post(baseURL + 'create',
             newUser,
@@ -219,7 +193,7 @@ describe('Admin api test suite', function() {
                     expect(response.body.user.id).toBe(response.body.user.id);
                     expect(response.body.user.email).toBe(updatedUser.email);
                     expect(response.body.user.name).toBe(updatedUser.name);
-                    expect(response.body.user.role).toBe(updatedUser.role.toString());
+                    expect(response.body.user.role.id).toBe(updatedUser.role);
                 })
                 .toss()
             /**--delete user created --*/
@@ -258,7 +232,7 @@ describe('Admin api test suite', function() {
             frisby.create('Get all users')
                 .get(baseURL + 'list?page=0&pagesize=1&sort=id')
                 .expectStatus(200)
-                .expectHeader('Content-Type', 'text/html; charset=utf-8')
+                .expectHeader('Content-Type','application/json')
                 .afterJSON(function (response) {
                     expect(response.body.method).toBe('list');
                     expect(response.body.success).toBe(true);
@@ -282,7 +256,7 @@ describe('Admin api test suite', function() {
     /**-----------------------------------------------------------------------------*/
     /**---Get All users using pagination passing 'sort' not allowed-----------------*/
     /**---'sort' allowed are attributes: id, email, name, created_at and updated_at-*/
-    /**------------------------------------------------------------------------------*/
+    /**-----------------------------------------------------------------------------*/
     frisby.create('Create admin data to get something to paginate.')
         .post(baseURL + 'create',
             newUser,
@@ -299,7 +273,7 @@ describe('Admin api test suite', function() {
             frisby.create('Get all users')
                 .get(baseURL + 'list?page=0&pagesize=1&sort=method_sort')
                 .expectStatus(200)
-                .expectHeader('Content-Type', 'text/html; charset=utf-8')
+                .expectHeader('Content-Type', 'application/json')
                 .afterJSON(function (response) {
                     expect(response.body.method).toBe('list');
                     expect(response.body.success).toBe(false);

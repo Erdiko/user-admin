@@ -101,7 +101,7 @@ describe('User api test suite', function() {
                     expect(response.body.user.id).toBe(response.body.user.id);
                     expect(response.body.user.email).toBe(newUser.email);
                     expect(response.body.user.name).toBe(newUser.name);
-                    expect(response.body.user.role).toBe(newUser.role.toString());
+                    expect(response.body.user.role.id).toBe(newUser.role);
                 })
                 .toss()
             /**--delete user created --*/
@@ -119,7 +119,7 @@ describe('User api test suite', function() {
 
 
   /**----------------------------------------------------------------*/
-  /**-----------------Update User fail, ID required-------------------------------*/
+  /**-----------------Update User fail, ID required------------------*/
   frisby.create('Update user without required id.')
         .post(baseURL + 'update',
             { },
@@ -191,7 +191,7 @@ describe('User api test suite', function() {
                       expect(response.body.user.id).toBe(response.body.user.id);
                       expect(response.body.user.email).toBe(updatedUser.email);
                       expect(response.body.user.name).toBe(updatedUser.name);
-                      expect(response.body.user.role).toBe(updatedUser.role.toString());
+                      expect(response.body.user.role.id).toBe(updatedUser.role);
                   })
                   .toss()
             /**--delete user created --*/

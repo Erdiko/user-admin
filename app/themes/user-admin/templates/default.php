@@ -22,7 +22,7 @@ foreach ($this->getCss() as $css) {
 }
 echo $this->getTemplateHtml('google_header');
 ?>
-<base href="/dashboard/">
+<base href="/">
 </head>
 <body>
 

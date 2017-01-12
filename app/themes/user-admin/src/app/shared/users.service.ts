@@ -4,7 +4,8 @@ import { BehaviorSubject }                                              from "rx
 
 import 'rxjs';
 
-import { User } from "./models/user.model";
+import { AuthService }  from "./auth.service";
+import { User }         from "./models/user.model";
 
 @Injectable()
 export class UsersService {
@@ -18,10 +19,24 @@ export class UsersService {
     private updateUrl   = "/ajax/erdiko/users/admin/update";
     private createUrl   = "/ajax/erdiko/users/admin/create";
 
-    constructor(private http: Http) {
+    private authToken: any;
+
+    private _baseUrl: string;
+
+    constructor(
+        private http: Http,
+        private authService: AuthService) {
+
         this.dataStore = {};
         this._users$ = new BehaviorSubject(null);
         this._total$ = new BehaviorSubject(null);
+
+        // hack to help with local development
+        this._baseUrl = "";
+        if(window.location && "localhost" == window.location.hostname) {
+            this._baseUrl = "http://docker.local:8088";
+        }
+
     }
 
     get users$() {
@@ -33,11 +48,26 @@ export class UsersService {
     }
 
     /**
+     *
+     *
+     */
+    private _getHeaderOptions() {
+        // add authorization header with jwt token
+        let headers = new Headers({ 
+                                    'Content-Type': 'application/json',
+                                    'Authorization': 'Bearer ' + this.authService.token
+                                });
+        let options = new RequestOptions({ headers: headers });
+
+        return options;
+    }
+
+    /**
      * Get list of users based on sort, returns an observable
      *
      */
     getUsers(pagesize?: number, page?: number, sortCol?: string, sortDir?: string) {
-        let url = this.listUrl;
+        let url = this._baseUrl + this.listUrl;
 
         if(pagesize) {
             url += "?pagesize=" + pagesize;
@@ -54,8 +84,10 @@ export class UsersService {
         if(sortDir) {
             url += "&direction=" + sortDir;
         }
+    
+        let options = this._getHeaderOptions();
 
-        return this.http.get(url)
+        return this.http.get(url, options)
                    .map(response => response.json())
                    .subscribe(data => {
                        this.dataStore.users = [];
@@ -81,48 +113,49 @@ export class UsersService {
      *
      */
     getUser(id: string) {
-        let url = this.userUrl + '?id=' + id;
-        return this.http.get(url)
+        let url = this._baseUrl + this.userUrl + '?id=' + id;
+        let options = this._getHeaderOptions();
+        return this.http.get(url, options)
                    .toPromise()
                    .then(response => response.json().body.user as User)
                    .catch(this.handleError);
     }
 
     /**
-     *
+     * Update a specific user
      *
      */
     updateUser(user) {
         let body = JSON.stringify(user);
 
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
+        let options = this._getHeaderOptions();
 
-        let url = this.updateUrl;
+        let url = this._baseUrl + this.updateUrl;
         return this.http.post(url, body, options)
                    .toPromise()
                    .then(response => response.json().body)
                    .catch(this.handleError);
     }
 
+    /**
+     * Create a new user
+     *
+     */
     createUser(user) {
         let body = JSON.stringify(user);
+        let options = this._getHeaderOptions();
 
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-
-        let url = this.createUrl;
+        let url = this._baseUrl + this.createUrl;
         return this.http.post(url, body, options)
                    .toPromise()
                    .then(response => response.json().body)
                    .catch(this.handleError);
     }
 
-    private extractData(res: Response) {
-        let body = res.json();
-        return body.data || { };
-    }
-
+    /**
+     * handle response errors
+     *
+     */
     private handleError(error: any) {
         return Promise.reject(error.message || error);
     }

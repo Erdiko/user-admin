@@ -54,7 +54,7 @@
                 <tr *ngFor="let user of users; let index = index"> 
                     <th scope="row">{{ user.id }}</th> 
                     <td>{{ user.name }}</td> 
-                    <td>{{ user.role }}</td> 
+                    <td>{{ user.role.name }}</td> 
                     <td>{{ user.last_login }}</td> 
                     <td>{{ user.joined }}</td> 
                     <td><a routerLink="/user/{{ user.id }}">Edit</a></td> 

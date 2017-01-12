@@ -73,9 +73,9 @@ class Front extends \erdiko\core\Controller
 
 	public function getIndex()
 	{
-		// Add page data
-		$this->setTitle('Welcome to Erdiko');
-		$this->addView('examples/home');
+        $this->setTitle('Welcome to Erdiko Auth Module');
+        $this->setThemeTemplate("fullpage");
+		$this->addView('admin/dashboard');
 	}
 
 	public function getPlans()

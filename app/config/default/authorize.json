@@ -1,29 +1,4 @@
 {
-
- "authentication": {
-   "available_types": [{
-         "name": "mock",
-         "namespace": "erdiko_authenticate_Services",
-         "classname": "Mock",
-         "enabled": true
-       },
-       {
-         "name": "erdiko_user",
-         "namespace": "app_service",
-         "classname": "AuthTest",
-         "enabled": true
-       }]
- },
- "storage": {
-   "selected": "session",
-   "storage_types": [{
-       "name": "session",
-       "namespace": "erdiko_authenticate_Services",
-       "classname": "SessionStorage",
-       "enabled": true
-     }]
- },
-
   "guards":[
     "users",
     "subscriptions",

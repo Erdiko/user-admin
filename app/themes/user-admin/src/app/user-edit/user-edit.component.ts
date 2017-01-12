@@ -46,7 +46,7 @@ export class UserEditComponent implements OnInit {
             if(this.user) {
                 this.userForm.controls['name'].setValue(this.user.name);
                 this.userForm.controls['email'].setValue(this.user.email);
-                this.userForm.controls['role'].setValue(this.user.role);
+                this.userForm.controls['role'].setValue(this.user.role.id);
             }
         });
 

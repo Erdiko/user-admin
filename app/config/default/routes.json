@@ -1,7 +1,7 @@
 {
     "routes": {
-        "/": "\app\controllers\Front",
-        "/:alpha": "\app\controllers\Front",
+        "/": "\app\controllers\Admin",
+        "/:alpha": "\app\controllers\Admin",
         "examples/:alpha": "\app\controllers\Example",
         "mustache/:alpha": "\app\controllers\Mustache",
         "ajax/:alpha": "\app\controllers\AjaxExample",

@@ -24,17 +24,17 @@
   "menu": {
     "main": [
     {
-      "href": "/users/login",
-      "title": "Login"
-    }, {
       "href": "/dashboard",
       "title": "Dashboard"
     }, {
-      "href": "/users/logout",
-      "title": "Logout"
-    }, {
       "href": "/users",
       "title": "Users"
+    }, {
+      "href": "/users/login",
+      "title": "Login"
+    }, {
+      "href": "/users/logout",
+      "title": "Logout"
     }],
     "footer": [{
       "href": "/",

@@ -16,7 +16,7 @@
       "name": "erdiko_user",
       "namespace": "app_service",
       "classname": "AuthTest",
-      "enabled": false
+      "enabled": true
     }]
   },
   "storage": {

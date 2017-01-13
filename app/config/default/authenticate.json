@@ -4,6 +4,12 @@
       "name": "mock",
       "namespace": "erdiko_authenticate_services",
       "classname": "Mock",
+      "enabled": false
+    },
+    {
+      "name": "jwt_auth",
+      "namespace": "erdiko_authenticate_services",
+      "classname": "JWTAuthentication",
       "enabled": true
     },
     {

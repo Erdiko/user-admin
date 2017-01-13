@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e3ff4cc6c45a538d7c05c6057d6e9642",
-    "content-hash": "3e0a48bb94484cdaacf3f53cdfb40881",
+    "hash": "85023c987315b6575fc1a8eb6d6e61a6",
+    "content-hash": "32d570209e7677240da3d4f4c71a5c17",
     "packages": [
         {
             "name": "ac/kalinka",
@@ -44,16 +44,16 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "30e07cf03edc3cd3ef579d0dd4dd8c58250799a5"
+                "reference": "bd4461328621bde0ae6b1b2675fbc6aca4ceb558"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/30e07cf03edc3cd3ef579d0dd4dd8c58250799a5",
-                "reference": "30e07cf03edc3cd3ef579d0dd4dd8c58250799a5",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/bd4461328621bde0ae6b1b2675fbc6aca4ceb558",
+                "reference": "bd4461328621bde0ae6b1b2675fbc6aca4ceb558",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2016-10-24 11:45:47"
+            "time": "2016-12-30 15:59:45"
         },
         {
             "name": "doctrine/cache",
@@ -248,16 +248,16 @@
         },
         {
             "name": "doctrine/common",
-            "version": "v2.6.2",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "7bce00698899aa2c06fe7365c76e4d78ddb15fa3"
+                "reference": "5954c297e9d93ff84554906c2fbbc2a133c43941"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/7bce00698899aa2c06fe7365c76e4d78ddb15fa3",
-                "reference": "7bce00698899aa2c06fe7365c76e4d78ddb15fa3",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/5954c297e9d93ff84554906c2fbbc2a133c43941",
+                "reference": "5954c297e9d93ff84554906c2fbbc2a133c43941",
                 "shasum": ""
             },
             "require": {
@@ -266,10 +266,10 @@
                 "doctrine/collections": "1.*",
                 "doctrine/inflector": "1.*",
                 "doctrine/lexer": "1.*",
-                "php": "~5.5|~7.0"
+                "php": "~5.6|~7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8|~5.0"
+                "phpunit/phpunit": "^5.4.6"
             },
             "type": "library",
             "extra": {
@@ -317,24 +317,24 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2016-11-30 16:50:46"
+            "time": "2016-12-03 08:15:01"
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.5",
+            "version": "v2.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "9f8c05cd5225a320d56d4bfdb4772f10d045a0c9"
+                "reference": "a526d0df58daa8ab6802244bf3227f532e0deb45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/9f8c05cd5225a320d56d4bfdb4772f10d045a0c9",
-                "reference": "9f8c05cd5225a320d56d4bfdb4772f10d045a0c9",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/a526d0df58daa8ab6802244bf3227f532e0deb45",
+                "reference": "a526d0df58daa8ab6802244bf3227f532e0deb45",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": ">=2.4,<2.7-dev",
+                "doctrine/common": ">=2.4,<2.8-dev",
                 "php": ">=5.3.2"
             },
             "require-dev": {
@@ -388,7 +388,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2016-09-09 19:13:33"
+            "time": "2016-12-04 05:53:43"
         },
         {
             "name": "doctrine/inflector",
@@ -629,7 +629,7 @@
             "dist": {
                 "type": "path",
                 "url": "../authorize",
-                "reference": "9c7720b62c53d26f28232d4db845d8751a96ac6e",
+                "reference": "3b48728989636037be9da17d04128e282d49b92e",
                 "shasum": null
             },
             "require": {
@@ -664,16 +664,16 @@
         },
         {
             "name": "erdiko/core",
-            "version": "0.10.3",
+            "version": "0.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ArroyoLabs/erdiko-core.git",
-                "reference": "5ce11621172e24ddb7bf2dc8c9b6184787815fa1"
+                "reference": "067e88357d0fa7a32b213dde67759131d94f9a7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ArroyoLabs/erdiko-core/zipball/5ce11621172e24ddb7bf2dc8c9b6184787815fa1",
-                "reference": "5ce11621172e24ddb7bf2dc8c9b6184787815fa1",
+                "url": "https://api.github.com/repos/ArroyoLabs/erdiko-core/zipball/067e88357d0fa7a32b213dde67759131d94f9a7c",
+                "reference": "067e88357d0fa7a32b213dde67759131d94f9a7c",
                 "shasum": ""
             },
             "require": {
@@ -705,7 +705,7 @@
                 "erdiko-core",
                 "framework"
             ],
-            "time": "2016-11-27 07:11:53"
+            "time": "2017-01-05 01:01:03"
         },
         {
             "name": "erdiko/doctrine",
@@ -756,14 +756,19 @@
         {
             "name": "erdiko/users",
             "version": "dev-ER-78",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Erdiko/users.git",
+                "reference": "22588e62088d43275365b31860f26fba363d2393"
+            },
             "dist": {
-                "type": "path",
-                "url": "../users",
+                "type": "zip",
+                "url": "https://api.github.com/repos/Erdiko/users/zipball/22588e62088d43275365b31860f26fba363d2393",
                 "reference": "22588e62088d43275365b31860f26fba363d2393",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
-                "erdiko/doctrine": "^0.2.1",
+                "erdiko/doctrine": "^0.2.0",
                 "php": ">=5.4.0"
             },
             "type": "library",
@@ -772,6 +777,7 @@
                     "erdiko\\users\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -788,9 +794,7 @@
                 "erdiko-user",
                 "user"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2016-11-29 13:12:00"
         },
         {
             "name": "erusev/parsedown",
@@ -833,6 +837,49 @@
                 "parser"
             ],
             "time": "2016-11-02 15:56:58"
+        },
+        {
+            "name": "firebase/php-jwt",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "time": "2016-07-18 04:51:16"
         },
         {
             "name": "mustache/mustache",
@@ -975,16 +1022,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.15",
+            "version": "v2.8.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "d5643cd095e5e37d31e004bb2606b5dd7e96602f"
+                "reference": "2e18b8903d9c498ba02e1dfa73f64d4894bb6912"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/d5643cd095e5e37d31e004bb2606b5dd7e96602f",
-                "reference": "d5643cd095e5e37d31e004bb2606b5dd7e96602f",
+                "url": "https://api.github.com/repos/symfony/console/zipball/2e18b8903d9c498ba02e1dfa73f64d4894bb6912",
+                "reference": "2e18b8903d9c498ba02e1dfa73f64d4894bb6912",
                 "shasum": ""
             },
             "require": {
@@ -1032,7 +1079,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-06 11:59:35"
+            "time": "2017-01-08 20:43:03"
         },
         {
             "name": "symfony/debug",

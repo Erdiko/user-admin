@@ -16,7 +16,8 @@
         "erdiko/users": "@dev",
         "erdiko/authenticate": "@dev",
         "erdiko/authorize": "@dev",
-        "ac/kalinka": "dev-master"
+        "ac/kalinka": "dev-master",
+        "firebase/php-jwt": "^4.0"
     },
     "config": {
         "vendor-dir": "vendor",

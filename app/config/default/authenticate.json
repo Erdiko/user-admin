@@ -9,7 +9,7 @@
     {
       "name": "jwt_auth",
       "namespace": "erdiko_authenticate_services",
-      "classname": "JWTAuth",
+      "classname": "JWTAuthentication",
       "enabled": true
     },
     {

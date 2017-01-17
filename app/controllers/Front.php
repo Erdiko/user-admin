@@ -16,8 +16,8 @@
 namespace app\controllers;
 
 
-use erdiko\authenticate\BasicAuth;
-use erdiko\authenticate\iErdikoUser;
+use erdiko\authenticate\services\BasicAuthenticator;
+use erdiko\authorize\UserInterface;
 use erdiko\authorize\Authorizer;
 use erdiko\users\models\User;
 
@@ -27,9 +27,9 @@ class Front extends \erdiko\core\Controller
 	{
 		try {
 			$userModel  = new User();
-			$auth       = new BasicAuth($userModel);
-			$user       = $auth->current_user();
-			if($user instanceof iErdikoUser){
+			$auth       = new BasicAuthenticator($userModel);
+			$user       = $auth->currentUser();
+			if($user instanceof UserInterface){
 				$authorizer = new Authorizer( $user );
 				$result     = $authorizer->can( $action, $resource );
 			} else {
@@ -98,10 +98,10 @@ class Front extends \erdiko\core\Controller
 
 	public function getDashboard()
 	{
-		$auth = new BasicAuth(new User());
+		$auth = new BasicAuthenticator(new User());
         $this->setTitle('Welcome to Erdiko Auth Module');
         $this->setThemeTemplate("fullpage");
-		$this->addView('admin/dashboard',array('user'=>$auth->current_user()));
+		$this->addView('admin/dashboard',array('user'=>$auth->currentUser()));
 	}
 
 	public function getNoAuth()

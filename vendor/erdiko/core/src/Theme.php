@@ -118,6 +118,27 @@ class Theme extends Container
     }
 
     /**
+     * Get SEO meta data and render as html (meta tags)
+     * @return string $html
+     */
+    public function getMetaMarkup()
+    {
+        $html = "";
+
+        foreach ($this->getMeta() as $name => $content)
+        {
+            if(is_array($content)) {
+                foreach($content as $cont)
+                    $html .= "<meta name=\"{$name}\" content=\"{$cont}\">\n";
+            } else {
+                $html .= "<meta name=\"{$name}\" content=\"{$content}\">\n";
+            }
+        }
+
+        return $html;
+    }
+
+    /**
      *  Get page title
      *
      *  @return string $page_title

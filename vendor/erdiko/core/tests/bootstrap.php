@@ -4,8 +4,8 @@
 // This is for standard installations
 $bootstrap = dirname(dirname(dirname(dirname(__DIR__)))).'/app/bootstrap.php';
 
-// This is for erdiko-dev (CI & dev)
+// This is for Docker (works within docker and Travis CI)
 if(!file_exists($bootstrap))
-	$bootstrap = dirname(dirname(__DIR__)).'code/app/bootstrap.php';
+	$bootstrap = '/code/app/bootstrap.php';
 
 require_once $bootstrap;

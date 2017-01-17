@@ -141,53 +141,6 @@
         ]
     },
     {
-        "name": "erdiko/core",
-        "version": "0.10.3",
-        "version_normalized": "0.10.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ArroyoLabs/erdiko-core.git",
-            "reference": "5ce11621172e24ddb7bf2dc8c9b6184787815fa1"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ArroyoLabs/erdiko-core/zipball/5ce11621172e24ddb7bf2dc8c9b6184787815fa1",
-            "reference": "5ce11621172e24ddb7bf2dc8c9b6184787815fa1",
-            "shasum": ""
-        },
-        "require": {
-            "erusev/parsedown": ">=1.6",
-            "mustache/mustache": "2.*",
-            "php": ">=5.4.0",
-            "psr/log": "^1.0"
-        },
-        "time": "2016-11-27 07:11:53",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "erdiko\\core\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Arroyo Labs",
-                "email": "info@arroyolabs.com"
-            }
-        ],
-        "description": "Erdiko micro MVC core libraries",
-        "homepage": "http://erdiko.org",
-        "keywords": [
-            "erdiko",
-            "erdiko-core",
-            "framework"
-        ]
-    },
-    {
         "name": "symfony/polyfill-mbstring",
         "version": "v1.3.0",
         "version_normalized": "1.3.0.0",
@@ -573,149 +526,6 @@
         ]
     },
     {
-        "name": "doctrine/annotations",
-        "version": "v1.3.0",
-        "version_normalized": "1.3.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/annotations.git",
-            "reference": "30e07cf03edc3cd3ef579d0dd4dd8c58250799a5"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/annotations/zipball/30e07cf03edc3cd3ef579d0dd4dd8c58250799a5",
-            "reference": "30e07cf03edc3cd3ef579d0dd4dd8c58250799a5",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/lexer": "1.*",
-            "php": "^5.6 || ^7.0"
-        },
-        "require-dev": {
-            "doctrine/cache": "1.*",
-            "phpunit/phpunit": "^5.6.1"
-        },
-        "time": "2016-10-24 11:45:47",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.4.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com"
-            },
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com"
-            }
-        ],
-        "description": "Docblock Annotations Parser",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "annotations",
-            "docblock",
-            "parser"
-        ]
-    },
-    {
-        "name": "doctrine/dbal",
-        "version": "v2.5.5",
-        "version_normalized": "2.5.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/dbal.git",
-            "reference": "9f8c05cd5225a320d56d4bfdb4772f10d045a0c9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/dbal/zipball/9f8c05cd5225a320d56d4bfdb4772f10d045a0c9",
-            "reference": "9f8c05cd5225a320d56d4bfdb4772f10d045a0c9",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/common": ">=2.4,<2.7-dev",
-            "php": ">=5.3.2"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "4.*",
-            "symfony/console": "2.*||^3.0"
-        },
-        "suggest": {
-            "symfony/console": "For helpful console commands such as SQL execution and import of files."
-        },
-        "time": "2016-09-09 19:13:33",
-        "bin": [
-            "bin/doctrine-dbal"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.5.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\DBAL\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com"
-            },
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com"
-            }
-        ],
-        "description": "Database Abstraction Layer",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "database",
-            "dbal",
-            "persistence",
-            "queryobject"
-        ]
-    },
-    {
         "name": "doctrine/orm",
         "version": "v2.4.8",
         "version_normalized": "2.4.8.0",
@@ -887,47 +697,6 @@
         ]
     },
     {
-        "name": "erdiko/users",
-        "version": "dev-ER-78",
-        "version_normalized": "dev-ER-78",
-        "dist": {
-            "type": "path",
-            "url": "../users",
-            "reference": "22588e62088d43275365b31860f26fba363d2393",
-            "shasum": null
-        },
-        "require": {
-            "erdiko/doctrine": "^0.2.1",
-            "php": ">=5.4.0"
-        },
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "erdiko\\users\\": "src/"
-            }
-        },
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Arroyo Labs",
-                "email": "info@arroyolabs.com"
-            }
-        ],
-        "description": "User model standard",
-        "homepage": "http://erdiko.org",
-        "keywords": [
-            "erdiko",
-            "erdiko-user",
-            "user"
-        ],
-        "transport-options": {
-            "symlink": true
-        }
-    },
-    {
         "name": "erdiko/authenticate",
         "version": "dev-ER-78",
         "version_normalized": "dev-ER-78",
@@ -969,50 +738,70 @@
         }
     },
     {
-        "name": "symfony/console",
-        "version": "v2.8.15",
-        "version_normalized": "2.8.15.0",
+        "name": "ac/kalinka",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/console.git",
-            "reference": "d5643cd095e5e37d31e004bb2606b5dd7e96602f"
+            "url": "https://github.com/AmericanCouncils/kalinka.git",
+            "reference": "58f817e85dc36f497850b87621e0b130d3fe57ed"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/console/zipball/d5643cd095e5e37d31e004bb2606b5dd7e96602f",
-            "reference": "d5643cd095e5e37d31e004bb2606b5dd7e96602f",
+            "url": "https://api.github.com/repos/AmericanCouncils/kalinka/zipball/58f817e85dc36f497850b87621e0b130d3fe57ed",
+            "reference": "58f817e85dc36f497850b87621e0b130d3fe57ed",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.9",
-            "symfony/debug": "~2.7,>=2.7.2|~3.0.0",
-            "symfony/polyfill-mbstring": "~1.0"
+            "php": ">=5.4.0"
         },
-        "require-dev": {
-            "psr/log": "~1.0",
-            "symfony/event-dispatcher": "~2.1|~3.0.0",
-            "symfony/process": "~2.1|~3.0.0"
-        },
-        "suggest": {
-            "psr/log": "For using the console logger",
-            "symfony/event-dispatcher": "",
-            "symfony/process": ""
-        },
-        "time": "2016-12-06 11:59:35",
+        "time": "2014-04-09 16:54:33",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "AC\\Kalinka\\": "src/"
             }
         },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Flexible authorization library for PHP",
+        "keywords": [
+            "authorization",
+            "cancan",
+            "privilege"
+        ]
+    },
+    {
+        "name": "erdiko/core",
+        "version": "0.10.4",
+        "version_normalized": "0.10.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ArroyoLabs/erdiko-core.git",
+            "reference": "067e88357d0fa7a32b213dde67759131d94f9a7c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ArroyoLabs/erdiko-core/zipball/067e88357d0fa7a32b213dde67759131d94f9a7c",
+            "reference": "067e88357d0fa7a32b213dde67759131d94f9a7c",
+            "shasum": ""
+        },
+        "require": {
+            "erusev/parsedown": ">=1.6",
+            "mustache/mustache": "2.*",
+            "php": ">=5.4.0",
+            "psr/log": "^1.0"
+        },
+        "time": "2017-01-05 01:01:03",
+        "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Symfony\\Component\\Console\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
+                "erdiko\\core\\": "src/"
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -1020,30 +809,101 @@
         ],
         "authors": [
             {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
+                "name": "Arroyo Labs",
+                "email": "info@arroyolabs.com"
             }
         ],
-        "description": "Symfony Console Component",
-        "homepage": "https://symfony.com"
+        "description": "Erdiko micro MVC core libraries",
+        "homepage": "http://erdiko.org",
+        "keywords": [
+            "erdiko",
+            "erdiko-core",
+            "framework"
+        ]
     },
     {
-        "name": "doctrine/common",
-        "version": "v2.6.2",
-        "version_normalized": "2.6.2.0",
+        "name": "doctrine/annotations",
+        "version": "v1.3.1",
+        "version_normalized": "1.3.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/doctrine/common.git",
-            "reference": "7bce00698899aa2c06fe7365c76e4d78ddb15fa3"
+            "url": "https://github.com/doctrine/annotations.git",
+            "reference": "bd4461328621bde0ae6b1b2675fbc6aca4ceb558"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/common/zipball/7bce00698899aa2c06fe7365c76e4d78ddb15fa3",
-            "reference": "7bce00698899aa2c06fe7365c76e4d78ddb15fa3",
+            "url": "https://api.github.com/repos/doctrine/annotations/zipball/bd4461328621bde0ae6b1b2675fbc6aca4ceb558",
+            "reference": "bd4461328621bde0ae6b1b2675fbc6aca4ceb558",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/lexer": "1.*",
+            "php": "^5.6 || ^7.0"
+        },
+        "require-dev": {
+            "doctrine/cache": "1.*",
+            "phpunit/phpunit": "^5.6.1"
+        },
+        "time": "2016-12-30 15:59:45",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Docblock Annotations Parser",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "annotations",
+            "docblock",
+            "parser"
+        ]
+    },
+    {
+        "name": "doctrine/common",
+        "version": "v2.7.1",
+        "version_normalized": "2.7.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/common.git",
+            "reference": "5954c297e9d93ff84554906c2fbbc2a133c43941"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/common/zipball/5954c297e9d93ff84554906c2fbbc2a133c43941",
+            "reference": "5954c297e9d93ff84554906c2fbbc2a133c43941",
             "shasum": ""
         },
         "require": {
@@ -1052,12 +912,12 @@
             "doctrine/collections": "1.*",
             "doctrine/inflector": "1.*",
             "doctrine/lexer": "1.*",
-            "php": "~5.5|~7.0"
+            "php": "~5.6|~7.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "~4.8|~5.0"
+            "phpunit/phpunit": "^5.4.6"
         },
-        "time": "2016-11-30 16:50:46",
+        "time": "2016-12-03 08:15:01",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1107,13 +967,194 @@
         ]
     },
     {
+        "name": "doctrine/dbal",
+        "version": "v2.5.6",
+        "version_normalized": "2.5.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/dbal.git",
+            "reference": "a526d0df58daa8ab6802244bf3227f532e0deb45"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/dbal/zipball/a526d0df58daa8ab6802244bf3227f532e0deb45",
+            "reference": "a526d0df58daa8ab6802244bf3227f532e0deb45",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/common": ">=2.4,<2.8-dev",
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*",
+            "symfony/console": "2.*||^3.0"
+        },
+        "suggest": {
+            "symfony/console": "For helpful console commands such as SQL execution and import of files."
+        },
+        "time": "2016-12-04 05:53:43",
+        "bin": [
+            "bin/doctrine-dbal"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.5.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\DBAL\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            }
+        ],
+        "description": "Database Abstraction Layer",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "database",
+            "dbal",
+            "persistence",
+            "queryobject"
+        ]
+    },
+    {
+        "name": "symfony/console",
+        "version": "v2.8.16",
+        "version_normalized": "2.8.16.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/console.git",
+            "reference": "2e18b8903d9c498ba02e1dfa73f64d4894bb6912"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/console/zipball/2e18b8903d9c498ba02e1dfa73f64d4894bb6912",
+            "reference": "2e18b8903d9c498ba02e1dfa73f64d4894bb6912",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.9",
+            "symfony/debug": "~2.7,>=2.7.2|~3.0.0",
+            "symfony/polyfill-mbstring": "~1.0"
+        },
+        "require-dev": {
+            "psr/log": "~1.0",
+            "symfony/event-dispatcher": "~2.1|~3.0.0",
+            "symfony/process": "~2.1|~3.0.0"
+        },
+        "suggest": {
+            "psr/log": "For using the console logger",
+            "symfony/event-dispatcher": "",
+            "symfony/process": ""
+        },
+        "time": "2017-01-08 20:43:03",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.8-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Console\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Console Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "erdiko/users",
+        "version": "dev-ER-78",
+        "version_normalized": "dev-ER-78",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Erdiko/users.git",
+            "reference": "22588e62088d43275365b31860f26fba363d2393"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Erdiko/users/zipball/22588e62088d43275365b31860f26fba363d2393",
+            "reference": "22588e62088d43275365b31860f26fba363d2393",
+            "shasum": ""
+        },
+        "require": {
+            "erdiko/doctrine": "^0.2.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2016-11-29 13:12:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "erdiko\\users\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Arroyo Labs",
+                "email": "info@arroyolabs.com"
+            }
+        ],
+        "description": "User model standard",
+        "homepage": "http://erdiko.org",
+        "keywords": [
+            "erdiko",
+            "erdiko-user",
+            "user"
+        ]
+    },
+    {
         "name": "erdiko/authorize",
         "version": "dev-develop",
         "version_normalized": "dev-develop",
         "dist": {
             "type": "path",
             "url": "../authorize",
-            "reference": "9c7720b62c53d26f28232d4db845d8751a96ac6e",
+            "reference": "3b48728989636037be9da17d04128e282d49b92e",
             "shasum": null
         },
         "require": {
@@ -1148,40 +1189,48 @@
         }
     },
     {
-        "name": "ac/kalinka",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "firebase/php-jwt",
+        "version": "v4.0.0",
+        "version_normalized": "4.0.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/AmericanCouncils/kalinka.git",
-            "reference": "58f817e85dc36f497850b87621e0b130d3fe57ed"
+            "url": "https://github.com/firebase/php-jwt.git",
+            "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/AmericanCouncils/kalinka/zipball/58f817e85dc36f497850b87621e0b130d3fe57ed",
-            "reference": "58f817e85dc36f497850b87621e0b130d3fe57ed",
+            "url": "https://api.github.com/repos/firebase/php-jwt/zipball/dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+            "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.4.0"
+            "php": ">=5.3.0"
         },
-        "time": "2014-04-09 16:54:33",
+        "time": "2016-07-18 04:51:16",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "AC\\Kalinka\\": "src/"
+                "Firebase\\JWT\\": "src"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "BSD-3-Clause"
         ],
-        "description": "Flexible authorization library for PHP",
-        "keywords": [
-            "authorization",
-            "cancan",
-            "privilege"
-        ]
+        "authors": [
+            {
+                "name": "Neuman Vong",
+                "email": "neuman+pear@twilio.com",
+                "role": "Developer"
+            },
+            {
+                "name": "Anant Narayanan",
+                "email": "anant@php.net",
+                "role": "Developer"
+            }
+        ],
+        "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+        "homepage": "https://github.com/firebase/php-jwt"
     }
 ]

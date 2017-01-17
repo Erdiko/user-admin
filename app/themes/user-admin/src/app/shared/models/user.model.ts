@@ -4,5 +4,6 @@ export class User {
     role: any;
     name: string;
     last_login: any;
+    created_at: any;
     gateway_customer_id: number;
 }

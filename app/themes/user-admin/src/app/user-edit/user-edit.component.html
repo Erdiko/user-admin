@@ -34,6 +34,12 @@
                             <p>{{ user.id }}</p>
                         </div>
                     </div>
+                   <div class="form-group" *ngIf="user && user.created_at">
+                        <label for="name" class="col-xs-2 control-label">Joined</label>
+                        <div class="col-xs-10">
+                            <p>{{ user.created_at }}</p>
+                        </div>
+                    </div>
                     <div class="form-group" *ngIf="user && user.last_login">
                         <label for="name" class="col-xs-2 control-label">Last Login</label>
                         <div class="col-xs-10">

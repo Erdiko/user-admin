@@ -3,6 +3,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+import { AuthService }     from '../shared/auth.service';
+import { UsersService }    from '../shared/users.service';
+import { UserResolve }     from '../shared/user-resolve.service';
+
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -11,7 +15,13 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ 
+          HeaderComponent 
+      ],
+      providers: [
+          AuthService,
+          UsersService,
+          UserResolve
     })
     .compileComponents();
   }));

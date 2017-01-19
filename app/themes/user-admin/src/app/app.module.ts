@@ -17,7 +17,8 @@ import { UserListComponent }    from './user-list/user-list.component';
 import { UserEditComponent }    from './user-edit/user-edit.component';
 import { HeaderComponent }      from './header/header.component';
 
-import { AlertModule }          from 'ng2-bootstrap';
+import { AlertModule, 
+         ModalModule }          from 'ng2-bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AlertModule }          from 'ng2-bootstrap';
     HttpModule,
     AppRoutingModule,
 
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [
     AuthService,

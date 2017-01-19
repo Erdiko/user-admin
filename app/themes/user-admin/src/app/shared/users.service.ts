@@ -18,6 +18,7 @@ export class UsersService {
     private userUrl     = "/ajax/erdiko/users/admin/retrieve";
     private updateUrl   = "/ajax/erdiko/users/admin/update";
     private createUrl   = "/ajax/erdiko/users/admin/create";
+    private deleteUrl   = "/ajax/erdiko/users/admin/delete";
 
     private authToken: any;
 
@@ -150,6 +151,22 @@ export class UsersService {
                    .toPromise()
                    .then(response => response.json().body)
                    .catch(this.handleError);
+    }
+
+    /**
+     *
+     *
+     */
+    deleteUser(id: string) {
+        let body = JSON.stringify({"id": id});
+        let options = this._getHeaderOptions();
+
+        let url = this._baseUrl + this.deleteUrl;
+        return this.http.post(url, body, options)
+                   .toPromise()
+                   .then(response => response.json().body)
+                   .catch(this.handleError);
+
     }
 
     /**

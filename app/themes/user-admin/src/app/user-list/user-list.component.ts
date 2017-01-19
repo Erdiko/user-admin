@@ -1,11 +1,12 @@
-import { Component, OnInit }        from '@angular/core';
+import { Component, OnInit, ViewChild }        from '@angular/core';
 import { Router, ActivatedRoute }   from '@angular/router';
 import { Subscription } from "rxjs";
 
 import { UsersService }             from '../shared/users.service';
 import { User }                     from "../shared/models/user.model";
 
-import {AlertComponent } from 'ng2-bootstrap';
+import { AlertComponent,
+         ModalDirective } from 'ng2-bootstrap';
 
 @Component({
   selector: 'app-user-list',
@@ -13,6 +14,8 @@ import {AlertComponent } from 'ng2-bootstrap';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
+
+    @ViewChild('confirmDeleteModal') public confirmDeleteModal:ModalDirective;
 
     private wait: any;
 
@@ -28,6 +31,9 @@ export class UserListComponent implements OnInit {
     private sortCol: string;
     private sortDir: string;
 
+    private error: any;
+    private selectedUser: any;
+        
     constructor(
            private usersService: UsersService,
            private route: ActivatedRoute,
@@ -53,6 +59,8 @@ export class UserListComponent implements OnInit {
         this.usersService.total$.subscribe(
             () => this._listUpdated()
         );
+
+        this.selectedUser = false;
     }
 
     // on init get a list of the users
@@ -123,6 +131,33 @@ export class UserListComponent implements OnInit {
         this.sortCol = col;
 
         this._getUsers();
+    }
+
+    clickDelete(idx) {
+        this.selectedUser = idx;
+        this.confirmDeleteModal.show();
+    }
+
+    cancelDelete() {
+        this.confirmDeleteModal.hide();
+    }
+
+    confirmDelete(idx) {
+        this.confirmDeleteModal.hide();
+        this.wait = true;
+        this.usersService.deleteUser(this.selectedUser)
+            .then(res => this._handleResponse(res))
+            .catch(error => this.error = error);
+    }
+
+    private _handleResponse(res) {
+        this._getUsers();
+        this.wait = false;
+        
+        if(false == res.success) {
+            this.error = res.error_message;
+        }
+
     }
 
 }

@@ -31,20 +31,29 @@
                         Joined
                     </th> 
                     <th>Edit</th> 
+                    <th>Delete</th> 
                 </tr> 
             </thead> 
 
             <tbody *ngIf="wait"> 
                 <tr>
-                    <td colspan="6" align="center">
+                    <td colspan="7" align="center">
                         <i class="fa fa-refresh fa-spin fa-2x fa-fw"></i> 
+                    </td>
+                </tr>
+            </tbody> 
+
+            <tbody *ngIf="!wait && error"> 
+                <tr>
+                    <td colspan="7" align="center">
+                        <alert type="warning">{{ error }}</alert>
                     </td>
                 </tr>
             </tbody> 
 
             <tbody *ngIf="!wait && !error && users.length < 1"> 
                 <tr>
-                    <td colspan="6" align="center">
+                    <td colspan="7" align="center">
                         <alert type="warning">Sorry, no users were found. Please try again.</alert>
                     </td>
                 </tr>
@@ -58,6 +67,7 @@
                     <td>{{ user.last_login }}</td> 
                     <td>{{ user.joined }}</td> 
                     <td><a routerLink="/user/{{ user.id }}">Edit</a></td> 
+                    <td><button type="button" class="btn btn-danger" (click)="clickDelete(user.id)">Delete</button></td> 
                 </tr> 
             </tbody> 
         </table>
@@ -92,4 +102,32 @@
         </nav>
 
     </div>
+</div>
+
+<div bsModal #confirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete?</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="cancelDelete()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Are you sure you want to delete this user?</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <button type="button" class="btn btn-primary" (click)="cancelDelete()">Cancel</button>
+            </div>
+            <div class="col-xs-6">
+                <button type="button" class="btn btn-danger" (click)="confirmDelete(selectedUser)">Danger</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

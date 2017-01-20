@@ -2,18 +2,15 @@
 /**
  * Wrapper for php file commmands
  *
- * @category    core
- * @package     datasource
- * @copyright   Copyright (c) 2016, Arroyo Labs, www.arroyolabs.com
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
  * @author      Varun Brahme
- * @author      Coleman Tung, coleman@arroyolabs.com
- * @author      John Arroyo, john@arroyolabs.com
+ * @author      Coleman Tung
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\core\datasource;
 
-/**
- * File Class
- */
+
 class File
 {
     /**

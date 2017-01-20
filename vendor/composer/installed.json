@@ -727,53 +727,6 @@
         ]
     },
     {
-        "name": "erdiko/core",
-        "version": "0.10.4",
-        "version_normalized": "0.10.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ArroyoLabs/erdiko-core.git",
-            "reference": "067e88357d0fa7a32b213dde67759131d94f9a7c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ArroyoLabs/erdiko-core/zipball/067e88357d0fa7a32b213dde67759131d94f9a7c",
-            "reference": "067e88357d0fa7a32b213dde67759131d94f9a7c",
-            "shasum": ""
-        },
-        "require": {
-            "erusev/parsedown": ">=1.6",
-            "mustache/mustache": "2.*",
-            "php": ">=5.4.0",
-            "psr/log": "^1.0"
-        },
-        "time": "2017-01-05 01:01:03",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "erdiko\\core\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Arroyo Labs",
-                "email": "info@arroyolabs.com"
-            }
-        ],
-        "description": "Erdiko micro MVC core libraries",
-        "homepage": "http://erdiko.org",
-        "keywords": [
-            "erdiko",
-            "erdiko-core",
-            "framework"
-        ]
-    },
-    {
         "name": "doctrine/annotations",
         "version": "v1.3.1",
         "version_normalized": "1.3.1.0",
@@ -1975,5 +1928,52 @@
         "transport-options": {
             "symlink": true
         }
+    },
+    {
+        "name": "erdiko/core",
+        "version": "0.10.5",
+        "version_normalized": "0.10.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ArroyoLabs/erdiko-core.git",
+            "reference": "36f8ff46418e20a69f51b29ab580ed516dbdf5b4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ArroyoLabs/erdiko-core/zipball/36f8ff46418e20a69f51b29ab580ed516dbdf5b4",
+            "reference": "36f8ff46418e20a69f51b29ab580ed516dbdf5b4",
+            "shasum": ""
+        },
+        "require": {
+            "erusev/parsedown": ">=1.6",
+            "mustache/mustache": "2.*",
+            "php": ">=5.4.0",
+            "psr/log": "^1.0"
+        },
+        "time": "2017-01-20 07:15:42",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "erdiko\\core\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Arroyo Labs",
+                "email": "info@arroyolabs.com"
+            }
+        ],
+        "description": "Erdiko micro MVC core libraries",
+        "homepage": "http://erdiko.org",
+        "keywords": [
+            "erdiko",
+            "erdiko-core",
+            "framework"
+        ]
     }
 ]

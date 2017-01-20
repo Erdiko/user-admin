@@ -713,16 +713,16 @@
         },
         {
             "name": "erdiko/core",
-            "version": "0.10.4",
+            "version": "0.10.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ArroyoLabs/erdiko-core.git",
-                "reference": "067e88357d0fa7a32b213dde67759131d94f9a7c"
+                "reference": "36f8ff46418e20a69f51b29ab580ed516dbdf5b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ArroyoLabs/erdiko-core/zipball/067e88357d0fa7a32b213dde67759131d94f9a7c",
-                "reference": "067e88357d0fa7a32b213dde67759131d94f9a7c",
+                "url": "https://api.github.com/repos/ArroyoLabs/erdiko-core/zipball/36f8ff46418e20a69f51b29ab580ed516dbdf5b4",
+                "reference": "36f8ff46418e20a69f51b29ab580ed516dbdf5b4",
                 "shasum": ""
             },
             "require": {
@@ -754,7 +754,7 @@
                 "erdiko-core",
                 "framework"
             ],
-            "time": "2017-01-05 01:01:03"
+            "time": "2017-01-20 07:15:42"
         },
         {
             "name": "erdiko/doctrine",

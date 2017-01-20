@@ -2,19 +2,14 @@
 /**
  * AjaxResponse
  *
- * @category   Erdiko
- * @package    Core
- * @copyright  Copyright (c) 2016, Arroyo Labs, http://www.arroyolabs.com
- *
- * @author     John Arroyo john@arroyolabs.com
- * @author     Andy Armstrong andy@arroyolabs.com
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
+ * @author      Andy Armstrong <andy@arroyolabs.com>
  */
 namespace erdiko\core;
 
 
-/**
- * AjaxResponse class
- */
 class AjaxResponse extends Response
 {
 
@@ -81,10 +76,7 @@ class AjaxResponse extends Response
             "body"   => $this->_content,
             "errors" => $this->_errors
         );
-
-        // set the mime type to JSON
-        header('Content-Type: application/json');
-
+        
         return json_encode($responseData);
     }
 
@@ -99,6 +91,5 @@ class AjaxResponse extends Response
         header('Content-Type: application/json');
 
         echo $this->render();
-        die();
     }
 }

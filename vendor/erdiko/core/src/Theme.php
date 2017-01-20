@@ -2,17 +2,15 @@
 /**
  * Theme
  *
- * @category   Erdiko
- * @package    Core
- * @copyright  Copyright (c) 2016, Arroyo Labs, http://www.arroyolabs.com
- * @author     John Arroyo
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\core;
 
 
 /**
- * Theme class
- * Note the data array in this class uses a sort of NOSQL style approach to the theming
+ * @note the data array in this class uses a sort of NOSQL style approach to the theming
  */
 class Theme extends Container
 {
@@ -34,8 +32,8 @@ class Theme extends Container
      *
      * @param string $themeName
      * @param mixed $data
-     * @param string $template , Theme Object (Contaier)
-     * @param string $context, theme against a context (defaults to context in environment)
+     * @param string $template Theme Object (Contanier)
+     * @param string $context context to theme against (defaults to current environment context)
      */
     public function __construct($themeName = 'default', $data = null, 
         $template = 'default', $context = null)
@@ -58,7 +56,7 @@ class Theme extends Container
      * This is the application config for the given context (e.g. default site)
      * Context is determined by environment variable ERDIKO_CONTEXT, getenv('ERDIKO_CONTEXT')
      *
-     * @return array $config, application config
+     * @return array $config application config
      */
     public function getContextConfig()
     {
@@ -71,7 +69,7 @@ class Theme extends Container
     /**
      * Get Theme configuration (default theme)
      *
-     * @return string
+     * @return array $config
      */
     public function getThemeConfig()
     {
@@ -85,7 +83,7 @@ class Theme extends Container
     /**
      * Get Meta
      *
-     * @return string
+     * @return string $meta
      */
     public function getMeta()
     {
@@ -110,7 +108,7 @@ class Theme extends Container
     /**
      * Add meta tag data to page
      *
-     * @param array $meta, format: array("name" => "content", "author" => "content", ...)
+     * @param array $meta format: array("name" => "content", "author" => "content", ...)
      */
     public function setMeta($meta)
     {
@@ -119,7 +117,7 @@ class Theme extends Container
 
     /**
      * Get SEO meta data and render as html (meta tags)
-     * @return string $html
+     * @return string html meta tags
      */
     public function getMetaMarkup()
     {
@@ -139,9 +137,9 @@ class Theme extends Container
     }
 
     /**
-     *  Get page title
+     * Get page title
      *
-     *  @return string $page_title
+     * @return string page title
      */
     public function getPageTitle()
     {
@@ -153,9 +151,9 @@ class Theme extends Container
     }
 
     /**
-     *  Set page title
+     * Set page title
      *
-     *  @param string $page_title
+     * @param string $title
      */
     public function setPageTitle($title)
     {
@@ -165,7 +163,7 @@ class Theme extends Container
     /**
      * Get body title
      *
-     *  @return string $body_title
+     * @return string body title
      */
     public function getBodyTitle()
     {
@@ -177,9 +175,9 @@ class Theme extends Container
     }
 
     /**
-     *  Set body title
+     * Set body title
      *
-     *  @param string $page_title
+     * @param string $title
      */
     public function setBodyTitle($title)
     {
@@ -189,7 +187,7 @@ class Theme extends Container
     /**
      * Get array of css files to include in theme
      *
-     * @return array $css
+     * @return array css file paths
      * @todo sort by the 'order' value
      */
     public function getCss()
@@ -204,9 +202,12 @@ class Theme extends Container
     /**
      * Add css file to page
      * @note there are collisions with using addCss and data['css']
-     * @todo need to resolve order of merging and/or eliminate/refactor this function
      *
-     * @param string $cssFile , URL of injected css file
+     * @param string $name
+     * @param string $cssFile URL of injected css file
+     * @param int $order 
+     * @param boolean $active defaults to 1
+     * @todo need to resolve order of merging and/or eliminate/refactor this function
      */
     public function addCss($name, $cssFile, $order = 10, $active = 1)
     {
@@ -220,7 +221,7 @@ class Theme extends Container
     /**
      * Get array of js files to include
      *
-     * @return array $js
+     * @return array js file paths
      * @todo sort by the 'order' value
      */
     public function getJs()
@@ -234,9 +235,12 @@ class Theme extends Container
 
     /**
      * Add js file to page
-     * @todo same issue as addCss
      *
-     * @param string $jsFile , link to js file
+     * @param string $name
+     * @param string $jsFile URL of js file
+     * @param int $order 
+     * @param boolean $active defaults to 1
+     * @todo same issue as addCss
      */
     public function addJs($name, $jsFile, $order = 10, $active = 1)
     {
@@ -291,7 +295,7 @@ class Theme extends Container
     /**
      * Set content
      *
-     * @param Container $content , e.g. View or Layout Object???
+     * @param string|Container $content any string or object that implements __toString()
      */
     public function setContent($content)
     {
@@ -301,7 +305,7 @@ class Theme extends Container
     /**
      * Get content
      *
-     * @return string $content???
+     * @return string|Container content
      */
     public function getContent()
     {
@@ -311,7 +315,7 @@ class Theme extends Container
     /**
      * Set the theme name, the name is also the id of the theme
      *
-     * @param string $name , Theme name
+     * @param string Theme name
      */
     public function setName($name)
     {
@@ -319,9 +323,10 @@ class Theme extends Container
     }
 
     /**
-     * Get name
+     * Get name.
+     * Return Theme name
      *
-     * @return string - Return Theme name
+     * @return string name
      */
     public function getName()
     {
@@ -334,8 +339,7 @@ class Theme extends Container
      * @usage Partial render need to be declared in theme.json
      * e.g. get header/footer
      * @param string $partial
-     * @param string $context
-     * @return string $html
+     * @return string html
      */
     public function getTemplateHtml($partial)
     {
@@ -351,9 +355,7 @@ class Theme extends Container
     /**
      * Output content to html
      *
-     * @param string @content
-     * @param string @data
-     * @return string
+     * @return string html
      */
     public function toHtml()
     {

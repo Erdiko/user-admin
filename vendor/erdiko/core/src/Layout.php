@@ -3,16 +3,13 @@
  * Layout
  * @todo allow switching between layout templates in the theme and the views folder
  *
- * @category   Erdiko
- * @package    Core
- * @copyright  Copyright (c) 2016, Arroyo Labs, http://www.arroyolabs.com
- * @author     John Arroyo
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\core;
 
-/**
- * Layout Class
- */
+
 class Layout extends Container
 {
     /** Theme Template folder */

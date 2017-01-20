@@ -2,12 +2,11 @@
 /**
  * Logging utility for Erdiko
  *
- * @category    Erdiko
- * @package     core
- * @copyright   Copyright (c) 2016, Arroyo Labs, www.arroyolabs.com
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
  * @author      Varun Brahme
- * @author      Coleman Tung, coleman@arroyolabs.com
- * @author      John Arroyo, john@arroyolabs.com
+ * @author      Coleman Tung
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\core;
 
@@ -16,9 +15,7 @@ use \Psr\Log\LoggerInterface;
 use \Psr\Log\InvalidArgumentException;
 use \Psr\Log\LogLevel;
 
-/**
- * Logger Class
- */
+
 class Logger extends File implements LoggerInterface
 {
     
@@ -32,7 +29,7 @@ class Logger extends File implements LoggerInterface
      * Constructor
      *
      * @param array $logFiles
-     * @param string $logDir, fully qualified path or a path relative to the erdiko root
+     * @param string $logDir fully qualified path or a path relative to the erdiko root
      */
     public function __construct($logFiles = array(), $logDir = null)
     {
@@ -119,9 +116,8 @@ class Logger extends File implements LoggerInterface
      * The message MAY contain placeholders which implementors MAY replace with values from the context array.
      * Placeholder names MUST correspond to keys in the context array.
      *
-     * @param string $level
-     * @param string or an object with a __toString() method$ message
-     * @param array $context
+     * @param string $message or an object with a __toString() method
+     * @param array $context replacement values for placeholders
      * @return bool
      */
     function interpolate($message, array $context = array())

@@ -2,10 +2,9 @@
 /**
  * ErrorHandler
  *
- * @category    Erdiko
- * @package     Core
- * @copyright   Copyright (c) 2016, Arroyo Labs, http://www.arroyolabs.com
- * @author      Leo Daidone, leo@arroyolabs.com
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      Leo Daidone <leo@arroyolabs.com>
  */
 
 namespace erdiko\core;
@@ -16,8 +15,8 @@ class ErrorHandler
 {
 	public static function init()
 	{
-		ini_set('html_errors',0);
-		error_reporting((E_ALL | E_STRICT));
+		ini_set('html_errors',0); // @todo review this line
+		// error_reporting((E_ALL | E_STRICT)); // @note we shouldn't override by default, but we could inject
 		set_error_handler("\\erdiko\\core\\ErrorHandler::errorHandler");
 		register_shutdown_function("\\erdiko\\core\\ErrorHandler::fatalErrorShutdownHandler");
 	}

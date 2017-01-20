@@ -4,19 +4,14 @@
  *
  * Base request handler, all ajax controllers should inherit this class.
  *
- * @category   Erdiko
- * @package    Core
- * @copyright  Copyright (c) 2016, Arroyo Labs, http://www.arroyolabs.com
- *
- * @author     John Arroyo john@arroyolabs.com
- * @author     Andy Armstrong andy@arroyolabs.com
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
+ * @author      Andy Armstrong <andy@arroyolabs.com>
  */
 namespace erdiko\core;
 
 
-/**
- * AjaxController class
- */
 class AjaxController extends Controller
 {
 

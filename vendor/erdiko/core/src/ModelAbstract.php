@@ -3,16 +3,13 @@
  * Base Model
  * All custom model types should extend this core class
  *
- * @category    Erdiko
- * @package     Core
- * @copyright   Copyright (c) 2016, Arroyo Labs, http://www.arroyolabs.com
- * @author      John Arroyo, john@arroyolabs.com
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\core;
 
-/**
- * Model Class
- */
+
 abstract class ModelAbstract
 {
    

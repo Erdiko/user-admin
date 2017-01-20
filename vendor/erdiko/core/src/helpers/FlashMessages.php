@@ -5,12 +5,12 @@
  * Flash messages are stored in session.
  * Types of messages: success, info, warning, danger
  *
- * @category    core
- * @package     helpers
- * @copyright   Copyright (c) 2016, Arroyo Labs, www.arroyolabs.com
- * @author      John Arroyo, john@arroyolabs.com
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\core\helpers;
+
 
 class FlashMessages
 {

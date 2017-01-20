@@ -3,15 +3,13 @@
  * Response
  * base response, all response objects should inherit from here
  *
- * @category   Erdiko
- * @package    Core
- * @copyright  Copyright (c) 2016, Arroyo Labs, http://www.arroyolabs.com
- * @author     John Arroyo
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\core;
 
 
-/** Response Class */
 class Response
 {
     /** Theme object */
@@ -203,6 +201,5 @@ class Response
     public function send()
     {
         echo $this->render();
-        die();
     }
 }

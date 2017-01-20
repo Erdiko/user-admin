@@ -2,11 +2,9 @@
 /**
  * EntityManager
  *
- * @category   Erdiko
- * @package    Doctrine
- * @copyright  Copyright (c) 2016, Arroyo Labs, http://www.arroyolabs.com
- *
- * @author     John Arroyo john@arroyolabs.com
+ * @package     erdiko/doctrine
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\doctrine;
 
@@ -27,7 +25,7 @@ class EntityManager
         $dbParams['dbname'] = $dbParams['database'];
         $dbParams['user'] = $dbParams['username'];
 
-        $paths = array(APPROOT.$dbConfig['entities']);
+        $paths = array(ERDIKO_ROOT.$dbConfig['entities']);
         $isDevMode = isset($dbConfig['is_dev_mode']) ? (bool)$dbConfig['is_dev_mode'] : false;
         $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
         

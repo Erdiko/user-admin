@@ -3,16 +3,13 @@
  * Cache
  * Dependency injected cache API
  *
- * @category   Erdiko
- * @package    Core
- * @copyright  Copyright (c) 2016, Arroyo Labs, http://www.arroyolabs.com
- * @author     John Arroyo
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\core;
 
-/**
- * Cache class
- */
+
 class Cache
 {
     /** Cache singleton instance */

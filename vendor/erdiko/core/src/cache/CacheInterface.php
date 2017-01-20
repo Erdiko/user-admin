@@ -2,17 +2,14 @@
 /**
  * Interface for all supported php caches
  *
- * @category    core
- * @package     cache
- * @copyright   Copyright (c) 2016, Arroyo Labs, www.arroyolabs.com
+ * @package     erdiko/core
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
  * @author      Varun Brahme
- * @author      John Arroyo, john@arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\core\cache;
 
-/**
- * Cache Interface
- */
+
 interface CacheInterface
 {
     /**

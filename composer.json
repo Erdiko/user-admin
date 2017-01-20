@@ -16,6 +16,7 @@
         "erdiko/users": "@dev",
         "erdiko/authenticate": "@dev",
         "erdiko/authorize": "@dev",
+        "erdiko/doctrine": "^0.3.0",
         "ac/kalinka": "dev-master",
         "firebase/php-jwt": "^4.0"
     },

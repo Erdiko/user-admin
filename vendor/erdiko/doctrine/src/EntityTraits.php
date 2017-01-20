@@ -4,10 +4,9 @@
  *
  * Convenient db traits to be used with models and service models
  * 
- * @category    erdiko
- * @package     doctrine
- * @copyright   Copyright (c) 2016, Arroyo Labs, http://www.arroyolabs.com
- * @author      John Arroyo, john@arroyolabs.com
+ * @package     erdiko/doctrine
+ * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com
+ * @author      John Arroyo <john@arroyolabs.com>
  */
 namespace erdiko\doctrine;
 

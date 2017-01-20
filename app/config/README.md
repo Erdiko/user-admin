@@ -26,3 +26,8 @@ Help
 default/routes.json
 
 	* Defines site wide routes
+
+Note
+====
+
+Vendor packages are checked into the codebase at this time just to aid development.  When we get closer to a release candidate we will remove the vendor folder from git.

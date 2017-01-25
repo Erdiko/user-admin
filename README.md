@@ -17,39 +17,28 @@ We chose to use Angular CLI since it makes it very simple to create new componen
 Installation
 ------------
 
-1. Get the code 
+#### Create your project using composer:
 
-a) Clone repository
-You can clone repository from github: 
-`git clone https://github.com/Erdiko/user-admin.git`
+`composer create erdiko/user-admin [PROJECT NAME]`
 
-b) Download ZIP file 
-You can download as a `.zip` file and extract it.
+###### NOTE - Minimum Stability
 
-2. Get dependencies
+Please note that at this time, you may need to set the minimum stability to "DEV" until we finalize our stable release. Simply add this flag to the command string above.
 
-Again you have to alternatives to accomplish this steps:
-a) You can run scripts under `scripts` folder.
- 
-b) You can clone the other three required repos from github one level up from your `user-admin` project folder:
+` --stability DEV`
 
-b1) - `git clone https://github.com/Erdiko/users.git`
+#### Enter the newly created project directory
 
-b2) - `git clone https://github.com/Erdiko/authenticate.git`
+`cd [PROJECT NAME]`
 
-b2) - `git clone https://github.com/Erdiko/authorize.git`
+#### Start your docker container
 
-3. Update Composer 
-Just run `composer update` in your project folder in order to update links references in your vendor folder and 
-autoloads.
-
-How to Use
-----------
-
-First you will need to start the docker container running
 `docker compose up -d`
 
-In your browser go to `http://docker.local:8088/`    
+#### View your new project in your browser
+
+[http://docker.local:8088/](http://docker.local:8088/)
+
 
 Editing & Compiling the Angular Code
 ------------------------------------

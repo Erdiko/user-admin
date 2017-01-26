@@ -1,11 +1,13 @@
 User Admin
 ==========
 
+[![Package version](https://img.shields.io/packagist/v/erdiko/user-admin.svg?style=flat-square)](https://packagist.org/packages/erdiko/user-admin)
+
 Goal: A fully functional and modular user management system with an Angular 2 UX.
 
-* This is an initial development project, do not use in production yet
+* This is an active development project and not quite ready for production yet
 
-It is based on a few erdiko packages (authorize, authenticate, and users) and the [Angular CLI](https://github.com/angular/angular-cli) project.
+It is based on a few erdiko packages (authorize, authenticate, and users) as well as the [Angular CLI](https://github.com/angular/angular-cli) project.
 
 Angular Application
 -------------------

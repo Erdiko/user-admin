@@ -20,6 +20,8 @@ import { HeaderComponent }      from './header/header.component';
 import { AlertModule, 
          ModalModule }          from 'ng2-bootstrap';
 
+import { EqualityValidator }    from './shared/equality-validator.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { AlertModule,
     UserEditComponent,
     HomeComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    EqualityValidator
   ],
   imports: [
     BrowserModule,

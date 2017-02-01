@@ -103,3 +103,72 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-xs-12">
+        <br/>
+    </div>
+</div>
+<div class="row" *ngIf="user">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span>Update User Password</span>
+            </div>
+            <div class="panel-body">
+
+                <alert *ngIf="passMsg" type="success">{{ passMsg }}</alert>
+                <alert *ngIf="passError" type="danger">{{ passError }}</alert>
+
+                <form 
+                        id="user-password-change" 
+                        class="form-horizontal"
+                        novalidate 
+                        (ngSubmit)="onSubmitChangepass(passwordForm)" 
+                        [formGroup]="passwordForm"
+                    >
+                    <div class="form-group">
+                        <label for="password" class="col-xs-2 control-label">New Password</label>
+                        <div class="col-xs-10">
+                            <input  type="password" 
+                                    class="form-control" 
+                                    name="password" 
+                                    formControlName="password"
+                                    required>
+                            <div class="text-danger" *ngIf="passwordForm.get('password').hasError('required') && passwordForm.get('password').touched">
+                              Password is required
+                            </div>
+                        </div>
+                    </div>
+                   <div class="form-group">
+                        <label for="password" class="col-xs-2 control-label">Confirm Password</label>
+                        <div class="col-xs-10">
+
+                            <input  type="password" 
+                                    class="form-control" 
+                                    name="confirm" 
+                                    formControlName="confirm"
+                                    validateEquality="password" 
+                                    required>
+
+                            <div class="text-danger" *ngIf="passwordForm.get('confirm').hasError('required') && passwordForm.get('confirm').touched">
+                              Password Confirm is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-2 col-xs-4">
+                            <button type="submit" class="btn btn-default" [disabled]="passwordForm.invalid || passWait">
+                                Save
+                                <i *ngIf="passWait" class="fa fa-refresh fa-spin fa-fw"></i> 
+                            </button>
+                        </div>
+                        <div class="col-xs-offset-2 col-xs-4">
+                            <button type="cancel" class="btn btn-default" routerLink="/list/">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

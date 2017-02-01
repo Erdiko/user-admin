@@ -16,12 +16,18 @@ export class UserEditComponent implements OnInit {
 
     private wait: any;
 
+    private passWait: any;
+
     private title: string;
 
     private userForm: FormGroup;
+    private passwordForm: FormGroup;
 
     private error: string;
     private msg: string;
+
+    private passError: string;
+    private passMsg: string;
 
     private user: User;
 
@@ -33,14 +39,15 @@ export class UserEditComponent implements OnInit {
         ) { 
 
         // init the wait state (and indication animation) to 'off'
-        this.wait = false;
+        this.wait       = false;
+        this.passWait   = false;
 
         this.user = new User();
     }
 
     ngOnInit() {
 
-        this._initForm();
+        this._initForms();
         this.route.data.forEach((data: { user: any }) => {
             this.user = data.user;
             if(this.user) {
@@ -52,12 +59,18 @@ export class UserEditComponent implements OnInit {
 
     }
 
-    private _initForm() {
+    private _initForms() {
         this.userForm = this.fb.group({
             name:  ['', [Validators.required, Validators.minLength(3)]],
             email: ['', Validators.required],
             role:  ['', Validators.required]
         });
+
+        this.passwordForm = this.fb.group({
+            password:  ['', [Validators.required, Validators.minLength(3)]],
+            confirm: ['', Validators.required],
+        });
+
     }
 
     onSubmit({ value, valid }: { value: User, valid: boolean }) {
@@ -79,8 +92,7 @@ export class UserEditComponent implements OnInit {
             }
         }
     }
-
-
+    
     private _handleResponse(res) {
         this.wait = false;
         if(true == res.success) {
@@ -94,6 +106,29 @@ export class UserEditComponent implements OnInit {
 
         } else {
             this._handleError(res.error_message);
+        }
+    }
+
+    onSubmitChangepass({ value, valid }: { value: any, valid: boolean }) {
+        this.passWait = true;
+        this.passMsg = this.passError = '';
+
+        if(valid) {
+            this.usersService.changePassword(this.user.id, value.password)
+                .then(res => this._handlePasswordResponse(res))
+                .catch(error => this.passError = error);
+        }
+    }
+
+    private _handlePasswordResponse(res) {
+        this.passWait = false;
+
+        this.passwordForm.reset();
+
+        if(true == res.success) {
+            this.passMsg = "User password successfully updated."
+        } else {
+            this.passError = res.error_message;
         }
     }
 

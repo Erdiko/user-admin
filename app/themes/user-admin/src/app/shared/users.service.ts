@@ -14,11 +14,12 @@ export class UsersService {
     private _total$: BehaviorSubject<any>;
     private dataStore: {users?: any, total?: number};
 
-    private listUrl     = "/ajax/erdiko/users/admin/list";
-    private userUrl     = "/ajax/erdiko/users/admin/retrieve";
-    private updateUrl   = "/ajax/erdiko/users/admin/update";
-    private createUrl   = "/ajax/erdiko/users/admin/create";
-    private deleteUrl   = "/ajax/erdiko/users/admin/delete";
+    private listUrl         = "/ajax/erdiko/users/admin/list";
+    private userUrl         = "/ajax/erdiko/users/admin/retrieve";
+    private updateUrl       = "/ajax/erdiko/users/admin/update";
+    private createUrl       = "/ajax/erdiko/users/admin/create";
+    private deleteUrl       = "/ajax/erdiko/users/admin/delete";
+    private changePassUrl   = "/ajax/erdiko/users/admin/changepass";
 
     private authToken: any;
 
@@ -167,6 +168,21 @@ export class UsersService {
                    .then(response => response.json().body)
                    .catch(this.handleError);
 
+    }
+
+    /**
+     *
+     */
+    changePassword(id: number, newpass: string) {
+        let body = JSON.stringify({'id': id, 'newpass': newpass});
+        console.log(body);
+        let options = this._getHeaderOptions();
+
+        let url = this._baseUrl + this.changePassUrl;
+        return this.http.post(url, body, options)
+                   .toPromise()
+                   .then(response => response.json().body)
+                   .catch(this.handleError);
     }
 
     /**

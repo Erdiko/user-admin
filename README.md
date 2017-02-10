@@ -59,6 +59,20 @@ Editing and compiling the Angular code is simple, and we use Angular CLIs test s
 * Run the e2e/functional tests: `npm run e2e`
 * Compile and export files for end user: `npm run build`
 
+
+Local Development
+-----------------
+
+To set your environment up for local development, please follow these steps:
+
+* Clone your fork of the User Admin project into a local directory
+* Clone the following packages into the same directory
+  * [Authenticate](https://github.com/Erdiko/authenticate)
+  * [Authorize](https://github.com/Erdiko/authorize)
+  * [Users](https://github.com/Erdiko/users)
+* Copy the `composer-dev.json` file to `composer.json`
+* Start your docker container `docker-composer up --build`
+
 Special Thanks
 --------------
 

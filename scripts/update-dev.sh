@@ -17,7 +17,7 @@ git pull origin $BRANCH
 echo "${GREEN}user-admin updated\n ${RESET}"
 
 # Pull users
-cd ../../users
+pushd ../../users
 git checkout $BRANCH
 git pull origin $BRANCH
 echo "${GREEN}users updated\n ${RESET}"
@@ -33,3 +33,8 @@ cd ../authorize
 git checkout $BRANCH
 git pull origin $BRANCH
 echo "${GREEN}authorize updated\n ${RESET}"
+
+# Update composer packages
+pushd
+cd ../
+composer update

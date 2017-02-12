@@ -5,7 +5,7 @@ User Admin
 
 Goal: A fully functional and modular user management system with an Angular 2 UI.
 
-* This is an active development project and not quite ready for production yet
+**Note this is an active development project and not quite ready for production yet**
 
 It is based on a few erdiko packages (authorize, authenticate, and users) as well as the [Angular CLI](https://github.com/angular/angular-cli) project.
 
@@ -19,15 +19,13 @@ We chose to use Angular CLI since it makes it very simple to create new componen
 Installation
 ------------
 
-#### Create your project using composer:
+#### Create your project using composer
 
 `composer create erdiko/user-admin [PROJECT NAME]`
 
 ###### Note about versions
 
-Since this project is still under heavy development we recommend running the latest from the develop branch.
-
-If you would like to tell composer to use the develop branch use this command instead of the one above. 
+Since this project is still under heavy development we recommend running the latest from the develop branch.  If you would like to tell composer to use the develop branch use this command instead of the one above. 
 
 `composer create erdiko/user-admin [PROJECT NAME] dev-develop`
 
@@ -36,6 +34,7 @@ If you would like to tell composer to use the develop branch use this command in
 Enter your newly created project directory and run docker compose.
 
 `cd [PROJECT NAME]`
+
 `docker-compose up -d`
 
 If you don't have docker compose installed you can install by following the instructions here, [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/).  You can, of course, just create create your own lamp stack if you wish.  If you create your own enviornment the weboot is /public/default/ and the database config is in /app/config/shared/database.json

@@ -3,16 +3,16 @@ User Admin
 
 [![Package version](https://img.shields.io/packagist/v/erdiko/user-admin.svg?style=flat-square)](https://packagist.org/packages/erdiko/user-admin)
 
-Goal: A fully functional and modular user management system with an Angular 2 UX.
+Goal: A fully functional and modular user management system with an Angular 2 UI.
 
 * This is an active development project and not quite ready for production yet
 
 It is based on a few erdiko packages (authorize, authenticate, and users) as well as the [Angular CLI](https://github.com/angular/angular-cli) project.
 
-Angular Application
--------------------
+Application
+-----------
 
-The UX is an Angular CLI project using a simple erdiko application to load and bootrap. The basic Erdiko routing loads and starts the Angular 2 application as are the AJAX routes.
+The UI is an Angular CLI project using an erdiko web application to interact with the database. Erdiko loads the Angular 2 application as well as serves the AJAX routes.
 
 We chose to use Angular CLI since it makes it very simple to create new components as well as creating basic unit and functional tests for the developer. We also wanted to provide a method to allow the user to easily test their code as they developed yet still compile and serve the smallest code when serving to the end user.
 
@@ -23,19 +23,26 @@ Installation
 
 `composer create erdiko/user-admin [PROJECT NAME]`
 
-###### NOTE - Minimum Stability
+###### Note about versions
 
-Please note that at this time, you may need to set the minimum stability to "DEV" until we finalize our stable release. Simply add this flag to the command string above.
+Since this project is still under heavy development we recommend running the latest from the develop branch.
 
-` --stability DEV`
+If you would like to tell composer to use the develop branch use this command instead of the one above. 
 
-#### Enter the newly created project directory
+`composer create erdiko/user-admin [PROJECT NAME] dev-develop`
+
+#### Create your docker containers
+
+Enter your newly created project directory and run docker compose.
 
 `cd [PROJECT NAME]`
+`docker-compose up -d`
 
-#### Start your docker container
+If you don't have docker compose installed you can install by following the instructions here, [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/).  You can, of course, just create create your own lamp stack if you wish.  If you create your own enviornment the weboot is /public/default/ and the database config is in /app/config/shared/database.json
 
-`docker compose up -d`
+#### Install the users database
+
+Follow the instructions in erdiko/users to update your database.  Check your vendor folder for this package or go to the github repo at [https://github.com/Erdiko/users](https://github.com/Erdiko/users).
 
 #### View your new project in your browser
 

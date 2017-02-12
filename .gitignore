@@ -7,3 +7,4 @@ var/*
 .idea/*
 node_modules/*
 /mysql
+composer.lock

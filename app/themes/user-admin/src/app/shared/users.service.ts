@@ -10,9 +10,11 @@ import { User }         from "./models/user.model";
 @Injectable()
 export class UsersService {
 
-    private _users$: BehaviorSubject<any>;
-    private _total$: BehaviorSubject<any>;
-    private dataStore: {users?: any, total?: number};
+    private _users$:  BehaviorSubject<any>;
+    private _total$:  BehaviorSubject<any>;
+    private _events$: BehaviorSubject<any>;
+
+    private dataStore: {users?: any, total?: number, events?: any};
 
     private listUrl         = "/ajax/erdiko/users/admin/list";
     private userUrl         = "/ajax/erdiko/users/admin/retrieve";
@@ -20,6 +22,8 @@ export class UsersService {
     private createUrl       = "/ajax/erdiko/users/admin/create";
     private deleteUrl       = "/ajax/erdiko/users/admin/delete";
     private changePassUrl   = "/ajax/erdiko/users/admin/changepass";
+
+    private userEventUrl    = "/ajax/erdiko/users/admin/eventlogs";
 
     private authToken: any;
 
@@ -30,8 +34,10 @@ export class UsersService {
         private authService: AuthService) {
 
         this.dataStore = {};
-        this._users$ = new BehaviorSubject(null);
-        this._total$ = new BehaviorSubject(null);
+
+        this._users$  = new BehaviorSubject(null);
+        this._total$  = new BehaviorSubject(null);
+        this._events$ = new BehaviorSubject(null);
 
         // hack to help with local development
         this._baseUrl = "";
@@ -47,6 +53,10 @@ export class UsersService {
 
     get total$() {
         return this._total$.asObservable();
+    }
+
+    get events$() {
+        return this._events$.asObservable();
     }
 
     /**
@@ -155,7 +165,7 @@ export class UsersService {
     }
 
     /**
-     *
+     * Delete a user record
      *
      */
     deleteUser(id: string) {
@@ -171,6 +181,7 @@ export class UsersService {
     }
 
     /**
+     * Update a user record password
      *
      */
     changePassword(id: number, newpass: string) {
@@ -184,6 +195,51 @@ export class UsersService {
                    .then(response => response.json().body)
                    .catch(this.handleError);
     }
+
+    /**
+     * get event logs for a user
+     *
+     */
+    getUserEvents(id: string, pagesize?: number, page?: number, sortCol?: string, sortDir?: string) {
+
+        let url = this._baseUrl + this.userEventUrl;
+
+        url += "?user_id=" + id;
+
+        if(pagesize) {
+            url += "&pagesize=" + pagesize;
+        }
+
+        if(page) {
+            url += "&page=" + page;
+        }
+
+        if(sortCol) {
+            url += "&sort=" + sortCol;
+        }
+
+        if(sortDir) {
+            url += "&direction=" + sortDir;
+        }
+    
+        let options = this._getHeaderOptions();
+
+        return this.http.get(url, options)
+                   .map(response => response.json())
+                   .subscribe(data => {
+                       this.dataStore.events = [];
+                       if(true == data.body.success) {
+                           this.dataStore.events = data.body.logs;
+                       }
+                       this._events$.next(this.dataStore.events);
+                   },
+                   error => {
+                       // log the error!
+                       console.error("Error retrieving user event logs!", url, error);
+                       this._events$.next([]);
+                   });
+    }
+
 
     /**
      * handle response errors

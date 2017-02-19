@@ -1,7 +1,7 @@
 User Admin
 ==========
 
-[![Package version](https://img.shields.io/packagist/v/erdiko/user-admin.svg?style=flat-square)](https://packagist.org/packages/erdiko/user-admin)
+[![Package version](https://img.shields.io/packagist/v/erdiko/user-admin.svg?style=flat-square)](https://packagist.org/packages/erdiko/user-admin) [![Travis CI](https://travis-ci.org/Erdiko/user-admin.svg?branch=master)](https://travis-ci.org/Erdiko/user-admin) [![License](https://poser.pugx.org/erdiko/user-admin/license)](https://packagist.org/packages/erdiko/user-admin)
 
 Goal: A fully functional and modular user management system with an Angular 2 UI.
 

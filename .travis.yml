@@ -22,6 +22,7 @@ script:
   - sudo docker-compose up -d
   - sudo docker-compose ps
   - sudo chmod 770 scripts/*.sh
+  - sudo docker exec erdiko_users_php /code/scripts/install-db.sh
   - sudo docker exec erdiko_users_php /code/scripts/ci-tests.sh
 
 notifications:

@@ -9,12 +9,14 @@ Goal: A fully functional and modular user management system with an Angular 2 UI
 
 It is based on a few erdiko packages (authorize, authenticate, and users) as well as the [Angular CLI](https://github.com/angular/angular-cli) project.
 
+
 Application
 -----------
 
 The UI is an Angular CLI project using an erdiko web application to interact with the database. Erdiko loads the Angular 2 application as well as serves the AJAX routes.
 
 We chose to use Angular CLI since it makes it very simple to create new components as well as creating basic unit and functional tests for the developer. We also wanted to provide a method to allow the user to easily test their code as they developed yet still compile and serve the smallest code when serving to the end user.
+
 
 Installation
 ------------
@@ -78,6 +80,7 @@ To set your environment up for local development, please follow these steps:
   * [Users](https://github.com/Erdiko/users)
 * Copy the `composer-dev.json` file to `composer.json`
 * Start your docker container `docker-composer up --build`
+
 
 Special Thanks
 --------------

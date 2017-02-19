@@ -25,7 +25,7 @@ export class UserListComponent implements OnInit {
     private total: number;
 
     private currentPage = 1;
-    private pagesize = 4;
+    private pagesize = 10;
     private pages: number[] = [];
 
     private sortCol: string;

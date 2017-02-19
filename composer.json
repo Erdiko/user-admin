@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.0",
         "erdiko/core": "^0.10.6",
         "erdiko/doctrine": "^0.3.0",
         "erdiko/users": "dev-develop",

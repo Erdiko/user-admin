@@ -25,7 +25,7 @@ Installation
 
 `composer create erdiko/user-admin [PROJECT NAME]`
 
-###### Note about versions
+##### Note about versions
 
 Since this project is still under heavy development we recommend running the latest from the develop branch.  If you would like to tell composer to use the develop branch use this command instead of the one above. 
 
@@ -43,7 +43,11 @@ If you don't have docker compose installed you can install by following the inst
 
 #### Install the users database
 
-Follow the instructions in erdiko/users to update your database.  Check your vendor folder for this package or go to the github repo at [https://github.com/Erdiko/users](https://github.com/Erdiko/users).
+If you're running the docker container, installing the db is easy.  Just run the scripts/install-db.sh script.
+
+If you are not using the docker script then simply restore the sql dump found in vendor/erdiko/users/sql/dumps/user-admin.sql.  Update app/config/shared/database.json with the connection information for your mysql server.
+
+Check the users README if you need more information [https://github.com/Erdiko/users](https://github.com/Erdiko/users).
 
 #### View your new project in your browser
 

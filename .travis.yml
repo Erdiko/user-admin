@@ -1,16 +1,23 @@
 sudo: required
 
 language: php
-php:
-  - '5.5'
 
-install:
-  - curl -sSL https://get.docker.com/ | sudo sh
-  - sudo pip install docker-compose
-  - pwd
-  - ls -lah
+php: '5.5'
+
+services:
+  - docker
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.10.0
+
+#install:
+#  - curl -sSL https://get.docker.com/ | sudo sh
+#  - sudo pip install docker-compose
+#  - pwd
+#  - ls -lah
 
 before_script:
+  - docker-compose -v
   - wget https://raw.githubusercontent.com/ArroyoLabs/erdiko/master/docker/php/7.0/scripts/composer.sh
   - chmod 770 composer.sh
   - ./composer.sh
@@ -19,11 +26,12 @@ script:
   - echo "$TRAVIS_BRANCH"
   - ls -lah
   - composer update
-  - sudo docker-compose up -d
-  - sudo docker-compose ps
-  - sudo chmod 770 scripts/*.sh
-  - sudo docker exec erdiko_users_php /code/scripts/install-db.sh
-  - sudo docker exec erdiko_users_php /code/scripts/ci-tests.sh
+  - docker-compose up -d
+  - docker-compose ps
+  - netstat -tulpn
+  - chmod 770 scripts/*.sh
+  - docker exec erdiko_users_php /code/scripts/install-db.sh
+  - docker exec erdiko_users_php /code/scripts/ci-tests.sh
 
 notifications:
   email:

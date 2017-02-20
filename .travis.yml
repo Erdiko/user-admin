@@ -19,16 +19,16 @@ install:
   - wget https://raw.githubusercontent.com/ArroyoLabs/erdiko/master/docker/php/7.0/scripts/composer.sh
   - chmod 770 composer.sh
   - ./composer.sh
-
-before_script:
   - ls -lah
   - composer update
+
+before_script:
   - docker-compose up -d
   - docker-compose ps
   - sleep 3
   - chmod 770 scripts/*.sh
   - docker exec erdiko_users_php /code/scripts/install-db.sh
-  - ./scripts/travis-debug.sh
+  # - ./scripts/travis-debug.sh
   - docker exec erdiko_users_php /code/scripts/travis-debug.sh
 
 script:

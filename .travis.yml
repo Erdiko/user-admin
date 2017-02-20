@@ -7,31 +7,34 @@ php: '5.5'
 services:
   - docker
 
-env:
-  DOCKER_COMPOSE_VERSION: 1.10.0
+#env:
+#  DOCKER_COMPOSE_VERSION: 1.10.0
 
-#install:
-#  - curl -sSL https://get.docker.com/ | sudo sh
-#  - sudo pip install docker-compose
-#  - pwd
-#  - ls -lah
-
-before_script:
+install:
+  - curl -sSL https://get.docker.com/ | sudo sh
+  - sudo pip install docker-compose
+  - pwd
+  - ls -lah
   - docker-compose -v
   - wget https://raw.githubusercontent.com/ArroyoLabs/erdiko/master/docker/php/7.0/scripts/composer.sh
   - chmod 770 composer.sh
   - ./composer.sh
 
-script:
-  - echo "$TRAVIS_BRANCH"
+before_script:
   - ls -lah
   - composer update
   - docker-compose up -d
   - docker-compose ps
-  - netstat -tulpn
+  - sleep 3
   - chmod 770 scripts/*.sh
   - docker exec erdiko_users_php /code/scripts/install-db.sh
-  - docker exec erdiko_users_php /code/scripts/ci-tests.sh
+  - ./scripts/travis-debug.sh
+  - docker exec erdiko_users_php /code/scripts/travis-debug.sh
+
+script:
+  - echo "$TRAVIS_BRANCH"
+  - netstat -tulpn
+  - sudo docker exec erdiko_users_php /code/scripts/ci-tests.sh
 
 notifications:
   email:

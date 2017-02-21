@@ -28,11 +28,10 @@ before_script:
   - sleep 3
   - chmod 770 scripts/*.sh
   - docker exec erdiko_users_php /code/scripts/install-db.sh
-  # - ./scripts/travis-debug.sh
-  - docker exec erdiko_users_php /code/scripts/travis-debug.sh
 
 script:
   - echo "$TRAVIS_BRANCH"
+  - docker exec erdiko_users_php /code/scripts/travis-debug.sh
   - netstat -tulpn
   - sudo docker exec erdiko_users_php /code/scripts/ci-tests.sh
 

@@ -34,7 +34,7 @@ script:
   - docker version
   - cat /etc/*-release
   - telnet 172.17.0.1 3301
-  - docker inspect --format='{{.NetworkSettings.IPAddress}}' erdiko_users_db
+  - docker inspect erdiko_users_db
   - docker exec erdiko_users_php /code/scripts/travis-debug.sh
   - netstat -tulpn
   - sudo docker exec erdiko_users_php /code/scripts/ci-tests.sh

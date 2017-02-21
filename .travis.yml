@@ -11,7 +11,7 @@ services:
 #  DOCKER_COMPOSE_VERSION: 1.10.0
 
 install:
-  - curl -sSL https://get.docker.com/ | sudo sh
+  # - curl -sSL https://get.docker.com/ | sudo sh
   - sudo pip install docker-compose
   - pwd
   - ls -lah

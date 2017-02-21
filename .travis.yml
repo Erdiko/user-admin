@@ -31,6 +31,8 @@ before_script:
 
 script:
   - echo "$TRAVIS_BRANCH"
+  - docker version
+  - cat /etc/*-release
   - docker exec erdiko_users_php /code/scripts/travis-debug.sh
   - netstat -tulpn
   - sudo docker exec erdiko_users_php /code/scripts/ci-tests.sh

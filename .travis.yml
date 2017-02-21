@@ -21,10 +21,10 @@ install:
   - ./composer.sh
   - ls -lah
   - composer update
-
-before_script:
   - docker-compose up -d
   - docker-compose ps
+
+before_script:
   - sleep 3
   - chmod 770 scripts/*.sh
   - docker exec erdiko_users_php /code/scripts/install-db.sh

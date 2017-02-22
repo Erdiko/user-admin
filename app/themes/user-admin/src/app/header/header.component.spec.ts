@@ -3,6 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+import { HttpModule }               from '@angular/http';
+import { Router, ActivatedRoute }   from '@angular/router';
+
 import { AuthService }     from '../shared/auth.service';
 import { UsersService }    from '../shared/users.service';
 import { UserResolve }     from '../shared/user-resolve.service';
@@ -18,10 +21,14 @@ describe('HeaderComponent', () => {
       declarations: [ 
           HeaderComponent 
       ],
+      imports: [
+        HttpModule
+      ],
       providers: [
           AuthService,
           UsersService,
-          UserResolve
+          UserResolve,
+          ActivatedRoute
     })
     .compileComponents();
   }));

@@ -5,8 +5,6 @@ import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { HttpModule }               from '@angular/http';
-import { RouterOutlet }             from "@angular/router";
-import { Router, ActivatedRoute }   from '@angular/router';
 
 import { AppComponent }         from './app.component';
 import { HeaderComponent }      from './header/header.component';

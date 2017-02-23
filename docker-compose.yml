@@ -24,7 +24,7 @@ services:
     container_name: erdiko_users_php
     volumes_from: [data]
     extra_hosts:
-     - "docker.local:172.17.0.1"
+      - "docker.local:172.17.0.1"
 
   db:
     extends:

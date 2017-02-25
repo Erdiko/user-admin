@@ -1,17 +1,6 @@
 {
   "authentication": {
-    "available_types": [{
-      "name": "mock",
-      "namespace": "erdiko_authenticate_services",
-      "classname": "Mock",
-      "enabled": true
-    },
-    {
-      "name": "jwt_auth",
-      "namespace": "erdiko_authenticate_services",
-      "classname": "JWTAuthentication",
-      "enabled": true
-    },
+    "available_types": [
     {
       "name": "jwt_auth",
       "namespace": "erdiko_authenticate_services",

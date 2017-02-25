@@ -24,4 +24,10 @@ class BasicAuthentication implements AuthenticationInterface
 		$result = $user->authenticate($username, $password);
 		return $result;
 	}
+
+	public function verify($credentials)
+    {
+        // TODO: Implement verify() method.
+        return true;
+    }
 }

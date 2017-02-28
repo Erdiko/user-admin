@@ -21,6 +21,7 @@ import { AlertModule,
          ModalModule }          from 'ng2-bootstrap';
 
 import { EqualityValidator }    from './shared/equality-validator.directive';
+import { UserEventLogComponent } from './user-event-log/user-event-log.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EqualityValidator }    from './shared/equality-validator.directive';
     HomeComponent,
     HeaderComponent,
     LoginComponent,
-    EqualityValidator
+    EqualityValidator,
+    UserEventLogComponent
   ],
   imports: [
     BrowserModule,

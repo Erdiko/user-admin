@@ -1,3 +1,41 @@
-<p>
-  user-event-log works!
-</p>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span>User Event Log</span>
+            </div>
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-xs-1">
+                        ID
+                    </div>
+                    <div class="col-xs-4">
+                        Timestamp
+                    </div>
+                    <div class="col-xs-4">
+                        Event Type
+                    </div>
+                    <div class="col-xs-3">
+                        Event Data
+                    </div>
+                </div>
+                
+                <div class="row" *ngFor="let event of events">
+                    <div class="col-xs-1">
+                        {{event.id}}
+                    </div>
+                    <div class="col-xs-4">
+                        {{event.event}}
+                    </div>
+                    <div class="col-xs-4">
+                        {{event.event_data}}
+                    </div>
+                    <div class="col-xs-3">
+                        {{event.created_at}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

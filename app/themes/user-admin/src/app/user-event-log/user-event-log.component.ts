@@ -50,6 +50,8 @@ export class UserEventLogComponent implements OnInit {
                                     this.pageNumber, 
                                     this.sortCol,
                                     this.sortDir);
+
+    //this.wait = false;
     
   }
 
@@ -60,7 +62,7 @@ export class UserEventLogComponent implements OnInit {
     this._getEvents();
 
 
-    this.wait = false;
+    //this.wait = false;
 
   }
   

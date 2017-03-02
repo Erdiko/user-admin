@@ -155,13 +155,24 @@ describe('AuthService', () => {
     });
 
     it('#isLogout should delete localStorage', () => {
- 
-        localStorage.setItem('currentUser', JSON.stringify({ token: bodyData.token }));
 
+        setupConnections(backend, {
+            body: {
+                body: bodyData
+            },
+            status: 200
+        });
+
+        service.login(form)
+               .subscribe(result => {
+                    expect(result).toBeTruthy();
+               });
+ 
         service.logout();
        
         let currentUser = JSON.parse(localStorage.getItem("currentUser"));
         expect(currentUser).toBeFalsy();
+        expect(service.isLoggedIn()).toBeFalsy();
 
     });
 

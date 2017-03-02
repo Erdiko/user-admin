@@ -148,11 +148,6 @@ describe('LoginComponent', () => {
         component.loginForm.controls['password'].setValue('123');
         component.onSubmit(component.loginForm);
 
-        component.ngOnInit();
-
-        component.loginForm.controls['email'].setValue('foo@example.com');
-        component.loginForm.controls['password'].setValue('123');
-
         expect(component.onSubmit(component.loginForm)).toBeFalsy();
         
         expect(component.error).toEqual('An error occurred. Please try again.');
@@ -182,17 +177,12 @@ describe('LoginComponent', () => {
         component.loginForm.controls['password'].setValue('123');
         component.onSubmit(component.loginForm);
 
-        component.ngOnInit();
-
-        component.loginForm.controls['email'].setValue('foo@example.com');
-        component.loginForm.controls['password'].setValue('123');
-
         expect(component.onSubmit(component.loginForm)).toBeFalsy();
         
         expect(component.error).toEqual('Username or Password is invalid');
     });
 
-    it('should allow submission with invalid input', () => {
+    it('should allow submission with valid input', () => {
 
         // set up a faked api response
         setupConnections(backend, {
@@ -212,6 +202,9 @@ describe('LoginComponent', () => {
 
         // make sure the user gets routed to home
         expect(router.navigate).toHaveBeenCalledWith(["/"]);
+
+        // call service to make sure user is logged in
+        expect(service.isLoggedIn()).toBeTruthy();
     });
 
 });

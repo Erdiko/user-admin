@@ -15,12 +15,19 @@ import { Subscription } from "rxjs";
 })
 export class UserEventLogComponent implements OnInit {
 
+  //Variable for the loading animation.
+  private wait: any;
+
   //initialize the subscription
   private events$: Subscription;
   private events: Event[];
 
-  //All values of user_id in MySQL Database is set to 1
+  //Parameters of getUserEvents()
   private userID = '1';
+  private pageSize = null;
+  private pageNumber = null;
+  private sortCol = null;
+  private sortDir = 'desc';
 
   constructor(
     private usersService: UsersService
@@ -33,18 +40,31 @@ export class UserEventLogComponent implements OnInit {
 
   }
 
-  
   private _getEvents() {
 
-    this.usersService.getUserEvents(this.userID);
+    //this.wait = true;
+    this.usersService.getUserEvents(this.userID, 
+                                    this.pageSize, 
+                                    this.pageNumber, 
+                                    this.sortCol,
+                                    this.sortDir);
+
+    //this.usersService.getUserEvents(this.userID);
 
   }
 
+  sortID(){
+    //console.log("ID was clicked. Sort function will be added later");
+    this.sortDir = (this.sortDir === "desc") ? "asc" : "desc";
+
+    this._getEvents();
+
+  }
+  
+  
+
 
   ngOnInit() {
-
-    //let events = this.usersService.getUserEvents("1");
-    //console.log("service: ", events);
 
     this._getEvents();
 

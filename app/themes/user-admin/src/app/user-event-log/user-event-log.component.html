@@ -10,18 +10,18 @@
                     <thead>
 
                         <tr>
-
                             <th (click)="sortID()">
                                 ID
+                                <i class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
                             </th>
                             <th>
-                                User Name
-                            </th>
-                            <th>
-                                Event Type
+                                Event Log
                             </th>
                             <th>
                                 Event Data
+                            </th>
+                            <th>
+                                Created At
                             </th>
                         </tr>
                     </thead>
@@ -39,7 +39,7 @@
                             <td> {{event.id}} </td>
                             <td> {{event.event}} </td>
                             <td> {{event.event_data}} </td>
-                            <td> {{event.event_data}} </td>
+                            <td> {{event.created_at}} </td>
                         </tr>
                     </tbody>
 

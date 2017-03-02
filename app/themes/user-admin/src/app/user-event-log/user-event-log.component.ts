@@ -16,7 +16,7 @@ import { Subscription } from "rxjs";
 export class UserEventLogComponent implements OnInit {
 
   //Variable for the loading animation.
-  private wait: any;
+  private wait: boolean;
 
   //initialize the subscription
   private events$: Subscription;
@@ -41,32 +41,35 @@ export class UserEventLogComponent implements OnInit {
   }
 
   private _getEvents() {
+    
+    // this.wait = true is required in this specific location.
+    this.wait = true;
 
-    //this.wait = true;
     this.usersService.getUserEvents(this.userID, 
                                     this.pageSize, 
                                     this.pageNumber, 
                                     this.sortCol,
                                     this.sortDir);
-
-    //this.usersService.getUserEvents(this.userID);
-
+    
   }
 
   sortID(){
-    //console.log("ID was clicked. Sort function will be added later");
+
     this.sortDir = (this.sortDir === "desc") ? "asc" : "desc";
 
     this._getEvents();
 
+
+    this.wait = false;
+
   }
   
   
-
-
   ngOnInit() {
 
     this._getEvents();
+    this.wait = false;
+
 
   }
 

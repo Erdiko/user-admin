@@ -68,7 +68,6 @@ export class UserEventLogComponent implements OnInit {
   ngOnInit() {
 
     this._getEvents();
-    this.wait = false;
 
 
   }

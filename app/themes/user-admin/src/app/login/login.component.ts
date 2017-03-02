@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
 
     private loginForm: FormGroup;
 
-    private error: string;
-    private msg: string;
+    public error: string;
 
     constructor(
            private authService: AuthService,
@@ -48,7 +47,7 @@ export class LoginComponent implements OnInit {
 
         this.wait = true;
 
-        this.msg = this.error = '';
+        this.error = '';
 
         if(valid) {
 

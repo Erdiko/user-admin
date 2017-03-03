@@ -34,7 +34,15 @@
                         </tr>
                     </tbody>
 
-                    <tbody *ngIf="!wait">
+                    <tbody *ngIf="!wait && events.length <= 0">
+                        <tr>
+                            <td colspan="7" align="center">
+                                <alert type="warning">Sorry, no user events were found. Please try again.</alert>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody *ngIf="!wait && events.length > 0">
                         <tr *ngFor="let event of events">
                             <td> {{event.id}} </td>
                             <td> {{event.event}} </td>

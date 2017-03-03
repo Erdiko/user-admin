@@ -38,6 +38,10 @@ export class UserEventLogComponent implements OnInit {
       events$ => this.events = events$
     );
 
+    this.usersService.events$.subscribe(
+      () => this.wait = false
+    )
+    
   }
 
   private _getEvents() {
@@ -50,8 +54,6 @@ export class UserEventLogComponent implements OnInit {
                                     this.pageNumber, 
                                     this.sortCol,
                                     this.sortDir);
-
-    //this.wait = false;
     
   }
 
@@ -60,9 +62,6 @@ export class UserEventLogComponent implements OnInit {
     this.sortDir = (this.sortDir === "desc") ? "asc" : "desc";
 
     this._getEvents();
-
-
-    //this.wait = false;
 
   }
   

@@ -23,13 +23,13 @@ export class UserEditComponent implements OnInit {
     private userForm: FormGroup;
     private passwordForm: FormGroup;
 
-    private error: string;
-    private msg: string;
+    public error: string;
+    public msg: string;
 
-    private passError: string;
-    private passMsg: string;
+    public passError: string;
+    public passMsg: string;
 
-    private user: User;
+    public user: User;
 
     constructor(
            private usersService: UsersService,
@@ -47,19 +47,17 @@ export class UserEditComponent implements OnInit {
 
     ngOnInit() {
 
-        this._initForms();
         this.route.data.forEach((data: { user: any }) => {
-            this.user = data.user;
-            if(this.user) {
-                this.userForm.controls['name'].setValue(this.user.name);
-                this.userForm.controls['email'].setValue(this.user.email);
-                this.userForm.controls['role'].setValue(this.user.role.id);
+            if(undefined !== data.user && data.user) {
+                this.user = data.user;
             }
         });
 
+        this._initForms();
     }
 
     private _initForms() {
+
         this.userForm = this.fb.group({
             name:  ['', [Validators.required, Validators.minLength(3)]],
             email: ['', Validators.required],
@@ -70,6 +68,12 @@ export class UserEditComponent implements OnInit {
             password:  ['', [Validators.required, Validators.minLength(3)]],
             confirm: ['', Validators.required],
         });
+
+        if(this.user.id) {
+            this.userForm.controls['name'].setValue(this.user.name);
+            this.userForm.controls['email'].setValue(this.user.email);
+            this.userForm.controls['role'].setValue(this.user.role.id);
+        }
 
     }
 

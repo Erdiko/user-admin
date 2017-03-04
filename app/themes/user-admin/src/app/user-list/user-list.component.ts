@@ -21,17 +21,17 @@ export class UserListComponent implements OnInit {
 
     private users$: Subscription;
     private total$: Subscription;
-    private users: User[];
-    private total: number;
+    public users: User[];
+    public total: number;
 
-    private currentPage = 1;
+    public  currentPage = 1;
     private pagesize = 10;
     private pages: number[] = [];
 
     private sortCol: string;
     private sortDir: string;
 
-    private error: any;
+    public error: any;
     private selectedUser: any;
         
     constructor(

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService }   from '../shared/users.service';
 import { Event } from '../shared/models/event.model';
 
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { UserListComponent } from '../user-list/user-list.component';
 
 import { Subscription } from "rxjs";
@@ -23,14 +25,17 @@ export class UserEventLogComponent implements OnInit {
   private events: Event[];
 
   //Parameters of getUserEvents()
-  private userID = '1';
+  private userID: string;
   private pageSize = null;
   private pageNumber = null;
   private sortCol = null;
   private sortDir = 'desc';
 
   constructor(
-    private usersService: UsersService
+
+    private usersService: UsersService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { 
 
     // subscribe to the service to get data
@@ -66,11 +71,9 @@ export class UserEventLogComponent implements OnInit {
   }
   
   
-  ngOnInit() {
-
+  ngOnInit() {  
+    this.userID = this.route.snapshot.params['id'];
     this._getEvents();
-
-
   }
 
   ngOnDestroy() {

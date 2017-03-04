@@ -46,7 +46,7 @@
                         <tr *ngFor="let event of events">
                             <td> {{event.id}} </td>
                             <td> {{event.event}} </td>
-                            <td> {{event.event_data}} </td>
+                            <td> {{event.event_data|json}} </td>
                             <td> {{event.created_at}} </td>
                         </tr>
                     </tbody>

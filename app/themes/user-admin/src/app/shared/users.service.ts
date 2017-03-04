@@ -224,8 +224,6 @@ export class UsersService {
     
         let options = this._getHeaderOptions();
 
-        console.log("URL", url)
-
         return this.http.get(url, options)
                    .map(response => response.json())
                    .subscribe(data => {

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService }   from '../shared/users.service';
 import { Event } from '../shared/models/event.model';
 
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { UserListComponent } from '../user-list/user-list.component';
 
@@ -15,6 +15,7 @@ import { Subscription } from "rxjs";
   styleUrls: ['./user-event-log.component.scss'],
   providers: [UsersService]
 })
+
 export class UserEventLogComponent implements OnInit {
 
   //Variable for the loading animation.
@@ -32,10 +33,8 @@ export class UserEventLogComponent implements OnInit {
   private sortDir = 'desc';
 
   constructor(
-
     private usersService: UsersService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) { 
 
     // subscribe to the service to get data
@@ -53,7 +52,6 @@ export class UserEventLogComponent implements OnInit {
     
     // this.wait = true is required in this specific location.
     this.wait = true;
-
     this.usersService.getUserEvents(this.userID, 
                                     this.pageSize, 
                                     this.pageNumber, 
@@ -77,9 +75,7 @@ export class UserEventLogComponent implements OnInit {
   }
 
   ngOnDestroy() {
-
     this.events$.unsubscribe();
-
   }
 
 }

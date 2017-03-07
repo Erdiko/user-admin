@@ -70,7 +70,13 @@ export class UserEventLogComponent implements OnInit {
   
   
   ngOnInit() {  
-    this.userID = this.route.snapshot.params['id'];
+
+    this.route.data.forEach((data: { user: any }) => {
+        if(undefined !== data.user && data.user) {
+            this.userID = data.user.id;
+        }
+    });
+
     this._getEvents();
   }
 

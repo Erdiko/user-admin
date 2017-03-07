@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span>User Event Log</span>
+            </div>
+            <div class="panel-body">
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+
+                        <tr>
+                            <th (click)="sortID()">
+                                ID
+                                <i class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
+                            </th>
+                            <th>
+                                Event Log
+                            </th>
+                            <th>
+                                Event Data
+                            </th>
+                            <th>
+                                Created At
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody *ngIf="wait"> 
+                        <tr>
+                            <td colspan="7" align="center">
+                                <i class="fa fa-refresh fa-spin fa-2x fa-fw"></i> 
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody *ngIf="!wait && events.length <= 0">
+                        <tr>
+                            <td colspan="7" align="center">
+                                <alert type="warning">Sorry, no user events were found. Please try again.</alert>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody *ngIf="!wait && events.length > 0">
+                        <tr *ngFor="let event of events">
+                            <td> {{event.id}} </td>
+                            <td> {{event.event}} </td>
+                            <td> {{event.event_data|json}} </td>
+                            <td> {{event.created_at}} </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

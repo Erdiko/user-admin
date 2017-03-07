@@ -95,8 +95,6 @@ describe('UsersService', () => {
     function setupConnections(backend: MockBackend, options: any) {
         backend.connections.subscribe((connection: MockConnection) => {
 
-            console.log(connection.request.url);
-
             switch(connection.request.url) {
                 case "http://docker.local:8088/ajax/erdiko/users/admin/list":
                     const responseOptions = new ResponseOptions(options);
@@ -112,7 +110,6 @@ describe('UsersService', () => {
     it('#getUsers should return an observable list of users', () => {
 
         let bodyData = bodyData;
-        console.log(bodyData);
         bodyData.success = false;
         setupConnections(backend, {
             body: {

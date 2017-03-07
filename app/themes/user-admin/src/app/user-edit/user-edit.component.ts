@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
 import { UsersService }   from '../shared/users.service';
 import { User }           from "../shared/models/user.model";
+import { UserEventLogComponent } from '../user-event-log/user-event-log.component'
 
 import {AlertComponent } from 'ng2-bootstrap';
 

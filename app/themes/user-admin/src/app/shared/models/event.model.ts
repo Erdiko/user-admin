@@ -1,6 +1,6 @@
 export class Event {
     userid: number;
-    timestamp: string;
-    eventType: string;
-    eventData: string;
+    eventLog: string;
+    eventData: Object;
+    createdAt: string;
 }

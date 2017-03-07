@@ -22,7 +22,4 @@ describe('UserEventLogComponent Unit Test', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

@@ -33,7 +33,8 @@ import { AuthService }          from '../shared/auth.service';
 import { UsersService }         from '../shared/users.service';
 import { User }                 from "../shared/models/user.model";
 
-import { UserEditComponent }    from './user-edit.component';
+import { UserEditComponent }        from './user-edit.component';
+import { UserEventLogComponent }    from '../user-event-log/user-event-log.component';
 
 describe('UserEditComponent', () => {
     let component: UserEditComponent;
@@ -61,7 +62,8 @@ describe('UserEditComponent', () => {
 
         TestBed.configureTestingModule({
             declarations: [
-                UserEditComponent
+                UserEditComponent,
+                UserEventLogComponent
             ],
             imports: [
                 FormsModule,

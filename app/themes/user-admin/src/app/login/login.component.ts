@@ -1,5 +1,5 @@
 import { Component, OnInit }                    from '@angular/core';
-import { Router, ActivatedRoute }               from '@angular/router';
+import { Router }                               from '@angular/router';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
 import { AuthService }   from '../shared/auth.service';
@@ -17,12 +17,10 @@ export class LoginComponent implements OnInit {
 
     private loginForm: FormGroup;
 
-    private error: string;
-    private msg: string;
+    public error: string;
 
     constructor(
            private authService: AuthService,
-           private route: ActivatedRoute,
            private router: Router,
            private fb: FormBuilder) { 
 
@@ -48,7 +46,7 @@ export class LoginComponent implements OnInit {
 
         this.wait = true;
 
-        this.msg = this.error = '';
+        this.error = '';
 
         if(valid) {
 

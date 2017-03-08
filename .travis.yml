@@ -16,7 +16,7 @@ install:
   - pwd
   - ls -lah
   - docker-compose -v
-  - wget https://raw.githubusercontent.com/ArroyoLabs/erdiko/master/docker/php/7.0/scripts/composer.sh
+  - wget https://raw.githubusercontent.com/Erdiko/docker/master/php/scripts/composer.sh
   - chmod 770 composer.sh
   - ./composer.sh
   - ls -lah

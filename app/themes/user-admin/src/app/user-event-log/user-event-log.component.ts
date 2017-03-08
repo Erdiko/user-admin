@@ -23,7 +23,7 @@ export class UserEventLogComponent implements OnInit {
 
   //initialize the subscription
   private events$: Subscription;
-  private events: Event[];
+  public events: Event[];
 
   //Parameters of getUserEvents()
   private userID: string;

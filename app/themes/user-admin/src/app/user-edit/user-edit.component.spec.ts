@@ -118,6 +118,8 @@ describe('UserEditComponent', () => {
         router = testbed.get(Router);
 
         bodyData = {
+                        "method": "update",
+                        "success": true
                     };
 
     }));
@@ -188,8 +190,7 @@ describe('UserEditComponent', () => {
         expect(role).toEqual(user.role.id);
     });
 
-    it('should show an error message if api throws an error', () => {
-
+    it('should show an error message if api throws an error', async(() => {
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
 
@@ -212,14 +213,14 @@ describe('UserEditComponent', () => {
         component.user = user;
         component.ngOnInit();
 
-        component.onSubmit(component.userForm);
-        expect(component.onSubmit(component.userForm)).toBeFalsy();
+        fixture.detectChanges();
+        component.onSubmit(component.userForm).then(() => {
+            expect(component.error).toEqual("Something went wrong.");
+        });
 
-        //expect(component.error).toEqual("Something went wrong.");
-    });
+    }));
 
-    /*
-    it('should show an error message if api rejects the submission', () => {
+    it('should show an error message if api rejects the submission', async(() => {
 
         // set up a faked api response
         setupConnections(backend, {
@@ -239,16 +240,21 @@ describe('UserEditComponent', () => {
         component.ngOnInit();
 
         // fill out the form & submit
-        component.loginForm.controls['email'].setValue('foo@example.com');
-        component.loginForm.controls['password'].setValue('123');
-        component.onSubmit(component.loginForm);
+        component.userForm.controls['name'].setValue('foo bar');
+        component.userForm.controls['email'].setValue('foo@example.com');
+        component.userForm.controls['role'].setValue('1');
+        component.onSubmit(component.userForm);
 
-        expect(component.onSubmit(component.loginForm)).toBeFalsy();
-        
-        expect(component.error).toEqual('Username or Password is invalid');
-    });
+        fixture.detectChanges();
+        component.onSubmit(component.userForm).then(() => {
+            expect(component.error).toEqual("Something went wrong.");
+        });
 
-    it('should allow submission with valid input', () => {
+    }));
+
+    it('should allow submission with valid input', async(() => {
+
+        fixture.detectChanges();
 
         // set up a faked api response
         setupConnections(backend, {
@@ -262,16 +268,15 @@ describe('UserEditComponent', () => {
         component.ngOnInit();
 
         // fill out the form & submit
-        component.loginForm.controls['email'].setValue('foo@example.com');
-        component.loginForm.controls['password'].setValue('123');
-        component.onSubmit(component.loginForm);
+        component.userForm.controls['name'].setValue('foo bar');
+        component.userForm.controls['email'].setValue('foo@example.com');
+        component.userForm.controls['role'].setValue('1');
 
-        // make sure the user gets routed to home
-        expect(router.navigate).toHaveBeenCalledWith(["/"]);
+        fixture.detectChanges();
+        component.onSubmit(component.userForm).then(() => {
+            expect(component.msg).toEqual("User record was successfully updated.");
+        });
 
-        // call service to make sure user is logged in
-        expect(service.isLoggedIn()).toBeTruthy();
-    });
-    */
+    }));
 
 });

@@ -1,7 +1,7 @@
 import {
 	async, 
 	ComponentFixture, 
-	getTestBed, 
+	getTestBed,
 	TestBed 
 } from '@angular/core/testing';
 
@@ -12,11 +12,15 @@ import {
 	NO_ERRORS_SCHEMA
 } from '@angular/core';
 
-import { Router, ActivatedRoute } from "@angular/router";
+import { 
+	Router,
+	ActivatedRoute
+} from "@angular/router";
 
 import { 
 	BaseRequestOptions,
     Http,
+	HttpModule,
     Response,
     ResponseOptions,
     XHRBackend
@@ -81,6 +85,7 @@ describe('UserEventLogComponent', () => {
 
 			],
 		  imports: [
+			  HttpModule,
 			  FormsModule,
 			  ReactiveFormsModule,
 			  AlertModule.forRoot()]
@@ -93,14 +98,13 @@ describe('UserEventLogComponent', () => {
 
 	//find the type of data from the service and mimic it.
 	bodyData = {
-				"direction": "desc",
 				"error_code": 0,
 				"error_message": "",
 				"logs": [
 					{
 						"created_at": "2017-03-04 12:12:12", 
 						"event": "backend-test-profile-create", 
-						"event_data": "{meth: 'blue', breakbad: true}",
+						"event_data": "{methcolor: 'blue', breakbad: true}",
 						"id": 3
 					},
 					{
@@ -140,6 +144,7 @@ describe('UserEventLogComponent', () => {
         
             switch(url) {
                 case "/ajax/erdiko/users/admin/eventlogs":
+				default:
 					const responseOptions = new ResponseOptions(options);
                     const response = new Response(responseOptions);
                     connection.mockRespond(response);
@@ -181,6 +186,27 @@ describe('UserEventLogComponent', () => {
 	expect(compiled.querySelector('i.fa.fa-refresh.fa-spin.fa-2x.fa-fw')).toBeTruthy();
   });
 
+  it('should display alert element for no user events found', () => {
+	
+	fixture.detectChanges();
+	const compiled = fixture.debugElement.nativeElement;
+
+	bodyData.logs = [];
+
+	setupConnections(backend, {
+		body: {
+			body: bodyData
+		},
+		errors: false,
+		status: 200
+	});
+
+	component.ngOnInit();
+	fixture.detectChanges();
+
+	expect(compiled.querySelector('alert')).toBeTruthy();
+  });
+
   it('should display a list of events', () => {
 	fixture.detectChanges();
 	const compiled = fixture.debugElement.nativeElement;
@@ -204,10 +230,11 @@ describe('UserEventLogComponent', () => {
 
   });
 
-  it('should display a sorted list in an ascending order when id table header is clicked', () => {
+  it('should test for a sort function', () => {
 	fixture.detectChanges();
 	const compiled = fixture.debugElement.nativeElement;
 
+	
 	setupConnections(backend, {
 		body: {
 			body: bodyData
@@ -217,11 +244,9 @@ describe('UserEventLogComponent', () => {
 	});
 
 	component.ngOnInit();
-	fixture.detectChanges();
-
 	component.sortID();
+
 	fixture.detectChanges();
-	expect(compiled.querySelector('.user-events:first-child td:first-child').textContent).toContain("1");
-	expect(compiled.querySelector('.user-events:last-child td:first-child').textContent).toContain("3");
+	expect(compiled.querySelectorAll('tr.user-events').length).toBe(3);
   });
 });

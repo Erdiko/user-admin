@@ -61,7 +61,6 @@ export class UserEventLogComponent implements OnInit {
   }
 
   sortID(){
-
     this.sortDir = (this.sortDir === "desc") ? "asc" : "desc";
 
     this._getEvents();

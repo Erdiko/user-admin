@@ -119,9 +119,9 @@ export class UserEditComponent implements OnInit {
         this.passMsg = this.passError = '';
 
         if(valid) {
-            this.usersService.changePassword(this.user.id, value.password)
-                .then(res => this._handlePasswordResponse(res))
-                .catch(error => this.passError = error);
+            return this.usersService.changePassword(this.user.id, value.password)
+                       .then(res => this._handlePasswordResponse(res))
+                       .catch(error => this.passError = error);
         }
     }
 

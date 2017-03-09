@@ -149,14 +149,37 @@ describe('UserListComponent', () => {
         fixture.detectChanges();
     });
 
+    function _normalizeQString(qstring: string) {
+        let query = {};
+        for(let idx in qstring) {
+            let pair = qstring[idx].split("=");
+            query[pair[0]] = pair[1];
+        }
+        return query;
+    }
+
     function setupConnections(backend: MockBackend, options: any) {
         backend.connections.subscribe((connection: MockConnection) => {
         
-            let url = connection.request.url;
-            url = url.slice(0, url.indexOf("?")).replace('http://docker.local:8088', '');
+            let url = connection.request.url.replace('http://docker.local:8088', '');
 
-            switch(url) {
+            switch(url.slice(0, url.indexOf("?"))) {
                 case "/ajax/erdiko/users/admin/list":
+
+                    let qstring = url.slice(url.indexOf("?") + 1).split("&");
+                    let query = _normalizeQString(qstring);
+
+                    let body = options.body.body;
+
+                    // match q string vars for sorting and paging (if provided)
+                    if(body.direction) {
+                        expect(query.direction).toEqual(body.direction);
+                    }
+
+                    if(body.sort) {
+                        expect(query.sort).toEqual(body.sort);
+                    }
+
                 case "/ajax/erdiko/users/admin/delete":
                 default:
                     const responseOptions = new ResponseOptions(options);
@@ -215,7 +238,36 @@ describe('UserListComponent', () => {
         // do we see the expected page count
         expect(component.getPageCount()).toBe(2);  
     });
- 
+
+    it('should display empty list of users if error occurs', () => {
+        fixture.detectChanges();
+        const compiled = fixture.debugElement.nativeElement;
+
+        bodyData.success = false;
+
+        setupConnections(backend, {
+            body: {
+                body: bodyData
+            },
+            status: 500
+        });
+
+        component.ngOnInit();
+
+        // create new user button
+        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+
+        fixture.detectChanges();
+
+        // do we have a table with users?
+        expect(compiled.querySelectorAll('tr').length).toBe(2);
+
+        // do we see the expected page count
+        expect(component.getPageCount()).toBe(0);  
+
+        expect(compiled.querySelector('.alert.alert-warning')).toBeTruthy();
+    });
+
     it('should show a new page when clicking a pagination button', () => {
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
@@ -334,16 +386,91 @@ describe('UserListComponent', () => {
         fixture.detectChanges();
         expect(compiled.querySelectorAll('tr').length).toBe(21);
 
-        bodyData.users.users = bodyData.users.users.slice(9);
+        bodyData.users.users    = bodyData.users.users.slice(9);
+
+        // verify component sort params are set
+        expect(component.sortCol).toBe('id');
+        expect(component.sortDir).toBe('desc');
+
+        expect(component.wait).toBeFalsy();
+
+        // "click" the sort button
+
+        bodyData.sort           = "id";
+        bodyData.direction      = "asc";
+
+        component.sort('id');
+
+        fixture.detectChanges();
+
+        expect(component.wait).toBeFalsy();
+
+        // verify component sort params are set
+        expect(component.sortCol).toBe('id');
+        expect(component.sortDir).toBe('asc');
+
+        expect(compiled.querySelectorAll('tr').length).toBe(12);
+
+        // we click sort, again, and make sure sort dir is updated as we expect
+
+        bodyData.sort           = "id";
+        bodyData.direction      = "desc";
+
+        component.sort('id');
+
+        fixture.detectChanges();
+
+        // verify component sort params are set
+        expect(component.sortCol).toBe('id');
+        expect(component.sortDir).toBe('desc');
+
+    });
+
+    it('should display warning if error occurs after clicking sort', () => {
+        fixture.detectChanges();
+        const compiled = fixture.debugElement.nativeElement;
+        
+        setupConnections(backend, {
+            body: {
+                body: bodyData
+            },
+            status: 200
+        });
+
+        component.ngOnInit();
+
+        // create new user button
+        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+
+        fixture.detectChanges();
+
+        // do we have a table with users?
+        fixture.detectChanges();
+        expect(compiled.querySelectorAll('tr').length).toBe(21);
+
+        // verify component sort params are set
+        expect(component.sortCol).toBe('id');
+        expect(component.sortDir).toBe('desc');
+
+        expect(component.wait).toBeFalsy();
+
+        bodyData.success = false;
 
         // "click" the sort button
         component.sort('id');
-        
+
         fixture.detectChanges();
 
-        expect(compiled.querySelectorAll('tr').length).toBe(12);
+        // do we have a table with users?
+        expect(compiled.querySelectorAll('tr').length).toBe(2);
+
+        // do we see the expected page count
+        expect(component.getPageCount()).toBe(0);  
+
+        expect(compiled.querySelector('.alert.alert-warning')).toBeTruthy();
+
     });
- 
+
     it('should show modal is click delete', () => {
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;

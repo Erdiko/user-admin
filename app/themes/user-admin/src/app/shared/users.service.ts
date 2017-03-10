@@ -200,7 +200,7 @@ export class UsersService {
      * get event logs for a user
      *
      */
-    getUserEvents(id: string, pagesize?: number, page?: number, sortCol?: string, sortDir?: string) {
+    getUsersEvents(id: string, pagesize?: number, page?: number, sortCol?: string, sortDir?: string) {
 
         let url = this._baseUrl + this.userEventUrl;
 

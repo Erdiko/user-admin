@@ -130,7 +130,7 @@ describe('UserEventLogComponent', () => {
   }));
 
   beforeEach(() => {
-              //createComponent creates an instance of the UserEventLogComponent  
+      //createComponent creates an instance of the UserEventLogComponent  
 	  fixture = TestBed.createComponent(UserEventLogComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
@@ -250,4 +250,5 @@ describe('UserEventLogComponent', () => {
 	fixture.detectChanges();
 	expect(compiled.querySelectorAll('tr.user-events').length).toBe(3);
   });
+
 });

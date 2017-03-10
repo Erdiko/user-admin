@@ -87,13 +87,13 @@ export class UserEditComponent implements OnInit {
         if(valid) {
             if(this.user) {
                 value.id = this.user.id;
-                this.usersService.updateUser(value)
-                    .then(res => this._handleResponse(res))
-                    .catch(error => this.error = error);
+                return this.usersService.updateUser(value)
+                           .then(res => this._handleResponse(res))
+                           .catch(error => this.error = error);
             } else {
-                this.usersService.createUser(value)
-                    .then(res => this._handleResponse(res))
-                    .catch(error => this.error = error);
+                return this.usersService.createUser(value)
+                           .then(res => this._handleResponse(res))
+                           .catch(error => this.error = error);
             }
         }
     }
@@ -103,7 +103,7 @@ export class UserEditComponent implements OnInit {
         if(true == res.success) {
 
             this.msg = "User record was successfully updated."
-
+    
             if("create" === res.method) {
                 // navigate to Edit User for the new user
                 this.router.navigate(['/user/' + res.user.id]);
@@ -119,9 +119,9 @@ export class UserEditComponent implements OnInit {
         this.passMsg = this.passError = '';
 
         if(valid) {
-            this.usersService.changePassword(this.user.id, value.password)
-                .then(res => this._handlePasswordResponse(res))
-                .catch(error => this.passError = error);
+            return this.usersService.changePassword(this.user.id, value.password)
+                       .then(res => this._handlePasswordResponse(res))
+                       .catch(error => this.passError = error);
         }
     }
 

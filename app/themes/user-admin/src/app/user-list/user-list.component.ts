@@ -24,12 +24,12 @@ export class UserListComponent implements OnInit {
     public users: User[];
     public total: number;
 
-    public  currentPage = 1;
-    private pagesize = 10;
-    private pages: number[] = [];
+    public currentPage = 1;
+    public pagesize = 10;
+    public pages: number[] = [];
 
-    private sortCol: string;
-    private sortDir: string;
+    public sortCol: string;
+    public sortDir: string;
 
     public error: any;
     private selectedUser: any;

@@ -110,14 +110,14 @@
 </div>
 
 <!-- User Event Component Goes Here -->
-<app-user-event-log *ngIf="user"></app-user-event-log>
+<app-user-event-log *ngIf="user.id"></app-user-event-log>
 
 <div class="row">
     <div class="col-xs-12">
         <br/>
     </div>
 </div>
-<div class="row" *ngIf="user">
+<div class="row" *ngIf="user.id">
     <div class="col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -136,12 +136,14 @@
                         [formGroup]="passwordForm"
                     >
                     <div class="form-group">
-                        <label for="password" class="col-xs-2 control-label">New Password</label>
-                        <div class="col-xs-10">
+                        <p class="col-xs-12">Passwords must contain at least 1 alpha & 1 numeric character, with a minimum length of 5 characters</p>
+                        <label for="password" class="col-xs-5 control-label">New Password</label>
+                        <div class="col-xs-5">
                             <input  type="password" 
                                     class="form-control" 
                                     name="password" 
                                     formControlName="password"
+                                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$"
                                     required>
                             <div class="text-danger" *ngIf="passwordForm.get('password').hasError('required') && passwordForm.get('password').touched">
                               Password is required
@@ -149,8 +151,8 @@
                         </div>
                     </div>
                    <div class="form-group">
-                        <label for="password" class="col-xs-2 control-label">Confirm Password</label>
-                        <div class="col-xs-10">
+                        <label for="password" class="col-xs-5 control-label">Confirm Password</label>
+                        <div class="col-xs-5">
 
                             <input  type="password" 
                                     class="form-control" 

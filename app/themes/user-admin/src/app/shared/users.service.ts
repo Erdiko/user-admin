@@ -186,7 +186,6 @@ export class UsersService {
      */
     changePassword(id: number, newpass: string) {
         let body = JSON.stringify({'id': id, 'newpass': newpass});
-        console.log(body);
         let options = this._getHeaderOptions();
 
         let url = this._baseUrl + this.changePassUrl;

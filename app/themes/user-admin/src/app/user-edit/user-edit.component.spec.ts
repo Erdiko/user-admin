@@ -118,6 +118,8 @@ describe('UserEditComponent', () => {
         router = testbed.get(Router);
 
         bodyData = {
+                        "method": "update",
+                        "success": true
                     };
 
     }));
@@ -146,18 +148,25 @@ describe('UserEditComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should display form', () => {
+    it('should display forms', () => {
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
 
+        // only the edit form should show up
         component.ngOnInit();
+        expect(compiled.querySelector('form#user-edit')).toBeTruthy();
+        expect(compiled.querySelector('form#user-password-change')).toBeFalsy();
 
-        // does the form show up
-        expect(compiled.querySelector('form')).toBeTruthy();
+        // both edit and password form should show up if a user is present
+        component.user = user;
+        component.ngOnInit();
+        fixture.detectChanges();
 
+        expect(compiled.querySelector('form#user-edit')).toBeTruthy();
+        expect(compiled.querySelector('form#user-password-change')).toBeTruthy();
     });
 
-    it('should prevent submission with invalid input', () => {
+    it('should prevent edit form submission with invalid input', () => {
         component.ngOnInit();
 
         component.userForm.controls['name'].setValue('');
@@ -166,7 +175,7 @@ describe('UserEditComponent', () => {
         expect(component.onSubmit(component.userForm)).toBeFalsy();
     });
 
-    it('should display form with values', () => {
+    it('should display edit form with values', () => {
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
 
@@ -188,8 +197,7 @@ describe('UserEditComponent', () => {
         expect(role).toEqual(user.role.id);
     });
 
-    it('should show an error message if api throws an error', () => {
-
+    it('should show an error message if api throws an error when attempting to update', async(() => {
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
 
@@ -212,14 +220,14 @@ describe('UserEditComponent', () => {
         component.user = user;
         component.ngOnInit();
 
-        component.onSubmit(component.userForm);
-        expect(component.onSubmit(component.userForm)).toBeFalsy();
+        fixture.detectChanges();
+        component.onSubmit(component.userForm).then(() => {
+            expect(component.error).toEqual("Something went wrong.");
+        });
 
-        //expect(component.error).toEqual("Something went wrong.");
-    });
+    }));
 
-    /*
-    it('should show an error message if api rejects the submission', () => {
+    it('should show an error message if api rejects the update submission', async(() => {
 
         // set up a faked api response
         setupConnections(backend, {
@@ -239,16 +247,21 @@ describe('UserEditComponent', () => {
         component.ngOnInit();
 
         // fill out the form & submit
-        component.loginForm.controls['email'].setValue('foo@example.com');
-        component.loginForm.controls['password'].setValue('123');
-        component.onSubmit(component.loginForm);
+        component.userForm.controls['name'].setValue('foo bar');
+        component.userForm.controls['email'].setValue('foo@example.com');
+        component.userForm.controls['role'].setValue('1');
+        component.onSubmit(component.userForm);
 
-        expect(component.onSubmit(component.loginForm)).toBeFalsy();
-        
-        expect(component.error).toEqual('Username or Password is invalid');
-    });
+        fixture.detectChanges();
+        component.onSubmit(component.userForm).then(() => {
+            expect(component.error).toEqual("Something went wrong.");
+        });
 
-    it('should allow submission with valid input', () => {
+    }));
+
+    it('should allow update submission with valid input', async(() => {
+
+        fixture.detectChanges();
 
         // set up a faked api response
         setupConnections(backend, {
@@ -262,16 +275,64 @@ describe('UserEditComponent', () => {
         component.ngOnInit();
 
         // fill out the form & submit
-        component.loginForm.controls['email'].setValue('foo@example.com');
-        component.loginForm.controls['password'].setValue('123');
-        component.onSubmit(component.loginForm);
+        component.userForm.controls['name'].setValue('foo bar');
+        component.userForm.controls['email'].setValue('foo@example.com');
+        component.userForm.controls['role'].setValue('1');
 
-        // make sure the user gets routed to home
-        expect(router.navigate).toHaveBeenCalledWith(["/"]);
+        fixture.detectChanges();
+        component.onSubmit(component.userForm).then(() => {
+            expect(component.msg).toEqual("User record was successfully updated.");
+        });
 
-        // call service to make sure user is logged in
-        expect(service.isLoggedIn()).toBeTruthy();
+    }));
+
+    it('should prevent password form submission with invalid input', () => {
+        fixture.detectChanges();
+        const compiled = fixture.debugElement.nativeElement;
+
+        component.user = user;
+        component.ngOnInit();
+
+        component.passwordForm.controls['password'].setValue('');
+        component.passwordForm.controls['confirm'].setValue('');
+        fixture.detectChanges();
+        expect(component.passwordForm.invalid).toBeTruthy();
+
+        component.passwordForm.controls['password'].setValue('123');
+        component.passwordForm.controls['confirm'].setValue('456');
+        fixture.detectChanges();
+        expect(component.passwordForm.invalid).toBeTruthy();
+
+        component.passwordForm.controls['password'].setValue('----');
+        fixture.detectChanges();
+        expect(component.passwordForm.invalid).toBeTruthy();
     });
-    */
+
+    it('should allow password update submission with valid input', async(() => {
+
+        fixture.detectChanges();
+
+        // set up a faked api response
+        setupConnections(backend, {
+            body: {
+                body: bodyData
+            },
+            status: 200
+        });
+
+        // init the component
+        component.ngOnInit();
+
+        // fill out the form & submit
+        component.passwordForm.controls['password'].setValue('abcdef123456');
+        component.passwordForm.controls['confirm'].setValue('abcdef123456');
+
+        fixture.detectChanges();
+        expect(component.passwordForm.invalid).toBeFalsy();
+        component.onSubmitChangepass(component.passwordForm).then(() => {
+            expect(component.passMsg).toEqual("User password successfully updated.");
+        });
+
+    }))
 
 });

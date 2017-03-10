@@ -205,6 +205,7 @@ describe('UserEventLogComponent', () => {
 	fixture.detectChanges();
 
 	expect(compiled.querySelector('alert')).toBeTruthy();
+	expect(compiled.querySelector('i.fa.fa-refresh.fa-spin.fa-2x.fa-fw')).toBeFalsy();
   });
 
   it('should display a list of events', () => {

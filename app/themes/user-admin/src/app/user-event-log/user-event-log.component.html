@@ -43,7 +43,7 @@
                     </tbody>
 
                     <tbody *ngIf="!wait && events.length > 0">
-                        <tr *ngFor="let event of events">
+                        <tr class="user-events" *ngFor="let event of events">
                             <td> {{event.id}} </td>
                             <td> {{event.event}} </td>
                             <td> {{event.event_data|json}} </td>

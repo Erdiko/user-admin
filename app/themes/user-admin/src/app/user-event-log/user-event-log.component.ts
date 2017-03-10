@@ -23,9 +23,9 @@ export class UserEventLogComponent implements OnInit {
 
   //initialize the subscription
   private events$: Subscription;
-  private events: Event[];
+  public events: Event[];
 
-  //Parameters of getUserEvents()
+  //Parameters of getUsersEvents()
   private userID: string;
   private pageSize = null;
   private pageNumber = null;
@@ -52,7 +52,7 @@ export class UserEventLogComponent implements OnInit {
     
     // this.wait = true is required in this specific location.
     this.wait = true;
-    this.usersService.getUserEvents(this.userID, 
+    this.usersService.getUsersEvents(this.userID, 
                                     this.pageSize, 
                                     this.pageNumber, 
                                     this.sortCol,
@@ -61,11 +61,8 @@ export class UserEventLogComponent implements OnInit {
   }
 
   sortID(){
-
     this.sortDir = (this.sortDir === "desc") ? "asc" : "desc";
-
     this._getEvents();
-
   }
   
   

@@ -230,7 +230,6 @@ export class UsersService {
                    .subscribe(data => {
                        this.dataStore.events = [];
                        if(true == data.body.success) {
-                           console.log("data", data);
                            this.dataStore.events = data.body.logs;
                        }
                        this._events$.next(this.dataStore.events);

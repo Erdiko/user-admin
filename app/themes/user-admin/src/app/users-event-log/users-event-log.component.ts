@@ -25,7 +25,7 @@ export class UsersEventLogComponent implements OnInit {
   constructor(
     private usersService: UsersService
   ) {
-    this.userID = "";
+    this.userID = null
     this.pageSize = null;
     this.pageNumber = null;
     this.sortCol = null;
@@ -40,7 +40,7 @@ export class UsersEventLogComponent implements OnInit {
     )
   }
 
-  private sortID(){
+  sortID(){
     this.sortDir = ( this.sortDir === 'desc' ) ? 'asc' : 'desc';
     this._getEvents();
   }
@@ -52,8 +52,6 @@ export class UsersEventLogComponent implements OnInit {
                                      this.pageNumber,
                                      this.sortCol,
                                      this.sortDir);
-
-  
   }
 
   ngOnInit() {

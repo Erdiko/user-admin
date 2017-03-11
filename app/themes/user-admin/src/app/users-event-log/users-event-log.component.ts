@@ -55,7 +55,6 @@ export class UsersEventLogComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("users-event-log works!");
     this._getEvents();
   }
   ngOnDestroy() {

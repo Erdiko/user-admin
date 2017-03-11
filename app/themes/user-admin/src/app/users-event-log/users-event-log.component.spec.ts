@@ -102,13 +102,13 @@ describe('UserEventLogComponent', () => {
 				"error_message": "",
 				"logs": [
 					{
-						"created_at": "2017-03-04 12:12:12", 
+						"created_at": "2017-03-02 12:12:12", 
 						"event": "backend-test-profile-create", 
 						"event_data": "{methcolor: 'blue', breakbad: true}",
 						"id": 3
 					},
 					{
-						"created_at": "2017-03-04 12:12:12", 
+						"created_at": "2017-03-03 12:12:12", 
 						"event": "backend-test-profile-create", 
 						"event_data": "{cancer: true, medicalbill: 'alot']}",
 						"id": 2
@@ -172,10 +172,11 @@ describe('UserEventLogComponent', () => {
 	expect(compiled.querySelectorAll('tr th').length).toBe(4);
 	
 	//Check for the names of the column headers.
-	expect(compiled.querySelector('tr th:first-child').textContent).toContain("ID");
-	expect(compiled.querySelector('tr th:nth-child(2)').textContent).toContain("Event Log");
-	expect(compiled.querySelector('tr th:nth-child(3)').textContent).toContain("Event Data");
-	expect(compiled.querySelector('tr th:last-child').textContent).toContain("Created At");
+    expect(compiled.querySelector('tr th:first-child').textContent).toContain("Created At");
+    expect(compiled.querySelector('tr th:nth-child(2)').textContent).toContain("ID");
+    expect(compiled.querySelector('tr th:nth-child(3)').textContent).toContain("Event Log");
+    expect(compiled.querySelector('tr th:last-child').textContent).toContain("Event Data");
+    
   });
 
   it('should show a loading animation', () => {
@@ -224,30 +225,30 @@ describe('UserEventLogComponent', () => {
 	component.ngOnInit();
 	fixture.detectChanges();
 
-	expect(compiled.querySelectorAll('tr.user-events').length).toBe(4);
+	expect(compiled.querySelectorAll('tr.users-events').length).toBe(3);
 	//expect(compiled.querySelector('tr.users-events:first-child td:first-child').textContent).toContain("3");
 	//expect(compiled.querySelector('tr.users-events:last-child td:first-child').textContent).toContain("1");
 
 
   });
 
-  it('should test for a sort function', () => {
-	fixture.detectChanges();
-	const compiled = fixture.debugElement.nativeElement;
+//   it('should test for a sort function', () => {
+// 	fixture.detectChanges();
+// 	const compiled = fixture.debugElement.nativeElement;
 
 	
-	setupConnections(backend, {
-		body: {
-			body: bodyData
-		},
-		errors: false,
-		status: 200
-	});
+// 	setupConnections(backend, {
+// 		body: {
+// 			body: bodyData
+// 		},
+// 		errors: false,
+// 		status: 200
+// 	});
 
-	component.ngOnInit();
-	component.sortID();
+// 	component.ngOnInit();
+// 	component.sortID();
 
-	fixture.detectChanges();
-	expect(compiled.querySelectorAll('tr.users-events').length).toBe(3);
-  });
+// 	fixture.detectChanges();
+// 	expect(compiled.querySelectorAll('tr.users-events').length).toBe(3);
+//   });
 });

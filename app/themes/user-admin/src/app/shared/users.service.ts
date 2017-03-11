@@ -199,26 +199,28 @@ export class UsersService {
      * get event logs for a user
      *
      */
-    getUsersEvents(id: string, pagesize?: number, page?: number, sortCol?: string, sortDir?: string) {
+    getUsersEvents(id?: string, pagesize?: number, page?: number, sortCol?: string, sortDir?: string) {
 
-        let url = this._baseUrl + this.userEventUrl;
+        let url = this._baseUrl + this.userEventUrl + "?";
 
-        url += "?user_id=" + id;
+        if(id){
+            url += "user_id=" + id + "&";
+        }
 
         if(pagesize) {
-            url += "&pagesize=" + pagesize;
+            url += "pagesize=" + pagesize + "&";
         }
 
         if(page) {
-            url += "&page=" + page;
+            url += "page=" + page + "&";
         }
 
         if(sortCol) {
-            url += "&sort=" + sortCol;
+            url += "sort=" + sortCol + "&";
         }
 
         if(sortDir) {
-            url += "&direction=" + sortDir;
+            url += "direction=" + sortDir;
         }
     
         let options = this._getHeaderOptions();
@@ -228,6 +230,7 @@ export class UsersService {
                    .subscribe(data => {
                        this.dataStore.events = [];
                        if(true == data.body.success) {
+                           console.log("data", data);
                            this.dataStore.events = data.body.logs;
                        }
                        this._events$.next(this.dataStore.events);

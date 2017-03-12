@@ -18,7 +18,7 @@ export class UsersEventLogComponent implements OnInit {
   private pageSize: number;
   private pageNumber: number;
   private sortCol: string;
-  private sortDir: string;
+  public sortDir: string;
 
   private events$: Subscription;
 

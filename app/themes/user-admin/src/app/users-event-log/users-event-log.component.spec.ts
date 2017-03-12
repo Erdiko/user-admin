@@ -98,6 +98,7 @@ describe('UserEventLogComponent', () => {
 
 	//find the type of data from the service and mimic it.
 	bodyData = {
+                "direction": "desc",
 				"error_code": 0,
 				"error_message": "",
 				"logs": [
@@ -124,7 +125,7 @@ describe('UserEventLogComponent', () => {
 				"page": 0,
 				"sort": "created_at",
 				"success": true,
-				"user_id": "192"
+				"user_id": null
 			};
 
   }));
@@ -139,9 +140,10 @@ describe('UserEventLogComponent', () => {
   function setupConnections(backend: MockBackend, options: any) {
         backend.connections.subscribe((connection: MockConnection) => {
 
+            console.log(options);
+
 			let url = connection.request.url;
             url = url.slice(0, url.indexOf("?")).replace('http://docker.local:8088', '');
-        
             switch(url) {
                 case "/ajax/erdiko/users/admin/eventlogs":
 				default:
@@ -226,29 +228,37 @@ describe('UserEventLogComponent', () => {
 	fixture.detectChanges();
 
 	expect(compiled.querySelectorAll('tr.users-events').length).toBe(3);
-	//expect(compiled.querySelector('tr.users-events:first-child td:first-child').textContent).toContain("3");
-	//expect(compiled.querySelector('tr.users-events:last-child td:first-child').textContent).toContain("1");
+	expect(compiled.querySelector('tr.users-events:first-child td:first-child').textContent).toContain("3");
+	expect(compiled.querySelector('tr.users-events:last-child td:first-child').textContent).toContain("1");
 
 
   });
 
-//   it('should test for a sort function', () => {
-// 	fixture.detectChanges();
-// 	const compiled = fixture.debugElement.nativeElement;
+  it('should test for a sort function', () => {
+	fixture.detectChanges();
+	const compiled = fixture.debugElement.nativeElement;
 
 	
-// 	setupConnections(backend, {
-// 		body: {
-// 			body: bodyData
-// 		},
-// 		errors: false,
-// 		status: 200
-// 	});
+	setupConnections(backend, {
+		body: {
+			body: bodyData
+		},
+		errors: false,
+		status: 200
+	});
 
-// 	component.ngOnInit();
-// 	component.sortID();
+	component.ngOnInit();
 
-// 	fixture.detectChanges();
-// 	expect(compiled.querySelectorAll('tr.users-events').length).toBe(3);
-//   });
+    //before the sort function is clicked
+    expect(component.sortDir).toBe("desc");
+	
+    //sort function is clicked
+    component.sortID();
+
+    //after the sort function is clicked
+    expect(component.sortDir).toBe("asc");
+
+	fixture.detectChanges();
+	expect(compiled.querySelectorAll('tr.users-events').length).toBe(3);
+  });
 });

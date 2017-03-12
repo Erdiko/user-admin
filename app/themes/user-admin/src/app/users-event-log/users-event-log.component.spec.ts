@@ -140,12 +140,15 @@ describe('UserEventLogComponent', () => {
   function setupConnections(backend: MockBackend, options: any) {
         backend.connections.subscribe((connection: MockConnection) => {
 
-            console.log(options);
+            console.log(options, connection.request.url);
 
-			let url = connection.request.url;
+			let url = connection.request.url; //http://docker.local:8088/ajax/erdiko/users/admin/eventlogs?
+            let queryString = url.slice(url.indexOf("?"));
+
             url = url.slice(0, url.indexOf("?")).replace('http://docker.local:8088', '');
             switch(url) {
                 case "/ajax/erdiko/users/admin/eventlogs":
+                    expect(queryString).toEqual("?direction="+component.sortDir);
 				default:
 					const responseOptions = new ResponseOptions(options);
                     const response = new Response(responseOptions);

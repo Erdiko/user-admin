@@ -203,14 +203,12 @@ describe('UserListComponent', () => {
         expect(component).toBeTruthy();
 
         // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+        expect(compiled.querySelector('.btn-info')).toBeTruthy();
 
         // do we have a table
         expect(compiled.querySelector('table')).toBeTruthy();
         expect(compiled.querySelectorAll('tr').length).toBe(2);
 
-        // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
     });
 
     it('should display list of users', () => {
@@ -227,7 +225,7 @@ describe('UserListComponent', () => {
         component.ngOnInit();
 
         // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+        expect(compiled.querySelector('.btn-info')).toBeTruthy();
 
         fixture.detectChanges();
 
@@ -255,7 +253,7 @@ describe('UserListComponent', () => {
         component.ngOnInit();
 
         // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+        expect(compiled.querySelector('.btn-info')).toBeTruthy();
 
         fixture.detectChanges();
 
@@ -282,7 +280,7 @@ describe('UserListComponent', () => {
         component.ngOnInit();
 
         // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+        expect(compiled.querySelector('.btn-info')).toBeTruthy();
 
         fixture.detectChanges();
 
@@ -314,7 +312,7 @@ describe('UserListComponent', () => {
         component.ngOnInit();
 
         // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+        expect(compiled.querySelector('.btn-info')).toBeTruthy();
 
         fixture.detectChanges();
 
@@ -346,7 +344,7 @@ describe('UserListComponent', () => {
         component.ngOnInit();
 
         // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+        expect(compiled.querySelector('.btn-info')).toBeTruthy();
 
         fixture.detectChanges();
 
@@ -378,7 +376,7 @@ describe('UserListComponent', () => {
         component.ngOnInit();
 
         // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+        expect(compiled.querySelector('.btn-info')).toBeTruthy();
 
         fixture.detectChanges();
 
@@ -440,7 +438,7 @@ describe('UserListComponent', () => {
         component.ngOnInit();
 
         // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+        expect(compiled.querySelector('.btn-info')).toBeTruthy();
 
         fixture.detectChanges();
 
@@ -485,7 +483,7 @@ describe('UserListComponent', () => {
         component.ngOnInit();
 
         // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+        expect(compiled.querySelector('.btn-info')).toBeTruthy();
 
         expect(component.confirmDeleteModal.isShown).toBeFalsy();
 
@@ -510,7 +508,7 @@ describe('UserListComponent', () => {
         component.ngOnInit();
 
         // create new user button
-        expect(compiled.querySelector('.btn-default')).toBeTruthy();
+        expect(compiled.querySelector('.btn-info')).toBeTruthy();
 
         expect(component.confirmDeleteModal.isShown).toBeFalsy();
 

@@ -88,7 +88,7 @@ export class UserEditComponent implements OnInit {
         this.msg = this.error = '';
 
         if(valid) {
-            if(this.user) {
+            if(this.user.id) {
                 value.id = this.user.id;
                 return this.usersService.updateUser(value)
                            .then(res => this._handleResponse(res))

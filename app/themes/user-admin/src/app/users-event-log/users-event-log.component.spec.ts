@@ -180,7 +180,7 @@ describe('UserEventLogComponent', () => {
 	
 	//Check for the names of the column headers.
     expect(compiled.querySelector('tr th:first-child').textContent).toContain("Created At");
-	expect(compiled.querySelector('tr th:nth-child(3)').textContent).toContain("User ID");
+	expect(compiled.querySelector('tr th:nth-child(2)').textContent).toContain("User ID");
     expect(compiled.querySelector('tr th:nth-child(3)').textContent).toContain("ID");
     expect(compiled.querySelector('tr th:nth-child(4)').textContent).toContain("Event Log");
     expect(compiled.querySelector('tr th:last-child').textContent).toContain("Event Data");

@@ -106,19 +106,22 @@ describe('UserEventLogComponent', () => {
 						"created_at": "2017-03-02 12:12:12", 
 						"event": "backend-test-profile-create", 
 						"event_data": "{methcolor: 'blue', breakbad: true}",
-						"id": 3
+						"id": 3,
+						"user_id": 192
 					},
 					{
 						"created_at": "2017-03-03 12:12:12", 
 						"event": "backend-test-profile-create", 
 						"event_data": "{cancer: true, medicalbill: 'alot']}",
-						"id": 2
+						"id": 2,
+						"user_id": 192
 					},
 					{
 						"created_at": "2017-03-04 12:12:12", 
 						"event": "backend-test-profile-create", 
 						"event_data": "{occupation: ['chemistry teacher','car washer']}",
-						"id": 1
+						"id": 1,
+						"user_id": 192
 					}	
 				],
 				"method": "geteventlogs",
@@ -140,14 +143,13 @@ describe('UserEventLogComponent', () => {
   function setupConnections(backend: MockBackend, options: any) {
         backend.connections.subscribe((connection: MockConnection) => {
 
-            console.log(options, connection.request.url);
-
 			let url = connection.request.url; //http://docker.local:8088/ajax/erdiko/users/admin/eventlogs?
             let queryString = url.slice(url.indexOf("?"));
 
             url = url.slice(0, url.indexOf("?")).replace('http://docker.local:8088', '');
             switch(url) {
                 case "/ajax/erdiko/users/admin/eventlogs":
+					//Does ajax query string match with sortDir?
                     expect(queryString).toEqual("?direction="+component.sortDir);
 				default:
 					const responseOptions = new ResponseOptions(options);
@@ -174,12 +176,13 @@ describe('UserEventLogComponent', () => {
 	expect(compiled.querySelector('table')).toBeTruthy();
 
 	//Checks the number of column
-	expect(compiled.querySelectorAll('tr th').length).toBe(4);
+	expect(compiled.querySelectorAll('tr th').length).toBe(5);
 	
 	//Check for the names of the column headers.
     expect(compiled.querySelector('tr th:first-child').textContent).toContain("Created At");
-    expect(compiled.querySelector('tr th:nth-child(2)').textContent).toContain("ID");
-    expect(compiled.querySelector('tr th:nth-child(3)').textContent).toContain("Event Log");
+	expect(compiled.querySelector('tr th:nth-child(3)').textContent).toContain("User ID");
+    expect(compiled.querySelector('tr th:nth-child(3)').textContent).toContain("ID");
+    expect(compiled.querySelector('tr th:nth-child(4)').textContent).toContain("Event Log");
     expect(compiled.querySelector('tr th:last-child').textContent).toContain("Event Data");
     
   });
@@ -230,6 +233,7 @@ describe('UserEventLogComponent', () => {
 	component.ngOnInit();
 	fixture.detectChanges();
 
+	expect(compiled.querySelector('i.fa.fa-refresh.fa-spin.fa-2x.fa-fw')).toBeFalsy();
 	expect(compiled.querySelectorAll('tr.users-events').length).toBe(3);
 	expect(compiled.querySelector('tr.users-events:first-child td:first-child').textContent).toContain("3");
 	expect(compiled.querySelector('tr.users-events:last-child td:first-child').textContent).toContain("1");
@@ -256,7 +260,7 @@ describe('UserEventLogComponent', () => {
     expect(component.sortDir).toBe("desc");
 	
     //sort function is clicked
-    component.sortID();
+    component.sort();
 
     //after the sort function is clicked
     expect(component.sortDir).toBe("asc");

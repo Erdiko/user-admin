@@ -40,7 +40,7 @@ export class UsersEventLogComponent implements OnInit {
     )
   }
 
-  sortID(){
+  sort(){
     this.sortDir = ( this.sortDir === 'desc' ) ? 'asc' : 'desc';
     this._getEvents();
   }

@@ -27,6 +27,7 @@ export class UserEditComponent implements OnInit {
     public error: string;
     public msg: string;
 
+    public showPasswordForm: boolean;
     public passError: string;
     public passMsg: string;
 
@@ -42,6 +43,8 @@ export class UserEditComponent implements OnInit {
         // init the wait state (and indication animation) to 'off'
         this.wait       = false;
         this.passWait   = false;
+
+        this.showPasswordForm = false;
 
         this.user = new User();
     }
@@ -139,6 +142,10 @@ export class UserEditComponent implements OnInit {
 
     private _handleError(error) {
         this.error = error;
+    }
+
+    public togglePassword() {
+        this.showPasswordForm = !this.showPasswordForm;
     }
 
 }

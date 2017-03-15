@@ -246,7 +246,7 @@ export class UsersService {
      * handle response errors
      *
      */
-    private handleError(error: any) {
+     private handleError(error: any) {
         return Promise.reject(error.message || error);
     }
 

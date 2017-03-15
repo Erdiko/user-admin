@@ -1,7 +1,7 @@
 import { UserAdminPage } from './home.po';
 import { protractor, browser, element, by, WebElement } from 'protractor';
 
-describe('Login', function() {
+describe('Home Page', function() {
     let page: UserAdminPage;
 
     beforeEach(() => {
@@ -32,7 +32,7 @@ describe('Login', function() {
     });
 
     it('should show the main body contents', () => {
-        //Navbar shows
+        //Main Body shows
         expect(element(by.tagName("app-home"))).toBeTruthy();
 
         expect(page.getParagraphText("app-home ul > li:first-child > a")).toEqual('Create a User');

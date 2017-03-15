@@ -1,7 +1,7 @@
-import { UserAdminPage } from './user-create.po';
+import { UserAdminPage } from './user-edit.po';
 import { protractor, browser, element, by, WebElement } from 'protractor';
 
-describe('Login', function() {
+describe('User Edit Page', function() {
     let page: UserAdminPage;
 
     beforeEach(() => {
@@ -23,17 +23,20 @@ describe('Login', function() {
     });
 
     it('should lead to User List page at click of the User List link', () => {
-        //check for both User List Link
+        //Click UserList in Nav to get to UserList Page
         let userListNav = browser.findElement(protractor.by.css('nav ul > li:nth-child(2) > a'));
         userListNav.click();
     });
-
-
+    /////////
+    it('should lead to individual user edit page at click of EDIT', () => {
+        console.log("Test for edit page here");
+    });
+    /////////
     it('should logout when Logout link is clicked', () => {
         
         expect(element(by.css(".nav navbar-nav > li:last-child > a"))).toBeTruthy();
+        
         //Logout is clicked
-
         let logout = browser.findElement(protractor.by.css('ul > li:last-child > a'));
         logout.click();
 

@@ -130,7 +130,7 @@ describe('UserEventLogComponent', () => {
   }));
 
   beforeEach(() => {
-              //createComponent creates an instance of the UserEventLogComponent  
+      //createComponent creates an instance of the UserEventLogComponent  
 	  fixture = TestBed.createComponent(UserEventLogComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
@@ -234,7 +234,6 @@ describe('UserEventLogComponent', () => {
   it('should test for a sort function', () => {
 	fixture.detectChanges();
 	const compiled = fixture.debugElement.nativeElement;
-
 	
 	setupConnections(backend, {
 		body: {
@@ -245,9 +244,25 @@ describe('UserEventLogComponent', () => {
 	});
 
 	component.ngOnInit();
-	component.sortID();
+	component.sort('id');
+
+    // verify component sort params are set
+    expect(component.sortCol).toBe('id');
+    expect(component.sortDir).toBe('asc');
+
+	fixture.detectChanges();
+    expect(compiled.querySelectorAll('tr.user-events').length).toBe(3);
+
+    // click it again
+	component.sort('id');
+
+    // verify component sort params are set
+    expect(component.sortCol).toBe('id');
+    expect(component.sortDir).toBe('desc');
 
 	fixture.detectChanges();
 	expect(compiled.querySelectorAll('tr.user-events').length).toBe(3);
+
   });
+
 });

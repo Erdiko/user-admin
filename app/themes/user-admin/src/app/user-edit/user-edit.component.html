@@ -12,8 +12,8 @@
     <div class="col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <span *ngIf="!user">Create User</span>
-                <span *ngIf="user">Edit User - User {{ user.id }}</span>
+                <span *ngIf="!user.id">Create User</span>
+                <span *ngIf="user.id">Edit User - User {{ user.id }}</span>
             </div>
             <div class="panel-body">
 

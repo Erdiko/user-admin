@@ -12,7 +12,7 @@ describe('User List Page', function() {
         page.navigateTo();
         let email = browser.findElement(protractor.By.name('email'));
         let password = browser.findElement(protractor.By.name('password'));
-        let submit = browser.findElement(protractor.By.className('btn btn-default'));
+        let submit = browser.findElement(protractor.By.className('btn btn-success'));
 
         email.sendKeys('foo@mail.com');
         password.sendKeys('asdf1234');
@@ -50,35 +50,44 @@ describe('User List Page', function() {
     });
 
     it('should check for pagination', () => {
-        
-        let first = browser.findElement(protractor.By.cssContainingText('.pagination a', '1'));
-        let second = browser.findElement(protractor.By.cssContainingText('.pagination a', '2'));
 
         //check for active class on Page 1
         expect(element(by.css("ul.pagination > li:first-child")).
             getAttribute('class')).toMatch("active");
 
-        let next = browser.findElement(protractor.By.css('a[aria-label=Next]'));
+        //If there is more than 10 users for pagination to take effect..
+        element(by.css("a[aria-label=Next]")).isPresent().then(displayed => {
+
+
+            if (displayed) {
+                let first = browser.findElement(protractor.By.cssContainingText('.pagination a', '1'));
+                let second = browser.findElement(protractor.By.cssContainingText('.pagination a', '2'));
+
+                let next = browser.findElement(protractor.By.css('a[aria-label=Next]'));
         
-        next.click(); 
+                next.click(); 
 
-        //check for active class on Page 2
-        expect(element(by.css("ul.pagination > li:last-child")).
-            getAttribute('class')).toMatch("active");
+                //check for active class on Page 2
+                expect(element(by.css("ul.pagination > li:last-child")).
+                    getAttribute('class')).toMatch("active");
 
-        let prev = browser.findElement(protractor.By.css('a[aria-label=Previous]'));
+                let prev = browser.findElement(protractor.By.css('a[aria-label=Previous]'));
 
-        prev.click(); //Back to Page 1
+                prev.click(); //Back to Page 1
 
-        //Click on <a>2</a>
-        second.click();
-        expect(element(by.css("ul.pagination > li:last-child")).
-            getAttribute('class')).toMatch("active");
+                //Click on <a>2</a>
+                second.click();
+                expect(element(by.css("ul.pagination > li:last-child")).
+                    getAttribute('class')).toMatch("active");
 
-        //Click on <a>1</a>
-        first.click();
-        expect(element(by.css("ul.pagination > li:first-child")).
-            getAttribute('class')).toMatch("active");
+                //Click on <a>1</a>
+                first.click();
+                expect(element(by.css("ul.pagination > li:first-child")).
+                getAttribute('class')).toMatch("active");
+
+            }
+ 
+        }); 
 
     });
 

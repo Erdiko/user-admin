@@ -32,7 +32,7 @@ describe('login page', () => {
   it('should display a login fail message', () => {
     let email = browser.findElement(protractor.By.name('email'));
     let password = browser.findElement(protractor.By.name('password'));
-    let submit = browser.findElement(protractor.By.className('btn btn-default'));
+    let submit = browser.findElement(protractor.By.className('btn btn-success'));
 
     // Input Values
     email.sendKeys('foo@bar.com');
@@ -54,7 +54,7 @@ describe('login page', () => {
   it('should login successfully with right email and password', () => {
     let email = browser.findElement(protractor.By.name('email'));
     let password = browser.findElement(protractor.By.name('password'));
-    let submit = browser.findElement(protractor.By.className('btn btn-default'));
+    let submit = browser.findElement(protractor.By.className('btn btn-success'));
 
     email.sendKeys('foo@mail.com');
     password.sendKeys('asdf1234');

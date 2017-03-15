@@ -1,7 +1,7 @@
 import { UserAdminPage } from './user-create.po';
 import { protractor, browser, element, by, WebElement } from 'protractor';
 
-describe('Login', function() {
+describe('User Create', function() {
     let page: UserAdminPage;
 
     beforeEach(() => {
@@ -12,7 +12,7 @@ describe('Login', function() {
         page.navigateTo("/");
         let email = browser.findElement(protractor.By.name('email'));
         let password = browser.findElement(protractor.By.name('password'));
-        let submit = browser.findElement(protractor.By.className('btn btn-default'));
+        let submit = browser.findElement(protractor.By.className('btn btn-success'));
 
         email.sendKeys('foo@mail.com');
         password.sendKeys('asdf1234');
@@ -45,13 +45,18 @@ describe('Login', function() {
         let save = browser.findElement(protractor.By.css('button[type=submit]'));
         
         //Create new user
-        name.sendKeys('Elliott Alderson');
-        email.sendKeys('elliott@funsociety.com');
+        name.sendKeys('Elliot Alderson');
+        email.sendKeys('elliot@funsociety.com');
         admin.click();
         save.click();
 
-        //Check new user's presense
-        page.navigateTo("/list")
+        //Go back to User List Page and check for the new user's presense
+        let cancel = browser.findElement(protractor.By.css('button[type=cancel]'));
+        cancel.click();
+
+        expect(page.getParagraphText("tbody tr:first-child > th:nth-child(2)")).toEqual('Elliot Alderson');
+
+
     });
 
     it('should logout when Logout link is clicked', () => {

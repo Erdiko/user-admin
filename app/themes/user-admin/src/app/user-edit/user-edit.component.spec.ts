@@ -132,13 +132,17 @@ describe('UserEditComponent', () => {
 
     function setupConnections(backend: MockBackend, options: any) {
         backend.connections.subscribe((connection: MockConnection) => {
-        
-            switch(connection.request.url) {
-                case "http://docker.local:8088/ajax/erdiko/users/admin/update":
+         
+            let url = connection.request.url.replace('http://docker.local:8088', '');
+
+            switch(url.slice(0, url.indexOf("?"))) {
+
+                case "/ajax/erdiko/users/admin/update":
                     const responseOptions = new ResponseOptions(options);
                     const response = new Response(responseOptions);
                     connection.mockRespond(response);
-                break;
+                    break;
+
             }
 
         });
@@ -163,6 +167,13 @@ describe('UserEditComponent', () => {
         fixture.detectChanges();
 
         expect(compiled.querySelector('form#user-edit')).toBeTruthy();
+
+        // should not show the password form until the button is toggled
+        expect(compiled.querySelector('form#user-password-change')).toBeFalsy();
+
+        // "click" the toggle form
+        component.showPasswordForm = true;
+        fixture.detectChanges();
         expect(compiled.querySelector('form#user-password-change')).toBeTruthy();
     });
 
@@ -293,6 +304,9 @@ describe('UserEditComponent', () => {
         component.user = user;
         component.ngOnInit();
 
+        component.showPasswordForm = true;
+        fixture.detectChanges();
+
         component.passwordForm.controls['password'].setValue('');
         component.passwordForm.controls['confirm'].setValue('');
         fixture.detectChanges();
@@ -322,6 +336,9 @@ describe('UserEditComponent', () => {
 
         // init the component
         component.ngOnInit();
+
+        component.showPasswordForm = true;
+        fixture.detectChanges();
 
         // fill out the form & submit
         component.passwordForm.controls['password'].setValue('abcdef123456');

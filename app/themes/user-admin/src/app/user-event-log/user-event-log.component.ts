@@ -26,11 +26,11 @@ export class UserEventLogComponent implements OnInit {
   public events: Event[];
 
   //Parameters of getUsersEvents()
-  private userID: string;
-  private pageSize = null;
-  private pageNumber = null;
-  private sortCol = null;
-  private sortDir = 'desc';
+  public userID: string;
+  public pageSize = null;
+  public pageNumber = null;
+  public sortCol = null;
+  public sortDir = 'desc';
 
   constructor(
     private usersService: UsersService,
@@ -60,13 +60,19 @@ export class UserEventLogComponent implements OnInit {
     
   }
 
-  sortID(){
-    this.sortDir = (this.sortDir === "desc") ? "asc" : "desc";
+  sort(col) {
+
+    // toggle sort dir if the user clicks on currently sorted column
+    if(this.sortCol == col) {
+        this.sortDir = (this.sortDir == "desc") ? "asc" : "desc";
+    } else {
+        // else default the sort to asc
+        this.sortDir = "asc";
+    }
+    this.sortCol = col;
 
     this._getEvents();
-
   }
-  
   
   ngOnInit() {  
 

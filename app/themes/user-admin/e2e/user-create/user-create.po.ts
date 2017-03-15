@@ -1,8 +1,8 @@
 import { browser, element, by } from 'protractor';
 
 export class UserAdminPage {
-  navigateTo() {
-    return browser.get('/');
+  navigateTo(path) {
+    return browser.get(path);
   }
 
   getParagraphText(css) {

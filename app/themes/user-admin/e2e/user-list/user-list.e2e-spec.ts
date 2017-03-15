@@ -36,7 +36,7 @@ describe('User List Page', function() {
         userListBody.click();
     });
 
-    it('should show the user list table', () => {
+    it('should show the user list table header', () => {
 
         //check for table header
         expect(page.getParagraphText("thead th:first-child")).toEqual('ID');

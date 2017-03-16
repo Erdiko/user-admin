@@ -8,17 +8,17 @@ import {
 } from '@angular/core/testing';
 
 import {
+    MockBackend,
+    MockConnection
+} from '@angular/http/testing';
+
+import {
     BaseRequestOptions,
     Http,
     Response,
     ResponseOptions,
     XHRBackend
 } from '@angular/http';
-
-import {
-    MockBackend,
-    MockConnection
-} from '@angular/http/testing';
 
 import { User }         from "../shared/models/user.model";
 import { AuthService }  from './auth.service';

@@ -212,7 +212,7 @@ describe('UsersService', () => {
             body: {
                 body: usersBodyData
             },
-            status: 500
+            status: 200
         });
 
         service.users$.subscribe((res) => {

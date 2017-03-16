@@ -37,7 +37,6 @@ describe('Home Page', function() {
 
         expect(page.getParagraphText("app-home ul > li:first-child > a")).toEqual('Create a User');
         expect(page.getParagraphText("app-home ul > li:nth-child(2) > a")).toEqual('User List');
-        //expect(page.getParagraphText("app-home ul > li:last-child > a")).toEqual('User Event Log');
     });
 
     it('should logout when Logout link is clicked', () => {

@@ -101,17 +101,38 @@ describe('User List Page', function() {
 
         //get the id of the new first item in column to be 1
         expect(page.getParagraphText("tbody th:first-child")).toEqual('1');
+
+        //click the sort column again to reset to 'desc' order
+        id.click();
         
     });
 
-    it('should logout when Logout link is clicked', () => {
-        
-        expect(element(by.css(".nav navbar-nav > li:last-child > a"))).toBeTruthy();
-        
-        //Logout is clicked
-        let logout = browser.findElement(protractor.by.css('ul > li:last-child > a'));
-        logout.click();
+    it('should delete the user that is created in the user-create test', () => {
 
-        expect(page.getParagraphText(".navbar-brand")).toEqual('User Admin');
+        //the user that is to be deleted
+        expect(page.getParagraphText("tbody tr:first-child > td")).toEqual('Sam Sepiol');
+
+        let deleteUser = browser.findElement(protractor.By.css('tbody tr:first-child .btn-danger'));
+        deleteUser.click();
+
+        //Check for modal's showing
+        expect(page.getParagraphText(".modal-header > h4")).toEqual('Delete?');
+
+        //Click cancel to close the modal
+        let cancel = browser.findElement(protractor.By.cssContainingText('.modal-body .btn-warning', 'Cancel'));
+        cancel.click();
+
+        browser.manage().timeouts().pageLoadTimeout(5000);
+
+        deleteUser.click();
+
+        let deleteUserConfirm = browser.findElement(protractor.By.cssContainingText('.modal-body .btn-danger', 'Delete'));
+        //deleteUserConfirm.click();
+        browser.wait(() => {
+            deleteUserConfirm.click()}
+            , 30000);
+
+        expect(page.getParagraphText("tbody tr:first-child > td")).not.toEqual('Sam Sepiol'); 
+
     });
 });

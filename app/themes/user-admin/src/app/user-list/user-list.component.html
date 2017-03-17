@@ -62,12 +62,12 @@
             <tbody *ngIf="!wait && !error && users.length > 0"> 
                 <tr *ngFor="let user of users; let index = index"> 
                     <th scope="row">{{ user.id }}</th> 
-                    <td>{{ user.name }}</td> 
-                    <td>{{ user.role.name }}</td> 
-                    <td>{{ user.last_login }}</td> 
-                    <td>{{ user.joined }}</td> 
-                    <td><a routerLink="/user/{{ user.id }}">Edit</a></td> 
-                    <td><button type="button" class="btn btn-danger" (click)="clickDelete(user.id)">Delete</button></td> 
+                    <td class="user_name">{{ user.name }}</td> 
+                    <td class="user_role_name">{{ user.role.name }}</td> 
+                    <td class="user_last_login">{{ user.last_login }}</td> 
+                    <td class="user_joined">{{ user.joined }}</td> 
+                    <td class="user_edit"><a routerLink="/user/{{ user.id }}">Edit</a></td> 
+                    <td class="user_delete"><button type="button" class="btn btn-danger" (click)="clickDelete(user.id)">Delete</button></td> 
                 </tr> 
             </tbody> 
         </table>

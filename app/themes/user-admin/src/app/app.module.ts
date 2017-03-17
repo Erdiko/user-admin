@@ -22,6 +22,7 @@ import { AlertModule,
 
 import { EqualityValidator }    from './shared/equality-validator.directive';
 import { UserEventLogComponent } from './user-event-log/user-event-log.component';
+import { UsersEventLogComponent } from './users-event-log/users-event-log.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UserEventLogComponent } from './user-event-log/user-event-log.component
     HeaderComponent,
     LoginComponent,
     EqualityValidator,
-    UserEventLogComponent
+    UserEventLogComponent,
+    UsersEventLogComponent
   ],
   imports: [
     BrowserModule,

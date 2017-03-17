@@ -42,10 +42,6 @@ describe('LoginComponent', () => {
 
     let bodyData: any;
 
-    let mockRouter = {
-        navigate: jasmine.createSpy('navigate')
-    };
-
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [

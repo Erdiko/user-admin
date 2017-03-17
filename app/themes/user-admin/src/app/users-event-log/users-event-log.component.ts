@@ -1,22 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
-import { UsersService }   from '../shared/users.service';
 import { Event } from '../shared/models/event.model';
-
-import { ActivatedRoute } from '@angular/router';
-
-import { UserListComponent } from '../user-list/user-list.component';
-
-import { Subscription } from "rxjs";
+import { UsersService } from '../shared/users.service';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-user-event-log',
-  templateUrl: './user-event-log.component.html',
-  styleUrls: ['./user-event-log.component.scss'],
+  selector: 'app-users-event-log',
+  templateUrl: './users-event-log.component.html',
+  styleUrls: ['./users-event-log.component.scss'],
   providers: [UsersService]
 })
-
-export class UserEventLogComponent implements OnInit {
+export class UsersEventLogComponent implements OnInit {
 
   private wait: boolean;
   private events: Event[];
@@ -34,8 +27,7 @@ export class UserEventLogComponent implements OnInit {
   private eventsTotal$: Subscription;
 
   constructor(
-    private usersService: UsersService,
-    private route: ActivatedRoute
+    private usersService: UsersService
   ) {
     this.userID = null
     this.pageSize = 10;
@@ -106,7 +98,7 @@ export class UserEventLogComponent implements OnInit {
   private _setPages(){
     this.pages = []; //reset page before setting pages
     for(let i = 1; i <= this.getPageCount(); i++){
-      this.pages.push(i); console.log(i);
+      this.pages.push(i);
     }
   }
 
@@ -146,18 +138,17 @@ export class UserEventLogComponent implements OnInit {
   getPageCount() {
     return Math.ceil(this.eventsTotal / this.pageSize );
   }
-  
-  ngOnInit() {  
 
-    this.route.data.forEach((data: { user: any }) => {
-        if(undefined !== data.user && data.user) {
-            this.userID = data.user.id;
-        }
-    });
-
+  /**
+   * Calls for Events at the initialization of component
+   */
+  ngOnInit() {
     this._getEvents();
   }
 
+  /**
+   * Clean up by unsubscribing observables to avoid memory leak
+   */
   ngOnDestroy() {
     this.events$.unsubscribe();
     this.eventsTotal$.unsubscribe();

@@ -1,12 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-
 import {
     async,
     getTestBed,
+    inject,
     TestBed
 } from '@angular/core/testing';
+
+import {
+    MockBackend,
+    MockConnection
+} from '@angular/http/testing';
 
 import {
     BaseRequestOptions,
@@ -15,11 +19,6 @@ import {
     ResponseOptions,
     XHRBackend
 } from '@angular/http';
-
-import {
-    MockBackend,
-    MockConnection
-} from '@angular/http/testing';
 
 import { User }         from "../shared/models/user.model";
 import { AuthService }  from './auth.service';
@@ -208,18 +207,18 @@ describe('UsersService', () => {
     });
 
     it('#getUsers should return an observable list of users and result total when the ajax request is successful', () => {
-        usersBodyData.success = false;
+        usersBodyData.success = true;
         setupConnections(backend, {
             body: {
                 body: usersBodyData
             },
-            status: 500
+            status: 200
         });
 
         service.users$.subscribe((res) => {
             if(res) {
                 expect(res).toBeTruthy();
-                expect(res.length).toEqual(0);
+                expect(res.length).toEqual(2);
             }
         });
 

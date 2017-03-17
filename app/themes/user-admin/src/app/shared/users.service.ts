@@ -10,11 +10,12 @@ import { User }         from "./models/user.model";
 @Injectable()
 export class UsersService {
 
-    private _users$:  BehaviorSubject<any>;
-    private _total$:  BehaviorSubject<any>;
-    private _events$: BehaviorSubject<any>;
+    private _users$:       BehaviorSubject<any>;
+    private _total$:       BehaviorSubject<any>;
+    private _events$:      BehaviorSubject<any>;
+    private _eventsTotal$: BehaviorSubject<any>;
 
-    private dataStore: {users?: any, total?: number, events?: any};
+    private dataStore: {users?: any, total?: number, events?: any, eventsTotal?: number};
 
     private listUrl         = "/ajax/erdiko/users/admin/list";
     private userUrl         = "/ajax/erdiko/users/admin/retrieve";
@@ -35,9 +36,10 @@ export class UsersService {
 
         this.dataStore = {};
 
-        this._users$  = new BehaviorSubject(null);
-        this._total$  = new BehaviorSubject(null);
-        this._events$ = new BehaviorSubject(null);
+        this._users$  =      new BehaviorSubject(null);
+        this._total$  =      new BehaviorSubject(null);
+        this._events$ =      new BehaviorSubject(null);
+        this._eventsTotal$ = new BehaviorSubject(null);
 
         // hack to help with local development
         this._baseUrl = "";
@@ -57,6 +59,10 @@ export class UsersService {
 
     get events$() {
         return this._events$.asObservable();
+    }
+
+    get eventsTotal$() {
+        return this._eventsTotal$.asObservable();
     }
 
     /**
@@ -222,22 +228,28 @@ export class UsersService {
         if(sortDir) {
             url += "direction=" + sortDir;
         }
-    
+        console.log("url", url);
+
         let options = this._getHeaderOptions();
 
         return this.http.get(url, options)
                    .map(response => response.json())
                    .subscribe(data => {
                        this.dataStore.events = [];
+                       this.dataStore.eventsTotal = 0;
                        if(true == data.body.success) {
+                           
                            this.dataStore.events = data.body.logs;
+                           this.dataStore.eventsTotal = data.body.total;
                        }
                        this._events$.next(this.dataStore.events);
+                       this._eventsTotal$.next(this.dataStore.eventsTotal);
                    },
                    error => {
                        // log the error!
                        console.error("Error retrieving user event logs!", url, error);
                        this._events$.next([]);
+                       this._events$.next(0);
                    });
     }
 

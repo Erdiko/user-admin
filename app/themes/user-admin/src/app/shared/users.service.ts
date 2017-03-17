@@ -228,7 +228,6 @@ export class UsersService {
         if(sortDir) {
             url += "direction=" + sortDir;
         }
-        console.log("url", url);
 
         let options = this._getHeaderOptions();
 

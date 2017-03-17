@@ -8,21 +8,23 @@
         <table class="table table-bordered table-hover"> 
             <thead>
                 <tr>
-                    <th (click)="sort()">
-                        Created At
+                    <th (click)="sort('id')">
+                        ID
                         <i class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
                     </th>
-                    <th>
+                    <th (click)="sort('user_id')">
                         User ID
-                    </th>
-                    <th>
-                        ID
+                        <i class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
                     </th>
                     <th>
                         Event Log
                     </th>
                     <th>
                         Event Data
+                    </th>
+                    <th (click)="sort('created_at')">
+                        Created At
+                        <i class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
                     </th>
                 </tr>
             </thead>
@@ -45,11 +47,11 @@
 
             <tbody *ngIf="!wait && events.length > 0">
                 <tr class="users-events" *ngFor="let event of events">
-                    <td> {{event.created_at}} </td>
-                    <td> {{event.user_id}} </td>
                     <td> {{event.id}} </td>
+                    <td> {{event.user_id}} </td>
                     <td> {{event.event}} </td>
                     <td> {{event.event_data|json}} </td>
+                    <td> {{event.created_at}} </td>
                 </tr>
             </tbody>
         </table>

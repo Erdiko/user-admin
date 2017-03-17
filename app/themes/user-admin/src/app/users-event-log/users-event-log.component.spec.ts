@@ -151,7 +151,7 @@ describe('UserEventLogComponent', () => {
             switch(url) {
                 case "/ajax/erdiko/users/admin/eventlogs":
 					//Does ajax query string match with sortDir?
-                    expect(queryString).toEqual("?direction="+component.sortDir);
+                    expect(queryString).toEqual("?pagesize=10&page=1&direction="+component.sortDir);
 				default:
 					const responseOptions = new ResponseOptions(options);
                     const response = new Response(responseOptions);
@@ -180,11 +180,11 @@ describe('UserEventLogComponent', () => {
 	expect(compiled.querySelectorAll('tr th').length).toBe(5);
 	
 	//Check for the names of the column headers.
-    expect(compiled.querySelector('tr th:first-child').textContent).toContain("Created At");
+    expect(compiled.querySelector('tr th:first-child').textContent).toContain("ID");
 	expect(compiled.querySelector('tr th:nth-child(2)').textContent).toContain("User ID");
-    expect(compiled.querySelector('tr th:nth-child(3)').textContent).toContain("ID");
-    expect(compiled.querySelector('tr th:nth-child(4)').textContent).toContain("Event Log");
-    expect(compiled.querySelector('tr th:last-child').textContent).toContain("Event Data");
+    expect(compiled.querySelector('tr th:nth-child(3)').textContent).toContain("Event Log");
+    expect(compiled.querySelector('tr th:nth-child(4)').textContent).toContain("Event Data");
+    expect(compiled.querySelector('tr th:last-child').textContent).toContain("Created At");
     
   });
 

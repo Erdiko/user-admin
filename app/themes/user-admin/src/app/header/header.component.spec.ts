@@ -90,7 +90,7 @@ describe('HeaderComponent', () => {
         const compiled = fixture.debugElement.nativeElement;
 
         expect(compiled.querySelectorAll('ul')).toBeTruthy();
-        expect(compiled.querySelectorAll('ul li').length).toBe(3);
+        expect(compiled.querySelectorAll('ul li').length).toBe(4);
     });
 
     it('should navigate to /login when clickLogout is fired', () => {

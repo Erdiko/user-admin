@@ -3,8 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Router, ROUTER_PROVIDERS } from "@angular/router";
 
 import { HttpModule }               from '@angular/http';
 
@@ -24,6 +23,8 @@ describe('HeaderComponent', () => {
     let component: HeaderComponent;
     let fixture: ComponentFixture<HeaderComponent>;
 
+    let router: any;
+
     beforeEach(async(() => {
 
         TestBed.configureTestingModule({
@@ -31,13 +32,16 @@ describe('HeaderComponent', () => {
                 HeaderComponent 
             ],
             imports: [
-                HttpModule,
-                RouterTestingModule
+                HttpModule
             ],
             providers: [
                 {
                     provide: AuthService, 
                     useClass: MockAuthService
+                },
+                {
+                    provide: Router, 
+                    useClass: class { navigate = jasmine.createSpy("navigate"); } 
                 },
                 UsersService,
                 UserResolve
@@ -71,6 +75,7 @@ describe('HeaderComponent', () => {
         expect(compiled.querySelectorAll('ul li').length).toBe(0);
     });
 
+
     it('should display an ul element with 3 links when logged in', () => {
         
         /*
@@ -86,6 +91,18 @@ describe('HeaderComponent', () => {
 
         expect(compiled.querySelectorAll('ul')).toBeTruthy();
         expect(compiled.querySelectorAll('ul li').length).toBe(3);
+    });
+
+    it('should navigate to /login when clickLogout is fired', () => {
+
+        let service = fixture.debugElement.injector.get(AuthService);
+        spyOn(service, 'isLoggedIn').and.returnValue(true);
+
+        let router = fixture.debugElement.injector.get(Router);
+
+        component.clickLogout();
+
+        expect(router.navigate).toHaveBeenCalledWith(["/login"]);
     });
 
 });

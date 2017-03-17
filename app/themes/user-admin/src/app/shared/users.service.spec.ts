@@ -1,12 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-
 import {
     async,
     getTestBed,
+    inject,
     TestBed
 } from '@angular/core/testing';
+
+import {
+    MockBackend,
+    MockConnection
+} from '@angular/http/testing';
 
 import {
     BaseRequestOptions,
@@ -15,11 +19,6 @@ import {
     ResponseOptions,
     XHRBackend
 } from '@angular/http';
-
-import {
-    MockBackend,
-    MockConnection
-} from '@angular/http/testing';
 
 import { User }         from "../shared/models/user.model";
 import { AuthService }  from './auth.service';
@@ -213,7 +212,7 @@ describe('UsersService', () => {
             body: {
                 body: usersBodyData
             },
-            status: 500
+            status: 200
         });
 
         service.users$.subscribe((res) => {

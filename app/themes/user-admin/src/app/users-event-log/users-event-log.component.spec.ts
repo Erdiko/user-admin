@@ -217,6 +217,7 @@ describe('UserEventLogComponent', () => {
                 case "/ajax/erdiko/users/admin/eventlogs":
 					//Does ajax query string match with sortDir?
 					expect(queryString).toEqual("?pagesize="+component.pageSize+"&page="+component.currentPage+"&sort="+component.sortCol+"&direction="+component.sortDir);
+
 				default:
 					const responseOptions = new ResponseOptions(options);
                     const response = new Response(responseOptions);

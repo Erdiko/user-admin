@@ -207,7 +207,7 @@ describe('UsersService', () => {
     });
 
     it('#getUsers should return an observable list of users and result total when the ajax request is successful', () => {
-        usersBodyData.success = false;
+        usersBodyData.success = true;
         setupConnections(backend, {
             body: {
                 body: usersBodyData
@@ -218,7 +218,7 @@ describe('UsersService', () => {
         service.users$.subscribe((res) => {
             if(res) {
                 expect(res).toBeTruthy();
-                expect(res.length).toEqual(0);
+                expect(res.length).toEqual(2);
             }
         });
 

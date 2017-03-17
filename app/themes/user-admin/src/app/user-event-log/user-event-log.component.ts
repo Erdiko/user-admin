@@ -18,60 +18,133 @@ import { Subscription } from "rxjs";
 
 export class UserEventLogComponent implements OnInit {
 
-  //Variable for the loading animation.
   private wait: boolean;
+  private events: Event[];
+  private eventsTotal: number;
+  
+  private userID: string;
+  private pageSize: number;
+  public currentPage: number;
+  private sortCol: string;
+  public sortDir: string;
 
-  //initialize the subscription
+  public pages: number[];
+
   private events$: Subscription;
-  public events: Event[];
-
-  //Parameters of getUsersEvents()
-  public userID: string;
-  public pageSize = null;
-  public pageNumber = null;
-  public sortCol = null;
-  public sortDir = 'desc';
+  private eventsTotal$: Subscription;
 
   constructor(
     private usersService: UsersService,
     private route: ActivatedRoute
-  ) { 
+  ) {
+    this.userID = null
+    this.pageSize = 10;
+    this.currentPage = 1;
+    this.sortCol = null;
+    this.sortDir = 'desc';
 
-    // subscribe to the service to get data
+    this.pages = [];
+
+    /**
+     * Subscribe to the usersService to get events
+     */
     this.events$ = this.usersService.events$.subscribe(
       events$ => this.events = events$
     );
 
+    /**
+     * When getting events is finished, hide the loading animation
+     */
     this.usersService.events$.subscribe(
       () => this.wait = false
     )
-    
+
+    /**
+     * Subscribe to the usersService to get total number of events
+     */
+    this.eventsTotal$ = this.usersService.eventsTotal$.subscribe(
+      eventsTotal$ => this.eventsTotal = eventsTotal$
+    );
+
+    /**
+     * When total number of events is known, set the pagination
+     */
+    this.usersService.eventsTotal$.subscribe(
+      () => this._setPages()
+    )
+
   }
 
-  private _getEvents() {
-    
-    // this.wait = true is required in this specific location.
-    this.wait = true;
-    this.usersService.getUsersEvents(this.userID, 
-                                    this.pageSize, 
-                                    this.pageNumber, 
-                                    this.sortCol,
-                                    this.sortDir);
-    
-  }
-
-  sort(col) {
-
-    // toggle sort dir if the user clicks on currently sorted column
-    if(this.sortCol == col) {
-        this.sortDir = (this.sortDir == "desc") ? "asc" : "desc";
-    } else {
-        // else default the sort to asc
-        this.sortDir = "asc";
+  /**
+   * Sorts event log specified by the parameter
+   * @param {string} column - instruction specifying which column to sort
+   */
+  sort(column){
+    if(this.sortCol != column){
+      this.sortCol = column;
     }
-    this.sortCol = col;
+    this.sortDir = ( this.sortDir === 'desc' ) ? 'asc' : 'desc';
 
     this._getEvents();
+  }
+
+  /**
+   * Show loading animation while request for Users Event Log is being made
+   */
+  private _getEvents(){
+    this.wait = true;
+    this.usersService.getUsersEvents(this.userID, 
+                                     this.pageSize,
+                                     this.currentPage,
+                                     this.sortCol,
+                                     this.sortDir);
+  }
+
+  /**
+   * Sets array of pages
+   */
+  private _setPages(){
+    this.pages = []; //reset page before setting pages
+    for(let i = 1; i <= this.getPageCount(); i++){
+      this.pages.push(i); console.log(i);
+    }
+  }
+
+  /**
+   * Called when clicking on numbered link to get to certain page
+   */
+  clickPage(i){
+      this.currentPage = i;
+      this._getEvents();
+  }
+
+  /**
+   * Called when clicking '<<' link to lead to proceeding page
+   */
+  clickPrev(){
+      
+      if(this.currentPage > 1){
+        this.currentPage--;  
+      }
+      this._getEvents();
+  }
+
+  /**
+   * Called when clicking '>>' link to lead to succeeding page
+   */
+  clickNext(){
+
+      if(this.currentPage < this.getPageCount()){
+        this.currentPage++;
+      }
+      this._getEvents();
+  }
+
+  /**
+   * Get the number of pages necessary to house set of 10 event logs
+   */
+  getPageCount() {
+    return Math.ceil(this.eventsTotal / this.pageSize );
   }
   
   ngOnInit() {  
@@ -87,6 +160,7 @@ export class UserEventLogComponent implements OnInit {
 
   ngOnDestroy() {
     this.events$.unsubscribe();
+    this.eventsTotal$.unsubscribe();
   }
 
 }

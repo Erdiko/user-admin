@@ -31,7 +31,6 @@ export class UserEditComponent implements OnInit {
     public error: string;
     public msg: string;
 
-    public showPasswordForm: boolean;
     public passError: string;
     public passMsg: string;
 
@@ -48,7 +47,6 @@ export class UserEditComponent implements OnInit {
         this.wait       = false;
         this.passWait   = false;
 
-        this.showPasswordForm = false;
 
         this.user = new User();
     }
@@ -148,8 +146,9 @@ export class UserEditComponent implements OnInit {
         this.error = error;
     }
 
-    public togglePassword() {
-        this.showPasswordForm = !this.showPasswordForm;
+    public createEditHeader() {
+        let panelHeader = this.user.id ? "Edit User - User " + this.user.id : "Create User";
+        return panelHeader;
     }
 
 }

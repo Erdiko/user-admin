@@ -8,10 +8,12 @@
         <br/>
     </div>
 </div>
+
+
 <div class="row">
     <div class="col-xs-12">
         <div class="panel panel-default">
-            <tabset [justified]="true">
+            <tabset>
                 <tab [heading]="createEditHeader()">
                     <div class="panel-body">
                         <alert *ngIf="msg" type="success">{{ msg }}</alert>
@@ -99,12 +101,9 @@
                 </tab>
                 <tab heading="Update User Password" *ngIf="user.id">
 
-                    <div class="row">
+                    <!--<div class="row">
                         <div class="col-xs-12">
-                            <div class="panel panel-default">
-                                <!--<div class="panel-heading">
-                                    <span>Update User Password</span>
-                                </div>-->
+                            <div class="panel panel-default">-->
                                 <div class="panel-body">
 
                                     <alert *ngIf="passMsg" type="success">{{ passMsg }}</alert>
@@ -161,9 +160,9 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            <!--</div>
                         </div>
-                    </div>
+                    </div>-->
                 </tab>
             </tabset>
         </div>

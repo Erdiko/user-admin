@@ -8,10 +8,6 @@ import { UserEventLogComponent } from '../user-event-log/user-event-log.componen
 
 import { AlertComponent, TabsModule } from 'ng2-bootstrap';
 
-// @NgModule({
-//   imports: [TabsModule.forRoot()]
-// })
-
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',

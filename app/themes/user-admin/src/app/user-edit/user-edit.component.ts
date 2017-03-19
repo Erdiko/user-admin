@@ -1,4 +1,4 @@
-import { Component, OnInit }                    from '@angular/core';
+import { Component, NgModule, OnInit }                    from '@angular/core';
 import { Router, ActivatedRoute }               from '@angular/router';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
@@ -6,7 +6,11 @@ import { UsersService }   from '../shared/users.service';
 import { User }           from "../shared/models/user.model";
 import { UserEventLogComponent } from '../user-event-log/user-event-log.component'
 
-import {AlertComponent } from 'ng2-bootstrap';
+import { AlertComponent, TabsModule } from 'ng2-bootstrap';
+
+// @NgModule({
+//   imports: [TabsModule.forRoot()]
+// })
 
 @Component({
   selector: 'app-user-edit',

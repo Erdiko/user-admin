@@ -10,7 +10,7 @@
                     <thead>
 
                         <tr>
-                            <th (click)="sortID()">
+                            <th (click)="sort('id')">
                                 ID
                                 <i class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
                             </th>
@@ -20,8 +20,9 @@
                             <th>
                                 Event Data
                             </th>
-                            <th>
+                            <th (click)="sort('created_at')">
                                 Created At
+                                <i class="fa" [ngClass]="{'fa-sort-asc': (sortDir == 'asc'), 'fa-sort-desc': (sortDir == 'desc')}" aria-hidden="true"></i>
                             </th>
                         </tr>
                     </thead>

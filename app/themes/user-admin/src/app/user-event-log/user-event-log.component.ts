@@ -27,9 +27,9 @@ export class UserEventLogComponent implements OnInit {
 
   //Parameters of getUsersEvents()
   public userID: string;
-  public pageSize = null;
-  public pageNumber = null;
-  public sortCol = null;
+  public pageSize = 10;
+  public currentPage = 1;
+  public sortCol = 'id';
   public sortDir = 'desc';
 
   constructor(
@@ -54,7 +54,7 @@ export class UserEventLogComponent implements OnInit {
     this.wait = true;
     this.usersService.getUsersEvents(this.userID, 
                                     this.pageSize, 
-                                    this.pageNumber, 
+                                    this.currentPage, 
                                     this.sortCol,
                                     this.sortDir);
     

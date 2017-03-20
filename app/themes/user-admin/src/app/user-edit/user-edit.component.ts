@@ -1,4 +1,4 @@
-import { Component, OnInit }                    from '@angular/core';
+import { Component, NgModule, OnInit }                    from '@angular/core';
 import { Router, ActivatedRoute }               from '@angular/router';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
@@ -6,7 +6,7 @@ import { UsersService }   from '../shared/users.service';
 import { User }           from "../shared/models/user.model";
 import { UserEventLogComponent } from '../user-event-log/user-event-log.component'
 
-import {AlertComponent } from 'ng2-bootstrap';
+import { AlertComponent, TabsModule } from 'ng2-bootstrap';
 
 @Component({
   selector: 'app-user-edit',
@@ -21,13 +21,12 @@ export class UserEditComponent implements OnInit {
 
     private title: string;
 
-    private userForm: FormGroup;
-    private passwordForm: FormGroup;
+    public userForm: FormGroup;
+    public passwordForm: FormGroup;
 
     public error: string;
     public msg: string;
 
-    public showPasswordForm: boolean;
     public passError: string;
     public passMsg: string;
 
@@ -44,7 +43,6 @@ export class UserEditComponent implements OnInit {
         this.wait       = false;
         this.passWait   = false;
 
-        this.showPasswordForm = false;
 
         this.user = new User();
     }
@@ -144,8 +142,9 @@ export class UserEditComponent implements OnInit {
         this.error = error;
     }
 
-    public togglePassword() {
-        this.showPasswordForm = !this.showPasswordForm;
+    public createEditHeader() {
+        let panelHeader = this.user.id ? "Edit User - User " + this.user.id : "Create User";
+        return panelHeader;
     }
 
 }

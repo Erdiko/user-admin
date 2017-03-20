@@ -66,7 +66,7 @@ const appRoutes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {useHash: false}
+      {useHash: true}
     )
   ],
   exports: [

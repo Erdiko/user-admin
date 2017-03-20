@@ -27,7 +27,8 @@ import { FormsModule,
          ReactiveFormsModule }  from '@angular/forms';
 
 import { AlertModule, 
-         ModalModule }          from 'ng2-bootstrap';
+         ModalModule,
+         TabsModule }          from 'ng2-bootstrap';
 
 import { AuthService }          from '../shared/auth.service';
 import { UsersService }         from '../shared/users.service';
@@ -70,7 +71,8 @@ describe('UserEditComponent', () => {
                 ReactiveFormsModule,
 
                 AlertModule.forRoot(),
-                ModalModule.forRoot()
+                ModalModule.forRoot(),
+                TabsModule.forRoot()
             ],
             providers: [
                 BaseRequestOptions,
@@ -168,11 +170,10 @@ describe('UserEditComponent', () => {
 
         expect(compiled.querySelector('form#user-edit')).toBeTruthy();
 
-        // should not show the password form until the button is toggled
-        expect(compiled.querySelector('form#user-password-change')).toBeFalsy();
+        /**
+         * Change: No need for toggle as the update password is already rendered
+         */
 
-        // "click" the toggle form
-        component.showPasswordForm = true;
         fixture.detectChanges();
         expect(compiled.querySelector('form#user-password-change')).toBeTruthy();
     });
@@ -304,8 +305,9 @@ describe('UserEditComponent', () => {
         component.user = user;
         component.ngOnInit();
 
-        component.showPasswordForm = true;
-        fixture.detectChanges();
+        /**
+         * Change: No need for toggle as the update password is already rendered
+         */
 
         component.passwordForm.controls['password'].setValue('');
         component.passwordForm.controls['confirm'].setValue('');
@@ -325,6 +327,7 @@ describe('UserEditComponent', () => {
     it('should allow password update submission with valid input', async(() => {
 
         fixture.detectChanges();
+        const compiled = fixture.debugElement.nativeElement;
 
         // set up a faked api response
         setupConnections(backend, {
@@ -337,8 +340,9 @@ describe('UserEditComponent', () => {
         // init the component
         component.ngOnInit();
 
-        component.showPasswordForm = true;
-        fixture.detectChanges();
+        /**
+         * Change: No need for toggle as the update password is already rendered
+         */
 
         // fill out the form & submit
         component.passwordForm.controls['password'].setValue('abcdef123456');

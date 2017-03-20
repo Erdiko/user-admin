@@ -18,7 +18,8 @@ import { UserEditComponent }    from './user-edit/user-edit.component';
 import { HeaderComponent }      from './header/header.component';
 
 import { AlertModule, 
-         ModalModule }          from 'ng2-bootstrap';
+         ModalModule,
+         TabsModule }          from 'ng2-bootstrap';
 
 import { EqualityValidator }    from './shared/equality-validator.directive';
 import { UserEventLogComponent } from './user-event-log/user-event-log.component';
@@ -44,7 +45,8 @@ import { UsersEventLogComponent } from './users-event-log/users-event-log.compon
     AppRoutingModule,
 
     AlertModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [
     AuthService,

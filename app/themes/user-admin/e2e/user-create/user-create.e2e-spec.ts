@@ -1,4 +1,4 @@
-import { UserAdminPage } from './user-create.po';
+import { UserAdminPage } from '../app.po';
 import { protractor, browser, element, by, WebElement } from 'protractor';
 
 describe('User Create', function() {
@@ -9,17 +9,7 @@ describe('User Create', function() {
     });
 
     it('should login successfully with right email and password', () => {
-        page.navigateTo("/");
-        let email = browser.findElement(protractor.By.name('email'));
-        let password = browser.findElement(protractor.By.name('password'));
-        let submit = browser.findElement(protractor.By.className('btn btn-success'));
-
-        email.sendKeys('foo@mail.com');
-        password.sendKeys('asdf1234');
-        
-        submit.click();
-
-        expect(page.getParagraphText("app-home h1")).toEqual('Welcome to the Erdiko User Admin');
+        page.login();
     });
 
     it('should lead to Create a User page at click of the Create a User link', () => {
@@ -61,17 +51,9 @@ describe('User Create', function() {
 
         //expect(page.getParagraphText("tbody tr:first-child > td:first-child")).toEqual('Elliot Alderson');
 
-
     });
 
     it('should logout when Logout link is clicked', () => {
-        
-        expect(element(by.css(".nav navbar-nav > li:last-child > a"))).toBeTruthy();
-        //Logout is clicked
-
-        let logout = browser.findElement(protractor.by.css('ul > li:last-child > a'));
-        logout.click();
-
-        expect(page.getParagraphText(".navbar-brand")).toEqual('User Admin');
+        page.logout();
     });
 });

@@ -25,14 +25,13 @@ export class UserAdminPage {
   }
 
   logout() {
-    //The Logout link is present
-    expect(element(by.css(".nav navbar-nav > li:last-child > a"))).toBeTruthy();
+
+    expect(element(by.cssContainingText('a', 'Logout'))).toBeTruthy();
     
     //Logout is clicked
-    let logout = browser.findElement(protractor.by.css('ul > li:last-child > a'));
+    let logout = browser.findElement(protractor.By.cssContainingText('a', 'Logout'));
     logout.click();
 
-    //The Login form is present
     expect(this.getParagraphText(".navbar-brand")).toEqual('User Admin');
     expect(element(by.css('#edit-user'))).toBeTruthy();
     expect(element(by.css('#email-form'))).toBeTruthy();

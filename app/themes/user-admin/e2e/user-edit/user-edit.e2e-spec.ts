@@ -1,4 +1,4 @@
-import { UserAdminPage } from './user-edit.po';
+import { UserAdminPage } from '../app.po';
 import { protractor, browser, element, by, WebElement } from 'protractor';
 
 describe('User Edit Page', function() {
@@ -9,22 +9,12 @@ describe('User Edit Page', function() {
     });
 
     it('should login successfully with right email and password', () => {
-        page.navigateTo();
-        let email = browser.findElement(protractor.By.name('email'));
-        let password = browser.findElement(protractor.By.name('password'));
-        let submit = browser.findElement(protractor.By.className('btn btn-success'));
-
-        email.sendKeys('foo@mail.com');
-        password.sendKeys('asdf1234');
-        
-        submit.click();
-
-        expect(page.getParagraphText("app-home h1")).toEqual('Welcome to the Erdiko User Admin');
+        page.login();
     });
 
     it('should lead to User List page at click of the User List link', () => {
         //Click UserList in Nav to get to UserList Page
-        let userListNav = browser.findElement(protractor.by.css('nav ul > li:nth-child(2) > a'));
+        let userListNav = browser.findElement(protractor.By.cssContainingText('nav a', 'User List'));
         userListNav.click();
     });
 
@@ -93,14 +83,7 @@ describe('User Edit Page', function() {
     });
     
     it('should logout when Logout link is clicked', () => {
-        
-        expect(element(by.css(".nav navbar-nav > li:last-child > a"))).toBeTruthy();
-        
-        //Logout is clicked
-        let logout = browser.findElement(protractor.by.css('ul > li:last-child > a'));
-        logout.click();
-
-        expect(page.getParagraphText(".navbar-brand")).toEqual('User Admin');
+        page.logout();
     });
 
     /**** NOTE ****/

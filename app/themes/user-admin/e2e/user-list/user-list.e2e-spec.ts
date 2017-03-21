@@ -1,4 +1,4 @@
-import { UserAdminPage } from './user-list.po';
+import { UserAdminPage } from '../app.po';
 import { protractor, browser, element, by, WebElement } from 'protractor';
 
 describe('User List Page', function() {

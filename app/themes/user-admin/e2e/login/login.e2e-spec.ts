@@ -1,4 +1,4 @@
-import { UserAdminPage } from './login.po';
+import { UserAdminPage } from '../app.po';
 import { protractor, browser, element, by, WebElement } from 'protractor';
 
 describe('login page', () => {
@@ -11,7 +11,6 @@ describe('login page', () => {
   /*
     Initial home page (login form) elements
   */
-
   it('should display message saying User Admin', () => {
     page.navigateTo();
     expect(page.getParagraphText(".navbar-brand")).toEqual('User Admin');
@@ -30,48 +29,18 @@ describe('login page', () => {
     Login form negative case
   */
   it('should display a login fail message', () => {
-    let email = browser.findElement(protractor.By.name('email'));
-    let password = browser.findElement(protractor.By.name('password'));
-    let submit = browser.findElement(protractor.By.className('btn btn-success'));
-
-    // Input Values
-    email.sendKeys('foo@bar.com');
-    password.sendKeys('barfood');
-    
-    // Click the Submit button
-    submit.click();
-
-    //Warning Message
-    expect(element(by.css('.alert alert-danger'))).toBeTruthy();
-
-    email.clear();
-    password.clear();
+    page.loginFail();
   });
 
   /*
     Login form positive case
   */
   it('should login successfully with right email and password', () => {
-    let email = browser.findElement(protractor.By.name('email'));
-    let password = browser.findElement(protractor.By.name('password'));
-    let submit = browser.findElement(protractor.By.className('btn btn-success'));
-
-    email.sendKeys('foo@mail.com');
-    password.sendKeys('asdf1234');
-    
-    submit.click();
-
-    // If the login is a success, "Welcome to the Erdiko User Admin" will be displayed
-    expect(page.getParagraphText("app-home h1")).toEqual('Welcome to the Erdiko User Admin');
-    
+    page.login();
   });
 
   it('should logout when Logout link is clicked', () => {
-    //Logout is clicked
-    let logout = browser.findElement(protractor.by.css('ul > li:last-child > a'));
-    logout.click();
-
-    expect(page.getParagraphText(".navbar-brand")).toEqual('User Admin');
+    page.logout();
   });
 
 });

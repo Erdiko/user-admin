@@ -43,7 +43,7 @@ import { Event } from '../shared/models/event.model';
 
 import { UsersEventLogComponent } from './users-event-log.component';
 
-describe('UserEventLogComponent', () => {
+describe('UsersEventLogComponent', () => {
   let component: UsersEventLogComponent;
   let fixture: ComponentFixture<UsersEventLogComponent>;
 

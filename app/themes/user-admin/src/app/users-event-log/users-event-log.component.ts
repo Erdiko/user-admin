@@ -32,7 +32,7 @@ export class UsersEventLogComponent implements OnInit {
     this.userID = null
     this.pageSize = 10;
     this.currentPage = 1;
-    this.sortCol = null;
+    this.sortCol = 'id';
     this.sortDir = 'desc';
 
     this.pages = [];

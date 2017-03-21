@@ -106,7 +106,7 @@ export class UserEventLogComponent implements OnInit {
   private _setPages(){
     this.pages = []; //reset page before setting pages
     for(let i = 1; i <= this.getPageCount(); i++){
-      this.pages.push(i); console.log(i);
+      this.pages.push(i);
     }
   }
 

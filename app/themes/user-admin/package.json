@@ -1,6 +1,6 @@
 {
-  "name": "user-admin",
-  "version": "0.0.0",
+  "name": "erdiko-user-admin",
+  "version": "0.0.1",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {

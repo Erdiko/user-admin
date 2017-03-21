@@ -1,1 +1,2 @@
+/*The following is a script must be run before e2e test for following components: Home, Login, Create User, User List, User Edit, */
 insert into `users` (`id`, `email`, `password`, `role`, `name`) values (`1`, `test@bug.com`, `b05ebef6da920b9f6cffa2735b6d8f93`, `1`, `tester`);

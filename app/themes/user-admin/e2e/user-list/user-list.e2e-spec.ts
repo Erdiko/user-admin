@@ -86,7 +86,7 @@ describe('User List Page', function() {
                 getAttribute('class')).toMatch("active");
 
             }
- 
+
         }); 
 
     });

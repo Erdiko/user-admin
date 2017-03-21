@@ -98,6 +98,7 @@ describe('UserEventLogComponent', () => {
 
 	//find the type of data from the service and mimic it.
 	bodyData = {
+				"direction": "desc",
 				"error_code": 0,
 				"error_message": "",
 				"logs": [
@@ -121,7 +122,9 @@ describe('UserEventLogComponent', () => {
 					}	
 				],
 				"method": "geteventlogs",
-				"page": 0,
+				"page": 1,
+				"page_size": 10,
+				"total": 3,
 				"sort": "created_at",
 				"success": true,
 				"user_id": "192"
@@ -140,10 +143,13 @@ describe('UserEventLogComponent', () => {
         backend.connections.subscribe((connection: MockConnection) => {
 
 			let url = connection.request.url;
-            url = url.slice(0, url.indexOf("?")).replace('http://docker.local:8088', '');
+            let queryString = url.slice(url.indexOf("?"));
+			url = url.slice(0, url.indexOf("?")).replace('http://docker.local:8088', '');
+			
         
             switch(url) {
                 case "/ajax/erdiko/users/admin/eventlogs":
+					expect(queryString).toEqual("?pagesize="+component.pageSize+"&page="+component.currentPage+"&sort="+component.sortCol+"&direction="+component.sortDir);
 				default:
 					const responseOptions = new ResponseOptions(options);
                     const response = new Response(responseOptions);

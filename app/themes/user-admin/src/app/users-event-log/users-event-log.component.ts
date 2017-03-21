@@ -15,10 +15,10 @@ export class UsersEventLogComponent implements OnInit {
   private events: Event[];
   private eventsTotal: number;
   
-  private userID: string;
-  private pageSize: number;
+  public userID: string;
+  public pageSize: number;
   public currentPage: number;
-  private sortCol: string;
+  public sortCol: string;
   public sortDir: string;
 
   public pages: number[];
@@ -32,7 +32,7 @@ export class UsersEventLogComponent implements OnInit {
     this.userID = null
     this.pageSize = 10;
     this.currentPage = 1;
-    this.sortCol = null;
+    this.sortCol = 'id';
     this.sortDir = 'desc';
 
     this.pages = [];

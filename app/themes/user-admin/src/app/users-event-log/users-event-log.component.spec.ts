@@ -43,7 +43,7 @@ import { Event } from '../shared/models/event.model';
 
 import { UsersEventLogComponent } from './users-event-log.component';
 
-describe('UserEventLogComponent', () => {
+describe('UsersEventLogComponent', () => {
   let component: UsersEventLogComponent;
   let fixture: ComponentFixture<UsersEventLogComponent>;
 
@@ -123,10 +123,75 @@ describe('UserEventLogComponent', () => {
 						"event_data": "{occupation: ['chemistry teacher','car washer']}",
 						"id": 1,
 						"user_id": 192
+					},	
+					{
+						"created_at": "2017-03-02 12:12:12", 
+						"event": "backend-test-profile-create", 
+						"event_data": "{methcolor: 'blue', breakbad: true}",
+						"id": 3,
+						"user_id": 192
+					},
+					{
+						"created_at": "2017-03-03 12:12:12", 
+						"event": "backend-test-profile-create", 
+						"event_data": "{cancer: true, medicalbill: 'alot']}",
+						"id": 2,
+						"user_id": 192
+					},
+					{
+						"created_at": "2017-03-04 12:12:12", 
+						"event": "backend-test-profile-create", 
+						"event_data": "{occupation: ['chemistry teacher','car washer']}",
+						"id": 1,
+						"user_id": 192
+					},	
+					{
+						"created_at": "2017-03-02 12:12:12", 
+						"event": "backend-test-profile-create", 
+						"event_data": "{methcolor: 'blue', breakbad: true}",
+						"id": 3,
+						"user_id": 192
+					},
+					{
+						"created_at": "2017-03-03 12:12:12", 
+						"event": "backend-test-profile-create", 
+						"event_data": "{cancer: true, medicalbill: 'alot']}",
+						"id": 2,
+						"user_id": 192
+					},
+					{
+						"created_at": "2017-03-04 12:12:12", 
+						"event": "backend-test-profile-create", 
+						"event_data": "{occupation: ['chemistry teacher','car washer']}",
+						"id": 1,
+						"user_id": 192
+					},	
+					{
+						"created_at": "2017-03-02 12:12:12", 
+						"event": "backend-test-profile-create", 
+						"event_data": "{methcolor: 'blue', breakbad: true}",
+						"id": 3,
+						"user_id": 192
+					},
+					{
+						"created_at": "2017-03-03 12:12:12", 
+						"event": "backend-test-profile-create", 
+						"event_data": "{cancer: true, medicalbill: 'alot']}",
+						"id": 2,
+						"user_id": 192
+					},
+					{
+						"created_at": "2017-03-04 12:12:12", 
+						"event": "backend-test-profile-create", 
+						"event_data": "{occupation: ['chemistry teacher','car washer']}",
+						"id": 1,
+						"user_id": 192
 					}	
 				],
 				"method": "geteventlogs",
-				"page": 0,
+				"page": 1,
+				"page_size": 10,
+				"total": 12,
 				"sort": "created_at",
 				"success": true,
 				"user_id": null
@@ -151,7 +216,8 @@ describe('UserEventLogComponent', () => {
             switch(url) {
                 case "/ajax/erdiko/users/admin/eventlogs":
 					//Does ajax query string match with sortDir?
-                    expect(queryString).toEqual("?pagesize=10&page=1&direction="+component.sortDir);
+					expect(queryString).toEqual("?pagesize="+component.pageSize+"&page="+component.currentPage+"&sort="+component.sortCol+"&direction="+component.sortDir);
+
 				default:
 					const responseOptions = new ResponseOptions(options);
                     const response = new Response(responseOptions);
@@ -235,7 +301,7 @@ describe('UserEventLogComponent', () => {
 	fixture.detectChanges();
 
 	expect(compiled.querySelector('i.fa.fa-refresh.fa-spin.fa-2x.fa-fw')).toBeFalsy();
-	expect(compiled.querySelectorAll('tr.users-events').length).toBe(3);
+	expect(compiled.querySelectorAll('tr.users-events').length).toBe(12);
 	expect(compiled.querySelector('tr.users-events:first-child td:first-child').textContent).toContain("3");
 	expect(compiled.querySelector('tr.users-events:last-child td:first-child').textContent).toContain("1");
 
@@ -261,12 +327,55 @@ describe('UserEventLogComponent', () => {
     expect(component.sortDir).toBe("desc");
 	
     //sort function is clicked
-    component.sort();
+    component.sort('id');
 
     //after the sort function is clicked
     expect(component.sortDir).toBe("asc");
 
 	fixture.detectChanges();
-	expect(compiled.querySelectorAll('tr.users-events').length).toBe(3);
+	expect(compiled.querySelectorAll('tr.users-events').length).toBe(12);
   });
+
+  it('should test for pagination', () => {
+	fixture.detectChanges();
+	const compiled = fixture.debugElement.nativeElement;
+
+	setupConnections(backend, {
+		body: {
+			body: bodyData
+		},
+		errors: false,
+		status: 200
+	});
+
+	component.ngOnInit();
+
+	fixture.detectChanges();
+	expect(compiled.querySelectorAll('tr.users-events').length).toBe(12);
+
+	//with page size of 10 and 12 events, number of page should be 2
+	expect(component.getPageCount()).toBe(2);
+
+	//At first page, the 1st page should have class active
+	expect(compiled.querySelector('ul.pagination > li:first-child.active')).toBeTruthy();
+	
+	//When clickNext() the 2 page should have class active
+	component.clickNext();	
+	fixture.detectChanges();
+
+	expect(compiled.querySelector('ul.pagination > li:last-child.active')).toBeTruthy();
+
+	//When clickPage(1) the 1 page should have class active
+	component.clickPage(1);
+	fixture.detectChanges();
+
+	expect(compiled.querySelector('ul.pagination > li:first-child.active')).toBeTruthy();
+	
+	//When clickPage(2), the 2 page should have class active
+	component.clickPage(2);
+	fixture.detectChanges();
+
+	expect(compiled.querySelector('ul.pagination > li:last-child.active')).toBeTruthy();
+	
+  })
 });

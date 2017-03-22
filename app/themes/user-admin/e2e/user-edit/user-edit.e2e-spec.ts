@@ -50,10 +50,11 @@ describe('User Edit Page', function() {
         //user is successfully edited
         expect(element(by.className('alert alert-success'))).toBeTruthy();
 
-        //check the user list for updated content
+        //cancel is clicked to go back to the user list to check for updated content
         cancel.click();
 
-        
+        //Wait for the browser to register the newly updated Username in the list
+        browser.manage().timeouts().pageLoadTimeout(5000);
         expect(page.getParagraphText("tbody tr:first-child td")).toEqual('Sam Sepiol'); 
 
     });
@@ -65,8 +66,16 @@ describe('User Edit Page', function() {
         //check for content of edit page
         expect(element(by.id('user-edit'))).toBeTruthy();
 
-        let updatePassword = browser.findElement(protractor.By.cssContainingText('button', 'Update Password'));
+        let updatePassword = browser.findElement(protractor.By.css('.nav-tabs > li:last-child'));
+        let updatePasswordContent = browser.findElement(protractor.By.css('.tab-container tab:last-child'));
+
+        //Currently, Update User is not displayed
+        expect(updatePasswordContent.isDisplayed()).toBeFalsy();
+
         updatePassword.click();
+
+        //Now, Update User is displayed.
+        expect(updatePasswordContent.isDisplayed()).toBeTruthy();
 
 
         let password = browser.findElement(protractor.By.name('password'));
@@ -75,10 +84,11 @@ describe('User Edit Page', function() {
         password.sendKeys('MrRob0t');
         confirm.sendKeys('MrRob0t');
 
-        let passwordSave = browser.findElement(protractor.By.css('#user-edit .btn.btn-success'));
-        passwordSave.click();
+        //Wait for the Update Password Button to be enabled.
+        browser.waitForAngular();
 
-        expect(element(by.className('alert alert-success'))).toBeTruthy();
+        let passwordSave = browser.findElement(protractor.By.id('save-updated-password'));
+        passwordSave.click();
 
     });
     
@@ -86,8 +96,7 @@ describe('User Edit Page', function() {
         page.logout();
     });
 
-    /**** NOTE ****/
-    //Had trouble finally logging in with the updated user email and password.
-    //Manual test successfully logs in with updated credentials.
-
+    it('should login with updated user credentials', () => {
+        page.loginWithUpdated();
+    });
 });

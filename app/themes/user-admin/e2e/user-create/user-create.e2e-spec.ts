@@ -44,13 +44,6 @@ describe('User Create', function() {
 
         cancel.click();
 
-        //NOTE. clicking cancel with following config will cause save button to be clicked twice.
-        //Go back to User List Page and check for the new user's presense
-        //let cancel = browser.findElement(protractor.By.css('button[type=cancel]'));
-        //cancel.click();
-
-        //expect(page.getParagraphText("tbody tr:first-child > td:first-child")).toEqual('Elliot Alderson');
-
     });
 
     it('should logout when Logout link is clicked', () => {

@@ -9,17 +9,7 @@ describe('User List Page', function() {
     });
 
     it('should login successfully with right email and password', () => {
-        page.navigateTo();
-        let email = browser.findElement(protractor.By.name('email'));
-        let password = browser.findElement(protractor.By.name('password'));
-        let submit = browser.findElement(protractor.By.className('btn btn-success'));
-
-        email.sendKeys('foo@mail.com');
-        password.sendKeys('asdf1234');
-        
-        submit.click();
-
-        expect(page.getParagraphText("app-home h1")).toEqual('Welcome to the Erdiko User Admin');
+        page.login();
     });
 
     it('should lead to User List page at click of the User List link', () => {
@@ -49,6 +39,8 @@ describe('User List Page', function() {
 
     });
 
+    //For the pagination to work, the e2e test should have more than 10 users in the user-list
+    //If there are less than 10 users in the list, Please refer to user-admin/scripts/sql/create-e2e-user.sql
     it('should check for pagination', () => {
 
         //check for active class on Page 1
@@ -93,17 +85,25 @@ describe('User List Page', function() {
 
     it('should check for sort function', () => {
         //get the id of the first item in column to not be 1
-        expect(page.getParagraphText("tbody th:first-child")).not.toBe('1');
+        let latestID = page.getParagraphText("tbody th:first-child");
+        //expect(page.getParagraphText("tbody th:first-child")).not.toBe('1');
 
         //click the sort column
         let id = browser.findElement(protractor.By.css('thead th:first-child'));
         id.click();
 
+        //Get the lowestID that floated to the top.
+        let firstID = page.getParagraphText("tbody th:first-child");
         //get the id of the new first item in column to be 1
-        expect(page.getParagraphText("tbody th:first-child")).toEqual('1');
+        //expect(page.getParagraphText("tbody th:first-child")).toEqual('1');
 
         //click the sort column again to reset to 'desc' order
         id.click();
+
+        expect(page.getParagraphText("tbody th:first-child")).toEqual(latestID);
+
+        //The latestID and firstID should not match
+        expect(page.getParagraphText("tbody th:first-child")).not.toEqual(firstID);
         
     });
 

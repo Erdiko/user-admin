@@ -11663,6 +11663,50 @@ h1, h2, h3, h4 {
   -o-background-size: cover;
   background-size: cover; }
 
+/* Tab styles
+-------------------------------------------------- */
+.nav > li > a:hover {
+  background-color: white; }
+
+.nav-link:hover {
+  border-color: white; }
+
+.nav-tabs .nav-link {
+  border: none; }
+
+.nav-link.active {
+  border: none; }
+
+.nav-tabs > li.active {
+  border: none;
+  border-bottom: 3px solid #17bf63; }
+
+.nav-tabs > li.active > a {
+  border: none; }
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  border: none; }
+
+.nav-tabs > li > a {
+  border: none; }
+
+.nav-link:focus {
+  border: none; }
+
+.nav-tabs:hover {
+  border: none; }
+
+.nav-tabs > li:hover > a {
+  background-color: white;
+  border: none;
+  /*border-bottom: 3px solid #17bf63;*/ }
+
+.nav-tabs > li:hover {
+  border-bottom: 3px solid #17bf63; }
+
+.panel-default {
+  border: none; }
+
 /*--------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------*/

@@ -85,13 +85,13 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-offset-2 col-xs-4">
+                                    <button type="cancel" class="btn btn-warning" routerLink="/list/">Cancel</button>
+                                </div>
+                                <div class="col-xs-offset-2 col-xs-4">
                                     <button type="submit" class="btn btn-success" [disabled]="userForm.invalid || wait">
                                         Save
                                         <i *ngIf="wait" class="fa fa-refresh fa-spin fa-fw"></i> 
                                     </button>
-                                </div>
-                                <div class="col-xs-offset-2 col-xs-4">
-                                    <button type="cancel" class="btn btn-warning" routerLink="/list/">Cancel</button>
                                 </div>
                             </div>
                         </form>
@@ -143,13 +143,13 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-offset-2 col-xs-4">
+                                    <button type="cancel" class="btn btn-warning" (click)="togglePassword()">Cancel</button>
+                                </div>
+                                <div class="col-xs-offset-2 col-xs-4">
                                     <button id="save-updated-password" type="submit" class="btn btn-success" [disabled]="passwordForm.invalid || passWait">
                                         Save
                                         <i *ngIf="passWait" class="fa fa-refresh fa-spin fa-fw"></i> 
                                     </button>
-                                </div>
-                                <div class="col-xs-offset-2 col-xs-4">
-                                    <button type="cancel" class="btn btn-warning" (click)="togglePassword()">Cancel</button>
                                 </div>
                             </div>
                         </form>

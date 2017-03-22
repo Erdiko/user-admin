@@ -11665,49 +11665,39 @@ h1, h2, h3, h4 {
 
 /* Tab styles
 -------------------------------------------------- */
-.nav > li > a:hover, nav > li > a:hover {
+.nav-link:hover,
+.nav > li > a:hover,
+nav > li > a:hover {
   background-color: white; }
 
-.nav-link:hover {
-  border-color: white; }
-
-.nav-tabs, .nav-tabs .nav-link {
-  border: none; }
-
-.nav-link.active {
+.nav-tabs,
+.nav-tabs .nav-link,
+.nav-link.active,
+.nav-link:focus,
+.nav-tabs:hover,
+.nav-tabs > li > a,
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
   border: none; }
 
 .nav-tabs > li.active {
   border: none;
   border-bottom: 3px solid #17bf63; }
 
-.nav-tabs > li.active > a {
-  border: none; }
-
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
-  border: none; }
-
-.nav-tabs > li > a {
-  border: none; }
-
-.nav-link:focus {
-  border: none; }
-
-.nav-tabs:hover {
-  border: none; }
-
 .nav-tabs > li:hover > a {
   background-color: white;
-  border: none;
-  /*border-bottom: 3px solid #17bf63;*/ }
+  border: none; }
 
 .nav-tabs > li:hover {
   border-bottom: 3px solid #17bf63; }
 
-.panel-default {
+#edit-update {
   border: none; }
 
-/* Prevent Nudging when tabs are being hovered */
+.tab-content {
+  border: 1px solid #ecf0f1; }
+
 /*--------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------*/

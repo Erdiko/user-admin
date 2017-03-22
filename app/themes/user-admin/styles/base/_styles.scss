@@ -86,7 +86,8 @@ h1, h2, h3, h4 {
   border-color: white;
 }
 
-.nav-tabs .nav-link {
+//Questionable
+.nav-tabs, .nav-tabs .nav-link {
   border: none;
 }
 .nav-link.active {

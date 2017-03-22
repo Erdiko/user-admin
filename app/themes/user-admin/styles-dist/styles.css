@@ -11665,13 +11665,13 @@ h1, h2, h3, h4 {
 
 /* Tab styles
 -------------------------------------------------- */
-.nav > li > a:hover {
+.nav > li > a:hover, nav > li > a:hover {
   background-color: white; }
 
 .nav-link:hover {
   border-color: white; }
 
-.nav-tabs .nav-link {
+.nav-tabs, .nav-tabs .nav-link {
   border: none; }
 
 .nav-link.active {
@@ -11707,6 +11707,7 @@ h1, h2, h3, h4 {
 .panel-default {
   border: none; }
 
+/* Prevent Nudging when tabs are being hovered */
 /*--------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------*/

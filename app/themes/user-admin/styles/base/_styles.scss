@@ -72,13 +72,6 @@ h1, h2, h3, h4 {
 
 /* Tab styles
 -------------------------------------------------- */
-// a {
-//   color: white;
-//   &:hover {
-//     color
-//   }
-// }
-
 .nav > li > a:hover, nav > li > a:hover {
   background-color: white;
 }
@@ -86,15 +79,16 @@ h1, h2, h3, h4 {
   border-color: white;
 }
 
-//Questionable
 .nav-tabs, .nav-tabs .nav-link {
   border: none;
 }
+
 .nav-link.active {
   border: none;
 }
+
 .nav-tabs > li.active {
-  border: none; //set the underline border here
+  border: none;
   border-bottom: 3px solid #17bf63;
 }
 
@@ -121,18 +115,12 @@ h1, h2, h3, h4 {
 .nav-tabs > li:hover > a {
   background-color: white;
   border: none;
-  /*border-bottom: 3px solid #17bf63;*/
 }
+
 .nav-tabs > li:hover {
   border-bottom: 3px solid #17bf63;
 }
 
-// .nav-tabs > li > a:hover {
-//   border: none;
-//   background-color: none;
-// }
 .panel-default {
   border: none;
 }
-
-/* Prevent Nudging when tabs are being hovered */

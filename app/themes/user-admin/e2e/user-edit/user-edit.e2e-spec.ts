@@ -53,7 +53,7 @@ describe('User Edit Page', function() {
         cancel.click();
 
         //Wait for the browser to register the newly updated Username in the list
-        browser.manage().timeouts().pageLoadTimeout(5000);
+        browser.waitForAngular();
         expect(page.getParagraphText("tbody tr:first-child > .user_name")).toEqual('Sam Sepiol'); 
 
     });

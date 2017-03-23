@@ -10,6 +10,9 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
+        <div id="id-title" *ngIf="user.id">
+            User {{ user.id }}
+        </div>
         <div class="panel panel-default" id="edit-update">
             <tabset>
                 <tab [heading]="createEditHeader()">
@@ -97,7 +100,7 @@
                         </form>
                     </div>
                 </tab>
-                <tab heading="Update User Password" *ngIf="user.id">
+                <tab heading="Update Password" *ngIf="user.id">
                     <div class="panel-body">
 
                         <alert *ngIf="passMsg" type="success">{{ passMsg }}</alert>
@@ -111,8 +114,8 @@
                                 [formGroup]="passwordForm"
                             >
                             <div class="form-group">
-                                <p class="col-xs-12">Passwords must contain at least 1 alpha & 1 numeric character, with a minimum length of 5 characters</p>
-                                <label for="password" class="col-xs-5 control-label">New Password</label>
+                                <p class="col-xs-12" style="text-align:center">Passwords must contain at least 1 alpha & 1 numeric character, with a minimum length of 5 characters</p>
+                                <label for="password" class="col-xs-4 control-label">New Password</label>
                                 <div class="col-xs-5">
                                     <input  type="password" 
                                             class="form-control" 
@@ -126,7 +129,7 @@
                                 </div>
                             </div>
                         <div class="form-group">
-                                <label for="password" class="col-xs-5 control-label">Confirm Password</label>
+                                <label for="password" class="col-xs-4 control-label">Confirm Password</label>
                                 <div class="col-xs-5">
 
                                     <input  type="password" 

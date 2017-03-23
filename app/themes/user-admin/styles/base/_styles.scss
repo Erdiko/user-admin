@@ -72,6 +72,13 @@ h1, h2, h3, h4 {
 
 /* Tab styles
 -------------------------------------------------- */
+#id-title {
+  font-size: 18px;
+  width: 200px;
+  display: inline-block;
+  text-align: center;
+}
+
 .nav-link:hover,
 .nav > li > a:hover, 
 nav > li > a:hover {

@@ -12,13 +12,12 @@ describe('User List Page', function() {
         page.login();
     });
 
-    it('should lead to User List page at click of the User List link', () => {
+    it('should have both link in navbar and body content lead to User List page', () => {
         //check User Link in Nav bar
-        let userListNav = browser.findElement(protractor.by.css('nav ul > li:nth-child(2) > a'));
-        userListNav.click();
+        page.goToUserList();
 
         //go back to home page
-        let home = browser.findElement(protractor.by.css('nav ul > li:first-child > a'));
+        let home = browser.findElement(protractor.by.css('app-header ul > li:first-child > a'));
         home.click()
 
         //check User Link in Body
@@ -44,8 +43,7 @@ describe('User List Page', function() {
     it('should check for pagination', () => {
 
         //check for active class on Page 1
-        expect(element(by.css("ul.pagination > li:first-child")).
-            getAttribute('class')).toMatch("active");
+        expect(element(by.id('page1')).getAttribute('class')).toMatch("active");
 
         //If there is more than 10 users for pagination to take effect..
         element(by.css("a[aria-label=Next]")).isPresent().then(displayed => {
@@ -55,28 +53,29 @@ describe('User List Page', function() {
                 let first = browser.findElement(protractor.By.cssContainingText('.pagination a', '1'));
                 let second = browser.findElement(protractor.By.cssContainingText('.pagination a', '2'));
 
+                //browser.findElement(protractor.By.css('#page1'));
+                let firstli = element(by.id('page1'));
+                let secondli = element(by.id('page2'));
+
                 let next = browser.findElement(protractor.By.css('a[aria-label=Next]'));
         
+                // go to page 2
                 next.click(); 
-
-                //check for active class on Page 2
-                expect(element(by.css("ul.pagination > li:last-child")).
-                    getAttribute('class')).toMatch("active");
+                expect(secondli.getAttribute('class')).toMatch("active");
 
                 let prev = browser.findElement(protractor.By.css('a[aria-label=Previous]'));
 
-                prev.click(); //Back to Page 1
+                // go back to page 1
+                prev.click();
+                expect(firstli.getAttribute('class')).toMatch("active");
 
                 //Click on <a>2</a>
                 second.click();
-                expect(element(by.css("ul.pagination > li:last-child")).
-                    getAttribute('class')).toMatch("active");
+                expect(secondli.getAttribute('class')).toMatch("active");
 
                 //Click on <a>1</a>
                 first.click();
-                expect(element(by.css("ul.pagination > li:first-child")).
-                getAttribute('class')).toMatch("active");
-
+                expect(firstli.getAttribute('class')).toMatch("active");
             }
 
         }); 
@@ -84,32 +83,49 @@ describe('User List Page', function() {
     });
 
     it('should check for sort function', () => {
-        //get the id of the first item in column to not be 1
-        let latestID = page.getParagraphText("tbody th:first-child");
-        //expect(page.getParagraphText("tbody th:first-child")).not.toBe('1');
+        //get the id of the first user in column
+        let latestID = page.getParagraphText("tbody > tr:first-child > th");
 
         //click the sort column
-        let id = browser.findElement(protractor.By.css('thead th:first-child'));
-        id.click();
+        let sortid = browser.findElement(protractor.By.css('thead th:first-child'));
+        sortid.click();
 
         //Get the lowestID that floated to the top.
-        let firstID = page.getParagraphText("tbody th:first-child");
-        //get the id of the new first item in column to be 1
-        //expect(page.getParagraphText("tbody th:first-child")).toEqual('1');
+        let firstID = page.getParagraphText("tbody > tr:first-child > th");
 
         //click the sort column again to reset to 'desc' order
-        id.click();
+        sortid.click();
 
-        expect(page.getParagraphText("tbody th:first-child")).toEqual(latestID);
+        //The latestID should be the same
+        expect(page.getParagraphText("tbody > tr:first-child > th")).toEqual(latestID);
 
         //The latestID and firstID should not match
-        expect(page.getParagraphText("tbody th:first-child")).not.toEqual(firstID);
+        expect(page.getParagraphText("tbody > tr:first-child > th")).not.toEqual(firstID);
         
     });
 
-    /**** NOTE ****/
-    //Had trouble finally testing the delete user function.
-    //Suspicion goes to interferance by modal animation.
-    //Manual test successfully deletes the user.
+    it('should delete the user that is created in the user-create test', () => {
+        let deleteID = page.getParagraphText("tbody > tr:first-child > th");
+
+        browser.executeScript("document.body.className += ' notransition';");
+
+        //the user that is to be deleted
+        expect(page.getParagraphText("tbody tr:first-child > .user_name")).toEqual('Sam Sepiol');
+
+        let deleteUser = browser.findElement(protractor.By.css('tbody tr:first-child .btn-danger'));
+        deleteUser.click();
+
+        //Check for modal's showing
+        expect(page.getParagraphText(".modal-header > h4")).toEqual('Delete?');
+
+        let deleteUserConfirm = browser.findElement(protractor.By.cssContainingText('.modal-body .btn-danger', 'Delete'));
+        deleteUserConfirm.click();
+
+        //Wait for the browser to register the newly updated list
+        browser.waitForAngular();
+        //deleteID should now be deleted and no longer present
+        expect(page.getParagraphText("tbody tr:first-child > .user_id")).not.toEqual(deleteID); 
+
+    });
 
 });

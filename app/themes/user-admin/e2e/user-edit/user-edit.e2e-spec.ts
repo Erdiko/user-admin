@@ -14,14 +14,13 @@ describe('User Edit Page', function() {
 
     it('should lead to User List page at click of the User List link', () => {
         //Click UserList in Nav to get to UserList Page
-        let userListNav = browser.findElement(protractor.By.cssContainingText('nav a', 'User List'));
-        userListNav.click();
+        page.goToUserList();
     });
 
     //this test should lead to the user created inside the user-create e2e test    
     it('should lead to individual user edit page at click of EDIT', () => {
 
-        let edit = browser.findElement(protractor.By.css('tbody tr:first-child a'));
+        let edit = browser.findElement(protractor.By.css('tbody tr:first-child > .user_edit > a'));
         edit.click();
 
         //check for content of edit page
@@ -55,7 +54,7 @@ describe('User Edit Page', function() {
 
         //Wait for the browser to register the newly updated Username in the list
         browser.manage().timeouts().pageLoadTimeout(5000);
-        expect(page.getParagraphText("tbody tr:first-child td")).toEqual('Sam Sepiol'); 
+        expect(page.getParagraphText("tbody tr:first-child > .user_name")).toEqual('Sam Sepiol'); 
 
     });
 

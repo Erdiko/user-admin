@@ -10,6 +10,11 @@ export class UserAdminPage {
     return element(by.css(css)).getText();
   }
 
+  goToUserList() {
+    let userListNav = browser.findElement(protractor.by.css('nav ul > li:nth-child(2) > a'));
+    userListNav.click();
+  }
+
   login() {
     this.navigateTo();
 

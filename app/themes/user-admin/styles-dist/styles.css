@@ -11674,9 +11674,9 @@ h1, h2, h3, h4 {
 -------------------------------------------------- */
 #id-title {
   font-size: 18px;
-  width: 200px;
+  width: 230px;
   display: inline-block;
-  text-align: center; }
+  margin-left: 15px; }
 
 .nav-link:hover,
 .nav > li > a:hover,

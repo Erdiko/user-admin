@@ -143,7 +143,7 @@ export class UserEditComponent implements OnInit {
     }
 
     public createEditHeader() {
-        let panelHeader = this.user.id ? "Edit User - User " + this.user.id : "Create User";
+        let panelHeader = this.user.id ? "Edit User" : "Create User";
         return panelHeader;
     }
 

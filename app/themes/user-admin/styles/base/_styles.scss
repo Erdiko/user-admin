@@ -75,3 +75,52 @@ h1, h2, h3, h4 {
   -o-background-size: cover;
   background-size: cover;
 }
+
+/* Tab styles
+-------------------------------------------------- */
+#id-title {
+  font-size: 18px;
+  width: 230px;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.nav-link:hover,
+.nav > li > a:hover, 
+nav > li > a:hover {
+  background-color: white;
+}
+
+.nav-tabs, 
+.nav-tabs .nav-link,
+.nav-link.active,
+.nav-link:focus,
+.nav-tabs:hover,
+.nav-tabs > li > a,
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  border: none;
+}
+
+.nav-tabs > li.active {
+  border: none;
+  border-bottom: 3px solid $green-header;
+}
+
+.nav-tabs > li:hover > a {
+  background-color: white;
+  border: none;
+}
+
+.nav-tabs > li:hover {
+  border-bottom: 3px solid $green-header;
+}
+
+#edit-update {
+  border: none;
+}
+
+.tab-content {
+  border: 1px solid $panel-gray;
+}

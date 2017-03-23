@@ -1,7 +1,13 @@
 {
-  "name": "erdiko-user-admin",
-  "version": "0.0.2",
+  "name": "@erdiko/user-admin",
+  "version": "0.0.4",
   "license": "MIT",
+  "description": "A fully functional and modular user management system with an Angular 2 UI.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erdiko/user-admin"
+  },
+  "public": true,
   "angular-cli": {},
   "scripts": {
     "ng": "ng",

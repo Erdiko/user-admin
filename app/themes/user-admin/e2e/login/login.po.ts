@@ -1,18 +1,12 @@
 import { protractor, browser, element, by, WebElement } from 'protractor';
 
 export class UserAdminPage {
-  
   navigateTo() {
     return browser.get('/');
   }
 
   getParagraphText(css) {
     return element(by.css(css)).getText();
-  }
-
-  goToUserList() {
-    let userListNav = browser.findElement(protractor.by.css('nav ul > li:nth-child(2) > a'));
-    userListNav.click();
   }
 
   login() {
@@ -22,9 +16,7 @@ export class UserAdminPage {
     let password = browser.findElement(protractor.By.name('password'));
     let submit = browser.findElement(protractor.By.className('btn btn-success'));
 
-    //For the following email and password to work, the sql script in user-admin/scripts/sql/create-e2e-user.sql must be executed
-    //The purpose is so that every developer running e2e test has same login credentials.
-    email.sendKeys('test@bug.com');
+    email.sendKeys('foo@mail.com');
     password.sendKeys('asdf1234');
     
     submit.click();
@@ -33,14 +25,14 @@ export class UserAdminPage {
   }
 
   logout() {
-
-    expect(element(by.cssContainingText('a', 'Logout'))).toBeTruthy();
+    //The Logout link is present
+    expect(element(by.css(".nav navbar-nav > li:last-child > a"))).toBeTruthy();
     
     //Logout is clicked
-    let logout = browser.findElement(protractor.By.cssContainingText('a', 'Logout'));
+    let logout = browser.findElement(protractor.by.css('ul > li:last-child > a'));
     logout.click();
 
-    //Check for the logout status
+    //The Login form is present
     expect(this.getParagraphText(".navbar-brand")).toEqual('User Admin');
     expect(element(by.css('#edit-user'))).toBeTruthy();
     expect(element(by.css('#email-form'))).toBeTruthy();
@@ -53,8 +45,9 @@ export class UserAdminPage {
     let submit = browser.findElement(protractor.By.className('btn btn-success'));
 
     // Input Values
-    email.sendKeys('test@bug.com');
-    password.sendKeys('1234asdf');
+    //////////Inconsistent test username and passwords
+    email.sendKeys('foo@bar.com');
+    password.sendKeys('barfood');
     
     // Click the Submit button
     submit.click();
@@ -64,15 +57,5 @@ export class UserAdminPage {
 
     email.clear();
     password.clear();
-  }
-
-  loginWithUpdated() {
-    let email = browser.findElement(protractor.By.name('email'));
-    let password = browser.findElement(protractor.By.name('password'));
-    let submit = browser.findElement(protractor.By.className('btn btn-success'));
-
-    // Input Values
-    email.sendKeys('sam@sepiol.com');
-    password.sendKeys('MrRob0t');
   }
 }

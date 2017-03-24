@@ -11701,7 +11701,7 @@ nav > li > a:hover {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover {
-  color: #17bf63; }
+  color: #17bf63 !important; }
 
 .nav-tabs > li.active {
   border: none;

@@ -111,7 +111,7 @@ nav > li > a:hover {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover {
-  color: $green-header;
+  color: $green-header !important;
 }
 
 

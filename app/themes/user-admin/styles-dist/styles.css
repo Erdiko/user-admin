@@ -11694,6 +11694,15 @@ nav > li > a:hover {
 .nav-tabs > li.active > a:hover {
   border: none; }
 
+.tab-container a {
+  color: black; }
+
+.nav-tabs .nav-link.active,
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  color: #17bf63; }
+
 .nav-tabs > li.active {
   border: none;
   border-bottom: 3px solid #17bf63; }

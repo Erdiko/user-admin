@@ -1,7 +1,12 @@
 {
     "name": "erdiko/user-admin",
     "description": "User auth and management system for PHP",
-    "keywords": ["users", "user management", "auth", "erdiko"],
+    "keywords": [
+        "users",
+        "user management",
+        "auth",
+        "erdiko"
+    ],
     "homepage": "http://erdiko.org",
     "license": "MIT",
     "authors": [
@@ -11,40 +16,17 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "erdiko/core": "^0.10.0",
-        "erdiko/users": "@dev",
-        "erdiko/authenticate": "@dev",
-        "erdiko/authorize": "@dev",
+        "php": ">=5.5.0",
+        "erdiko/core": "^0.10.6",
         "erdiko/doctrine": "^0.3.0",
+        "erdiko/users": "dev-develop",
+        "erdiko/authenticate": "dev-develop",
+        "erdiko/authorize": "dev-develop",
         "ac/kalinka": "dev-master",
         "firebase/php-jwt": "^4.0"
     },
-    "config": {
+        "config": {
         "vendor-dir": "vendor",
         "minimum-stability": "dev"
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../users",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../authenticate",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../authorize",
-            "options": {
-                "symlink": true
-            }
-        }
-    ]
+    }
 }

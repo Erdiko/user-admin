@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="panel panel-default square-corners">
+            <div class="panel-heading square-corners">
                 Login
             </div>
             <div class="panel-body">
@@ -19,7 +19,7 @@
                     <div class="form-group" id="email-form">
                         <label for="email" class="col-xs-2 control-label">Email</label>
                         <div class="col-xs-10">
-                            <input type="email" class="form-control" name="email" 
+                            <input type="email" class="form-control square-corners" name="email" 
                                     formControlName="email" placeholder="Email"
                                     pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                             <div class="text-danger" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">
@@ -34,7 +34,7 @@
                     <div class="form-group" id="password-form">
                         <label for="password" class="col-xs-2 control-label">Password</label>
                         <div class="col-xs-10">
-                            <input type="password" class="form-control" name="password" 
+                            <input type="password" class="form-control square-corners" name="password" 
                                     formControlName="password" placeholder="Password">
                             <div class="text-danger" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">
                               Password is required.
@@ -44,7 +44,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-4">
-                            <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid || wait">
+                            <button type="submit" class="btn btn-success square-corners" [disabled]="loginForm.invalid || wait">
                                 Submit
                                 <i *ngIf="wait" class="fa fa-refresh fa-spin fa-fw"></i> 
                             </button>

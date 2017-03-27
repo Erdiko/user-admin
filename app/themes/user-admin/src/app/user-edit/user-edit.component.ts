@@ -63,7 +63,9 @@ export class UserEditComponent implements OnInit {
         this.userForm = this.fb.group({
             name:  ['', [Validators.required, Validators.minLength(3)]],
             email: ['', Validators.required],
-            role:  ['', Validators.required]
+            role:  ['', Validators.required],
+            password:  ['', [Validators.required, Validators.minLength(3)]],
+            confirm: ['', Validators.required],
         });
 
         this.passwordForm = this.fb.group({
@@ -79,7 +81,9 @@ export class UserEditComponent implements OnInit {
 
     }
 
-    onSubmit({ value, valid }: { value: User, valid: boolean }) {
+    onSubmit({ value, valid }: { value: any, valid: boolean }) {
+
+        console.log("onSubmit", value);
 
         this.wait = true;
 
@@ -97,6 +101,8 @@ export class UserEditComponent implements OnInit {
                            .catch(error => this.error = error);
             }
         }
+
+        this.onSubmitChangepass(value);
     }
     
     private _handleResponse(res) {
@@ -116,6 +122,7 @@ export class UserEditComponent implements OnInit {
     }
 
     onSubmitChangepass({ value, valid }: { value: any, valid: boolean }) {
+        console.log('onSubmitChange', value);
         this.passWait = true;
         this.passMsg = this.passError = '';
 

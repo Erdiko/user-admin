@@ -15,6 +15,8 @@ export class AuthService {
 
     public token: string;
 
+    public loggedOut: string;
+
     /**
      *
      *
@@ -50,6 +52,8 @@ export class AuthService {
 
         let url = this._baseUrl + this.loginUrl;
 
+        this.loggedOut = null;
+
         return this.http.post(url, body, options)
                    .map((response: Response) => {
                        // login successful if there's a jwt token in the response
@@ -81,6 +85,8 @@ export class AuthService {
         // clear token remove user from local storage to log user out
         this.token = null;
         localStorage.removeItem('currentUser');
+
+        this.loggedOut = "You have Successfully Logged Out";
     }
 
 }

@@ -57,6 +57,15 @@ h1, h2, h3, h4 {
   border-radius: 0px;
 }
 
+select.square-corners {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding: 0 0 0 15px;
+  background: 
+    url(https://image.ibb.co/ct0xiv/Screen_Shot_2017_03_27_at_4_58_37_PM.png);
+  background-position: right;
+  background-repeat: no-repeat;
+}
 
 /* Header styles
 -------------------------------------------------- */

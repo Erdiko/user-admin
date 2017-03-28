@@ -1,7 +1,12 @@
 {
     "name": "erdiko/user-admin",
     "description": "User auth and management system for PHP",
-    "keywords": ["users", "user management", "auth", "erdiko"],
+    "keywords": [
+        "users",
+        "user management",
+        "auth",
+        "erdiko"
+    ],
     "homepage": "http://erdiko.org",
     "license": "MIT",
     "authors": [
@@ -20,7 +25,7 @@
         "ac/kalinka": "dev-master",
         "firebase/php-jwt": "^4.0"
     },
-    "config": {
+        "config": {
         "vendor-dir": "vendor",
         "minimum-stability": "dev"
     }

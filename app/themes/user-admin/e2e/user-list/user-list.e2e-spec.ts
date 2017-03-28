@@ -118,7 +118,7 @@ describe('User List Page', function() {
         //Check for modal's showing
         expect(page.getParagraphText(".modal-header > h4")).toEqual('Delete?');
 
-        let deleteUserConfirm = browser.findElement(protractor.By.cssContainingText('.modal-body .btn-danger', 'Delete'));
+        let deleteUserConfirm = browser.findElement(protractor.By.cssContainingText('.modal-body .btn-danger', 'Confirm'));
         deleteUserConfirm.click();
 
         //Wait for the browser to register the newly updated list

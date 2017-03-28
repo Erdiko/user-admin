@@ -77,10 +77,10 @@
                             <div class="form-group">
                                 <label for="role" class="col-xs-2 control-label">Role</label>
                                 <div class="col-xs-10" style="padding-top:11px">
-                                    <select class="form-control square-corners" name="role" formControlName="role">
-                                        <option value="2">Admin</option>
-                                        <option value="1">User</option>
-                                    </select>
+                                        <select class="form-control square-corners" name="role" formControlName="role">
+                                            <option value="2">Admin</option>
+                                            <option value="1">User</option>
+                                        </select>
                                     <div class="text-danger" *ngIf="userForm.get('role').hasError('required') && userForm.get('role').touched">
                                     Role is required
                                     </div>

@@ -5,6 +5,7 @@ import { LoginComponent }       from './login/login.component';
 import { HomeComponent }        from './home/home.component';
 import { UserListComponent }    from './user-list/user-list.component';
 import { UserEditComponent }    from './user-edit/user-edit.component';
+import { UsersEventLogComponent } from './users-event-log/users-event-log.component';
 
 import { AuthGuard }            from './shared/auth.guard';
 
@@ -18,6 +19,13 @@ const appRoutes = [
             AuthGuard
         ],
         component: UserListComponent
+    },
+    {
+        path: 'events',
+        canActivate: [
+            AuthGuard
+        ],
+        component: UsersEventLogComponent
     },
     {
         path: 'user',
@@ -58,7 +66,7 @@ const appRoutes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {useHash: false}
+      {useHash: true}
     )
   ],
   exports: [

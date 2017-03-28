@@ -2,7 +2,7 @@
   "authentication": {
     "available_types": [{
       "name": "mock",
-      "namespace": "erdiko_authenticate_services",
+      "namespace": "erdiko_authenticate_tests_factories",
       "classname": "Mock",
       "enabled": true
     }, {

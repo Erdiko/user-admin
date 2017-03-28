@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-default btn-sm" routerLink="/list/"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back to User List</button>
+        <button class="btn btn-info btn-sm square-corners" routerLink="/list/"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back to User List</button>
     </div>
 </div>
 <div class="row">
@@ -10,99 +10,159 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <span *ngIf="!user">Create User</span>
-                <span *ngIf="user">Edit User - User {{ user.id }}</span>
-            </div>
-            <div class="panel-body">
+        <div id="id-title" *ngIf="user.id">
+            User {{ user.id }}
+        </div>
+        <div class="panel panel-default square-corners" id="edit-update">
+            <tabset>
+                <tab [heading]="createEditHeader()">
+                    <div class="panel-body">
+                        <alert *ngIf="msg" type="success">{{ msg }}</alert>
+                        <alert *ngIf="error" type="danger">{{ error }}</alert>
 
-                <alert *ngIf="msg" type="success">{{ msg }}</alert>
-                <alert *ngIf="error" type="danger">{{ error }}</alert>
+                        <form 
+                                id="user-edit" 
+                                class="form-horizontal"
+                                novalidate 
+                                (ngSubmit)="onSubmit(userForm)" 
+                                [formGroup]="userForm"
+                            >
 
-                <form 
-                        id="user-edit" 
-                        class="form-horizontal"
-                        novalidate 
-                        (ngSubmit)="onSubmit(userForm)" 
-                        [formGroup]="userForm"
-                    >
+                            <div class="form-group" *ngIf="user && user.id">
+                                <label for="name" class="col-xs-2 control-label">ID</label>
+                                <div class="col-xs-10">
+                                    <p>{{ user.id }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group" *ngIf="user && user.created_at">
+                                <label for="name" class="col-xs-2 control-label">Joined</label>
+                                <div class="col-xs-10">
+                                    <p *ngIf="!user.created_at">n/a</p>
+                                    <p>{{ user.created_at }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group" *ngIf="user.id">
+                                <label for="name" class="col-xs-2 control-label">Last Login</label>
+                                <div class="col-xs-10">
+                                    <p *ngIf="!user.last_login">n/a</p>
+                                    <p>{{ user.last_login }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-xs-2 control-label">Name</label>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control square-corners" name="name" formControlName="name" placeholder="Name">
+                                    <div class="text-danger" *ngIf="userForm.get('name').hasError('required') && userForm.get('name').touched">
+                                    Name is required
+                                    </div>
+                                    <div class="text-danger" *ngIf="userForm.get('name').hasError('minlength') && userForm.get('name').touched">
+                                    Minimum of 2 characters
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-xs-2 control-label">Email</label>
+                                <div class="col-xs-10">
+                                    <input type="email" class="form-control square-corners" name="email" 
+                                            formControlName="email" placeholder="Email"
+                                            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                                    <div class="text-danger" *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched">
+                                    Email is required
+                                    </div>
+                                    <div class="text-danger" *ngIf="userForm.get('email').hasError('pattern') && userForm.get('email').touched">
+                                    A Valid email is required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="role" class="col-xs-2 control-label">Role</label>
+                                <div class="col-xs-10" style="padding-top:11px">
+                                        <select class="form-control square-corners" name="role" formControlName="role">
+                                            <option value="2">Admin</option>
+                                            <option value="1">User</option>
+                                        </select>
+                                    <div class="text-danger" *ngIf="userForm.get('role').hasError('required') && userForm.get('role').touched">
+                                    Role is required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-offset-2 col-xs-4">
+                                    <button type="cancel" class="btn btn-warning square-corners" routerLink="/list/">Cancel</button>
+                                </div>
+                                <div class="col-xs-offset-2 col-xs-4">
+                                    <button type="submit" class="btn btn-success square-corners" [disabled]="userForm.invalid || wait">
+                                        Save
+                                        <i *ngIf="wait" class="fa fa-refresh fa-spin fa-fw"></i> 
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </tab>
+                <tab heading="Update Password" *ngIf="user.id">
+                    <div class="panel-body">
 
-                    <div class="form-group" *ngIf="user && user.id">
-                        <label for="name" class="col-xs-2 control-label">ID</label>
-                        <div class="col-xs-10">
-                            <p>{{ user.id }}</p>
-                        </div>
-                    </div>
-                   <div class="form-group" *ngIf="user && user.created_at">
-                        <label for="name" class="col-xs-2 control-label">Joined</label>
-                        <div class="col-xs-10">
-                            <p *ngIf="!user.created_at">n/a</p>
-                            <p>{{ user.created_at }}</p>
-                        </div>
-                    </div>
-                    <div class="form-group" *ngIf="user">
-                        <label for="name" class="col-xs-2 control-label">Last Login</label>
-                        <div class="col-xs-10">
-                            <p *ngIf="!user.last_login">n/a</p>
-                            <p>{{ user.last_login }}</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="col-xs-2 control-label">Name</label>
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" name="name" formControlName="name" placeholder="Name">
-                            <div class="text-danger" *ngIf="userForm.get('name').hasError('required') && userForm.get('name').touched">
-                              Name is required
-                            </div>
-                            <div class="text-danger" *ngIf="userForm.get('name').hasError('minlength') && userForm.get('name').touched">
-                              Minimum of 2 characters
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-xs-2 control-label">Email</label>
-                        <div class="col-xs-10">
-                            <input type="email" class="form-control" name="email" 
-                                    formControlName="email" placeholder="Email"
-                                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
-                            <div class="text-danger" *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched">
-                              Email is required
-                            </div>
-                            <div class="text-danger" *ngIf="userForm.get('email').hasError('pattern') && userForm.get('email').touched">
-                              A Valid email is required
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="role" class="col-xs-2 control-label">Role</label>
-                        <div class="col-xs-10">
-                            <select class="form-control" name="role" formControlName="role">
-                                <option value="2">Admin</option>
-                                <option value="1">User</option>
-                            </select>
-                            <div class="text-danger" *ngIf="userForm.get('role').hasError('required') && userForm.get('role').touched">
-                              Role is required
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-offset-2 col-xs-4">
-                            <button type="submit" class="btn btn-default" [disabled]="userForm.invalid || wait">
-                                Save
-                                <i *ngIf="wait" class="fa fa-refresh fa-spin fa-fw"></i> 
-                            </button>
-                        </div>
-                        <div class="col-xs-offset-2 col-xs-4">
-                            <button type="cancel" class="btn btn-default" routerLink="/list/">Cancel</button>
-                        </div>
-                    </div>
-                </form>
+                        <alert *ngIf="passMsg" type="success">{{ passMsg }}</alert>
+                        <alert *ngIf="passError" type="danger">{{ passError }}</alert>
 
-            </div>
+                        <form 
+                                id="user-password-change" 
+                                class="form-horizontal"
+                                novalidate 
+                                (ngSubmit)="onSubmitChangepass(passwordForm)" 
+                                [formGroup]="passwordForm"
+                            >
+                            <div class="form-group">
+                                <p class="col-xs-12" style="text-align:center">Passwords must contain at least 1 alpha & 1 numeric character, with a minimum length of 5 characters</p>
+                                <label for="password" class="col-xs-4 control-label">New Password</label>
+                                <div class="col-xs-5">
+                                    <input  type="password" 
+                                            class="form-control square-corners" 
+                                            name="password" 
+                                            formControlName="password"
+                                            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$"
+                                            required>
+                                    <div class="text-danger" *ngIf="passwordForm.get('password').hasError('required') && passwordForm.get('password').touched">
+                                    Password is required
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="form-group">
+                                <label for="password" class="col-xs-4 control-label">Confirm Password</label>
+                                <div class="col-xs-5">
+
+                                    <input  type="password" 
+                                            class="form-control square-corners" 
+                                            name="confirm" 
+                                            formControlName="confirm"
+                                            validateEquality="password" 
+                                            required>
+
+                                    <div class="text-danger" *ngIf="passwordForm.get('confirm').hasError('required') && passwordForm.get('confirm').touched">
+                                    Password Confirm is required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-offset-2 col-xs-4">
+                                    <button type="cancel" class="btn btn-warning square-corners" (click)="togglePassword()">Cancel</button>
+                                </div>
+                                <div class="col-xs-offset-2 col-xs-4">
+                                    <button id="save-updated-password" type="submit" class="btn btn-success square-corners" [disabled]="passwordForm.invalid || passWait">
+                                        Save
+                                        <i *ngIf="passWait" class="fa fa-refresh fa-spin fa-fw"></i> 
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </tab>
+            </tabset>
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-xs-12">
         <br/>
@@ -110,73 +170,10 @@
 </div>
 
 <!-- User Event Component Goes Here -->
+<app-user-event-log *ngIf="user.id"></app-user-event-log>
 
 <div class="row">
     <div class="col-xs-12">
         <br/>
-    </div>
-</div>
-<div class="row" *ngIf="user">
-    <div class="col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <span>Update User Password</span>
-            </div>
-            <div class="panel-body">
-
-                <alert *ngIf="passMsg" type="success">{{ passMsg }}</alert>
-                <alert *ngIf="passError" type="danger">{{ passError }}</alert>
-
-                <form 
-                        id="user-password-change" 
-                        class="form-horizontal"
-                        novalidate 
-                        (ngSubmit)="onSubmitChangepass(passwordForm)" 
-                        [formGroup]="passwordForm"
-                    >
-                    <div class="form-group">
-                        <label for="password" class="col-xs-2 control-label">New Password</label>
-                        <div class="col-xs-10">
-                            <input  type="password" 
-                                    class="form-control" 
-                                    name="password" 
-                                    formControlName="password"
-                                    required>
-                            <div class="text-danger" *ngIf="passwordForm.get('password').hasError('required') && passwordForm.get('password').touched">
-                              Password is required
-                            </div>
-                        </div>
-                    </div>
-                   <div class="form-group">
-                        <label for="password" class="col-xs-2 control-label">Confirm Password</label>
-                        <div class="col-xs-10">
-
-                            <input  type="password" 
-                                    class="form-control" 
-                                    name="confirm" 
-                                    formControlName="confirm"
-                                    validateEquality="password" 
-                                    required>
-
-                            <div class="text-danger" *ngIf="passwordForm.get('confirm').hasError('required') && passwordForm.get('confirm').touched">
-                              Password Confirm is required
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-offset-2 col-xs-4">
-                            <button type="submit" class="btn btn-default" [disabled]="passwordForm.invalid || passWait">
-                                Save
-                                <i *ngIf="passWait" class="fa fa-refresh fa-spin fa-fw"></i> 
-                            </button>
-                        </div>
-                        <div class="col-xs-offset-2 col-xs-4">
-                            <button type="cancel" class="btn btn-default" routerLink="/list/">Cancel</button>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-        </div>
     </div>
 </div>

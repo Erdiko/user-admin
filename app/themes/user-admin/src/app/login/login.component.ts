@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
     private loginForm: FormGroup;
 
+    public loggedOut: string;
     public error: string;
 
     constructor(
@@ -40,6 +41,9 @@ export class LoginComponent implements OnInit {
             email: ['', Validators.required],
             password:  ['', Validators.required]
         });
+
+        //Display flash message when directed from logged-in state
+        this.loggedOut = this.authService.loggedOut ? this.authService.loggedOut : null;
     }
 
     onSubmit({ value, valid }: { value: any, valid: boolean }) {
@@ -58,10 +62,10 @@ export class LoginComponent implements OnInit {
                         this.error = 'Username or Password is invalid';
                         this.wait = false;
                     }
-                    }, err => {
-                        this.error = 'An error occurred. Please try again.';
-                        this.wait = false;
-                    });
+                }, err => {
+                    this.error = 'An error occurred. Please try again.';
+                    this.wait = false;
+                });
 
         }
     }

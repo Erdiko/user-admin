@@ -11647,15 +11647,17 @@ h1, h2, h3, h4 {
 
 /* Square corners
 -------------------------------------------------- */
-.square-corners, .alert,
+.alert, .navbar,
+.panel, .panel-default, .panel-heading,
+.form-control, .btn, .modal-content,
 .list-group-item:first-child,
 .list-group-item:last-child,
-.pagination a,
+.pagination, .pagination a,
 .pagination-sm > li:first-child > a,
 .pagination-sm > li:last-child > a {
   border-radius: 0px; }
 
-select.square-corners {
+select.form-control {
   -moz-appearance: none;
   -webkit-appearance: none;
   padding: 0 0 0 15px;

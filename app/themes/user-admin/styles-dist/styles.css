@@ -11657,6 +11657,9 @@ h1, h2, h3, h4 {
 .pagination-sm > li:last-child > a {
   border-radius: 0px; }
 
+@media (min-width: 768px) {
+  padding-top: 3px; }
+
 select.form-control {
   -moz-appearance: none;
   -webkit-appearance: none;

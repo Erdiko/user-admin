@@ -5,9 +5,8 @@
                 Login
             </div>
             <div class="panel-body">
-
-                <alert *ngIf="error" type="danger">{{ error }}</alert>
-                <alert *ngIf="loggedOut" type="success">{{ loggedOut }}</alert>
+                
+                <app-message></app-message>
 
                 <form 
                         id="user-edit" 

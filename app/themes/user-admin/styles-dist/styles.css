@@ -11645,6 +11645,29 @@ h1, h2, h3, h4 {
   -o-transition: none !important;
   transition: none !important; }
 
+/* Square corners
+-------------------------------------------------- */
+.alert, .navbar,
+.panel, .panel-default, .panel-heading,
+.form-control, .btn, .modal-content,
+.list-group-item:first-child,
+.list-group-item:last-child,
+.pagination, .pagination a,
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:last-child > a {
+  border-radius: 0px; }
+
+@media (min-width: 768px) {
+  padding-top: 3px; }
+
+select.form-control {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding: 0 0 0 15px;
+  background: url(/images/select-arrow.png);
+  background-position: right;
+  background-repeat: no-repeat; }
+
 /* Header styles
 -------------------------------------------------- */
 .navbar-default {
@@ -11693,6 +11716,15 @@ nav > li > a:hover {
 .nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover {
   border: none; }
+
+.tab-container a {
+  color: black; }
+
+.nav-tabs .nav-link.active,
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  color: #17bf63 !important; }
 
 .nav-tabs > li.active {
   border: none;

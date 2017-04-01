@@ -86,55 +86,10 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!--Create User component here-->
-
-                            <!--<div class="form-group" *ngIf="!user.id">
-                                <p class="col-xs-12" style="text-align:center">Passwords must contain at least 1 alpha & 1 numeric character, with a minimum length of 5 characters</p>
-                                <label for="password" class="col-xs-2 control-label">New Password</label>
-                                <div class="col-xs-10">
-                                    <input  type="password" 
-                                            class="form-control" 
-                                            name="password" 
-                                            formControlName="password"
-                                            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$"
-                                            required>
-                                    <div class="text-danger" *ngIf="passwordForm.get('password').hasError('required') && passwordForm.get('password').touched">
-                                    Password is required
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group" *ngIf="!user.id">
-                                <label for="password" class="col-xs-2 control-label">Confirm Password</label>
-                                <div class="col-xs-10">
-
-                                    <input  type="password" 
-                                            class="form-control" 
-                                            name="confirm" 
-                                            formControlName="confirm"
-                                            validateEquality="password" 
-                                            required>
-
-                                    <div class="text-danger" *ngIf="passwordForm.get('confirm').hasError('required') && passwordForm.get('confirm').touched">
-                                    Password Confirm is required
-                                    </div>
-                                </div>
-                            </div>-->
+                            
+                            <!--show password input if creating user-->
                             <app-password *ngIf="!user.id" [passwordInput]="userForm.controls.passwordInput"></app-password>
 
-                            <!--Create User component here-->
-
-                            <!--<div class="form-group" *ngIf="user && user.id">
-                                <div class="col-xs-offset-2 col-xs-4">
-                                    <button type="cancel" class="btn btn-warning" routerLink="/list/">Cancel</button>
-                                </div>
-                                <div class="col-xs-offset-2 col-xs-4">
-                                    <button type="submit" class="btn btn-success" [disabled]="userForm.invalid || wait">
-                                        Save
-                                        <i *ngIf="wait" class="fa fa-refresh fa-spin fa-fw"></i> 
-                                    </button>
-                                </div>
-                            </div>-->
                         </form>
                     </div>
                 </tab>

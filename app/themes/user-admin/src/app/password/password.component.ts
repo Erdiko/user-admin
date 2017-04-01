@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -8,9 +8,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class PasswordComponent implements OnInit {
 
-  @Input() passwordForm: FormGroup;
+  @Input() passwordInput: FormGroup;
 
-  constructor() { }
+  public password: string;
+  public confirm: string;
+
+  constructor() { 
+
+
+
+  }
 
   ngOnInit() {
   }

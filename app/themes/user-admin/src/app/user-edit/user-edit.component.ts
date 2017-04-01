@@ -1,10 +1,11 @@
-import { Component, NgModule, OnInit }                    from '@angular/core';
+import { Component, NgModule, OnInit, ViewChild, AfterViewInit }   from '@angular/core';
 import { Router, ActivatedRoute }               from '@angular/router';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
 import { UsersService }   from '../shared/users.service';
 import { User }           from "../shared/models/user.model";
 import { UserEventLogComponent } from '../user-event-log/user-event-log.component'
+import { PasswordComponent } from '../password/password.component';
 
 import { AlertComponent, TabsModule } from 'ng2-bootstrap';
 
@@ -14,6 +15,8 @@ import { AlertComponent, TabsModule } from 'ng2-bootstrap';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
+
+    @ViewChild(PasswordComponent) passwordComponent: PasswordComponent
 
     private wait: any;
 
@@ -69,8 +72,10 @@ export class UserEditComponent implements OnInit {
         });
 
         this.passwordForm = this.fb.group({
-            password:  ['', [Validators.required, Validators.minLength(3)]],
-            confirm: ['', Validators.required],
+            passwordInput: this.fb.group({
+                password:  ['', [Validators.required, Validators.minLength(3)]],
+                confirm: ['', Validators.required],
+            })
         });
 
         if(this.user.id) {
@@ -122,12 +127,12 @@ export class UserEditComponent implements OnInit {
     }
 
     onSubmitChangepass({ value, valid }: { value: any, valid: boolean }) {
-        console.log('onSubmitChange', value);
+        console.log("onSubmitChangePass", value);//value is an object type with {password: '', confirm: ''}
         this.passWait = true;
         this.passMsg = this.passError = '';
 
         if(valid) {
-            return this.usersService.changePassword(this.user.id, value.password)
+            return this.usersService.changePassword(this.user.id, value.passwordInput.password)
                        .then(res => this._handlePasswordResponse(res))
                        .catch(error => this.passError = error);
         }

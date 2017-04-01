@@ -67,8 +67,10 @@ export class UserEditComponent implements OnInit {
             name:  ['', [Validators.required, Validators.minLength(3)]],
             email: ['', Validators.required],
             role:  ['', Validators.required],
-            password:  ['', [Validators.required, Validators.minLength(3)]],
-            confirm: ['', Validators.required],
+            passwordInput: this.fb.group({
+                password: ['', [Validators.required, Validators.minLength(3)]],
+                confirm: ['', Validators.required],
+            })
         });
 
         this.passwordForm = this.fb.group({
@@ -88,7 +90,12 @@ export class UserEditComponent implements OnInit {
 
     onSubmit({ value, valid }: { value: any, valid: boolean }) {
 
-        console.log("onSubmit", value);
+        let user = {
+            email: value.email,
+            name: value.name,
+            role: value.role,
+            password: value.passwordInput.password
+        };
 
         this.wait = true;
 
@@ -101,13 +108,13 @@ export class UserEditComponent implements OnInit {
                            .then(res => this._handleResponse(res))
                            .catch(error => this.error = error);
             } else {
-                return this.usersService.createUser(value)
+                console.log("create user");
+                return this.usersService.createUser(user)
                            .then(res => this._handleResponse(res))
                            .catch(error => this.error = error);
             }
         }
 
-        this.onSubmitChangepass(value);
     }
     
     private _handleResponse(res) {
@@ -127,7 +134,6 @@ export class UserEditComponent implements OnInit {
     }
 
     onSubmitChangepass({ value, valid }: { value: any, valid: boolean }) {
-        console.log("onSubmitChangePass", value);//value is an object type with {password: '', confirm: ''}
         this.passWait = true;
         this.passMsg = this.passError = '';
 

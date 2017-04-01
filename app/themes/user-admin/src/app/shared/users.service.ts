@@ -166,7 +166,10 @@ export class UsersService {
         let url = this._baseUrl + this.createUrl;
         return this.http.post(url, body, options)
                    .toPromise()
-                   .then(response => response.json().body)
+                   .then(response => {
+                       console.log(response);
+                       return response.json().body;
+                    })
                    .catch(this.handleError);
     }
 

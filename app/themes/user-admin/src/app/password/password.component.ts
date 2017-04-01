@@ -1,25 +1,18 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Input} from '@angular/core';
+import { FormGroup }       from '@angular/forms';
+import { User }            from "../shared/models/user.model";
 
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
   styleUrls: ['./password.component.scss']
 })
-export class PasswordComponent implements OnInit {
+export class PasswordComponent {
 
   @Input() passwordInput: FormGroup;
 
-  public password: string;
-  public confirm: string;
+  constructor() {}
 
-  constructor() { 
-
-
-
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

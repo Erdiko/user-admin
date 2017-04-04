@@ -108,7 +108,6 @@ export class UserEditComponent implements OnInit {
                            .then(res => this._handleResponse(res))
                            .catch(error => this.error = error);
             } else {
-                console.log("create user");
                 return this.usersService.createUser(user)
                            .then(res => this._handleResponse(res))
                            .catch(error => this.error = error);

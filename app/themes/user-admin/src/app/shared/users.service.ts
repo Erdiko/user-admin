@@ -167,7 +167,6 @@ export class UsersService {
         return this.http.post(url, body, options)
                    .toPromise()
                    .then(response => {
-                       console.log(response);
                        return response.json().body;
                     })
                    .catch(this.handleError);

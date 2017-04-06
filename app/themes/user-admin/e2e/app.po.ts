@@ -24,8 +24,10 @@ export class UserAdminPage {
 
     //For the following email and password to work, the sql script in user-admin/scripts/sql/create-e2e-user.sql must be executed
     //The purpose is so that every developer running e2e test has same login credentials.
-    email.sendKeys('test@bug.com');
-    password.sendKeys('asdf1234');
+    //email.sendKeys('test@bug.com');
+    //password.sendKeys('asdf1234');
+    email.sendKeys('plato@philosophy.com');
+    password.sendKeys('philosophy101');
     
     submit.click();
 
@@ -53,9 +55,11 @@ export class UserAdminPage {
     let submit = browser.findElement(protractor.By.className('btn btn-success'));
 
     // Input Values
-    email.sendKeys('test@bug.com');
-    password.sendKeys('1234asdf');
-    
+    //email.sendKeys('test@bug.com');
+    //password.sendKeys('1234asdf');
+    email.sendKeys('plato@philosophy.com');
+    password.sendKeys('philosophy101');
+
     // Click the Submit button
     submit.click();
 

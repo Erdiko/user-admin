@@ -59,8 +59,6 @@ describe('User Edit Page', function() {
     });
 
     it('should update the password', () => {
-        let edit = browser.findElement(protractor.By.css('tbody tr:first-child a'));
-        edit.click();
 
         //check for content of edit page
         expect(element(by.id('user-edit'))).toBeTruthy();

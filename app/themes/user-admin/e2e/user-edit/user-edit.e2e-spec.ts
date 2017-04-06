@@ -76,13 +76,8 @@ describe('User Edit Page', function() {
         //Now, Update User is displayed.
         expect(updatePasswordContent.isDisplayed()).toBeTruthy();
 
-        //expect(element(by.css('input[name=password]'))).toBeTruthy();
-        //expect(element(by.css('input[name=confirm]'))).toBeTruthy();
-
         let password = browser.findElement(protractor.By.name('password'));
         let confirm = browser.findElement(protractor.By.name('confirm'));
-        //element(by.css('input[name=password]')).sendKeys('MrRob0t');
-        //element(by.css('input[name=confirm]')).sendKeys('MrRob0t');
 
         password.sendKeys('MrRob0t');
         confirm.sendKeys('MrRob0t');

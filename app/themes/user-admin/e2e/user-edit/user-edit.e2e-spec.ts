@@ -60,11 +60,13 @@ describe('User Edit Page', function() {
 
     it('should update the password', () => {
 
-        //check for content of edit page
-        expect(element(by.id('user-edit'))).toBeTruthy();
+        //Go to User Edit Page
+        let edit = browser.findElement(protractor.By.css('tbody tr:first-child > .user_edit > a'));
+        edit.click();
 
         let updatePassword = browser.findElement(protractor.By.css('.nav-tabs > li:last-child'));
-        let updatePasswordContent = browser.findElement(protractor.By.css('.tab-container tab:last-child'));
+        //let updatePassword = browser.findElement(protractor.By.css('.nav-item:last-child > a'));
+        let updatePasswordContent = browser.findElement(protractor.By.css('.tab-content > .tab-pane:last-child'));
 
         //Currently, Update User is not displayed
         expect(updatePasswordContent.isDisplayed()).toBeFalsy();
@@ -74,9 +76,13 @@ describe('User Edit Page', function() {
         //Now, Update User is displayed.
         expect(updatePasswordContent.isDisplayed()).toBeTruthy();
 
+        //expect(element(by.css('input[name=password]'))).toBeTruthy();
+        //expect(element(by.css('input[name=confirm]'))).toBeTruthy();
 
         let password = browser.findElement(protractor.By.name('password'));
         let confirm = browser.findElement(protractor.By.name('confirm'));
+        //element(by.css('input[name=password]')).sendKeys('MrRob0t');
+        //element(by.css('input[name=confirm]')).sendKeys('MrRob0t');
 
         password.sendKeys('MrRob0t');
         confirm.sendKeys('MrRob0t');
@@ -94,6 +100,6 @@ describe('User Edit Page', function() {
     });
 
     it('should login with updated user credentials', () => {
-        page.loginWithUpdated();
+        page.loginWithUpdated("MrRob0t");
     });
 });

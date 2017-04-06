@@ -84,13 +84,17 @@ export class UserEditComponent implements OnInit {
             this.userForm.controls['name'].setValue(this.user.name);
             this.userForm.controls['email'].setValue(this.user.email);
             this.userForm.controls['role'].setValue(this.user.role.id);
+
+            //The values for password and confirm are set to arbitrary combination of letters and numbers to 'validate' the form submit
+            this.userForm.controls['passwordInput']['controls'].password.setValue("placeholder1");
+            this.userForm.controls['passwordInput']['controls'].confirm.setValue("placeholder1");
         }
 
     }
 
     onSubmit({ value, valid }: { value: any, valid: boolean }) {
 
-        let user = {
+        let create = {
             email: value.email,
             name: value.name,
             role: value.role,
@@ -108,7 +112,7 @@ export class UserEditComponent implements OnInit {
                            .then(res => this._handleResponse(res))
                            .catch(error => this.error = error);
             } else {
-                return this.usersService.createUser(user)
+                return this.usersService.createUser(create)
                            .then(res => this._handleResponse(res))
                            .catch(error => this.error = error);
             }

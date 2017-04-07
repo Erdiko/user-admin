@@ -32,6 +32,10 @@ describe('User Create', function() {
         let email = browser.findElement(protractor.By.name('email'));
         let user = browser.findElement(protractor.By.cssContainingText('option', 'User'));
         let admin = browser.findElement(protractor.By.cssContainingText('option', 'Admin'));
+
+        let password = browser.findElement(protractor.By.name('password'));
+        let confirm = browser.findElement(protractor.By.name('confirm'));
+
         let save = browser.findElement(protractor.By.cssContainingText('button', 'Save'));
 
         let cancel = browser.findElement(protractor.By.cssContainingText('button', 'Cancel'));
@@ -40,6 +44,8 @@ describe('User Create', function() {
         name.sendKeys('Elliot Alderson');
         email.sendKeys('elliot@funsociety.com');
         admin.click();
+        password.sendKeys('a1ora0');
+        confirm.sendKeys('a1ora0');
         save.click();
 
         cancel.click();
@@ -48,5 +54,9 @@ describe('User Create', function() {
 
     it('should logout when Logout link is clicked', () => {
         page.logout();
+    });
+
+    it('should login with updated user credentials', () => {
+        page.loginWithUpdated("a1ora0");
     });
 });

@@ -55,7 +55,7 @@ export class UserAdminPage {
     // Input Values
     email.sendKeys('test@bug.com');
     password.sendKeys('1234asdf');
-    
+
     // Click the Submit button
     submit.click();
 
@@ -66,13 +66,13 @@ export class UserAdminPage {
     password.clear();
   }
 
-  loginWithUpdated() {
+  loginWithUpdated(updated) {
     let email = browser.findElement(protractor.By.name('email'));
     let password = browser.findElement(protractor.By.name('password'));
     let submit = browser.findElement(protractor.By.className('btn btn-success'));
 
     // Input Values
     email.sendKeys('sam@sepiol.com');
-    password.sendKeys('MrRob0t');
+    password.sendKeys(updated);
   }
 }

@@ -87,20 +87,20 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group" *ngIf="user.id">
+                            <!--show password input if creating user-->
+                            <app-password *ngIf="!user.id" [passwordInput]="userForm.controls.passwordInput"></app-password>
+
+                            <div class="form-group">
                                 <div class="col-xs-offset-2 col-xs-4">
                                     <button type="cancel" class="btn btn-warning" routerLink="/list/">Cancel</button>
                                 </div>
                                 <div class="col-xs-offset-2 col-xs-4">
-                                    <button type="submit" class="btn btn-success" [disabled]="passWait">
+                                    <button type="submit" class="btn btn-success" [disabled]="userForm.invalid || passWait">
                                         Save
                                         <i *ngIf="passWait" class="fa fa-refresh fa-spin fa-fw"></i> 
                                     </button>
                                 </div>
                             </div>
-
-                            <!--show password input if creating user-->
-                            <app-password *ngIf="!user.id" [passwordInput]="userForm.controls.passwordInput"></app-password>
 
                         </form>
                     </div>
@@ -120,6 +120,19 @@
                                 [formGroup]="passwordForm"
                             >
                             <app-password [passwordInput]="passwordForm.controls.passwordInput"></app-password>
+
+                            <div class="form-group">
+                                <div class="col-xs-offset-2 col-xs-4">
+                                    <button type="cancel" class="btn btn-warning" routerLink="/list/">Cancel</button>
+                                </div>
+                                <div class="col-xs-offset-2 col-xs-4">
+                                    <button type="submit" class="btn btn-success" [disabled]="passwordForm.controls.passwordInput.invalid || passWait">
+                                        Save
+                                        <i *ngIf="passWait" class="fa fa-refresh fa-spin fa-fw"></i> 
+                                    </button>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </tab>

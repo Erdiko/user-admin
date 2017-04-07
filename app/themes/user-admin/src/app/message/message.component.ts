@@ -11,20 +11,19 @@ import { Subscription } from "rxjs";
 export class MessageComponent implements OnDestroy {
 
   private message: any;
-  private subscription: Subscription;
+  private messageSubscription: Subscription;
 
   constructor(private messageService: MessageService) { 
 
-    this.subscription = this.messageService.getMessage()
+    this.messageSubscription = this.messageService.getMessage()
                                            .subscribe(message => {
-                                             console.log("message", message);
                                              this.message = message;
                                            });
   }
 
   ngOnDestroy() {
     //Memory Leak is bad.
-    //this.subscription.unsubscribe();
+    this.messageSubscription.unsubscribe();
   }
 
 }

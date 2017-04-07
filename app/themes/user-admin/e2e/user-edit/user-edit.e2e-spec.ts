@@ -64,14 +64,14 @@ describe('User Edit Page', function() {
         let edit = browser.findElement(protractor.By.css('tbody tr:first-child > .user_edit > a'));
         edit.click();
 
-        let updatePassword = browser.findElement(protractor.By.css('.nav-tabs > li:last-child'));
+        let updatePasswordTab = browser.findElement(protractor.By.css('.nav-tabs > li:last-child'));
         //let updatePassword = browser.findElement(protractor.By.css('.nav-item:last-child > a'));
         let updatePasswordContent = browser.findElement(protractor.By.css('.tab-content > .tab-pane:last-child'));
 
         //Currently, Update User is not displayed
         expect(updatePasswordContent.isDisplayed()).toBeFalsy();
 
-        updatePassword.click();
+        updatePasswordTab.click();
 
         //Now, Update User is displayed.
         expect(updatePasswordContent.isDisplayed()).toBeTruthy();
@@ -85,7 +85,7 @@ describe('User Edit Page', function() {
         //Wait for the Update Password Button to be enabled.
         browser.waitForAngular();
 
-        let passwordSave = browser.findElement(protractor.By.id('save-updated-password'));
+        let passwordSave = browser.findElement(protractor.By.css('#user-password-change .btn-success'));
         passwordSave.click();
 
     });

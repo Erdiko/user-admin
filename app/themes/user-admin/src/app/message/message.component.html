@@ -1,1 +1,1 @@
-<alert *ngIf="message" type="success">{{ message }}</alert>
+<alert *ngIf="message" [type]="message.type">{{ message.body }}</alert>

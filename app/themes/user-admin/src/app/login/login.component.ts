@@ -8,8 +8,7 @@ import { MessageService }   from '../shared/message.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: [MessageService]
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -53,31 +52,23 @@ export class LoginComponent implements OnInit {
 
         this.wait = true;
 
-        this.error = '';
-
         if(valid) {
 
             this.authService.login(value)
                 .subscribe(result => {
                     if (result === true) {
                         this.router.navigate(['/']);
+                        this.messageService.sendMessage("login", "success");
                     } else {
-                        this.sendMessage("login", "noPassword");
-                        //this.error = 'Username or Password is invalid';
+                        this.messageService.sendMessage("login", "no-password");
                         this.wait = false;
                     }
                 }, err => {
-                    this.sendMessage("login", "error");
-                    //this.error = 'An error occurred. Please try again.';
+                    this.messageService.sendMessage("login", "error");
                     this.wait = false;
                 });
 
         }
-    }
-
-    sendMessage(action, method) {
-        console.log("login");
-        this.messageService.sendMessage(action, method);
     }
 
 }

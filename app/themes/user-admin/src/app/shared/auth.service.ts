@@ -3,6 +3,8 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams }     from '@a
 
 import { Observable }                                                   from 'rxjs';
 
+import { MessageService }                                               from './message.service';
+
 import 'rxjs/add/operator/map'
 
 @Injectable()
@@ -15,13 +17,13 @@ export class AuthService {
 
     public token: string;
 
-    public loggedOut: string;
+    public loggedOut: any;
 
     /**
      *
      *
      */
-    constructor(private http: Http) {
+    constructor(private http: Http, public messageService: MessageService) {
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
 
@@ -86,7 +88,8 @@ export class AuthService {
         this.token = null;
         localStorage.removeItem('currentUser');
 
-        this.loggedOut = "You have Successfully Logged Out";
+        console.log("logout");
+        this.messageService.sendMessage("logout", "success");
     }
 
 }

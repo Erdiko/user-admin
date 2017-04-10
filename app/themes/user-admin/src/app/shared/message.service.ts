@@ -11,24 +11,37 @@ export class MessageService {
     this.messages = {
       
               login: {
-                  noPassword: "Username or Password is invalid.",
-                  noAccess: "You need to login to gain access.",
-                  error: "An error occurred. Please try again."
+                  'success': "You have Successfully logged in",
+                  'no-password': "Username or Password is invalid.",
+                  'no-access': "You need to login to gain access.",
+                  'error': "An error occurred. Please try again."
               },
               logout: {
-                  success: "You have Successfully logged out.",
-                  error: "You have been logged out unexpectedly."
+                  'success': "You have Successfully logged out.",
+                  'error': "You have been logged out unexpectedly."
               }
 
       }
   }
 
-  
+  setMessageType(result){
+    switch(result){
+      case 'success':
+        return 'success';
+      case 'warning':
+        return 'warning';
+      default:
+        return 'danger';
+    }
+  }
 
   sendMessage(action, result) {
+    let messageType = this.setMessageType(result);
+    console.log("type", messageType);
+
     let message = this.messages[action][result];
     console.log("send message", message);
-    this.messageUpdate.next(message);
+    this.messageUpdate.next({body: message, type: messageType});
   }
 
   getMessage() {

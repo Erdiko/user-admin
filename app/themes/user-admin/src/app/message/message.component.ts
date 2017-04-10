@@ -5,20 +5,22 @@ import { Subscription } from "rxjs";
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
-  styleUrls: ['./message.component.scss'],
-  providers: [MessageService]
+  styleUrls: ['./message.component.scss']
 })
 export class MessageComponent implements OnDestroy {
 
+  private messageType: string;
   private message: any;
   private messageSubscription: Subscription;
 
   constructor(private messageService: MessageService) { 
 
-    this.messageSubscription = this.messageService.getMessage()
-                                           .subscribe(message => {
-                                             this.message = message;
-                                           });
+    this.messageSubscription = this.messageService
+                                   .getMessage()
+                                   .subscribe(message => {
+                                      console.log('subscribe message!', message)
+                                      this.message = message
+                                    });
   }
 
   ngOnDestroy() {

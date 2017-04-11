@@ -15,12 +15,8 @@ export class MessageComponent implements OnDestroy {
   private messageSubscription: Subscription;
 
   constructor(private messageService: MessageService,
-              private router:         Router) { 
+              private router:         Router)        { 
 
-    // router.events.subscribe((event) => {
-    //   console.log("event", event);
-    //   this.messageService.clearMessage();
-    // });
 
     this.messageSubscription = this.messageService
                                    .getMessage()

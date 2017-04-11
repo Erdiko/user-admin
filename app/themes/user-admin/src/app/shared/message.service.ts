@@ -31,6 +31,10 @@ export class MessageService {
               'edit-password': {
                   'success': "User password successfully updated",
                   'error': "An error occurred. Please try again."
+              },
+              'delete-user': {
+                  'success': "User successfully deleted",
+                  'error': "An error occured. Please try again."
               }
 
       }
@@ -63,7 +67,7 @@ export class MessageService {
 
   clearMessage() {
     console.log("clear message");
-    this.messageUpdate.next(null);
+    this.messageUpdate.next({body: null, type: null});
   }
   
 

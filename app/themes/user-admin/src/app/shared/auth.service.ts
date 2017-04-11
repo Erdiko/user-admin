@@ -68,9 +68,11 @@ export class AuthService {
                            localStorage.setItem('currentUser', JSON.stringify({ token: token }));
 
                            // return true to indicate successful login
+                           this.messageService.sendMessage("login", "success");
                            return true;
                        } else {
                            // return false to indicate failed login
+                           this.messageService.sendMessage("login", "no-password");
                            return false;
                        }
                    })

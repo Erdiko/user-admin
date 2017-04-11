@@ -2,6 +2,7 @@ import { Component, NgModule, OnInit }                    from '@angular/core';
 import { Router, ActivatedRoute }               from '@angular/router';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
+import { MessageService }   from '../shared/message.service';
 import { UsersService }   from '../shared/users.service';
 import { User }           from "../shared/models/user.model";
 import { UserEventLogComponent } from '../user-event-log/user-event-log.component'
@@ -34,6 +35,7 @@ export class UserEditComponent implements OnInit {
 
     constructor(
            private usersService: UsersService,
+           private messageService: MessageService,
            private route: ActivatedRoute,
            private router: Router,
            private fb: FormBuilder
@@ -103,14 +105,19 @@ export class UserEditComponent implements OnInit {
         this.wait = false;
         if(true == res.success) {
 
-            this.msg = "User record was successfully updated."
-    
+            console.log("create res", res);
+
+            //this.msg = "User record was successfully updated."
+            this.messageService.sendMessage("edit-user", "success");
+
             if("create" === res.method) {
                 // navigate to Edit User for the new user
                 this.router.navigate(['/user/' + res.user.id]);
+                this.messageService.sendMessage("create-user", "success");
             }
 
         } else {
+            console.log("error res", res);
             this._handleError(res.error_message);
         }
     }
@@ -131,9 +138,12 @@ export class UserEditComponent implements OnInit {
 
         this.passwordForm.reset();
 
+        console.log("create res", res);
         if(true == res.success) {
-            this.passMsg = "User password successfully updated."
+            //this.passMsg = "User password successfully updated."
+            this.messageService.sendMessage("edit-password", "success");
         } else {
+            console.log("error res", res);
             this.passError = res.error_message;
         }
     }

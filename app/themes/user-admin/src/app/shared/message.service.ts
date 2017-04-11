@@ -10,15 +10,27 @@ export class MessageService {
   constructor() {
     this.messages = {
       
-              login: {
+              'login': {
                   'success': "You have Successfully logged in",
                   'no-password': "Username or Password is invalid.",
                   'no-access': "You need to login to gain access.",
                   'error': "An error occurred. Please try again."
               },
-              logout: {
+              'logout': {
                   'success': "You have Successfully logged out.",
                   'error': "You have been logged out unexpectedly."
+              },
+              'create-user': {
+                  'success': "User was successfully created",
+                  'error': "An error occurred. Please try again."
+              },
+              'edit-user': {
+                  'success': "User record was successfully updated",
+                  'error': "An error occurred. Please try again."
+              },
+              'edit-password': {
+                  'success': "User password successfully updated",
+                  'error': "An error occurred. Please try again."
               }
 
       }
@@ -47,6 +59,11 @@ export class MessageService {
   getMessage() {
     console.log("get message");
     return this.messageUpdate.asObservable();
+  }
+
+  clearMessage() {
+    console.log("clear message");
+    this.messageUpdate.next(null);
   }
   
 

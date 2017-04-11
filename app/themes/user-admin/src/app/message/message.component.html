@@ -1,1 +1,1 @@
-<alert *ngIf="message" [type]="message.type">{{ message.body }}</alert>
+<alert *ngIf="message" [type]="message.type" (click)="close()">{{ message.body }}</alert>

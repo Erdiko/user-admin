@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { MessageService }   from '../shared/message.service';
 import { Subscription } from "rxjs";
+import { Router }    from '@angular/router';
 
 @Component({
   selector: 'app-message',
@@ -13,14 +14,26 @@ export class MessageComponent implements OnDestroy {
   private message: any;
   private messageSubscription: Subscription;
 
-  constructor(private messageService: MessageService) { 
+  constructor(private messageService: MessageService,
+              private router:         Router) { 
+
+    // router.events.subscribe((event) => {
+    //   console.log("event", event);
+    //   this.messageService.clearMessage();
+    // });
 
     this.messageSubscription = this.messageService
                                    .getMessage()
                                    .subscribe(message => {
-                                      console.log('subscribe message!', message)
-                                      this.message = message
+                                      console.log('subscribe message!', message);
+                                      this.message = message;
                                     });
+
+    
+  }
+
+  close(){
+    this.message = null;
   }
 
   ngOnDestroy() {

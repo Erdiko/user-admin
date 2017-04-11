@@ -24,7 +24,6 @@ export class MessageComponent implements OnDestroy {
                                       console.log('subscribe message!', message);
                                       this.message = message;
                                     });
-
     
   }
 

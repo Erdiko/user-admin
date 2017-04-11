@@ -15,7 +15,7 @@
         </div>
         <div class="panel panel-default" id="edit-update">
             <tabset>
-                <tab [heading]="createEditHeader()">
+                <tab [heading]="createEditHeader()" (click)="messageService.clearMessage()">
                     <div class="panel-body">
                         <alert *ngIf="msg" type="success">{{ msg }}</alert>
                         <alert *ngIf="error" type="danger">{{ error }}</alert>
@@ -100,7 +100,7 @@
                         </form>
                     </div>
                 </tab>
-                <tab heading="Update Password" *ngIf="user.id">
+                <tab heading="Update Password" *ngIf="user.id" (click)="messageService.clearMessage()">
                     <div class="panel-body">
 
                         <alert *ngIf="passMsg" type="success">{{ passMsg }}</alert>

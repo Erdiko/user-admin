@@ -67,7 +67,7 @@ export class MessageService {
 
   clearMessage() {
     console.log("clear message");
-    this.messageUpdate.next({body: null, type: null});
+    this.messageUpdate.next(null);
   }
   
 

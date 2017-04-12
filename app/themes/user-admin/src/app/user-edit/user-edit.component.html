@@ -1,6 +1,8 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-info btn-sm" routerLink="/list/" (click)="messageService.clearMessage()"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back to User List</button>
+        <button class="btn btn-info btn-sm" routerLink="/list/" (click)="messageService.clearMessage()">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i> Back to User List
+        </button>
     </div>
 </div>
 <div class="row">
@@ -92,7 +94,7 @@
 
                             <div class="form-group">
                                 <div class="col-xs-offset-2 col-xs-4">
-                                    <button type="cancel" class="btn btn-warning" routerLink="/list/">Cancel</button>
+                                    <button type="cancel" class="btn btn-warning" routerLink="/list/" (click)="messageService.clearMessage()"> Cancel</button>
                                 </div>
                                 <div class="col-xs-offset-2 col-xs-4">
                                     <button type="submit" class="btn btn-success" [disabled]="userForm.invalid || passWait">

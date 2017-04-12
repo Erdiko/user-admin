@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild }        from '@angular/core';
 import { Router, ActivatedRoute }   from '@angular/router';
 import { Subscription } from "rxjs";
 
+import { MessageService }   from '../shared/message.service';
 import { UsersService }             from '../shared/users.service';
 import { User }                     from "../shared/models/user.model";
 
@@ -35,6 +36,7 @@ export class UserListComponent implements OnInit {
     private selectedUser: any;
         
     constructor(
+           private messageService: MessageService,
            private usersService: UsersService,
            private route: ActivatedRoute,
            private router: Router) { 
@@ -146,7 +148,10 @@ export class UserListComponent implements OnInit {
         this.confirmDeleteModal.hide();
         this.wait = true;
         this.usersService.deleteUser(this.selectedUser)
-            .then(res => this._handleResponse(res))
+            .then(res => {
+                this.messageService.sendMessage("delete-user", "success");
+                this._handleResponse(res);
+            })
             .catch(error => this.error = error);
     }
 

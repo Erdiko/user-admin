@@ -33,6 +33,7 @@ import { AlertModule,
 
 import { AuthService }          from '../shared/auth.service';
 import { UsersService }         from '../shared/users.service';
+import { MessageService }       from '../shared/message.service';
 import { User }                 from "../shared/models/user.model";
 
 import { UserListComponent }    from './user-list.component';
@@ -84,6 +85,7 @@ describe('UserListComponent', () => {
                     }
                 },
                 UsersService,
+                MessageService,
                 {
                     deps: [
                         MockBackend,

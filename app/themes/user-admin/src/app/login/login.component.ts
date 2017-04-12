@@ -1,9 +1,10 @@
-import { Component, OnInit }                    from '@angular/core';
+import { Component, OnInit, ViewChild }                    from '@angular/core';
 import { Router }                               from '@angular/router';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
 import { AuthService }   from '../shared/auth.service';
 import { MessageService }   from '../shared/message.service';
+import { MessageComponent } from '../message/message.component';
 
 @Component({
   selector: 'app-login',
@@ -60,11 +61,11 @@ export class LoginComponent implements OnInit {
                         this.router.navigate(['/']);
                         this.messageService.sendMessage("login", "success");
                     } else {
-                        this.messageService.sendMessage("login", "no-password");
+                        this.messageService.sendMessage("login", "error");
                         this.wait = false;
                     }
                 }, err => {
-                    this.messageService.sendMessage("login", "error");
+                    this.messageService.sendMessage("login", "no-password");
                     this.wait = false;
                 });
 

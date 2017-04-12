@@ -21,7 +21,7 @@ import {
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import {Router, ROUTER_PROVIDERS} from "@angular/router";
+import { Router, ROUTER_PROVIDERS } from "@angular/router";
 
 import { FormsModule, 
          ReactiveFormsModule }  from '@angular/forms';
@@ -29,6 +29,7 @@ import { FormsModule,
 import { AlertModule, 
          ModalModule }          from 'ng2-bootstrap';
 
+import { MessageService }   from '../shared/message.service';
 import { AuthService }   from '../shared/auth.service';
 import { LoginComponent } from './login.component';
 
@@ -38,6 +39,7 @@ describe('LoginComponent', () => {
 
     let backend: MockBackend;
     let service: AuthService;
+    let messageService: MessageService;
     let router: any;
 
     let bodyData: any;
@@ -62,6 +64,7 @@ describe('LoginComponent', () => {
                     useClass: class { navigate = jasmine.createSpy("navigate"); } 
                 },
                 AuthService,
+                MessageService,
                 {
                     deps: [
                         MockBackend,
@@ -128,6 +131,7 @@ describe('LoginComponent', () => {
     });
 
     it('should show an error message if api throws an error', () => {
+        const compiled = fixture.debugElement.nativeElement;
 
         // set up a faked api response
         setupConnections(backend, {
@@ -145,11 +149,10 @@ describe('LoginComponent', () => {
         component.onSubmit(component.loginForm);
 
         expect(component.onSubmit(component.loginForm)).toBeFalsy();
-        
-        expect(component.error).toEqual('An error occurred. Please try again.');
     });
 
     it('should show an error message if api rejects the submission', () => {
+        const compiled = fixture.debugElement.nativeElement;
 
         // set up a faked api response
         setupConnections(backend, {
@@ -174,8 +177,6 @@ describe('LoginComponent', () => {
         component.onSubmit(component.loginForm);
 
         expect(component.onSubmit(component.loginForm)).toBeFalsy();
-        
-        expect(component.error).toEqual('Username or Password is invalid');
     });
 
     it('should allow submission with valid input', () => {

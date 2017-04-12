@@ -161,7 +161,6 @@ export class UserEditComponent implements OnInit {
 
         console.log("create res", res);
         if(true == res.success) {
-            //this.passMsg = "User password successfully updated."
             this.messageService.sendMessage("edit-password", "success");
         } else {
             console.log("error res", res);

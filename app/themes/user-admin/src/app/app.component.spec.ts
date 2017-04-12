@@ -1,4 +1,5 @@
 /* tslint:disable:no-unused-variable */
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { AppComponent }         from './app.component';
 import { HeaderComponent }      from './header/header.component';
 import { AuthService }          from './shared/auth.service';
 import { UsersService }         from './shared/users.service';
+import { MessageService }         from './shared/message.service';
 import { UserResolve }          from './shared/user-resolve.service';
 
 describe('AppComponent', () => {
@@ -26,12 +28,14 @@ describe('AppComponent', () => {
             imports: [
                 HttpModule,
                 RouterTestingModule
-            ]
+            ],
             providers: [
                 AuthService,
                 UsersService,
-                UserResolve
-            ]
+                UserResolve,
+                MessageService
+            ],
+            schemas:  [CUSTOM_ELEMENTS_SCHEMA]
         });
         TestBed.compileComponents();
     }));
@@ -55,7 +59,7 @@ describe('AppComponent', () => {
         const compiled = fixture.debugElement.nativeElement;
 
         expect(compiled.querySelectorAll('app-header')).toBeTruthy();
-    });
+    }));
 
     it('should include and render a router outlet', async(() => {
         fixture.detectChanges();
@@ -63,6 +67,6 @@ describe('AppComponent', () => {
         const compiled = fixture.debugElement.nativeElement;
 
         expect(compiled.querySelectorAll('router-outlet')).toBeTruthy();
-    });
+    }));
 
 });

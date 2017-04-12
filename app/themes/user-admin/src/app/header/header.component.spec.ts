@@ -10,6 +10,7 @@ import { HttpModule }               from '@angular/http';
 import { AuthService }     from '../shared/auth.service';
 import { UsersService }    from '../shared/users.service';
 import { UserResolve }     from '../shared/user-resolve.service';
+import { MessageService }  from '../shared/message.service';
 
 import { HeaderComponent } from './header.component';
 
@@ -44,7 +45,8 @@ describe('HeaderComponent', () => {
                     useClass: class { navigate = jasmine.createSpy("navigate"); } 
                 },
                 UsersService,
-                UserResolve
+                UserResolve,
+                MessageService
             ]
         })
         .compileComponents();

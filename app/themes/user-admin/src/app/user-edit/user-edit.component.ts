@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit }                    from '@angular/core';
+import { Component, NgModule, OnInit, ViewChild, AfterViewInit }   from '@angular/core';
 import { Router, ActivatedRoute }               from '@angular/router';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
@@ -6,6 +6,7 @@ import { MessageService }   from '../shared/message.service';
 import { UsersService }   from '../shared/users.service';
 import { User }           from "../shared/models/user.model";
 import { UserEventLogComponent } from '../user-event-log/user-event-log.component'
+import { PasswordComponent } from '../password/password.component';
 
 import { AlertComponent, TabsModule } from 'ng2-bootstrap';
 
@@ -15,6 +16,8 @@ import { AlertComponent, TabsModule } from 'ng2-bootstrap';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
+
+    @ViewChild(PasswordComponent) passwordComponent: PasswordComponent
 
     private wait: any;
 
@@ -65,23 +68,40 @@ export class UserEditComponent implements OnInit {
         this.userForm = this.fb.group({
             name:  ['', [Validators.required, Validators.minLength(3)]],
             email: ['', Validators.required],
-            role:  ['', Validators.required]
+            role:  ['', Validators.required],
+            passwordInput: this.fb.group({
+                password: ['', [Validators.required, Validators.minLength(3)]],
+                confirm: ['', Validators.required],
+            })
         });
 
         this.passwordForm = this.fb.group({
-            password:  ['', [Validators.required, Validators.minLength(3)]],
-            confirm: ['', Validators.required],
+            passwordInput: this.fb.group({
+                password:  ['', [Validators.required, Validators.minLength(3)]],
+                confirm: ['', Validators.required],
+            })
         });
 
         if(this.user.id) {
             this.userForm.controls['name'].setValue(this.user.name);
             this.userForm.controls['email'].setValue(this.user.email);
             this.userForm.controls['role'].setValue(this.user.role.id);
+
+            //The values for password and confirm are set to arbitrary combination of letters and numbers to 'validate' the form submit
+            this.userForm.controls['passwordInput']['controls'].password.setValue("placeholder1");
+            this.userForm.controls['passwordInput']['controls'].confirm.setValue("placeholder1");
         }
 
     }
 
-    onSubmit({ value, valid }: { value: User, valid: boolean }) {
+    onSubmit({ value, valid }: { value: any, valid: boolean }) {
+
+        let create = {
+            email: value.email,
+            name: value.name,
+            role: value.role,
+            password: value.passwordInput.password
+        };
 
         this.wait = true;
 
@@ -94,11 +114,12 @@ export class UserEditComponent implements OnInit {
                            .then(res => this._handleResponse(res))
                            .catch(error => this.error = error);
             } else {
-                return this.usersService.createUser(value)
+                return this.usersService.createUser(create)
                            .then(res => this._handleResponse(res))
                            .catch(error => this.error = error);
             }
         }
+
     }
     
     private _handleResponse(res) {
@@ -127,7 +148,7 @@ export class UserEditComponent implements OnInit {
         this.passMsg = this.passError = '';
 
         if(valid) {
-            return this.usersService.changePassword(this.user.id, value.password)
+            return this.usersService.changePassword(this.user.id, value.passwordInput.password)
                        .then(res => this._handlePasswordResponse(res))
                        .catch(error => this.passError = error);
         }

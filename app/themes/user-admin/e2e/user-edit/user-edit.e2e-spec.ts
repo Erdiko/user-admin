@@ -59,23 +59,22 @@ describe('User Edit Page', function() {
     });
 
     it('should update the password', () => {
-        let edit = browser.findElement(protractor.By.css('tbody tr:first-child a'));
+
+        //Go to User Edit Page
+        let edit = browser.findElement(protractor.By.css('tbody tr:first-child > .user_edit > a'));
         edit.click();
 
-        //check for content of edit page
-        expect(element(by.id('user-edit'))).toBeTruthy();
-
-        let updatePassword = browser.findElement(protractor.By.css('.nav-tabs > li:last-child'));
-        let updatePasswordContent = browser.findElement(protractor.By.css('.tab-container tab:last-child'));
+        let updatePasswordTab = browser.findElement(protractor.By.css('.nav-tabs > li:last-child'));
+        //let updatePassword = browser.findElement(protractor.By.css('.nav-item:last-child > a'));
+        let updatePasswordContent = browser.findElement(protractor.By.css('.tab-content > .tab-pane:last-child'));
 
         //Currently, Update User is not displayed
         expect(updatePasswordContent.isDisplayed()).toBeFalsy();
 
-        updatePassword.click();
+        updatePasswordTab.click();
 
         //Now, Update User is displayed.
         expect(updatePasswordContent.isDisplayed()).toBeTruthy();
-
 
         let password = browser.findElement(protractor.By.name('password'));
         let confirm = browser.findElement(protractor.By.name('confirm'));
@@ -86,7 +85,7 @@ describe('User Edit Page', function() {
         //Wait for the Update Password Button to be enabled.
         browser.waitForAngular();
 
-        let passwordSave = browser.findElement(protractor.By.id('save-updated-password'));
+        let passwordSave = browser.findElement(protractor.By.css('#user-password-change .btn-success'));
         passwordSave.click();
 
     });
@@ -96,6 +95,6 @@ describe('User Edit Page', function() {
     });
 
     it('should login with updated user credentials', () => {
-        page.loginWithUpdated();
+        page.loginWithUpdated("MrRob0t");
     });
 });

@@ -26,6 +26,7 @@ import { EqualityValidator }    from './shared/equality-validator.directive';
 import { UserEventLogComponent } from './user-event-log/user-event-log.component';
 import { UsersEventLogComponent } from './users-event-log/users-event-log.component';
 import { MessageComponent } from './message/message.component';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MessageComponent } from './message/message.component';
     EqualityValidator,
     UserEventLogComponent,
     UsersEventLogComponent,
-    MessageComponent
+    MessageComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,

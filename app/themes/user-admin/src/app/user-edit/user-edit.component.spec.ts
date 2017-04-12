@@ -19,7 +19,7 @@ import {
 } from '@angular/http/testing';
 
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 
 import {Router, ActivatedRoute, ROUTER_PROVIDERS} from "@angular/router";
 
@@ -36,6 +36,7 @@ import { User }                 from "../shared/models/user.model";
 
 import { UserEditComponent }        from './user-edit.component';
 import { UserEventLogComponent }    from '../user-event-log/user-event-log.component';
+import { PasswordComponent } from '../password/password.component';
 
 describe('UserEditComponent', () => {
     let component: UserEditComponent;
@@ -64,7 +65,8 @@ describe('UserEditComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 UserEditComponent,
-                UserEventLogComponent
+                UserEventLogComponent,
+                PasswordComponent
             ],
             imports: [
                 FormsModule,
@@ -107,7 +109,8 @@ describe('UserEditComponent', () => {
                         return new Http(backend, defaultOptions);
                     }
                 }
-            ]
+            ],
+            schemas:  [CUSTOM_ELEMENTS_SCHEMA]
         })
         .compileComponents();
 
@@ -152,6 +155,11 @@ describe('UserEditComponent', () => {
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('should recognize password input component', () => {
+        fixture.detectChanges();
+        expect(component.passwordComponent).toBeDefined();
     });
 
     it('should display forms', () => {
@@ -219,7 +227,14 @@ describe('UserEditComponent', () => {
                 body: {
                     "method": "update",
                     "success": false,
-                    "user": {"id":191,"email":"don.draper@scpartners.com","role":{"id":1,"name":"anonymous"},"name":"Don Draper","last_login":null,"gateway_customer_id":null},
+                    "user": {
+                        "id":191,
+                        "email":"don.draper@scpartners.com",
+                        "role":{"id":1,"name":"anonymous"},
+                        "name":"Don Draper",
+                        "last_login":null,
+                        "gateway_customer_id":null,
+                    },
                     "error_code": 42,
                     "error_message":    "Something went wrong.",
                     "errors":           ["Something went wrong."]
@@ -233,6 +248,8 @@ describe('UserEditComponent', () => {
         component.ngOnInit();
 
         fixture.detectChanges();
+        component.userForm.controls.passwordInput.controls.password.setValue('abcdef123456');
+        component.userForm.controls.passwordInput.controls.confirm.setValue('abcdef123456');
         component.onSubmit(component.userForm).then(() => {
             expect(component.error).toEqual("Something went wrong.");
         });
@@ -262,6 +279,8 @@ describe('UserEditComponent', () => {
         component.userForm.controls['name'].setValue('foo bar');
         component.userForm.controls['email'].setValue('foo@example.com');
         component.userForm.controls['role'].setValue('1');
+        component.userForm.controls.passwordInput.controls.password.setValue('abcdef123456');
+        component.userForm.controls.passwordInput.controls.confirm.setValue('abcdef123456');
         component.onSubmit(component.userForm);
 
         fixture.detectChanges();
@@ -290,6 +309,8 @@ describe('UserEditComponent', () => {
         component.userForm.controls['name'].setValue('foo bar');
         component.userForm.controls['email'].setValue('foo@example.com');
         component.userForm.controls['role'].setValue('1');
+        component.userForm.controls.passwordInput.controls.password.setValue('abcdef123456');
+        component.userForm.controls.passwordInput.controls.confirm.setValue('abcdef123456');
 
         fixture.detectChanges();
         component.onSubmit(component.userForm).then(() => {
@@ -308,20 +329,19 @@ describe('UserEditComponent', () => {
         /**
          * Change: No need for toggle as the update password is already rendered
          */
-
-        component.passwordForm.controls['password'].setValue('');
-        component.passwordForm.controls['confirm'].setValue('');
+        component.passwordForm.controls.passwordInput.controls.password.setValue('');
+        component.passwordForm.controls.passwordInput.controls.confirm.setValue('');
         fixture.detectChanges();
-        expect(component.passwordForm.invalid).toBeTruthy();
+        expect(component.passwordForm.controls.passwordInput.invalid).toBeTruthy();
 
-        component.passwordForm.controls['password'].setValue('123');
-        component.passwordForm.controls['confirm'].setValue('456');
+        component.passwordForm.controls.passwordInput.controls.password.setValue('123');
+        component.passwordForm.controls.passwordInput.controls.confirm.setValue('456');
         fixture.detectChanges();
-        expect(component.passwordForm.invalid).toBeTruthy();
+        expect(component.passwordForm.controls.passwordInput.invalid).toBeTruthy();
 
-        component.passwordForm.controls['password'].setValue('----');
+        component.passwordForm.controls.passwordInput.controls.password.setValue('----');
         fixture.detectChanges();
-        expect(component.passwordForm.invalid).toBeTruthy();
+        expect(component.passwordForm.controls.passwordInput.invalid).toBeTruthy();
     });
 
     it('should allow password update submission with valid input', async(() => {
@@ -345,12 +365,13 @@ describe('UserEditComponent', () => {
          */
 
         // fill out the form & submit
-        component.passwordForm.controls['password'].setValue('abcdef123456');
-        component.passwordForm.controls['confirm'].setValue('abcdef123456');
+        component.passwordForm.controls.passwordInput.controls.password.setValue('abcdef123456');
+        component.passwordForm.controls.passwordInput.controls.confirm.setValue('abcdef123456');
 
         fixture.detectChanges();
-        expect(component.passwordForm.invalid).toBeFalsy();
-        component.onSubmitChangepass(component.passwordForm).then(() => {
+
+        expect(component.passwordForm.controls.passwordInput.invalid).toBeFalsy();
+        component.onSubmitChangepass(component.passwordForm).then(() => {  
             expect(component.passMsg).toEqual("User password successfully updated.");
         });
 

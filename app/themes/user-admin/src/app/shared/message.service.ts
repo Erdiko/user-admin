@@ -53,20 +53,16 @@ export class MessageService {
 
   sendMessage(action, result) {
     let messageType = this.setMessageType(result);
-    console.log("type", messageType);
 
     let message = this.messages[action][result];
-    console.log("send message", message);
     this.messageUpdate.next({body: message, type: messageType});
   }
 
   getMessage() {
-    console.log("get message");
     return this.messageUpdate.asObservable();
   }
 
   clearMessage() {
-    console.log("clear message");
     this.messageUpdate.next(null);
   }
   

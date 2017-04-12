@@ -44,9 +44,6 @@ export class LoginComponent implements OnInit {
             email: ['', Validators.required],
             password:  ['', Validators.required]
         });
-
-        //Display flash message when directed from logged-in state
-        //this.loggedOut = this.authService.loggedOut ? this.authService.loggedOut : null;
     }
 
     onSubmit({ value, valid }: { value: any, valid: boolean }) {

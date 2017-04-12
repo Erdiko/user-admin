@@ -20,10 +20,7 @@ export class MessageComponent implements OnDestroy {
 
     this.messageSubscription = this.messageService
                                    .getMessage()
-                                   .subscribe(message => {
-                                      console.log('subscribe message!', message);
-                                      this.message = message;
-                                    });
+                                   .subscribe(message => this.message = message);
     
   }
 

@@ -28,7 +28,7 @@ import { FormsModule,
 
 import { AlertModule, 
          ModalModule,
-         TabsModule }          from 'ng2-bootstrap';
+         TabsModule }          from 'ngx-bootstrap';
 
 import { MessageService }   from '../shared/message.service';
 import { AuthService }          from '../shared/auth.service';

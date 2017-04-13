@@ -7,7 +7,7 @@ import { UsersService }             from '../shared/users.service';
 import { User }                     from "../shared/models/user.model";
 
 import { AlertComponent,
-         ModalDirective } from 'ng2-bootstrap';
+         ModalDirective } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-user-list',

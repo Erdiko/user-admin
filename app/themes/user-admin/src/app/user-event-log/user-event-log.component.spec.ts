@@ -34,7 +34,7 @@ import {
 import { FormsModule, 
          ReactiveFormsModule }  from '@angular/forms';
 
-import { AlertModule } from 'ng2-bootstrap';
+import { AlertModule } from 'ngx-bootstrap';
 
 import { AuthService } from '../shared/auth.service';
 import { MessageService } from '../shared/message.service';

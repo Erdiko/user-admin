@@ -20,7 +20,7 @@ import { HeaderComponent }      from './header/header.component';
 
 import { AlertModule, 
          ModalModule,
-         TabsModule }          from 'ng2-bootstrap';
+         TabsModule }          from 'ngx-bootstrap';
 
 import { EqualityValidator }    from './shared/equality-validator.directive';
 import { UserEventLogComponent } from './user-event-log/user-event-log.component';

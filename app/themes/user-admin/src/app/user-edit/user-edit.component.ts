@@ -8,7 +8,7 @@ import { User }           from "../shared/models/user.model";
 import { UserEventLogComponent } from '../user-event-log/user-event-log.component'
 import { PasswordComponent } from '../password/password.component';
 
-import { AlertComponent, TabsModule } from 'ng2-bootstrap';
+import { AlertComponent, TabsModule } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-user-edit',

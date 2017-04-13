@@ -48,6 +48,8 @@ describe('User Create', function() {
         confirm.sendKeys('a1ora0');
         save.click();
 
+        expect(page.getParagraphText("app-message .alert-success")).toEqual('User was successfully created');
+
         cancel.click();
 
     });

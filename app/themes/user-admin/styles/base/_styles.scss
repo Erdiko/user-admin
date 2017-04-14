@@ -39,6 +39,39 @@ h1, h2, h3, h4 {
   }
 }
 
+/* Disable Animation
+-------------------------------------------------- */
+.notransition * {
+  @include transition(none !important);
+}
+
+
+/* Square corners
+-------------------------------------------------- */
+.alert, .navbar,
+.panel, .panel-default, .panel-heading,
+.form-control, .btn, .modal-content,
+.list-group-item:first-child,
+.list-group-item:last-child,
+.pagination, .pagination a,
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:last-child > a {
+  border-radius: 0px;
+}
+
+@media (min-width: 768px){
+  padding-top: 3px;
+}
+
+select.form-control {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding: 0 0 0 15px;
+  background: 
+    url(/images/select-arrow.png);
+  background-position: right;
+  background-repeat: no-repeat;
+}
 
 /* Header styles
 -------------------------------------------------- */
@@ -68,4 +101,65 @@ h1, h2, h3, h4 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+/* Tab styles
+-------------------------------------------------- */
+#id-title {
+  font-size: 18px;
+  width: 230px;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.nav-link:hover,
+.nav > li > a:hover, 
+nav > li > a:hover {
+  background-color: white;
+}
+
+.nav-tabs, 
+.nav-tabs .nav-link,
+.nav-link.active,
+.nav-link:focus,
+.nav-tabs:hover,
+.nav-tabs > li > a,
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  border: none;
+}
+
+.tab-container a {
+  color: black
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  color: $green-header !important;
+}
+
+
+.nav-tabs > li.active {
+  border: none;
+  border-bottom: 3px solid $green-header;
+}
+
+.nav-tabs > li:hover > a {
+  background-color: white;
+  border: none;
+}
+
+.nav-tabs > li:hover {
+  border-bottom: 3px solid $green-header;
+}
+
+#edit-update {
+  border: none;
+}
+
+.tab-content {
+  border: 1px solid $panel-gray;
 }

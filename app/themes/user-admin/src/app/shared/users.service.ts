@@ -10,11 +10,12 @@ import { User }         from "./models/user.model";
 @Injectable()
 export class UsersService {
 
-    private _users$:  BehaviorSubject<any>;
-    private _total$:  BehaviorSubject<any>;
-    private _events$: BehaviorSubject<any>;
+    private _users$:       BehaviorSubject<any>;
+    private _total$:       BehaviorSubject<any>;
+    private _events$:      BehaviorSubject<any>;
+    private _eventsTotal$: BehaviorSubject<any>;
 
-    private dataStore: {users?: any, total?: number, events?: any};
+    private dataStore: {users?: any, total?: number, events?: any, eventsTotal?: number};
 
     private listUrl         = "/ajax/erdiko/users/admin/list";
     private userUrl         = "/ajax/erdiko/users/admin/retrieve";
@@ -35,9 +36,10 @@ export class UsersService {
 
         this.dataStore = {};
 
-        this._users$  = new BehaviorSubject(null);
-        this._total$  = new BehaviorSubject(null);
-        this._events$ = new BehaviorSubject(null);
+        this._users$  =      new BehaviorSubject(null);
+        this._total$  =      new BehaviorSubject(null);
+        this._events$ =      new BehaviorSubject(null);
+        this._eventsTotal$ = new BehaviorSubject(null);
 
         // hack to help with local development
         this._baseUrl = "";
@@ -57,6 +59,10 @@ export class UsersService {
 
     get events$() {
         return this._events$.asObservable();
+    }
+
+    get eventsTotal$() {
+        return this._eventsTotal$.asObservable();
     }
 
     /**
@@ -160,7 +166,9 @@ export class UsersService {
         let url = this._baseUrl + this.createUrl;
         return this.http.post(url, body, options)
                    .toPromise()
-                   .then(response => response.json().body)
+                   .then(response => {
+                       return response.json().body;
+                    })
                    .catch(this.handleError);
     }
 
@@ -186,7 +194,6 @@ export class UsersService {
      */
     changePassword(id: number, newpass: string) {
         let body = JSON.stringify({'id': id, 'newpass': newpass});
-        console.log(body);
         let options = this._getHeaderOptions();
 
         let url = this._baseUrl + this.changePassUrl;
@@ -200,43 +207,50 @@ export class UsersService {
      * get event logs for a user
      *
      */
-    getUserEvents(id: string, pagesize?: number, page?: number, sortCol?: string, sortDir?: string) {
+    getUsersEvents(id?: string, pagesize?: number, page?: number, sortCol?: string, sortDir?: string) {
 
-        let url = this._baseUrl + this.userEventUrl;
+        let url = this._baseUrl + this.userEventUrl + "?";
 
-        url += "?user_id=" + id;
+        if(id){
+            url += "user_id=" + id + "&";
+        }
 
         if(pagesize) {
-            url += "&pagesize=" + pagesize;
+            url += "pagesize=" + pagesize + "&";
         }
 
         if(page) {
-            url += "&page=" + page;
+            url += "page=" + page + "&";
         }
 
         if(sortCol) {
-            url += "&sort=" + sortCol;
+            url += "sort=" + sortCol + "&";
         }
 
         if(sortDir) {
-            url += "&direction=" + sortDir;
+            url += "direction=" + sortDir;
         }
-    
+
         let options = this._getHeaderOptions();
 
         return this.http.get(url, options)
                    .map(response => response.json())
                    .subscribe(data => {
                        this.dataStore.events = [];
+                       this.dataStore.eventsTotal = 0;
                        if(true == data.body.success) {
+                           
                            this.dataStore.events = data.body.logs;
+                           this.dataStore.eventsTotal = data.body.total;
                        }
                        this._events$.next(this.dataStore.events);
+                       this._eventsTotal$.next(this.dataStore.eventsTotal);
                    },
                    error => {
                        // log the error!
                        console.error("Error retrieving user event logs!", url, error);
                        this._events$.next([]);
+                       this._events$.next(0);
                    });
     }
 
@@ -245,7 +259,7 @@ export class UsersService {
      * handle response errors
      *
      */
-    private handleError(error: any) {
+     private handleError(error: any) {
         return Promise.reject(error.message || error);
     }
 

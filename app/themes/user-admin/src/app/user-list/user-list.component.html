@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-4">
-        <button class="btn btn-default btn-sm" routerLink="/user/">Create a New User</button>
+        <button class="btn btn-info btn-sm" routerLink="/user/">Create a New User</button>
     </div>
 </div>
 <div class="row">
@@ -60,14 +60,14 @@
             </tbody> 
 
             <tbody *ngIf="!wait && !error && users.length > 0"> 
-                <tr *ngFor="let user of users; let index = index"> 
-                    <th scope="row">{{ user.id }}</th> 
-                    <td>{{ user.name }}</td> 
-                    <td>{{ user.role.name }}</td> 
-                    <td>{{ user.last_login }}</td> 
-                    <td>{{ user.joined }}</td> 
-                    <td><a routerLink="/user/{{ user.id }}">Edit</a></td> 
-                    <td><button type="button" class="btn btn-danger" (click)="clickDelete(user.id)">Delete</button></td> 
+                <tr class="user_row" *ngFor="let user of users; let index = index"> 
+                    <th class="user_id" scope="row">{{ user.id }}</th> 
+                    <td class="user_name">{{ user.name }}</td> 
+                    <td class="user_role_name">{{ user.role.name }}</td> 
+                    <td class="user_last_login">{{ user.last_login }}</td> 
+                    <td class="user_joined">{{ user.joined }}</td> 
+                    <td class="user_edit"><a routerLink="/user/{{ user.id }}">Edit</a></td> 
+                    <td class="user_delete"><button type="button" class="btn btn-danger" (click)="clickDelete(user.id)">Delete</button></td> 
                 </tr> 
             </tbody> 
         </table>
@@ -88,6 +88,7 @@
             <li 
                 *ngFor="let page of pages; let index = index"
                  [ngClass]="{'active': (page == currentPage)}"
+                 [attr.id]="'page'+(index + 1)"
                 >
                 <a (click)="clickPage(page)">{{ page }}</a>
             </li>
@@ -104,7 +105,7 @@
     </div>
 </div>
 
-<div bsModal #confirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div bsModal #confirmDeleteModal="bs-modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -121,10 +122,10 @@
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <button type="button" class="btn btn-primary" (click)="cancelDelete()">Cancel</button>
+                <button type="button" class="btn btn-warning" (click)="cancelDelete()">Cancel</button>
             </div>
             <div class="col-xs-6">
-                <button type="button" class="btn btn-danger" (click)="confirmDelete(selectedUser)">Delete</button>
+                <button type="button" class="btn btn-danger" (click)="confirmDelete(selectedUser)">Confirm</button>
             </div>
         </div>
       </div>

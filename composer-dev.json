@@ -44,6 +44,13 @@
             "options": {
                 "symlink": true
             }
+        },
+        {
+            "type": "path",
+            "url": "../user-admin",
+            "options": {
+                "symlink": true
+            }
         }
     ]
 }

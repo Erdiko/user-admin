@@ -1,7 +1,13 @@
 {
-  "name": "user-admin",
-  "version": "0.0.0",
+  "name": "@erdiko/user-admin",
+  "version": "0.0.4",
   "license": "MIT",
+  "description": "A fully functional and modular user management system with an Angular 2 UI.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erdiko/user-admin"
+  },
+  "public": true,
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
@@ -18,7 +24,6 @@
     "build:rename": "mv ./dist/main.*.bundle.js ./dist/main.bundle.js && mv ./dist/inline.*.bundle.js ./dist/inline.bundle.js && mv ./dist/vendor.*.bundle.js ./dist/vendor.bundle.js && mv ./dist/styles.*.bundle.css ./dist/app.bundle.css",
     "build": "npm run build:sass && npm run build:prod && npm run build:clean && npm run build:rename && npm run build:copy && npm run build:copycss"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",

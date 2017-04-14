@@ -4,6 +4,7 @@ services:
   data:
     image: busybox
     volumes:
+      - ./:/code
       - ../authenticate:/authenticate
       - ../authorize:/authorize
       - ../users:/users
@@ -18,10 +19,9 @@ services:
       - "8088:80"
 
   php:
-    extends:
-      file: ./docker/php/7.0/docker-compose.yml
-      service: php
     container_name: erdiko_users_php
+    env_file: ./docker/environment.env
+    image: erdiko/php-fpm:latest
     volumes_from: [data]
     extra_hosts:
       - "docker.local:172.17.0.1"

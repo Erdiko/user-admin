@@ -10,6 +10,7 @@ import { AppRoutingModule }     from './app.routing';
 import { AuthService }          from './shared/auth.service';
 import { UsersService }         from './shared/users.service';
 import { UserResolve }          from './shared/user-resolve.service';
+import { MessageService }          from './shared/message.service';
 
 import { LoginComponent }       from './login/login.component';
 import { HomeComponent }        from './home/home.component';
@@ -24,6 +25,7 @@ import { AlertModule,
 import { EqualityValidator }    from './shared/equality-validator.directive';
 import { UserEventLogComponent } from './user-event-log/user-event-log.component';
 import { UsersEventLogComponent } from './users-event-log/users-event-log.component';
+import { MessageComponent } from './message/message.component';
 import { PasswordComponent } from './password/password.component';
 
 @NgModule({
@@ -37,6 +39,7 @@ import { PasswordComponent } from './password/password.component';
     EqualityValidator,
     UserEventLogComponent,
     UsersEventLogComponent,
+    MessageComponent,
     PasswordComponent
   ],
   imports: [
@@ -53,7 +56,8 @@ import { PasswordComponent } from './password/password.component';
   providers: [
     AuthService,
     UsersService,
-    UserResolve
+    UserResolve,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

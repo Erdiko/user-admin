@@ -37,6 +37,7 @@ import { FormsModule,
 import { AlertModule } from 'ng2-bootstrap';
 
 import { AuthService } from '../shared/auth.service';
+import { MessageService } from '../shared/message.service';
 import { UsersService } from '../shared/users.service';
 import { Event } from '../shared/models/event.model';
 
@@ -64,6 +65,7 @@ describe('UserEventLogComponent', () => {
 			  MockBackend, 
 			  UsersService,
 			  AuthService,
+			  MessageService,
 			  {
                   provide: Router, 
                   useClass: class { navigate = jasmine.createSpy("navigate"); } 

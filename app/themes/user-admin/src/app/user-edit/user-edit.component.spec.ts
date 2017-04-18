@@ -30,6 +30,7 @@ import { AlertModule,
          ModalModule,
          TabsModule }          from 'ng2-bootstrap';
 
+import { MessageService }   from '../shared/message.service';
 import { AuthService }          from '../shared/auth.service';
 import { UsersService }         from '../shared/users.service';
 import { User }                 from "../shared/models/user.model";
@@ -43,6 +44,7 @@ describe('UserEditComponent', () => {
     let fixture: ComponentFixture<UserEditComponent>;
 
     let backend: MockBackend;
+    let messageService: MessageService;
     let usersService: UsersService;
     let authService: AuthService;
     let router: any;
@@ -108,7 +110,8 @@ describe('UserEditComponent', () => {
                     useFactory: (backend: XHRBackend, defaultOptions: BaseRequestOptions) => {
                         return new Http(backend, defaultOptions);
                     }
-                }
+                },
+                MessageService
             ],
             schemas:  [CUSTOM_ELEMENTS_SCHEMA]
         })

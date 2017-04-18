@@ -12,13 +12,13 @@
     <div class="col-sm-6 col-xs-12">
         <ul class="list-group">
             <li class="list-group-item">
-                <a routerLink="/user/">Create a User</a>
+                <a routerLink="/user/" (click)="messageService.clearMessage()">Create a User</a>
             </li>
             <li class="list-group-item">
-                <a routerLink="/list">User List</a>
+                <a routerLink="/list" (click)="messageService.clearMessage()">User List</a>
             </li>
             <li class="list-group-item">
-                <a routerLink="/events">User Event Log</a>
+                <a routerLink="/events" (click)="messageService.clearMessage()">User Event Log</a>
             </li> 
         </ul>
     </div>

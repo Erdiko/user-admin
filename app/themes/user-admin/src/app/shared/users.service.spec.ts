@@ -23,6 +23,7 @@ import {
 import { User }         from "../shared/models/user.model";
 import { AuthService }  from './auth.service';
 import { UsersService } from './users.service';
+import { MessageService } from './message.service';
 
 describe('UsersService', () => {
 
@@ -61,7 +62,8 @@ describe('UsersService', () => {
                     useFactory: (backend: XHRBackend, defaultOptions: BaseRequestOptions) => {
                         return new Http(backend, defaultOptions);
                     }
-                }
+                },
+                MessageService
             ]
         });
 

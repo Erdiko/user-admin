@@ -11,12 +11,11 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "erdiko/core": "^0.10.0",
+        "php": ">=5.5.0",
+        "erdiko/core": "^1.0.0",
         "erdiko/users": "@dev",
         "erdiko/authenticate": "@dev",
         "erdiko/authorize": "@dev",
-        "erdiko/doctrine": "^0.3.0",
         "ac/kalinka": "dev-master",
         "firebase/php-jwt": "^4.0"
     },

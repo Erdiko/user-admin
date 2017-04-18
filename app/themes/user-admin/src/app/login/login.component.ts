@@ -1,8 +1,10 @@
-import { Component, OnInit }                    from '@angular/core';
+import { Component, OnInit, ViewChild }                    from '@angular/core';
 import { Router }                               from '@angular/router';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
 import { AuthService }   from '../shared/auth.service';
+import { MessageService }   from '../shared/message.service';
+import { MessageComponent } from '../message/message.component';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +19,14 @@ export class LoginComponent implements OnInit {
 
     private loginForm: FormGroup;
 
+    public loggedOut: string;
     public error: string;
 
     constructor(
            private authService: AuthService,
            private router: Router,
-           private fb: FormBuilder) { 
+           private fb: FormBuilder,
+           private messageService: MessageService) { 
 
         // init the wait state (and indication animation) to 'off'
         this.wait = false;
@@ -46,22 +50,21 @@ export class LoginComponent implements OnInit {
 
         this.wait = true;
 
-        this.error = '';
-
         if(valid) {
 
             this.authService.login(value)
                 .subscribe(result => {
                     if (result === true) {
                         this.router.navigate(['/']);
+                        this.messageService.sendMessage("login", "success");
                     } else {
-                        this.error = 'Username or Password is invalid';
+                        this.messageService.sendMessage("login", "error");
                         this.wait = false;
                     }
-                    }, err => {
-                        this.error = 'An error occurred. Please try again.';
-                        this.wait = false;
-                    });
+                }, err => {
+                    this.messageService.sendMessage("login", "no-password");
+                    this.wait = false;
+                });
 
         }
     }

@@ -35,9 +35,10 @@ import {
 import { FormsModule, 
          ReactiveFormsModule }  from '@angular/forms';
 
-import { AlertModule } from 'ng2-bootstrap';
+import { AlertModule } from 'ngx-bootstrap';
 
 import { AuthService } from '../shared/auth.service';
+import { MessageService } from '../shared/message.service';
 import { UsersService } from '../shared/users.service';
 import { Event } from '../shared/models/event.model';
 
@@ -49,6 +50,7 @@ describe('UsersEventLogComponent', () => {
 
   let backend: MockBackend;
   let usersService: UsersService;
+  let messageService: MessageService;
   let router: any;
 
   let bodyData: any;
@@ -64,6 +66,7 @@ describe('UsersEventLogComponent', () => {
 			  BaseRequestOptions, 
 			  MockBackend, 
 			  UsersService,
+			  MessageService,
 			  AuthService,
 			  {
                   provide: Router, 

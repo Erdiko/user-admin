@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse"> 
+<nav class="navbar navbar-default navbar-fixed-top"> 
     <div class="container"> 
         <div class="navbar-header"> 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> 
@@ -7,15 +7,12 @@
             <a href="#" class="navbar-brand">User Admin</a> 
         </div> 
         <div class="collapse navbar-collapse" id="navbar"> 
-            <ul class="nav navbar-nav" *ngIf="isLoggedIn()"> 
+            <ul class="nav navbar-nav" *ngIf="isLoggedIn()">
                 <li>
-                    <a routerLink="/" routerLinkActive="active" (click)="messageService.clearMessage()">Home</a>
-                </li> 
-                <li>
-                    <a routerLink="/list" routerLinkActive="active" (click)="messageService.clearMessage()">User List</a>
+                    <a routerLink="/list" routerLinkActive="active" (click)="messageService.clearMessage()">List Users</a>
                 </li>
                 <li>
-                    <a routerLink="/events" routerLinkActive="active" (click)="messageService.clearMessage()">Users Event Log</a>
+                    <a routerLink="/events" routerLinkActive="active" (click)="messageService.clearMessage()">User Event Log</a>
                 </li>  
                 <li>
                     <a (click)="messageService.clearMessage(); clickLogout()">Logout</a>
@@ -24,3 +21,4 @@
         </div> 
     </div> 
 </nav>
+<div id="header-push"></div>

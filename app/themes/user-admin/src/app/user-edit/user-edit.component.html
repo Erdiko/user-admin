@@ -7,14 +7,16 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <br/>
+        <h1 id="id-title" *ngIf="user.id">User {{ user.id }}</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <div id="id-title" *ngIf="user.id">
-            User {{ user.id }}
-        </div>
+        <br />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
         <div class="panel panel-default" id="edit-update">
             <tabset (click)="messageService.clearMessage()">
                 <tab [heading]="createEditHeader()">
@@ -94,7 +96,7 @@
 
                             <div class="form-group">
                                 <div class="col-xs-offset-2 col-xs-4">
-                                    <button type="cancel" class="btn btn-warning" routerLink="/list/" (click)="messageService.clearMessage()"> Cancel</button>
+                                    <button type="cancel" class="btn btn-default" routerLink="/list/" (click)="messageService.clearMessage()"> Cancel</button>
                                 </div>
                                 <div class="col-xs-offset-2 col-xs-4">
                                     <button type="submit" class="btn btn-success" [disabled]="userForm.invalid || wait">
@@ -126,7 +128,7 @@
 
                             <div class="form-group">
                                 <div class="col-xs-offset-2 col-xs-4">
-                                    <button type="cancel" class="btn btn-warning" routerLink="/list/">Cancel</button>
+                                    <button type="cancel" class="btn btn-default" routerLink="/list/">Cancel</button>
                                 </div>
                                 <div class="col-xs-offset-2 col-xs-4">
                                     <button type="submit" class="btn btn-success" [disabled]="passwordForm.controls.passwordInput.invalid || passWait">

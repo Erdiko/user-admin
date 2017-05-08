@@ -1,9 +1,13 @@
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
 @import "../../node_modules/bootswatch-sass/flatly/variables";
 @import "variables";
-@import "../variables";
+
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "../../node_modules/bootswatch-sass/flatly/bootstrap";
+@import "../../node_modules/bootswatch-sass/flatly/bootswatch";
+
+/*
+  @import "../variables";
+*/
 
 /* General
 -------------------------------------------------- */
@@ -38,9 +42,11 @@ h1, h2, h3, h4 {
     border-color: $gray-blue !important;
   }
 }
-
 .navbar-nav {
     flex-direction: inherit;
+}
+#header-push {
+  height: 60px;
 }
 
 /* Disable Animation
@@ -109,12 +115,14 @@ select.form-control {
 
 /* Tab styles
 -------------------------------------------------- */
+/*
 #id-title {
   font-size: 18px;
   width: 230px;
   display: inline-block;
   margin-left: 15px;
 }
+*/
 
 .nav-link:hover,
 .nav > li > a:hover, 
@@ -142,13 +150,13 @@ nav > li > a:hover {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover {
-  color: $green-header !important;
+  color: $nav-tabs !important;
 }
 
 
 .nav-tabs > li.active {
   border: none;
-  border-bottom: 3px solid $green-header;
+  border-bottom: 3px solid $nav-tabs;
 }
 
 .nav-tabs > li:hover > a {
@@ -157,7 +165,7 @@ nav > li > a:hover {
 }
 
 .nav-tabs > li:hover {
-  border-bottom: 3px solid $green-header;
+  border-bottom: 3px solid $nav-tabs;
 }
 
 #edit-update {

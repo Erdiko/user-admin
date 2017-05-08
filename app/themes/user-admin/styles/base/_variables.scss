@@ -1,12 +1,74 @@
-/* Variables
+/* User Admin Variables
 -------------------------------------------------- */
-$gray-blue:             #639db2;
-$green-dark:            #0E5806;
-$green-light:           #04BF05;
-$deep-blue:				#2C3E50;
-$green-header:          #17bf63;
+$deep-green:            #082f04;
+$green-dark:            #105f07;
+$green-medium:          #188E0B;
+$green-light:           #20bd0f; // #53f042;
+$green-neon:            #28ed12;
+$deep-blue:             #2C3E50;
+$dark-blue:             #0b598e;
+$medium-blue:           #0f77bd;
+$lighter-blue:          lighten($dark-blue, 25%);
+$light-blue:            #1294ed; // #1294ed;
+$gray-blue:             #639DB2;
 $panel-gray:            #ecf0f1;
+$grey-dark:             #4d4d4d;
+$brown:                 #8e400b;
+$orange:                #ed6b12;
+$red:                   #F52C06;
+$yellow:                #edd812; // #edb412;
+$black:                 #000000;
 
-$brand-primary:         $deep-blue;
+$brand-primary:         $green-medium;
+
 $brand-success:         $green-light;
+$brand-info:            $light-blue;
+$brand-warning:         $yellow;
+$brand-danger:          $red;
+$brand-link:            $medium-blue;
+
+$nav-tabs:              $brand-primary;
+
 $navbar-default-bg:     $brand-primary;
+$navbar-inverse-bg:     $brand-primary;
+
+$state-success-bg:               $brand-success;
+$state-success-border:           $brand-success;
+
+$state-info-bg:                  $brand-info;
+$state-info-border:              $brand-info;
+
+$state-warning-bg:               $brand-warning;
+$state-warning-border:           $brand-warning;
+
+$state-danger-bg:                $brand-danger;
+$state-danger-border:            $brand-danger;
+
+
+//** Global textual link color
+$link-color:                     $brand-link;
+$link-hover-color:               $light-blue;
+
+$btn-primary-color:              $btn-default-color;
+$btn-primary-bg:                 $brand-primary;
+$btn-primary-border:             $btn-primary-bg;
+
+$btn-success-color:              $btn-default-color;
+$btn-success-bg:                 $brand-success;
+$btn-success-border:             $btn-success-bg;
+
+$btn-info-color:                 $btn-default-color;
+$btn-info-bg:                    $brand-info;
+$btn-info-border:                $btn-info-bg;
+
+$btn-warning-color:              $btn-default-color;
+$btn-warning-bg:                 $brand-warning;
+$btn-warning-border:             $btn-warning-bg;
+
+$btn-danger-color:               $btn-default-color;
+$btn-danger-bg:                  $brand-danger;
+$btn-danger-border:              $btn-danger-bg;
+
+$btn-link-disabled-color:        $gray-light;
+
+$navbar-default-link-hover-color:          $brand-success;

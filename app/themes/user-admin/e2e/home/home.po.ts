@@ -21,7 +21,7 @@ export class UserAdminPage {
     
     submit.click();
 
-    expect(this.getParagraphText("app-home h1")).toEqual('Welcome to the Erdiko User Admin');
+    expect(this.getParagraphText("app-home h1")).toEqual('Erdiko User Admin');
   }
 
   logout() {

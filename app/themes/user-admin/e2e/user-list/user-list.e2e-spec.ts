@@ -124,7 +124,9 @@ describe('User List Page', function() {
         //Wait for the browser to register the newly updated list
         browser.waitForAngular();
         //deleteID should now be deleted and no longer present
-        expect(page.getParagraphText("tbody tr:first-child > .user_id")).not.toEqual(deleteID); 
+        expect(page.getParagraphText("tbody tr:first-child > .user_id")).not.toEqual(deleteID);
+
+        expect(page.getParagraphText("app-message .alert-success")).toEqual('User successfully deleted');
 
     });
 

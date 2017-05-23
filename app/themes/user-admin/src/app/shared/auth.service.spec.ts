@@ -21,6 +21,7 @@ import {
 } from '@angular/http/testing';
 
 import { AuthService } from './auth.service';
+import { MessageService } from '../shared/message.service';
 
 describe('AuthService', () => {
 
@@ -38,6 +39,7 @@ describe('AuthService', () => {
                 BaseRequestOptions,
                 MockBackend,
                 AuthService,
+                MessageService,
                 {
                     deps: [
                         MockBackend,

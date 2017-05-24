@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent }       from './login/login.component';
 import { HomeComponent }        from './home/home.component';
-import { UserListComponent }    from './user-list/user-list.component';
-import { UserEditComponent }    from './user-edit/user-edit.component';
-import { UsersEventLogComponent } from './users-event-log/users-event-log.component';
 
 import { AuthGuard }            from './shared/auth.guard';
 
 import { UserResolve }          from './shared/user-resolve.service';
+
+import { UserListComponent }        from '@erdiko/ngx-user-admin';
+import { UsersEventLogComponent }   from '@erdiko/ngx-user-admin';
+import { UserEditComponent }        from '@erdiko/ngx-user-admin';
 
 // clang-format off
 const appRoutes = [

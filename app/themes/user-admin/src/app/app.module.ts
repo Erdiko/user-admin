@@ -14,8 +14,7 @@ import { MessageService }          from './shared/message.service';
 
 import { LoginComponent }       from './login/login.component';
 import { HomeComponent }        from './home/home.component';
-import { UserListComponent }    from './user-list/user-list.component';
-import { UserEditComponent }    from './user-edit/user-edit.component';
+
 import { HeaderComponent }      from './header/header.component';
 
 import { AlertModule, 
@@ -23,21 +22,19 @@ import { AlertModule,
          TabsModule }          from 'ngx-bootstrap';
 
 import { EqualityValidator }    from './shared/equality-validator.directive';
-import { UserEventLogComponent } from './user-event-log/user-event-log.component';
 import { UsersEventLogComponent } from './users-event-log/users-event-log.component';
 import { MessageComponent } from './message/message.component';
 import { PasswordComponent } from './password/password.component';
 
+import { UserAdminModule }      from '@erdiko/ngx-user-admin';
+
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent,
-    UserEditComponent,
     HomeComponent,
     HeaderComponent,
     LoginComponent,
     EqualityValidator,
-    UserEventLogComponent,
     UsersEventLogComponent,
     MessageComponent,
     PasswordComponent
@@ -51,7 +48,9 @@ import { PasswordComponent } from './password/password.component';
 
     AlertModule.forRoot(),
     ModalModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+
+    UserAdminModule.forRoot()
   ],
   providers: [
     AuthService,

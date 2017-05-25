@@ -68,11 +68,14 @@ export class AuthService {
                            localStorage.setItem('currentUser', JSON.stringify({ token: token }));
 
                            // return true to indicate successful login
-                           this.messageService.sendMessage("login", "success");
+                           let login = "You have Successfully logged in";
+                           this.messageService.sendMessage(login, "success");
+                           
                            return true;
                        } else {
                            // return false to indicate failed login
-                           this.messageService.sendMessage("login", "no-password");
+                           let login = "Username or Password is invalid";
+                           this.messageService.sendMessage(login, "no-password");
                            return false;
                        }
                    })
@@ -90,8 +93,9 @@ export class AuthService {
         this.token = null;
         localStorage.removeItem('currentUser');
 
-        console.log("logout");
-        this.messageService.sendMessage("logout", "success");
+        //console.log("logout");
+        let logout = "You have Successfully logged out";
+        this.messageService.sendMessage(logout, "success");
     }
 
 }

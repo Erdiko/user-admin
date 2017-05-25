@@ -149,7 +149,8 @@ export class UserListComponent implements OnInit {
         this.wait = true;
         this.usersService.deleteUser(this.selectedUser)
             .then(res => {
-                this.messageService.sendMessage("delete-user", "success");
+                let deleteUser = "User successfully deleted";
+                this.messageService.sendMessage(deleteUser, "success");
                 this._handleResponse(res);
             })
             .catch(error => this.error = error);

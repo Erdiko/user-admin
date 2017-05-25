@@ -18,9 +18,7 @@ export class AuthGuard implements CanActivate {
         }
 
         // not logged in so redirect to login page
-        //TODO add flash message!
         let previousURL = this.router.url;
-        console.log("previousURL", previousURL);
         this.router.navigate(['/login']);
         if(previousURL !== '/') {
             let noAccess = "You need to login to gain access";

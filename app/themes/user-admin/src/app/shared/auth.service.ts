@@ -93,7 +93,6 @@ export class AuthService {
         this.token = null;
         localStorage.removeItem('currentUser');
 
-        //console.log("logout");
         let logout = "You have Successfully logged out";
         this.messageService.sendMessage(logout, "success");
     }

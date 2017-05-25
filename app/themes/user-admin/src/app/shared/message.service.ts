@@ -8,38 +8,6 @@ export class MessageService {
   private messageUpdate = new Subject<any>();
 
   constructor() {
-    /*
-    this.messages = {
-      
-              'login': {
-                  //'success': "You have Successfully logged in",
-                  //'no-password': "Username or Password is invalid",
-                  //'no-access': "You need to login to gain access",
-                  //'error': "An error occurred. Please try again"
-              },
-              'logout': {
-                  //'success': "You have Successfully logged out",
-                  'error': "You have been logged out unexpectedly"
-              },
-              'create-user': {
-                  //'success': "User was successfully created",
-                  'error': "An error occurred. Please try again"
-              },
-              'edit-user': {
-                  //'success': "User record was successfully updated",
-                  'error': "An error occurred. Please try again"
-              },
-              'edit-password': {
-                  //'success': "User password successfully updated",
-                  'error': "An error occurred. Please try again"
-              },
-              'delete-user': {
-                  //'success': "User successfully deleted",
-                  'error': "An error occured. Please try again"
-              }
-
-      }
-      */
   }
 
   setMessageType(result){
@@ -55,8 +23,6 @@ export class MessageService {
 
   sendMessage(message, result) {
     let messageType = this.setMessageType(result);
-
-    //let message = this.messages[action][result];
     this.messageUpdate.next({body: message, type: messageType});
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
-import { MessageService }   from '../shared/message.service';
-import { Subscription } from "rxjs";
-import { Router }    from '@angular/router';
+import { MessageService }       from '../shared/message.service';
+import { Subscription }         from "rxjs";
+import { Router }               from '@angular/router';
 
 @Component({
   selector: 'app-message',

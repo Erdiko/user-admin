@@ -8,8 +8,6 @@ import { AppComponent }         from './app.component';
 import { AppRoutingModule }     from './app.routing';
 
 import { AuthService }          from './shared/auth.service';
-import { UsersService }         from './shared/users.service';
-import { MessageService }       from './shared/message.service';
 import { UserResolve }          from './shared/user-resolve.service';
 
 import { LoginComponent }       from './login/login.component';
@@ -23,7 +21,9 @@ import { AlertModule,
 
 import { MessageComponent } from './message/message.component';
 
-import { UserAdminModule }      from '@erdiko/ngx-user-admin';
+import { UserAdminModule }      from '@erdiko/ng-user-admin';
+import { UsersService }         from './shared/users.service';
+import { MessageService }       from './shared/message.service';
 
 @NgModule({
   declarations: [
@@ -48,9 +48,8 @@ import { UserAdminModule }      from '@erdiko/ngx-user-admin';
   ],
   providers: [
     AuthService,
-    UsersService,
     UserResolve,
-
+    UsersService,
     MessageService
   ],
   bootstrap: [AppComponent]

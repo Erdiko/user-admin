@@ -8,9 +8,9 @@ import { AuthGuard }            from './shared/auth.guard';
 
 import { UserResolve }          from './shared/user-resolve.service';
 
-import { UserListComponent }        from '@erdiko/ngx-user-admin';
-import { UsersEventLogComponent }   from '@erdiko/ngx-user-admin';
-import { UserEditComponent }        from '@erdiko/ngx-user-admin';
+import { UserListComponent }        from '@erdiko/ng-user-admin';
+import { UsersEventLogComponent }   from '@erdiko/ng-user-admin';
+import { UserEditComponent }        from '@erdiko/ng-user-admin';
 
 // clang-format off
 const appRoutes = [

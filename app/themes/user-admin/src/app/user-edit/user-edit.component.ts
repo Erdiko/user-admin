@@ -126,19 +126,17 @@ export class UserEditComponent implements OnInit {
         this.wait = false;
         if(true == res.success) {
 
-            console.log("create res", res);
-
-            //this.msg = "User record was successfully updated."
-            this.messageService.sendMessage("edit-user", "success");
+            let editUser = "User record was successfully updated";
+            this.messageService.sendMessage(editUser, "success");
 
             if("create" === res.method) {
                 // navigate to Edit User for the new user
                 this.router.navigate(['/user/' + res.user.id]);
-                this.messageService.sendMessage("create-user", "success");
+                let createUser = "User was successfully created";
+                this.messageService.sendMessage(createUser, "success");
             }
 
         } else {
-            console.log("error res", res);
             this._handleError(res.error_message);
         }
     }
@@ -159,11 +157,10 @@ export class UserEditComponent implements OnInit {
 
         this.passwordForm.reset();
 
-        console.log("create res", res);
         if(true == res.success) {
-            this.messageService.sendMessage("edit-password", "success");
+            let editPassword = "User password successfully updated";
+            this.messageService.sendMessage(editPassword, "success");
         } else {
-            console.log("error res", res);
             this.passError = res.error_message;
         }
     }

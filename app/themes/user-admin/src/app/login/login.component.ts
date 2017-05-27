@@ -56,13 +56,16 @@ export class LoginComponent implements OnInit {
                 .subscribe(result => {
                     if (result === true) {
                         this.router.navigate(['/']);
-                        this.messageService.sendMessage("login", "success");
+                        let login = "You have Successfully logged in";
+                        this.messageService.sendMessage(login, "success");
                     } else {
-                        this.messageService.sendMessage("login", "error");
+                        let login = "An error occurred. Please try again";
+                        this.messageService.sendMessage(login, "error");
                         this.wait = false;
                     }
                 }, err => {
-                    this.messageService.sendMessage("login", "no-password");
+                    let login = "Username or Password is invalid";
+                    this.messageService.sendMessage(login, "no-password");
                     this.wait = false;
                 });
 

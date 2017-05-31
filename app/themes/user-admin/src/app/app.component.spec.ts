@@ -11,7 +11,6 @@ import { AppComponent }         from './app.component';
 import { HeaderComponent }      from './header/header.component';
 import { AuthService }          from './shared/auth.service';
 import { UsersService }         from './shared/users.service';
-import { MessageService }         from './shared/message.service';
 import { UserResolve }          from './shared/user-resolve.service';
 
 describe('AppComponent', () => {
@@ -32,8 +31,7 @@ describe('AppComponent', () => {
             providers: [
                 AuthService,
                 UsersService,
-                UserResolve,
-                MessageService
+                UserResolve
             ],
             schemas:  [CUSTOM_ELEMENTS_SCHEMA]
         });

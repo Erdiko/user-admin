@@ -3,8 +3,6 @@ import { Router }                               from '@angular/router';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
 import { AuthService }   from '../shared/auth.service';
-import { MessageService }   from '../shared/message.service';
-import { MessageComponent } from '../message/message.component';
 
 @Component({
   selector: 'app-login',
@@ -25,8 +23,7 @@ export class LoginComponent implements OnInit {
     constructor(
            private authService: AuthService,
            private router: Router,
-           private fb: FormBuilder,
-           private messageService: MessageService) { 
+           private fb: FormBuilder) { 
 
         // init the wait state (and indication animation) to 'off'
         this.wait = false;
@@ -56,13 +53,13 @@ export class LoginComponent implements OnInit {
                 .subscribe(result => {
                     if (result === true) {
                         this.router.navigate(['/']);
-                        this.messageService.sendMessage("login", "success");
+                        //this.messageService.sendMessage("login", "success");
                     } else {
-                        this.messageService.sendMessage("login", "error");
+                        //this.messageService.sendMessage("login", "error");
                         this.wait = false;
                     }
                 }, err => {
-                    this.messageService.sendMessage("login", "no-password");
+                    //this.messageService.sendMessage("login", "no-password");
                     this.wait = false;
                 });
 

@@ -5,8 +5,6 @@ import { DebugElement } from '@angular/core';
 
 import { HomeComponent } from './home.component';
 
-import { MessageService } from '../shared/message.service';
-
 describe('HomeComponent', () => {
     let component: HomeComponent;
     let fixture: ComponentFixture<HomeComponent>;
@@ -14,7 +12,7 @@ describe('HomeComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ HomeComponent ],
-            providers: [ MessageService ]
+            providers: [ ]
         })
         .compileComponents();
     }));

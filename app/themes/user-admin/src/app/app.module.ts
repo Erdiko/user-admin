@@ -19,19 +19,15 @@ import { AlertModule,
          ModalModule,
          TabsModule }          from 'ngx-bootstrap';
 
-import { MessageComponent } from './message/message.component';
-
 import { UserAdminModule }      from '@erdiko/ng-user-admin';
 import { UsersService }         from './shared/users.service';
-import { MessageService }       from './shared/message.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    LoginComponent,
-    MessageComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -49,8 +45,7 @@ import { MessageService }       from './shared/message.service';
   providers: [
     AuthService,
     UserResolve,
-    UsersService,
-    MessageService
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

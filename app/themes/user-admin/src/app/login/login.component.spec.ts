@@ -29,7 +29,6 @@ import { FormsModule,
 import { AlertModule, 
          ModalModule }          from 'ngx-bootstrap';
 
-import { MessageService }   from '../shared/message.service';
 import { AuthService }   from '../shared/auth.service';
 import { LoginComponent } from './login.component';
 
@@ -39,7 +38,6 @@ describe('LoginComponent', () => {
 
     let backend: MockBackend;
     let service: AuthService;
-    let messageService: MessageService;
     let router: any;
 
     let bodyData: any;
@@ -64,7 +62,6 @@ describe('LoginComponent', () => {
                     useClass: class { navigate = jasmine.createSpy("navigate"); } 
                 },
                 AuthService,
-                MessageService,
                 {
                     deps: [
                         MockBackend,

@@ -1,10 +1,21 @@
 {
   "validators":{
     "custom_types": [{
-      "name": "example",
-      "namespace": "app_validators_example",
-      "classname": "ExampleValidator",
+      "name": "erdiko_users",
+      "namespace": "erdiko_users_validators",
+      "classname": "UsersValidator",
       "enabled": false
-    }]
+    },{
+      "name": "erdiko_role",
+      "namespace": "erdiko_users_validators",
+      "classname": "RoleValidator",
+      "enabled": false
+    },{
+      "name": "erdiko_logs",
+      "namespace": "erdiko_users_validators",
+      "classname": "LogsValidator",
+      "enabled": false
+    }
+    ]
   }
 }

@@ -3,8 +3,6 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams }     from '@a
 
 import { Observable }                                                   from 'rxjs';
 
-import { MessageService }                                               from './message.service';
-
 import 'rxjs/add/operator/map'
 
 @Injectable()
@@ -23,7 +21,7 @@ export class AuthService {
      *
      *
      */
-    constructor(private http: Http, public messageService: MessageService) {
+    constructor(private http: Http) {
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
 
@@ -68,11 +66,11 @@ export class AuthService {
                            localStorage.setItem('currentUser', JSON.stringify({ token: token }));
 
                            // return true to indicate successful login
-                           this.messageService.sendMessage("login", "success");
+                           //this.messageService.sendMessage("login", "success");
                            return true;
                        } else {
                            // return false to indicate failed login
-                           this.messageService.sendMessage("login", "no-password");
+                           //this.messageService.sendMessage("login", "no-password");
                            return false;
                        }
                    })
@@ -90,8 +88,7 @@ export class AuthService {
         this.token = null;
         localStorage.removeItem('currentUser');
 
-        console.log("logout");
-        this.messageService.sendMessage("logout", "success");
+        //this.messageService.sendMessage("logout", "success");
     }
 
 }

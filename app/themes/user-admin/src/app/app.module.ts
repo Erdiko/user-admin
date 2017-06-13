@@ -12,7 +12,7 @@ import { AlertModule,
          ModalModule,
          TabsModule }          from 'ngx-bootstrap';
 
-import { UserAdminModule }      from '@erdiko/ng-user-admin';
+import { UserAdminModule }      from '@erdiko/ngx-user-admin';
 
 import { AppComponent }         from './app.component';
 

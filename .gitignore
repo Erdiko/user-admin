@@ -9,3 +9,4 @@ node_modules/*
 /mysql
 composer.lock
 /vendor
+app/themes/user-admin/package-lock.json

@@ -114,8 +114,17 @@ select.form-control {
     flex-direction: inherit;
 }
 .navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:active {
-  color: white;
+.navbar-default .navbar-nav > li > a:active,
+.navbar-default .navbar-nav > li > a:focus {
+  color: $navbar-links;
+  opacity: .75;
+}
+.navbar-default .navbar-brand {
+    color: $navbar-links;
+}
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
+  color: $navbar-links;
   opacity: .75;
 }
 

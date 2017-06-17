@@ -6114,8 +6114,17 @@ select.form-control {
   flex-direction: inherit; }
 
 .navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:active {
-  color: white;
+.navbar-default .navbar-nav > li > a:active,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ffffff;
+  opacity: .75; }
+
+.navbar-default .navbar-brand {
+  color: #ffffff; }
+
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
+  color: #ffffff;
   opacity: .75; }
 
 /* Sticky footer

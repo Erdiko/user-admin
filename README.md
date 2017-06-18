@@ -27,7 +27,7 @@ Installation
 
 ##### Note about versions
 
-Since this project is still under heavy development we recommend running the latest from the develop branch.  If you would like to tell composer to use the develop branch use this command instead of the one above. 
+Since this project is still under heavy development we recommend running the latest from the develop branch.  If you would like to tell composer to use the develop branch use this command instead of the one above.
 
 `composer create erdiko/user-admin:dev-develop [PROJECT NAME]`
 
@@ -72,18 +72,10 @@ Editing and compiling the Angular code is simple, and we use Angular CLIs test s
 * Compile and export files for end user: `npm run build`
 
 
-Local Development
------------------
+Contributing to Erdiko User Admin
+---------------------------------
 
-To set your environment up for local development, please follow these steps:
-
-* Clone your fork of the User Admin project into a local directory
-* Clone the following packages into the same directory
-  * [Authenticate](https://github.com/Erdiko/authenticate)
-  * [Authorize](https://github.com/Erdiko/authorize)
-  * [Users](https://github.com/Erdiko/users)
-* Copy the `composer-dev.json` file to `composer.json`
-* Start your docker container `docker-composer up --build`
+To set up your environment for local development to contribute to the project please take a look at CONTRIBUTING.md.  That file has all the instructions on how to set up a development environment with Docker.  We've included some useful scripts in the scripts/dev folder to help.
 
 
 Special Thanks

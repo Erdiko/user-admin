@@ -5,6 +5,7 @@ services:
     image: busybox
     volumes:
       - ./:/code
+      - ./composer-dev.json:/code/composer.json
       - ../authenticate:/authenticate
       - ../authorize:/authorize
       - ../users:/users

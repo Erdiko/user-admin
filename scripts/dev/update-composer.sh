@@ -1,7 +1,10 @@
 #!/bin/sh
 
-# @note must run this in the same folder as the script
+# cd to the script folder (so that the script can be ran anywhere)
+DIR=$(cd $(dirname ${BASH_SOURCE[0]}); pwd)
+cd $DIR
 
-cd ../
+# Update composer packages
+cd ../../
 composer clearcache
 composer update

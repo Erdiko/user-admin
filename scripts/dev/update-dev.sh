@@ -39,8 +39,3 @@ cd ../ngx-user-admin
 git checkout $BRANCH
 git pull origin $BRANCH
 echo "${GREEN}ngx-user-admin updated\n ${RESET}"
-
-# Update composer packages
-pushd
-cd ../
-composer update

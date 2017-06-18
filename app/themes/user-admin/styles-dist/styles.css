@@ -6147,6 +6147,14 @@ select.form-control {
   -o-background-size: cover;
   background-size: cover; }
 
+/* Tables
+-------------------------------------------------- */
+table th {
+  cursor: default; }
+
+table th.sortable {
+  cursor: pointer; }
+
 /* Tabs
 -------------------------------------------------- */
 /*

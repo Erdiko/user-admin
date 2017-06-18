@@ -151,6 +151,17 @@ select.form-control {
   background-size: cover;
 }
 
+/* Tables
+-------------------------------------------------- */
+table {
+  th {
+    cursor: default;
+  }
+  th.sortable {
+    cursor: pointer;
+  }
+}
+
 /* Tabs
 -------------------------------------------------- */
 /*

@@ -1,7 +1,7 @@
 Contributing to Erdiko User Admin
 =================================
 
-We welcome contributions and love to see folks get involved.  Below are some instructions to help get you going.
+We welcome contributions and love to see folks get involved.  Below are instructions to help you get going.
 
 
 Setting up your development environment
@@ -18,9 +18,13 @@ The following will work on OS X and Linux, you may need to adjust accordingly if
   cd scripts/dev
   ./install-dev.sh
 
+Convenient script to update all of the git repos.  Use this whenever you want to pull the latest from ALL the repos.  You don't need to run it right now.
+
+  ./update-dev.sh
+
 *Docker*
 
-Start your containers.  It will set up an erdiko php/nginx environment as well as an Angular (node) container for making any changes to the JavaScript or CSS.
+Start your containers.  This will set up an erdiko LEMP stack as well as an Angular (node) container for making any changes to the JavaScript or CSS.
 
   cd ../../
   docker-compose -f docker-compose-dev.yml up &
@@ -35,9 +39,21 @@ Install composer packages and database
   cd scripts
   ./install-db.sh
 
+  exit
+
+Your environment is ready to go.  Now create an entry in your etc hosts file for your new domain, http://erdiko.local/ and you're in business.
+
+To login use the following credentials.
+
+user: erdiko@arroyolabs
+pass: passowrd
+
+After you login, click around and try to figure out how to update your password.
+
+
 *Angular*
 
-Set up to use the ngx-user-admin repo for local development using NPM link.
+Set up to use the ngx-user-admin repo for local development using NPM link.  
 
   docker exec -it erdiko_users_angular /bin/bash
   cd /code/scripts/dev

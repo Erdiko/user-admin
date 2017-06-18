@@ -5,8 +5,8 @@
     "connections": {
         "master": {
             "driver": "pdo_mysql",
-            "host": "172.17.0.1",
-            "port": "3301",
+            "host": "erdiko_users_db",
+            "port": "3306",
             "database": "user-admin",
             "username": "root",
             "password": "psItPs16",

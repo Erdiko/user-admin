@@ -1,91 +1,21 @@
 {
-  "guards":[
-    "users",
-    "subscriptions",
-    "plans",
-    "dashboard",
-    "index"
-  ],
-  "storage": {
-    "selected": "session",
-    "storage_types": [{
-      "name": "session",
-      "namespace": "erdiko_authenticate_services",
-      "classname": "SessionStorage",
-      "enabled": true
-    }]
-  },
-  "authentication": {
-    "available_types": [{
-      "name": "mock",
-      "namespace": "erdiko_authenticate_services",
-      "classname": "Mock",
-      "enabled": true
-    },
-    {
-      "name": "jwt_auth",
-      "namespace": "erdiko_users_services",
-      "classname": "JWTAuth",
-      "enabled": true
-    },
-    {
-      "name": "erdiko_user",
-      "namespace": "app_service",
-      "classname": "AuthTest",
-      "enabled": true
-    }]
-  },
-  "policies": {
-    "anonymous" : {
-      "index":{
-        "read":"allow",
-        "login": "allow"
-      },
-      "dashboard":{
-        "read":"allow"
-      }
-    },
-    "admin": {
-      "index":{
-        "read":"allow",
-        "logout": "allow"
-      },
-      "dashboard":{
-        "read":"allow"
-      },
-      "users": {
-        "read":"allow",
-        "write":"allow"
-      },
-      "plans": {
-        "read":"allow",
-        "write":"allow"
-      },
-      "subscriptions": {
-        "read":"allow",
-        "write":"allow"
-      }
-    },
-    "client": {
-      "index":{
-        "read": "allow",
-        "logout": "allow"
-      },
-      "dashboard": {
-        "read":"allow"
-      },
-      "plans": {
-        "read":"allow"
-      },
-      "subscription": {
-        "read": [
-          "isOwner"
-        ],
-        "write": [
-          "isOwner",
-          "isAdmin"
-        ]
-      }
+  "validators":{
+    "custom_types": [{
+      "name": "erdiko_users",
+      "namespace": "erdiko_users_validators",
+      "classname": "UsersValidator",
+      "enabled": false
+    },{
+      "name": "erdiko_role",
+      "namespace": "erdiko_users_validators",
+      "classname": "RoleValidator",
+      "enabled": false
+    },{
+      "name": "erdiko_logs",
+      "namespace": "erdiko_users_validators",
+      "classname": "LogsValidator",
+      "enabled": false
     }
+    ]
   }
 }

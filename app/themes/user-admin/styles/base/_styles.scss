@@ -1,9 +1,13 @@
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
 @import "../../node_modules/bootswatch-sass/flatly/variables";
 @import "variables";
-@import "../variables";
+
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "../../node_modules/bootswatch-sass/flatly/bootstrap";
+@import "../../node_modules/bootswatch-sass/flatly/bootswatch";
+
+/*
+  @import "../variables";
+*/
 
 /* General
 -------------------------------------------------- */
@@ -38,6 +42,31 @@ h1, h2, h3, h4 {
     border-color: $gray-blue !important;
   }
 }
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+  opacity: .5;
+}
+.text-danger, .text-danger:hover {
+  opacity: .75;
+}
+
+/* Alerts
+-------------------------------------------------- */
+.alert-success {
+  background-color: $brand-success;
+  border-color: $brand-success;
+}
+.alert-warning {
+  background-color: $brand-warning;
+  border-color: $brand-warning;
+}
+.alert-danger {
+  background-color: $brand-danger;
+  border-color: $brand-danger;
+}
+.alert-info {
+  background-color: $brand-info;
+  border-color: $brand-info;
+}
 
 /* Disable Animation
 -------------------------------------------------- */
@@ -67,20 +96,39 @@ select.form-control {
   -moz-appearance: none;
   -webkit-appearance: none;
   padding: 0 0 0 15px;
-  background: 
+  background:
     url(/images/select-arrow.png);
   background-position: right;
   background-repeat: no-repeat;
 }
 
-/* Header styles
+/* Header & Navbar
 -------------------------------------------------- */
+#header-push {
+  height: 60px;
+}
 .navbar-default {
   background-color: $navbar-default-bg;
 }
+.navbar-nav {
+    flex-direction: inherit;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:active,
+.navbar-default .navbar-nav > li > a:focus {
+  color: $navbar-links;
+  opacity: .75;
+}
+.navbar-default .navbar-brand {
+    color: $navbar-links;
+}
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
+  color: $navbar-links;
+  opacity: .75;
+}
 
-
-/* Sticky footer styles
+/* Sticky footer
 -------------------------------------------------- */
 .footer {
   position: absolute;
@@ -93,7 +141,7 @@ select.form-control {
   background-color: $gray-lighter;
 }
 
-/* Error pages styles
+/* Error pages
 -------------------------------------------------- */
 .server-error, .error-404, .error-500 {
   background: url(/images/error_background.jpg) no-repeat center center fixed;
@@ -103,22 +151,35 @@ select.form-control {
   background-size: cover;
 }
 
-/* Tab styles
+/* Tables
 -------------------------------------------------- */
+table {
+  th {
+    cursor: default;
+  }
+  th.sortable {
+    cursor: pointer;
+  }
+}
+
+/* Tabs
+-------------------------------------------------- */
+/*
 #id-title {
   font-size: 18px;
   width: 230px;
   display: inline-block;
   margin-left: 15px;
 }
+*/
 
 .nav-link:hover,
-.nav > li > a:hover, 
+.nav > li > a:hover,
 nav > li > a:hover {
   background-color: white;
 }
 
-.nav-tabs, 
+.nav-tabs,
 .nav-tabs .nav-link,
 .nav-link.active,
 .nav-link:focus,
@@ -138,13 +199,12 @@ nav > li > a:hover {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover {
-  color: $green-header !important;
+  color: $nav-tabs !important;
 }
-
 
 .nav-tabs > li.active {
   border: none;
-  border-bottom: 3px solid $green-header;
+  border-bottom: 3px solid $nav-tabs;
 }
 
 .nav-tabs > li:hover > a {
@@ -153,7 +213,7 @@ nav > li > a:hover {
 }
 
 .nav-tabs > li:hover {
-  border-bottom: 3px solid $green-header;
+  border-bottom: 3px solid $nav-tabs;
 }
 
 #edit-update {
@@ -162,4 +222,30 @@ nav > li > a:hover {
 
 .tab-content {
   border: 1px solid $panel-gray;
+}
+
+/* Pagination
+-------------------------------------------------- */
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 3;
+  color: $grey-dark;
+  background-color: $panel-gray;
+  border-color: $panel-gray-dark;
+  cursor: default;
+}
+.pagination > li > a,
+.pagination > li > span {
+  background-color: white;
+  color: $brand-link;
+  border: 1px solid $panel-gray-dark;
+  margin-left: -1px;
+}
+.pagination > li > a:hover {
+  background-color: $grey-dark;
+  color: $brand-link;
 }

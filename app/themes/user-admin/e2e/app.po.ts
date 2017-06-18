@@ -29,6 +29,7 @@ export class UserAdminPage {
     
     submit.click();
 
+    expect(this.getParagraphText("app-message .alert-success")).toEqual('You have Successfully logged in');
     expect(this.getParagraphText("app-home h1")).toEqual('Welcome to the Erdiko User Admin');
   }
 
@@ -39,6 +40,8 @@ export class UserAdminPage {
     //Logout is clicked
     let logout = browser.findElement(protractor.By.cssContainingText('a', 'Logout'));
     logout.click();
+
+    expect(this.getParagraphText("app-message .alert-success")).toEqual('You have Successfully logged out');
 
     //Check for the logout status
     expect(this.getParagraphText(".navbar-brand")).toEqual('User Admin');

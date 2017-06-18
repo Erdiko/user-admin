@@ -1,13 +1,13 @@
 {
-  "name": "@erdiko/user-admin",
-  "version": "0.0.4",
+  "name": "erdiko-user-admin",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "A fully functional and modular user management system with an Angular 2 UI.",
   "repository": {
     "type": "git",
     "url": "https://github.com/erdiko/user-admin"
   },
-  "public": true,
+  "public": false,
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
@@ -32,11 +32,12 @@
     "@angular/http": "^2.3.1",
     "@angular/platform-browser": "^2.3.1",
     "@angular/platform-browser-dynamic": "^2.3.1",
-    "@angular/router": "^3.3.1",
+    "@angular/router": "~3.4.0",
     "core-js": "^2.4.1",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.7.2"
+    "zone.js": "^0.7.2",
+    "@erdiko/ngx-user-admin": "^1.1.15"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.3.1",
@@ -54,7 +55,7 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
-    "ng2-bootstrap": "^1.1.16-9",
+    "ngx-bootstrap": "^1.6.6",
     "node-sass": "^4.1.1",
     "protractor": "~4.0.13",
     "ts-node": "1.2.1",

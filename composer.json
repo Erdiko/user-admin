@@ -22,5 +22,28 @@
     "config": {
         "vendor-dir": "vendor",
         "minimum-stability": "dev"
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../users",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../authenticate",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../authorize",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
 }

@@ -11,30 +11,30 @@ cd $DIR
 GREEN='\033[0;32m'
 RESET='\033[0m'
 
-# Pull user-admin
+# Clone users
+cd ../../../
+git clone git@github.com:Erdiko/users.git
+cd ./users
 git checkout $BRANCH
-git pull origin $BRANCH
-echo "${GREEN}user-admin updated\n ${RESET}"
-
-# Pull users
-pushd ../../users
-git checkout $BRANCH
-git pull origin $BRANCH
 echo "${GREEN}users updated\n ${RESET}"
 
-# Pull authenticate
-cd ../authenticate
+# Clone authenticate
+cd ../
+git clone git@github.com:Erdiko/authenticate.git
+cd ./authenticate
 git checkout $BRANCH
-git pull origin $BRANCH
 echo "${GREEN}authenticate updated\n ${RESET}"
 
-# Pull authorize
-cd ../authorize
+# Clone authorize
+cd ../
+git clone git@github.com:Erdiko/authorize.git
+cd ./authorize
 git checkout $BRANCH
-git pull origin $BRANCH
 echo "${GREEN}authorize updated\n ${RESET}"
 
-# Update composer packages
-pushd
+# Clone ngx-user-admin
 cd ../
-composer update
+git clone git@github.com:Erdiko/ngx-user-admin.git
+cd ./ngx-user-admin
+git checkout $BRANCH
+echo "${GREEN}ngx-user-admin updated\n ${RESET}"

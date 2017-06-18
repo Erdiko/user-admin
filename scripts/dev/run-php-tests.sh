@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Run unit tests within the erdiko_users_php container
+
 # Add some color
 GREEN='\033[0;32m'
 RESET='\033[0m'

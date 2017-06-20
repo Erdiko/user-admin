@@ -51,7 +51,7 @@ Check the users README if you need more information [https://github.com/Erdiko/u
 
 #### View your new project in your browser
 
-[http://docker.local:8088/](http://docker.local:8088/)
+[http://erdiko.local/](http://erdiko.local/)
 
 
 Editing & Compiling the Angular Code

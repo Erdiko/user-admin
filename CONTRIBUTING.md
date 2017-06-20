@@ -72,3 +72,16 @@ Using the Angular dev server
 
   cd /code/app/themes/user-admin
   npm run start
+
+
+*Rebuilding your Docker containers*
+
+If you rebuild your containers (or run docker-compose down) then some of your initial set up is still good (persistent) but some of your environment resets.  For the PHP dev it will have minimal impact since your database should still be intact after deleting your containers.  For JavaScript / Angular development, however, you will have to do some basic initialization to get back to where you left off.
+
+  docker exec -it erdiko_users_angular /bin/bash
+  /code/scripts/dev/link-npm.sh
+
+Now you can compile your Angular and Sass code again.
+
+  cd /code/app/themes/user-admin
+  npm run build

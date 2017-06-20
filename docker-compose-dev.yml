@@ -35,6 +35,7 @@ services:
     image: erdiko/angular:latest
     container_name: erdiko_users_angular
     volumes_from: [data]
+    env_file: ./docker/angular/environment.env
     volumes:
       - ../ngx-user-admin/:/ngx-user-admin
     entrypoint:

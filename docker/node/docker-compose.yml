@@ -3,9 +3,7 @@ version: '2.1'
 services:
   node:
     env_file: environment.env
-    image: erdiko_node
-    build:
-      context: ./
+    image: erdiko/angular:latest
     volumes:
       - ../../:/var/www/code
     entrypoint:

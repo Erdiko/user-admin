@@ -1,6 +1,6 @@
 {
   "/ajax/*": {
-    "target": "http://docker.local/ajax/",
+    "target": "http://webserver/ajax/",
     "secure": false
   }
 }

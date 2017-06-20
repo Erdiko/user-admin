@@ -12,13 +12,10 @@ Setting up your development environment
 The following will work on OS X and Linux, you may need to adjust accordingly if you are on a PC.  This checks out (git clone) all the erdiko repos
 
   git clone git@github.com:Erdiko/user-admin.git
-  cd user-admin
-  git checkout develop
-
-  cd scripts/dev
+  cd user-admin/scripts/dev
   ./install-dev.sh
 
-Convenient script to update all of the git repos.  Use this whenever you want to pull the latest from ALL the repos.  You don't need to run it right now.
+We have included a convenient script to update all of the git repos.  Use this whenever you want to pull the latest from ALL the repos.  You don't need to run it right now.
 
   ./update-dev.sh
 
@@ -46,7 +43,7 @@ Your environment is ready to go.  Now create an entry in your etc hosts file for
 To login use the following credentials.
 
 user: erdiko@arroyolabs
-pass: passowrd
+pass: password
 
 After you login, click around and try to figure out how to update your password.
 
@@ -70,3 +67,8 @@ Compile:
 
   cd /code/app/themes/user-admin
   npm run build
+
+Using the Angular dev server
+
+  cd /code/app/themes/user-admin
+  npm run start

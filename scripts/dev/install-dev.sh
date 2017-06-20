@@ -11,6 +11,11 @@ cd $DIR
 GREEN='\033[0;32m'
 RESET='\033[0m'
 
+# Pull user-admin
+git checkout $BRANCH
+git pull origin $BRANCH
+echo "${GREEN}user-admin updated\n ${RESET}"
+
 # Clone users
 cd ../../../
 git clone git@github.com:Erdiko/users.git

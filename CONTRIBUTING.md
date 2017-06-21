@@ -13,6 +13,7 @@ The following will work on OS X and Linux, you may need to adjust accordingly if
 
   git clone git@github.com:Erdiko/user-admin.git
   cd user-admin/scripts/dev
+  git checkout develop
   ./install-dev.sh
 
 We have included a convenient script to update all of the git repos.  Use this whenever you want to pull the latest from ALL the repos.  You don't need to run it right now.
@@ -42,7 +43,7 @@ Your environment is ready to go.  Now create an entry in your etc hosts file for
 
 To login use the following credentials.
 
-user: erdiko@arroyolabs
+user: erdiko@arroyolabs.com
 pass: password
 
 After you login, click around and try to figure out how to update your password.
@@ -85,3 +86,4 @@ Now you can compile your Angular and Sass code again.
 
   cd /code/app/themes/user-admin
   npm run build
+

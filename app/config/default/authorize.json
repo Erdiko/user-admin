@@ -3,18 +3,18 @@
     "custom_types": [{
       "name": "erdiko_users",
       "namespace": "erdiko_users_validators",
-      "classname": "UsersValidator",
-      "enabled": false
+      "classname": "UserValidator",
+      "enabled": true
     },{
       "name": "erdiko_role",
       "namespace": "erdiko_users_validators",
       "classname": "RoleValidator",
-      "enabled": false
+      "enabled": true
     },{
       "name": "erdiko_logs",
       "namespace": "erdiko_users_validators",
       "classname": "LogsValidator",
-      "enabled": false
+      "enabled": true
     }
     ]
   }

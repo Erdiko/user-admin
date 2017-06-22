@@ -39,6 +39,7 @@ jobs:
           command: |
             set -x
 
+            chmod 770 scripts/ci/*.sh
             ./scripts/ci/install.sh
 
             docker-compose -f docker-compose-ci.yml up -d

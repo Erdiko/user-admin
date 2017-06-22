@@ -40,6 +40,9 @@ jobs:
             set -x
             docker-compose up -d
 
+            docker cp ./ erdiko_users_php:/code
+            docker cp ./ erdiko_users_php:/code
+            
             docker exec -it erdiko_users_php /code/scripts/ci/run-php-tests.sh
 
             # docker-compose will start 2 containers, the one with service will be named `contacts`

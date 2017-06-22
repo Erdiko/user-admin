@@ -42,6 +42,8 @@ jobs:
             chmod 770 scripts/ci/*.sh
             ./scripts/ci/install.sh
 
+            ls -al
+
             docker-compose -f docker-compose-ci.yml up -d
 
             docker cp ./ erdiko_users_php:/code
@@ -56,7 +58,7 @@ jobs:
             # we start another container with curl in the same network as `contacts`, this way we have
             # all exposed ports from `contacts` available on `localhost` in this new container
             docker run --network container:contacts \
-              appropriate/curl --retry 10 --retry-delay 1 --retry-connrefused http://localhost:8080/
+              appropriate/curl --retry 10 --retry-delay 1 --retry-connrefused http://localhost/
 
       - store_artifacts:
           path: /tmp/test-results

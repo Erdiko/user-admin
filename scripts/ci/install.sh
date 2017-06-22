@@ -3,15 +3,14 @@
 # set branch and use everywhere
 BRANCH="develop"
 
-# cd to the script folder (so that the script can be ran anywhere)
-DIR=$(cd $(dirname ${BASH_SOURCE[0]}); pwd)
-cd $DIR
-
 # Add some color bling
 GREEN='\033[0;32m'
 RESET='\033[0m'
 
 cd ../../
+
+ls -la
+
 mkdir repos
 cd repos
 

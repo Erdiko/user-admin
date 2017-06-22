@@ -11,4 +11,4 @@ mysql -u root -ppsItPs16 -h db user-admin < /code/vendor/erdiko/users/sql/dumps/
 echo "${GREEN}update database schema\n ${RESET}"
 
 # execute the create-user script
-php /code/vendor/erdiko/users/scripts/create-users.php -b=../app/bootstrap.php
+php /code/vendor/erdiko/users/scripts/create-users.php -b=/code/app/bootstrap.php

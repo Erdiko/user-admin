@@ -52,6 +52,7 @@ jobs:
 
             docker exec -it erdiko_users_php /code/scripts/ci/update-composer.sh
             docker exec -it erdiko_users_php /code/scripts/ci/update-vendor.sh
+            docker exec -it erdiko_users_php /code/scripts/install-db.sh
 
             docker exec -it erdiko_users_php /code/scripts/ci/run-php-tests.sh
 

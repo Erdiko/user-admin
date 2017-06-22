@@ -32,3 +32,7 @@ git clone git@github.com:Erdiko/authorize.git
 cd ./authorize
 git checkout $BRANCH
 echo "${GREEN}authorize updated\n ${RESET}"
+
+cd ../
+pwd
+ls -la

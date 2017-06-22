@@ -12,6 +12,19 @@ Run all unit tests with the following commands.  Be sure you are running the ful
     docker-compose run php /code/scripts/ci/run-php-tests.sh
 
 ##misc ci notes
+
+    cd scripts/dev
+    ./install-dev.sh
+    cd ../../
+    docker-compose up -d
+
+    docker exec -it erdiko_users_php /code/scripts/ci/setup.sh
+      cd /code
+      composer update
+
+    docker exec -it erdiko_users_php /code/scripts/dev/install-dev.sh
     docker exec -it erdiko_users_php /code/scripts/install-db.sh
+
+
     or
     docker-compose run php /code/scripts/install-db.sh

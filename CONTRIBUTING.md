@@ -86,4 +86,3 @@ Now you can compile your Angular and Sass code again.
 
   cd /code/app/themes/user-admin
   npm run build
-

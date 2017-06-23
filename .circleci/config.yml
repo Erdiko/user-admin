@@ -1,0 +1,50 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: erdiko/docker-compose:1.11
+    working_directory: /code
+
+    environment:
+      TEST_RESULTS: /tmp/test-results
+
+    steps:
+      - checkout
+
+      - run: mkdir -p $TEST_RESULTS
+
+      - setup_remote_docker
+
+      - run:
+          name: Build container environment
+          command: |
+            set -x
+
+            chmod 770 scripts/ci/*.sh
+            ./scripts/ci/install-repos.sh
+
+            pwd
+            ls -al
+
+            docker-compose -f docker-compose-ci.yml up -d
+
+            docker cp ./ erdiko_users_php:/code
+            docker cp ./ erdiko_users_web:/code
+
+            docker exec -it erdiko_users_php /code/scripts/ci/install.sh
+            # docker exec -it erdiko_users_web /code/scripts/ci/install-web.sh
+
+      - run:
+          name: Run PHPUnit tests
+          command: |
+            set -x
+
+            docker exec -it erdiko_users_php /code/scripts/ci/run-php-tests.sh
+
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: raw-test-output
+
+      - store_test_results:
+          path: /tmp/test-results

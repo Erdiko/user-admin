@@ -6014,9 +6014,6 @@ input {
 .popover {
   color: #2C3E50; }
 
-/*
-  @import "../variables";
-*/
 /* General
 -------------------------------------------------- */
 html {
@@ -6032,6 +6029,9 @@ body > .container, body > .container-fluid {
 
 h1, h2, h3, h4 {
   color: #188E0B; }
+
+a {
+  cursor: pointer; }
 
 .spacer {
   height: 42px; }

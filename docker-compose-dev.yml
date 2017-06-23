@@ -16,16 +16,12 @@ services:
       service: webserver
     container_name: erdiko_users_web
     volumes_from: [data]
-    ports:
-      - "8088:80"
 
   php:
     container_name: erdiko_users_php
     env_file: ./docker/environment.env
     image: erdiko/php-fpm:latest
     volumes_from: [data]
-    extra_hosts:
-      - "docker.local:172.17.0.1"
 
   db:
     extends:
@@ -36,10 +32,17 @@ services:
       - "3301:3306"
 
   angular:
-    extends:
-      file: ./docker/node/docker-compose.yml
-      service: node
+    image: erdiko/angular:latest
     container_name: erdiko_users_angular
     volumes_from: [data]
+    env_file: ./docker/angular/environment.env
     volumes:
       - ../ngx-user-admin/:/ngx-user-admin
+    entrypoint:
+      - tail
+      - -f
+      - /dev/null
+    extra_hosts:
+      - "erdiko.local:webserver"
+    ports:
+      - "4200:4200"

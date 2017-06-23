@@ -1,2 +1,3 @@
 
-CREATE DATABASE `user-admin`;
+CREATE DATABASE IF NOT EXISTS `user-admin`;
+

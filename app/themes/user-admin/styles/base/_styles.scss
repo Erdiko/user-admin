@@ -5,10 +5,6 @@
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "../../node_modules/bootswatch-sass/flatly/bootswatch";
 
-/*
-  @import "../variables";
-*/
-
 /* General
 -------------------------------------------------- */
 html {
@@ -24,6 +20,9 @@ body > .container, body > .container-fluid {
 }
 h1, h2, h3, h4 {
   color: $brand-primary;
+}
+a {
+  cursor: pointer;
 }
 .spacer {
   height: 42px;

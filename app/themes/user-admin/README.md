@@ -27,7 +27,7 @@ Installation
 
 ##### Note about versions
 
-Since this project is still under heavy development we recommend running the latest from the develop branch.  If you would like to tell composer to use the develop branch use this command instead of the one above. 
+Since this project is still under heavy development we recommend running the latest from the develop branch.  If you would like to tell composer to use the develop branch use this command instead of the one above.
 
 `composer create erdiko/user-admin:dev-develop [PROJECT NAME]`
 
@@ -51,7 +51,7 @@ Check the users README if you need more information [https://github.com/Erdiko/u
 
 #### View your new project in your browser
 
-[http://docker.local:8088/](http://docker.local:8088/)
+[http://erdiko.local/](http://erdiko.local/)
 
 
 Editing & Compiling the Angular Code

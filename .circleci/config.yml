@@ -33,7 +33,7 @@ jobs:
             docker cp ./ erdiko_users_web:/code
 
             docker exec -it erdiko_users_php /code/scripts/ci/install.sh
-            docker exec -it erdiko_users_web /code/scripts/ci/install-web.sh
+            # docker exec -it erdiko_users_web /code/scripts/ci/install-web.sh
 
       - run:
           name: Run PHPUnit tests

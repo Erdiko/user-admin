@@ -36,3 +36,4 @@ echo "${GREEN}authorize updated\n ${RESET}"
 cd ../
 pwd
 ls -la
+echo "${GREEN}done with install repos\n ${RESET}"

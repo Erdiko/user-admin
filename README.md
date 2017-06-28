@@ -1,11 +1,9 @@
 User Admin
 ==========
 
-[![Package version](https://img.shields.io/packagist/v/erdiko/user-admin.svg?style=flat-square)](https://packagist.org/packages/erdiko/user-admin) [![Travis CI](https://travis-ci.org/Erdiko/user-admin.svg?branch=master)](https://travis-ci.org/Erdiko/user-admin) [![License](https://poser.pugx.org/erdiko/user-admin/license)](https://packagist.org/packages/erdiko/user-admin)
+[![Package version](https://img.shields.io/packagist/v/erdiko/user-admin.svg?style=flat-square)](https://packagist.org/packages/erdiko/user-admin) [![CircleCI](https://img.shields.io/circleci/project/github/Erdiko/user-admin/develop.svg?style=flat-square)](https://circleci.com/gh/Erdiko/user-admin) [![license](https://img.shields.io/github/license/erdiko/user-admin.svg?style=flat-square)](https://github.com/Erdiko/user-admin/blob/master/LICENSE)
 
-Goal: A fully functional and modular user management system with an Angular 2 UI.
-
-**Note this is an active development project and not quite ready for production yet**
+A fully functional and modular user management system with an Angular 2 UI and PHP backend.
 
 It is based on a few erdiko packages (authorize, authenticate, and users) as well as the [Angular CLI](https://github.com/angular/angular-cli) project.
 

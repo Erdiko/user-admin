@@ -3,8 +3,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/cci-demo-docker-primary:0.0.2
-    working_directory: /go/src/github.com/circleci/cci-demo-docker
+      - image: erdiko/docker-compose:1.11
+    working_directory: /code
 
     environment:
       TEST_RESULTS: /tmp/test-results
@@ -16,31 +16,13 @@ jobs:
 
       - setup_remote_docker
 
-      # This should go into custom primary image, here's only for the sake of explanation
       - run:
-          name: Install Docker client
-          command: |
-            set -x
-            VER="17.03.0-ce"
-            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
-            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-            mv /tmp/docker/* /usr/bin
-
-      # This should go into custom primary image, here's only for the sake of explanation
-      - run:
-          name: Install Docker Compose
-          command: |
-            set -x
-            curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-            chmod +x /usr/local/bin/docker-compose
-
-      - run:
-          name: Start container and verify it's working
+          name: Build container environment
           command: |
             set -x
 
             chmod 770 scripts/ci/*.sh
-            ./scripts/ci/install.sh
+            ./scripts/ci/install-repos.sh
 
             pwd
             ls -al
@@ -50,17 +32,15 @@ jobs:
             docker cp ./ erdiko_users_php:/code
             docker cp ./ erdiko_users_web:/code
 
-            docker exec -it erdiko_users_php /code/scripts/ci/update-composer.sh
-            docker exec -it erdiko_users_php /code/scripts/ci/update-vendor.sh
-            docker exec -it erdiko_users_php /code/scripts/install-db.sh
+            docker exec -it erdiko_users_php /code/scripts/ci/install.sh
+            # docker exec -it erdiko_users_web /code/scripts/ci/install-web.sh
+
+      - run:
+          name: Run PHPUnit tests
+          command: |
+            set -x
 
             docker exec -it erdiko_users_php /code/scripts/ci/run-php-tests.sh
-
-            # docker-compose will start 2 containers, the one with service will be named `contacts`
-            # we start another container with curl in the same network as `contacts`, this way we have
-            # all exposed ports from `contacts` available on `localhost` in this new container
-            docker run --network container:contacts \
-              appropriate/curl --retry 10 --retry-delay 1 --retry-connrefused http://localhost/
 
       - store_artifacts:
           path: /tmp/test-results

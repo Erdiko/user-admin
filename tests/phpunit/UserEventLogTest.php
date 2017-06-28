@@ -59,10 +59,13 @@ class UserEventLogTest extends ErdikoTestCase
         $this->assertLogEvent(Log::EVENT_UPDATE);
     }
 
-    /**
-     * @TODO Finish after solve an issue on frontend
-     */
-    public function testEventChangePassword() { }
+    public function testEventChangePassword()
+    {
+        $this->loginAction();
+        $this->prepareChangePasswordEventData();
+        $this->createLogEvent(Log::EVENT_PASSWORD);
+        $this->assertLogEvent(Log::EVENT_PASSWORD);
+    }
 
     public function testEventDelete()
     {
@@ -212,6 +215,15 @@ class UserEventLogTest extends ErdikoTestCase
     {
         $userData = $this->getLatestUser()->marshall('array');
         $userData['name'] = $userData['name'] . ' Updated';
+        $this->logData = $userData;
+
+        $this->userModel->save($userData);
+    }
+
+    private function prepareChangePasswordEventData()
+    {
+        $user = $this->getLatestUser();
+        $userData = ['id' => $user->getId(), 'password' => 'newpassword'];
         $this->logData = $userData;
 
         $this->userModel->save($userData);

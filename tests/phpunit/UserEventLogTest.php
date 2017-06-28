@@ -163,6 +163,7 @@ class UserEventLogTest extends ErdikoTestCase
      */
     private function createLogEvent($event)
     {
+        unset($this->logData['password']);
         $this->logModel->create($this->user->getId(), $event, $this->logData);
     }
 
@@ -184,10 +185,12 @@ class UserEventLogTest extends ErdikoTestCase
     private function assertLogEvent($event)
     {
         $latestLogEvent = $this->getLatestLogEvent();
+        $eventData = (array)$latestLogEvent->getEventData();
+        unset($eventData['password']);
 
         $this->assertEquals($this->user->getId(), $latestLogEvent->getUserId());
         $this->assertEquals($event, $latestLogEvent->getEventLog());
-        $this->assertEquals($this->logData, (array)$latestLogEvent->getEventData());
+        $this->assertEquals($this->logData, $eventData);
     }
 
     private function prepareCreateEventData()

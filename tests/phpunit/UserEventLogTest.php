@@ -7,6 +7,7 @@ require_once dirname(__DIR__) . '/ErdikoTestCase.php';
 use erdiko\users\models\User;
 use erdiko\users\models\user\event\Log;
 use \tests\ErdikoTestCase;
+use \erdiko\authenticate\services\JWTAuthenticator;
 
 class UserEventLogTest extends ErdikoTestCase
 {
@@ -32,46 +33,46 @@ class UserEventLogTest extends ErdikoTestCase
     public function testEventLogin()
     {
         $this->assertTrue($this->loginAction());
-        $this->createLogEvent(Log::EVENT_LOGIN);
         $this->assertLogEvent(Log::EVENT_LOGIN);
     }
 
-    public function testEventAttempt()
+    public function testEventAttemptValidUser()
     {
         $this->assertFalse($this->loginAction(false));
-        $this->createLogEvent(Log::EVENT_ATTEMPT);
+        $this->assertLogEvent(Log::EVENT_ATTEMPT);
+    }
+
+    public function testEventAttemptInvalidUser()
+    {
+        $this->assertFalse($this->loginAction(false, false));
         $this->assertLogEvent(Log::EVENT_ATTEMPT);
     }
 
     public function testEventCreate()
     {
         $this->loginAction();
-        $this->prepareCreateEventData();
-        $this->createLogEvent(Log::EVENT_CREATE);
+        $this->createUser();
         $this->assertLogEvent(Log::EVENT_CREATE);
     }
 
     public function testEventUpdate()
     {
         $this->loginAction();
-        $this->prepareUpdateEventData();
-        $this->createLogEvent(Log::EVENT_UPDATE);
+        $this->updateUser();
         $this->assertLogEvent(Log::EVENT_UPDATE);
     }
 
     public function testEventChangePassword()
     {
         $this->loginAction();
-        $this->prepareChangePasswordEventData();
-        $this->createLogEvent(Log::EVENT_PASSWORD);
+        $this->changePassword();
         $this->assertLogEvent(Log::EVENT_PASSWORD);
     }
 
     public function testEventDelete()
     {
         $this->loginAction();
-        $this->prepareDeleteEventData();
-        $this->createLogEvent(Log::EVENT_DELETE);
+        $this->deleteUser();
         $this->assertLogEvent(Log::EVENT_DELETE);
     }
 
@@ -126,10 +127,13 @@ class UserEventLogTest extends ErdikoTestCase
      *
      * @return array
      */
-    private function getInvalidCredentials()
+    private function getInvalidCredentials($user)
     {
         $invalidCredentials = $this->validCredentials;
         $invalidCredentials['password'] = rand(0, 99999);
+        if (!$user) {
+            $invalidCredentials['username'] = $invalidCredentials['username'].rand(0, 99999);
+        }
 
         return array_merge($this->loginData, $invalidCredentials);
     }
@@ -140,20 +144,32 @@ class UserEventLogTest extends ErdikoTestCase
      * @param bool $valid
      * @return bool
      */
-    protected function loginAction($valid=true)
+    protected function loginAction($valid=true, $user=true)
     {
-        $authenticator = new \erdiko\authenticate\services\JWTAuthenticator(new User());
-        $credentials = $valid ? $this->getValidCredentials() : $this->getInvalidCredentials();
-        $this->logData = $credentials;
+        $authenticator = new JWTAuthenticator(new User());
+        $config     = \Erdiko::getConfig();
+        $secretKey  = $config["site"]["secret_key"];
+        $credentials = $valid ? $this->getValidCredentials() : $this->getInvalidCredentials($user);
+        $this->logData = ['email' => $credentials['username']];
+        $authParams = $credentials;
+        $authParams['secret_key'] = $secretKey;
+
         try {
-            $result = $authenticator->login($credentials);
+            $result = $authenticator->login($authParams, 'jwt_auth');
             $this->user = $result->user->getEntity();
+            return true;
         } catch (\Exception $e) {
-            $users = $this->userModel->getByParams(['username'=>$credentials['username']]);
-            $this->user = $users->users[0];
-            return false;
+            // Mute Exception to continue with the process.
         }
-        return true;
+
+        $this->user = $this->userModel->getAnonymous()->getEntity();
+        $this->logData['message'] = "User {$credentials['username']} not found.";
+        $users = $this->userModel->getByParams(['email'=>$credentials['username']]);
+        if (count($users)>0) {
+            $this->user = $users[0];
+            $this->logData['message'] = "Invalid Password";
+        }
+        return false;
     }
 
     /**
@@ -187,13 +203,14 @@ class UserEventLogTest extends ErdikoTestCase
         $latestLogEvent = $this->getLatestLogEvent();
         $eventData = (array)$latestLogEvent->getEventData();
         unset($eventData['password']);
+        unset($this->logData['password']);
 
         $this->assertEquals($this->user->getId(), $latestLogEvent->getUserId());
         $this->assertEquals($event, $latestLogEvent->getEventLog());
         $this->assertEquals($this->logData, $eventData);
     }
 
-    private function prepareCreateEventData()
+    private function createUser()
     {
         $rand = rand(0, 99999);
         $userData = $this->logData = [
@@ -207,29 +224,33 @@ class UserEventLogTest extends ErdikoTestCase
         $user->createUser($userData);
     }
 
-    private function prepareDeleteEventData()
-    {
-        $user = $this->getLatestUser();
-        $this->logData = ['id' => $user->getId()];
-        $this->userModel->deleteUser($user->getId());
-    }
-
-    private function prepareUpdateEventData()
+    private function updateUser()
     {
         $userData = $this->getLatestUser()->marshall('array');
         $userData['name'] = $userData['name'] . ' Updated';
         $this->logData = $userData;
 
-        $this->userModel->save($userData);
+        $user = new User();
+        $user->save($userData);
     }
 
-    private function prepareChangePasswordEventData()
+    private function changePassword()
     {
-        $user = $this->getLatestUser();
-        $userData = ['id' => $user->getId(), 'password' => 'newpassword'];
+        $user = $this->getLatestUser()->marshall('array');
+        $userData = ['id' => $user['id'], 'password' => 'newpassword'];
         $this->logData = $userData;
 
-        $this->userModel->save($userData);
+        $user = new User();
+        $user->save($userData);
+    }
+
+    private function deleteUser()
+    {
+        $userData = $this->getLatestUser()->marshall('array');
+        $this->logData = ['id' => $userData['id']];
+
+        $user = new User();
+        $user->deleteUser($userData['id']);
     }
 
     private function getLatestUser()

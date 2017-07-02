@@ -8,8 +8,8 @@ RESET='\033[0m'
 #cd $DIR
 
 # Run unit tests for user-admin (inside of docker)
-/code/scripts/ci/tests.sh
-echo "${GREEN}ran unit test suite for user-admin package\n ${RESET}"
+# /code/scripts/ci/tests.sh
+# echo "${GREEN}ran unit test suite for user-admin package\n ${RESET}"
 
 # Run unit tests for each sub package, 3 test suites (inside of docker)
 /code/vendor/erdiko/users/scripts/ci-tests.sh

@@ -1,1 +1,1 @@
-insert into  `roles` ( `active`, `name`) values ( '1', 'anonymous');
+insert into  `roles` ( `active`, `name`) values ( '1', 'general');

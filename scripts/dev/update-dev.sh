@@ -4,7 +4,12 @@
 BRANCH="develop"
 
 # cd to the script folder (so that the script can be ran anywhere)
-DIR=$(cd $(dirname ${BASH_SOURCE[0]}); pwd)
+if [ -z "$BASH_SOURCE" ]; then
+   DIR=$(pwd)
+else
+   # cd to the script folder (so that the script can be ran anywhere)
+   DIR=$(cd $(dirname ${BASH_SOURCE[0]}); pwd)
+fi
 cd $DIR
 
 # Add some color bling
@@ -17,7 +22,7 @@ git pull origin $BRANCH
 echo "${GREEN}user-admin updated\n ${RESET}"
 
 # Pull users
-pushd ../../../users
+cd ../../../users
 git checkout $BRANCH
 git pull origin $BRANCH
 echo "${GREEN}users updated\n ${RESET}"

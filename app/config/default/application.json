@@ -1,9 +1,9 @@
 {
   "site": {
     "name": "Erdiko",
-    "full_name": "Erdiko Micro Framework",
+    "full_name": "Erdiko User Admin",
     "tagline": "Enterprise Glue (PHP Micro Framework)",
-    "copyright": "Copyright © 2016",
+    "copyright": "Copyright © 2017",
     "description": "Erdiko wants to make your php development easier. If you need a lightweight MVC framework you have come to the right place. Our goal is to offer a clean framework to create sites optimized for mobile devices, APIs and multiple browsers.",
     "meta": {
       "description": "Erdiko MVC micro framework (enterprise glue)"

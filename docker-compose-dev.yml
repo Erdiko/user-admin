@@ -42,7 +42,5 @@ services:
       - tail
       - -f
       - /dev/null
-    extra_hosts:
-      - "erdiko.local:webserver"
     ports:
       - "4200:4200"

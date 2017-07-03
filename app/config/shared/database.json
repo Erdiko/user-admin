@@ -7,7 +7,7 @@
             "driver": "pdo_mysql",
             "host": "erdiko_users_db",
             "port": "3306",
-            "database": "user-admin",
+            "database": "users",
             "username": "root",
             "password": "psItPs16",
             "charset": "utf8",

@@ -7,8 +7,11 @@ RESET='\033[0m'
 #DIR=$(cd $(dirname ${BASH_SOURCE[0]}); pwd)
 #cd $DIR
 
-# Run unit tests inside of docker (3 test suites)
+# Run unit tests for user-admin (inside of docker)
+/code/scripts/ci/tests.sh
+echo "${GREEN}ran unit test suite for user-admin package\n ${RESET}"
 
+# Run unit tests for each sub package, 3 test suites (inside of docker)
 /code/vendor/erdiko/users/scripts/ci-tests.sh
 echo "${GREEN}ran unit test suite for users package\n ${RESET}"
 

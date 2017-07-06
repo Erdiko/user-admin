@@ -162,7 +162,7 @@ class UserEventLogTest extends ErdikoTestCase
             // Mute Exception to continue with the process.
         }
 
-        $this->user = $this->userModel->getAnonymous()->getEntity();
+        $this->user = $this->userModel->getGeneral()->getEntity();
         $this->logData['message'] = "User {$credentials['username']} not found.";
         $users = $this->userModel->getByParams(['email'=>$credentials['username']]);
         if (count($users)>0) {

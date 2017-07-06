@@ -204,6 +204,8 @@ class UserEventLogTest extends ErdikoTestCase
         $eventData = (array)$latestLogEvent->getEventData();
         unset($eventData['password']);
         unset($this->logData['password']);
+        unset($eventData['new_password']);
+        unset($this->logData['new_password']);
 
         $this->assertEquals($this->user->getId(), $latestLogEvent->getUserId());
         $this->assertEquals($event, $latestLogEvent->getEventLog());
@@ -236,8 +238,9 @@ class UserEventLogTest extends ErdikoTestCase
 
     private function changePassword()
     {
-        $user = $this->getLatestUser()->marshall('array');
-        $userData = ['id' => $user['id'], 'password' => 'newpassword'];
+	    $userData = $this->getLatestUser()->marshall('array');
+        $userData['new_password'] ='newpassword';
+
         $this->logData = $userData;
 
         $user = new User();

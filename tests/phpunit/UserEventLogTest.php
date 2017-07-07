@@ -245,6 +245,8 @@ class UserEventLogTest extends ErdikoTestCase
 
         $user = new User();
         $user->save($userData);
+
+        $this->logData['role'] = $user->getRole();
     }
 
     private function deleteUser()

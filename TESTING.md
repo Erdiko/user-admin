@@ -1,7 +1,7 @@
 Testing
 =======
 
-##phpunit
+## phpunit
 
 Run all unit tests with the following commands.  Be sure you are running the full stack (docker-compose up) or the tests will fail since there is no database to connect to.
 
@@ -11,7 +11,7 @@ Run all unit tests with the following commands.  Be sure you are running the ful
     or
     docker-compose run php /code/scripts/ci/run-php-tests.sh
 
-##misc ci notes
+## Misc ci notes
 
     cd scripts/dev
     ./install-dev.sh

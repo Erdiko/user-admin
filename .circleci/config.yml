@@ -21,7 +21,9 @@ jobs:
           command: |
             set -x
 
+            chmod 770 scripts/*.sh
             chmod 770 scripts/ci/*.sh
+            chmod 770 scripts/dev/*.sh
             ./scripts/ci/install-repos.sh
 
             pwd

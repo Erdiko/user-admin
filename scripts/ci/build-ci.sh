@@ -2,7 +2,7 @@
 
 docker-compose -f docker-compose-ci.yml up -d
 
-docker cp ./ erdiko_users_php:/code
-docker cp ./ erdiko_users_web:/code
+docker ps -a
 
-docker exec -it erdiko_users_php /code/scripts/ci/install.sh
+docker exec -it erdiko_users_php /code/scripts/dev/update-composer.sh
+docker exec -it erdiko_users_php /code/scripts/install-db.sh

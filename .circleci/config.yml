@@ -21,19 +21,17 @@ jobs:
           command: |
             set -x
 
+            chmod 770 scripts/*.sh
             chmod 770 scripts/ci/*.sh
+            chmod 770 scripts/dev/*.sh
             ./scripts/ci/install-repos.sh
 
             pwd
             ls -al
 
-            docker-compose -f docker-compose-ci.yml up -d
+            ./scripts/ci/build-ci.sh
 
-            docker cp ./ erdiko_users_php:/code
-            docker cp ./ erdiko_users_web:/code
-
-            docker exec -it erdiko_users_php /code/scripts/ci/install.sh
-            # docker exec -it erdiko_users_web /code/scripts/ci/install-web.sh
+            docker exec -it erdiko_users_php /code/scripts/ci/curl-test.sh
 
       - run:
           name: Run PHPUnit tests

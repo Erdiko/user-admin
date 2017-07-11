@@ -42,6 +42,13 @@ pass: password
 
 After you login, click around and try to figure out how to update your password.
 
+### Running unit tests
+
+To run phpunit tests for all repos there is a convenience script.  Get in the habit of running this before pushing your commits or making a pull request.
+
+    docker exec -it erdiko_users_php /code/scripts/ci/run-php-tests.sh
+    *or*
+    docker-compose -f docker-compose-ci.yml run php /code/scripts/ci/run-php-tests.sh
 
 ### Angular
 

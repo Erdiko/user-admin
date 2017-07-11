@@ -29,11 +29,6 @@ jobs:
             pwd
             ls -al
 
-            cd /code
-
-            pwd
-            ls -al
-
             ./scripts/ci/build-ci.sh
 
             docker exec -it erdiko_users_php /code/scripts/ci/curl-test.sh

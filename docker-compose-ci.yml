@@ -3,9 +3,7 @@ version: '2.1'
 services:
 
   webserver:
-    extends:
-      file: ./docker/nginx/docker-compose.yml
-      service: webserver
+    image: erdiko/nginx:latest
     container_name: erdiko_users_web
 
   php:

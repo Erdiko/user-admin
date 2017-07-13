@@ -2,27 +2,16 @@ version: '2.1'
 
 services:
 
-  data:
-    image: busybox
-    volumes:
-      - ./:/code
-      - ./composer-dev.json:/code/composer.json
-      - ./repos/authenticate:/authenticate
-      - ./repos/authenticate:/authorize
-      - ./repos/authenticate/users:/users
-
   webserver:
     extends:
       file: ./docker/nginx/docker-compose.yml
       service: webserver
     container_name: erdiko_users_web
-    volumes_from: [data]
 
   php:
     container_name: erdiko_users_php
     env_file: ./docker/environment.env
     image: erdiko/php-fpm:latest
-    volumes_from: [data]
 
   db:
     extends:

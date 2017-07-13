@@ -1,11 +1,8 @@
-Contributing to Erdiko User Admin
-=================================
+# Contributing to Erdiko User Admin
 
 We welcome contributions and love to see folks get involved.  Below are instructions to help you get going.
 
-
-Setting up your development environment
----------------------------------------
+## Setting up your development environment
 
 ### General
 
@@ -58,14 +55,14 @@ Set up to use the ngx-user-admin repo for local development using NPM link.
 
 you can now make changes in the ngx-user-admin repo and see those changes when you compile.  Use the instructions below to set up your Angular enviornment using NPM.  After your environment is set up you can rebuild Angular and the CSS by following the steps in the Compile section.  For additional information on our Angular code see the [NPM README](https://www.npmjs.com/package/@erdiko/ngx-user-admin) and the [repo README](https://github.com/Erdiko/ngx-user-admin).
 
-#### Setup (first time):
+#### Setup (first time)
 
     docker exec -it erdiko_users_angular /bin/bash
     /code/scripts/dev/link-npm.sh
     cd /code/app/themes/user-admin
     npm i
 
-#### Compile:
+#### Compile
 
     docker exec -it erdiko_users_angular /bin/bash
     cd /code/app/themes/user-admin
@@ -80,7 +77,6 @@ Using the Angular dev server
     docker exec -it erdiko_users_angular /bin/bash
     cd /code/app/themes/user-admin
     npm run start
-
 
 #### Rebuilding your Docker containers
 

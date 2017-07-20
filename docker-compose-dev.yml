@@ -44,3 +44,15 @@ services:
       - /dev/null
     ports:
       - "4200:4200"
+
+   chromium:
+        image: markadams/chromium-xvfb-js:latest
+    container_name: erdiko_users_chromium
+    volumes_from: [data]
+    env_file: ./docker/angular/environment.env
+    volumes:
+      - ../ngx-user-admin/:/ngx-user-admin
+    entrypoint:
+      - tail
+      - -f
+      - /dev/null

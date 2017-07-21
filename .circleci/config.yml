@@ -31,8 +31,6 @@ jobs:
 
             ./scripts/ci/build-ci.sh
 
-            ./scripts/ci/install-npm.sh
-
             docker exec -it erdiko_users_php /code/scripts/ci/curl-test.sh
 
       - run:
@@ -42,12 +40,12 @@ jobs:
 
             docker exec -it erdiko_users_php /code/scripts/ci/run-php-tests.sh
 
-      - run:
-          name: Run e2e tests
-          command: |
-            set -x
+      #- run:
+      #    name: Run e2e tests
+      #    command: |
+      #      set -x
 
-            docker exec -it erdiko_users_php /code/scripts/ci/run-e2e-tests.sh
+      #      docker exec -it erdiko_users_php /code/scripts/ci/run-e2e-tests.sh
 
       - store_artifacts:
           path: /tmp/test-results

@@ -31,6 +31,8 @@ jobs:
 
             ./scripts/ci/build-ci.sh
 
+            ./scripts/ci/install-npm.sh
+
             docker exec -it erdiko_users_php /code/scripts/ci/curl-test.sh
 
       - run:

@@ -38,6 +38,7 @@ services:
     env_file: ./docker/angular/environment.env
     volumes:
       - ../ngx-user-admin/:/ngx-user-admin
+      - ../user-admin/:/user-admin
     entrypoint:
       - tail
       - -f

@@ -11,8 +11,7 @@ export class UserAdminPage {
   }
 
   goToUserList() {
-    let userListNav = browser.findElement(protractor.by.css('nav ul > li:nth-child(2) > a'));
-    userListNav.click();
+    return browser.get('/list');
   }
 
   login() {

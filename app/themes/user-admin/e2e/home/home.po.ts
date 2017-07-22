@@ -1,6 +1,7 @@
 import { protractor, browser, element, by, WebElement } from 'protractor';
 
 export class UserAdminPage {
+
   navigateTo() {
     return browser.get('/');
   }

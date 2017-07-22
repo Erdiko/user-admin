@@ -17,8 +17,10 @@ describe('User List Page', function() {
         page.goToUserList();
 
         //go back to home page
-        let home = browser.findElement(protractor.by.css('app-header ul > li:first-child > a'));
+        let home = browser.findElement(protractor.by.css('app-header .navbar-brand'));
         home.click()
+
+        browser.waitForAngular();
 
         //check User Link in Body
         let userListBody = browser.findElement(protractor.by.css('app-home ul > li:nth-child(2) > a'));
@@ -33,8 +35,6 @@ describe('User List Page', function() {
         expect(page.getParagraphText("thead th:nth-child(3)")).toEqual('Role');
         expect(page.getParagraphText("thead th:nth-child(4)")).toEqual('Last Login');
         expect(page.getParagraphText("thead th:nth-child(5)")).toEqual('Joined');
-        expect(page.getParagraphText("thead th:nth-child(6)")).toEqual('Edit');
-        expect(page.getParagraphText("thead th:last-child")).toEqual('Delete');
 
     });
 
@@ -110,7 +110,7 @@ describe('User List Page', function() {
         browser.executeScript("document.body.className += ' notransition';");
 
         //the user that is to be deleted
-        expect(page.getParagraphText("tbody tr:first-child > .user_name")).toEqual('Sam Sepiol');
+        expect(page.getParagraphText("tbody tr:first-child > .user_name")).toEqual('Elliot Alderson');
 
         let deleteUser = browser.findElement(protractor.By.css('tbody tr:first-child .btn-danger'));
         deleteUser.click();
@@ -126,7 +126,8 @@ describe('User List Page', function() {
         //deleteID should now be deleted and no longer present
         expect(page.getParagraphText("tbody tr:first-child > .user_id")).not.toEqual(deleteID);
 
-        expect(page.getParagraphText("app-message .alert-success")).toEqual('User successfully deleted');
+        ///should have both link in navbar and body content lead to User List page
+        expect(page.getParagraphText("alert .alert-success")).toContain('deleted');
 
     });
 

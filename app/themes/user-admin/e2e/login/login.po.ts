@@ -16,8 +16,8 @@ export class UserAdminPage {
     let password = browser.findElement(protractor.By.name('password'));
     let submit = browser.findElement(protractor.By.className('btn btn-success'));
 
-    email.sendKeys('foo@mail.com');
-    password.sendKeys('asdf1234');
+    email.sendKeys('erdiko@arroyolabs.com');
+    password.sendKeys('password');
     
     submit.click();
 

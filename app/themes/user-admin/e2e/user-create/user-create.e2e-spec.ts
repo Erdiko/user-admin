@@ -30,8 +30,10 @@ describe('User Create', function() {
     it('should input name, email, role and save the user and check its presence', () => {
         let name = browser.findElement(protractor.By.name('name'));
         let email = browser.findElement(protractor.By.name('email'));
-        let user = browser.findElement(protractor.By.cssContainingText('option', 'User'));
+
+        let user = browser.findElement(protractor.By.cssContainingText('option', 'General'));
         let admin = browser.findElement(protractor.By.cssContainingText('option', 'Admin'));
+        let superAdmin = browser.findElement(protractor.By.cssContainingText('option', 'Super Admin'));
 
         let password = browser.findElement(protractor.By.name('password'));
         let confirm = browser.findElement(protractor.By.name('confirm'));
@@ -48,7 +50,9 @@ describe('User Create', function() {
         confirm.sendKeys('a1ora0');
         save.click();
 
-        expect(page.getParagraphText("app-message .alert-success")).toEqual('User was successfully created');
+        browser.waitForAngular();
+        expect(page.getParagraphText("alert .alert-success")).toEqual('User was successfully created');
+        browser.waitForAngular();
 
         cancel.click();
 

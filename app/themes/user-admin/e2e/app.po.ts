@@ -24,13 +24,13 @@ export class UserAdminPage {
 
     //For the following email and password to work, the sql script in user-admin/scripts/sql/create-e2e-user.sql must be executed
     //The purpose is so that every developer running e2e test has same login credentials.
-    email.sendKeys('test@bug.com');
-    password.sendKeys('asdf1234');
+    email.sendKeys('erdiko@arroyolabs.com');
+    password.sendKeys('password');
     
     submit.click();
 
-    expect(this.getParagraphText("app-message .alert-success")).toEqual('You have Successfully logged in');
-    expect(this.getParagraphText("app-home h1")).toEqual('Welcome to the Erdiko User Admin');
+    expect(this.getParagraphText("alert .alert-success")).toContain('Login successful');
+    expect(this.getParagraphText("app-home h1")).toContain('Erdiko User Admin');
   }
 
   logout() {
@@ -40,8 +40,6 @@ export class UserAdminPage {
     //Logout is clicked
     let logout = browser.findElement(protractor.By.cssContainingText('a', 'Logout'));
     logout.click();
-
-    expect(this.getParagraphText("app-message .alert-success")).toEqual('You have Successfully logged out');
 
     //Check for the logout status
     expect(this.getParagraphText(".navbar-brand")).toEqual('User Admin');

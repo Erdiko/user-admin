@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: erdiko/docker-compose:1.11
+      - image: webnicer/protractor-headless
     working_directory: /code
 
     environment:

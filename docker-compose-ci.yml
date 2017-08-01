@@ -5,6 +5,8 @@ services:
   webserver:
     image: erdiko/nginx:latest
     container_name: erdiko_users_web
+    ports:
+      - "8088:80"
 
   php:
     container_name: erdiko_users_php

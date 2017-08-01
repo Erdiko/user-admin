@@ -35,5 +35,6 @@ foreach ($this->getJs() as $js) {
     echo "<script src='".$js['file']."'></script>\n";
 }
 ?>
+<?php echo $this->getTemplateHtml('footer'); ?>
 </body>
 </html>

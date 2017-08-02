@@ -13,10 +13,9 @@
     "require": {
         "php": ">=5.5.0",
         "erdiko/core": "^1.0.0",
-        "erdiko/users": "dev-develop",
-        "erdiko/authenticate": "dev-develop",
-        "erdiko/authorize": "dev-develop",
-        "ac/kalinka": "dev-master",
+        "erdiko/users": "^1.0.0",
+        "erdiko/authenticate": "^1.0.0",
+        "erdiko/authorize": "^1.0.0",
         "firebase/php-jwt": "^4.0"
     },
     "config": {

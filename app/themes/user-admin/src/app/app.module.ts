@@ -10,19 +10,22 @@ import { HttpModule }           from '@angular/http';
 
 import { AlertModule, 
          ModalModule,
-         TabsModule }          from 'ngx-bootstrap';
+         TabsModule }           from 'ngx-bootstrap';
 
 import { UserAdminModule }      from '@erdiko/ngx-user-admin';
 
 import { AppComponent }         from './app.component';
 
-// clang-format off
-const routes: Routes = [];
-// clang-format on
+import { NotFoundComponent }    from './not-found/not-found.component';
+
+import { AppRouting }           from './app.routing';
+
+import { UserAdminRouting }      from '@erdiko/ngx-user-admin';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +37,10 @@ const routes: Routes = [];
     ModalModule.forRoot(),
     TabsModule.forRoot(),
 
-    RouterModule.forRoot(routes),
-    //UserAdminModule
-    UserAdminModule.forRoot()
+    UserAdminModule.forRoot(),
+
+    UserAdminRouting,
+    AppRouting
   ],
   providers: [
   ],

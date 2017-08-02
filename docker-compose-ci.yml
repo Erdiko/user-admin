@@ -3,19 +3,15 @@ version: '2.1'
 services:
 
   webserver:
-    extends:
-      file: ./docker/nginx/docker-compose.yml
-      service: webserver
+    image: erdiko/nginx:latest
     container_name: erdiko_users_web
     ports:
-      - "80:80"
+      - "8088:80"
 
   php:
     container_name: erdiko_users_php
     env_file: ./docker/environment.env
     image: erdiko/php-fpm:latest
-    extra_hosts:
-      - "docker.local:172.17.0.1"
 
   db:
     extends:

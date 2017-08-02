@@ -35,7 +35,7 @@ const routes: Routes = [];
     TabsModule.forRoot(),
 
     RouterModule.forRoot(routes),
-
+    //UserAdminModule
     UserAdminModule.forRoot()
   ],
   providers: [

@@ -47,7 +47,7 @@ jobs:
 
             #docker exec -it erdiko_users_php /code/scripts/ci/run-e2e-tests.sh
             cd app/themes/user-admin
-            docker run -it --privileged --rm --net=host -v /dev/shm:/dev/shm -v $(pwd):/protractor webnicer/protractor-headless --baseUrl=http://docker.local
+            docker run -it --privileged --rm --net=host -v /dev/shm:/dev/shm -v $(pwd):/protractor webnicer/protractor-headless protractor.conf.js
 
       - store_artifacts:
           path: /tmp/test-results

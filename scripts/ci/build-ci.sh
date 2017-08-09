@@ -18,5 +18,7 @@ docker cp ./repos/authenticate erdiko_users_web:/authenticate
 docker cp ./repos/authorize erdiko_users_web:/authorize
 docker cp ./repos/users erdiko_users_web:/users
 
+docker cp ./app/themes/user-admin erdiko_users_protractor:/protractor
+
 docker exec -it erdiko_users_php /code/scripts/dev/update-composer.sh
 docker exec -it erdiko_users_php /code/scripts/install-db.sh

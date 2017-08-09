@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /protractor
+cd /protractor/user-admin
 npm i

@@ -19,7 +19,8 @@ docker cp ./repos/authorize erdiko_users_web:/authorize
 docker cp ./repos/users erdiko_users_web:/users
 
 docker cp ./app/themes/user-admin erdiko_users_protractor:/protractor
-docker cp ./scripts/ci/protactor.sh erdiko_users_protractor:/protractor
+docker cp ./scripts/ci/npm-i.sh erdiko_users_protractor:/protractor
+docker cp ./scripts/ci/protractor.sh erdiko_users_protractor:/protractor
 
 docker exec -it erdiko_users_protractor /code/scripts/ci/npm-i.sh
 

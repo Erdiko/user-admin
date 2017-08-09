@@ -45,6 +45,7 @@ jobs:
           command: |
             set -x
 
+            docker exec -it --privileged erdiko_users_protractor /protractor/npm-i.sh
             docker exec -it --privileged erdiko_users_protractor /protractor/protractor.sh
 
       - store_artifacts:

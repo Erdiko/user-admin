@@ -45,7 +45,7 @@ jobs:
           command: |
             set -x
 
-            docker exec -it --privileged --net=host -v /dev/shm:/dev/shm -v $(pwd):/protractor erdiko_users_protractor
+            docker exec -it --privileged erdiko_users_protractor
 
       - store_artifacts:
           path: /tmp/test-results

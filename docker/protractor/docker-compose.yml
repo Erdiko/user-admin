@@ -6,3 +6,4 @@ services:
     env_file: environment.env
     volumes:
       - ../../app/themes/user-admin:/protractor
+      - /dev/shm:/dev/shm

@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   protractor:
+    build: .
     env_file: environment.env
-    image: webnicer/protractor-headless
     volumes:
       - ../../app/themes/user-admin:/protractor

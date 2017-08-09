@@ -8,7 +8,6 @@ RESET='\033[0m'
 #cd $DIR
 
 # Run e2e tests for user-admin
-/code/scripts/ci/e2e-tests.sh
+
+sh /protractor/protractor.sh
 echo "${GREEN}ran e2e test suite for user-admin package\n ${RESET}"
-
-

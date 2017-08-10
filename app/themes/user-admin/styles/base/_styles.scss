@@ -1,12 +1,8 @@
-//user-admin/styles/base/_styles.scss
-
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
 @import "../../node_modules/bootswatch-sass/flatly/variables";
-//@import "variables"; //move this to package (theme-user admin)
 
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "../../node_modules/bootswatch-sass/flatly/bootswatch";
 
-//import variables here
 @import "../../node_modules/@erdiko/theme-user-admin/_variable.scss";
 @import "../../node_modules/@erdiko/theme-user-admin/_style.scss"

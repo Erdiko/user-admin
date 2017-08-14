@@ -1,0 +1,22 @@
+{
+  "default": {
+    "driver": "file",
+    "session_config": {
+      "save_path": "/tmp"
+    }
+  },
+  "predis": {
+    "driver": "predis",
+    "config": {
+      "scheme": "tcp",
+      "host": "172.18.0.4",
+      "port": 6379
+    }
+  },
+  "file": {
+    "driver": "file",
+    "session_config": {
+      "save_path": "/tmp"
+    }
+  }
+}

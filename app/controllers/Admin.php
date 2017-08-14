@@ -10,7 +10,6 @@
  */
 namespace app\controllers;
 
-
 /**
  * User Admin Controller Class
  */

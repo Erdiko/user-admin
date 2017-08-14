@@ -10,6 +10,8 @@
  */
 namespace app\controllers;
 
+use erdiko\session\helpers\Config;
+use erdiko\session\Session;
 
 /**
  * User Admin Controller Class

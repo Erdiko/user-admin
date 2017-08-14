@@ -16,6 +16,7 @@
         "erdiko/users": "@dev",
         "erdiko/authenticate": "@dev",
         "erdiko/authorize": "@dev",
+        "erdiko/session": "@dev",
         "firebase/php-jwt": "^4.0"
     },
     "config": {
@@ -25,21 +26,28 @@
     "repositories": [
         {
             "type": "path",
-            "url": "/users",
+            "url": "../users",
             "options": {
                 "symlink": true
             }
         },
         {
             "type": "path",
-            "url": "/authenticate",
+            "url": "../authenticate",
             "options": {
                 "symlink": true
             }
         },
         {
             "type": "path",
-            "url": "/authorize",
+            "url": "../authorize",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../session",
             "options": {
                 "symlink": true
             }

@@ -90,17 +90,12 @@ class DatabaseErrorsTest extends ErdikoTestCase
         return $jsonResponse;
     }
 
+    /**
+     * @expectedException GuzzleHttp\Exception\ServerException
+     */
     public function testInvalidDatabase()
     {
-        try {
             $loginResponse = $this->login();
-        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
-            $jsonResponse = $this->getJsonResponse($e->getResponse());
-            $this->assertEquals($jsonResponse->status, 500);
-            $this->assertEquals($jsonResponse->body->success, false);
-            $this->assertEquals($jsonResponse->body->error_code, 0);
-            $this->assertContains('_invalid_database_', $jsonResponse->body->error_message);
-        }
     }
 
     protected function getPhpsessid($setCookie)

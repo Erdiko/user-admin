@@ -25,7 +25,7 @@
     "build": "npm run build:sass && npm run build:prod && npm run build:clean && npm run build:rename && npm run build:copy && npm run build:copycss"
   },
   "dependencies": {
-    "@angular/common": "^2.3.1",
+    "@angular/common": "^19.2.16",
     "@angular/compiler": "^2.3.1",
     "@angular/core": "^2.3.1",
     "@angular/forms": "^2.3.1",
